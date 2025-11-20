@@ -1,0 +1,10 @@
+# .gitignore
+
+# Ignore saved models
+*.pkl
+
+# Ignore environment files
+.env
+
+# Ignore any data files (if you save them locally)
+*.csv
