@@ -8,6 +8,9 @@ on:
 jobs:
   update-stats:
     runs-on: ubuntu-latest
+    # ADD WRITE PERMISSIONS FOR PUSHING CHANGES
+    permissions:
+      contents: write
     
     steps:
       - name: Checkout Repo

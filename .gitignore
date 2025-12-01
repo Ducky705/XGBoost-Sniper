@@ -100,7 +100,12 @@ jspm_packages/
 .vscode-test
 
 # Model files (if they're too large)
+# Ignore all .pkl files...
 *.pkl
+# ...but DO NOT ignore these specific model files.
+!models/v1_pyrite.pkl
+!models/v2_diamond.pkl
+
 *.joblib
 *.h5
 *.pb
