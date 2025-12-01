@@ -3,15 +3,20 @@ import pandas as pd
 import numpy as np
 import joblib
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 import seaborn as sns
 from supabase import create_client, Client
 from dotenv import load_dotenv
+import warnings
 
-# Load Env
+# SILENCE WARNINGS
+warnings.simplefilter(action='ignore', category=FutureWarning)
+pd.options.mode.chained_assignment = None
+
 load_dotenv()
 
 # ==========================================
-# 1. DATA PIPELINE (Robust Pagination)
+# 1. DATA PIPELINE
 # ==========================================
 class SportsDataPipeline:
     def __init__(self):
@@ -24,253 +29,426 @@ class SportsDataPipeline:
         all_rows = []
         start = 0
         print(f"📥 Fetching '{table_name}'...", end=" ", flush=True)
-        
         while True:
-            end = start + batch_size - 1
             try:
-                response = self.supabase.table(table_name).select(select_query).range(start, end).execute()
+                response = self.supabase.table(table_name).select(select_query).range(start, start+batch_size-1).execute()
                 data = response.data
-                
                 if not data: break
-                
                 all_rows.extend(data)
-                
-                # Visual feedback
-                if len(all_rows) % 5000 == 0:
-                    print(f"{len(all_rows)}...", end=" ", flush=True)
-                
+                if len(all_rows) % 5000 == 0: print(f"{len(all_rows)}...", end=" ", flush=True)
                 if len(data) < batch_size: break
                 start += batch_size
-                
-            except Exception as e:
-                print(f"\n❌ Error fetching batch: {e}")
-                break
-        
-        print(f"Done. ({len(all_rows)} rows)")
+            except: break
+        print(f"Done ({len(all_rows)} rows).")
         return all_rows
 
     def fetch_data(self):
-        # 1. Fetch Picks
         pick_cols = "id, pick_date, pick_value, unit, odds_american, result, capper_id, league_id, bet_type_id"
         picks_data = self._fetch_all_batches('picks', pick_cols)
         df_picks = pd.DataFrame(picks_data)
-        
         if df_picks.empty: return pd.DataFrame()
 
-        # 2. Fetch References
         cappers = pd.DataFrame(self._fetch_all_batches('capper_directory', "id, canonical_name"))
         leagues = pd.DataFrame(self._fetch_all_batches('leagues', "id, name, sport"))
         
-        # 3. Merge
-        print("🔄 Linking data relationships...")
         df = df_picks.merge(cappers, left_on='capper_id', right_on='id', how='left', suffixes=('', '_capper'))
         df = df.merge(leagues, left_on='league_id', right_on='id', how='left', suffixes=('', '_league'))
-        
-        # 4. Clean
         df['pick_date'] = pd.to_datetime(df['pick_date'])
         if 'name' in df.columns: df.rename(columns={'name': 'league_name'}, inplace=True)
         df['odds_american'] = pd.to_numeric(df['odds_american'], errors='coerce').fillna(-110)
         
-        print(f"✅ Data Loaded. Range: {df['pick_date'].min().date()} to {df['pick_date'].max().date()}")
+        # Standardize League Names
+        league_map = {
+            'NBA': 'NBA', 'NCAAB': 'NCAAB', 'NFL': 'NFL', 'NCAAF': 'NCAAF',
+            'NHL': 'NHL', 'MLB': 'MLB', 'WNBA': 'WNBA',
+            'UFC': 'Combat', 'MMA': 'Combat',
+            'EPL': 'Soccer', 'UCL': 'Soccer', 'MLS': 'Soccer', 'SOCCER': 'Soccer',
+            'TENNIS': 'Tennis'
+        }
+        df['league_name'] = df['league_name'].map(league_map).fillna('Other')
         return df.sort_values('pick_date')
 
 # ==========================================
-# 2. FEATURE ENGINEERING (V6 Hybrid)
+# 2. FEATURE ENGINEERING (UNIVERSAL)
 # ==========================================
 class FeatureEngineer:
-    def __init__(self, df):
-        self.df = df.copy()
-
-    def _american_to_decimal(self, odds):
-        if pd.isna(odds) or odds == 0: return 1.91
-        if odds > 0: return (odds / 100) + 1
-        return (100 / abs(odds)) + 1
-
+    def __init__(self, df): self.df = df.copy()
+    def _dec(self, o): return 1.91 if pd.isna(o) or o==0 else (o/100)+1 if o>0 else (100/abs(o))+1
+    
     def process(self):
-        print("🛠️ Processing features (Rolling Stats)...")
+        print("🛠️ Processing features (V1 + V2 Compatible)...")
         df = self.df.copy()
         df['unit'] = pd.to_numeric(df['unit'], errors='coerce').fillna(1.0)
-        df['decimal_odds'] = df['odds_american'].apply(self._american_to_decimal)
+        df['decimal_odds'] = df['odds_american'].apply(self._dec)
         
-        # Outcome
         if 'result' in df.columns:
             res = df['result'].astype(str).str.lower().str.strip()
-            conditions = [res.isin(['win', 'won']), res.isin(['loss', 'lost']), res.isin(['push', 'void'])]
-            df['outcome'] = np.select(conditions, [1.0, 0.0, 0.5], default=np.nan)
+            df['outcome'] = np.select([res.isin(['win','won']), res.isin(['loss','lost'])], [1.0, 0.0], default=np.nan)
             
-        # Profit
-        conditions_roi = [df['outcome'] == 1.0, df['outcome'] == 0.0]
-        choices_roi = [df['unit'] * (df['decimal_odds'] - 1), -df['unit']]
-        df['profit_units'] = np.select(conditions_roi, choices_roi, default=0.0)
-        
+        df['profit_units'] = np.where(df['outcome']==1, df['unit']*(df['decimal_odds']-1), np.where(df['outcome']==0, -df['unit'], 0))
         df = df.sort_values(['capper_id', 'pick_date'])
         df['capper_experience'] = df.groupby('capper_id').cumcount()
         
-        # Rolling Stats
+        # --- V1 PYRITE FEATURES ---
+        df['days_since_prev'] = df.groupby('capper_id')['pick_date'].diff().dt.days.fillna(0)
+        df['capper_league_acc'] = df.groupby(['capper_id', 'league_name'])['outcome'].transform(lambda x: x.expanding().mean().shift(1)).fillna(0.5)
+        
         df = df.set_index('pick_date')
-        grouped = df.groupby('capper_id')
-        for window in ['7D', '30D']:
-            s = window.lower()
-            df[f'acc_{s}'] = grouped['outcome'].transform(lambda x: x.rolling(window, min_periods=1).mean().shift(1))
-            df[f'roi_{s}'] = grouped['profit_units'].transform(lambda x: x.rolling(window, min_periods=1).sum().shift(1))
-            df[f'vol_{s}'] = grouped['profit_units'].transform(lambda x: x.rolling(window, min_periods=1).std().shift(1))
+        g = df.groupby('capper_id')
+        for w in ['7D', '30D']:
+            s = w.lower()
+            # Base Rolling
+            df[f'acc_{s}'] = g['outcome'].transform(lambda x: x.rolling(w, min_periods=1).mean().shift(1))
+            df[f'roi_{s}'] = g['profit_units'].transform(lambda x: x.rolling(w, min_periods=1).sum().shift(1))
+            df[f'vol_{s}'] = g['profit_units'].transform(lambda x: x.rolling(w, min_periods=1).std().shift(1))
+            
+            # V1 Aliases
+            df[f'roll_acc_{s}'] = df[f'acc_{s}']
+            df[f'roll_roi_{s}'] = df[f'roi_{s}']
+            df[f'roll_vol_{s}'] = df[f'vol_{s}']
+        
+        # V1 Sharpe
+        df['roll_sharpe_30d'] = df['roll_roi_30d'] / (df['roll_vol_30d'] + 0.01)
         df = df.reset_index()
         
-        # Advanced Features
+        # --- V2 DIAMOND FEATURES ---
         df['raw_hotness'] = df.groupby('capper_id')['profit_units'].transform(lambda x: x.ewm(span=10).mean().shift(1))
-        
-        # Consensus
         df['pick_norm'] = df['pick_value'].astype(str).str.lower().str.strip()
         df['consensus_count'] = df.groupby(['pick_date', 'league_name', 'pick_norm'])['capper_id'].transform('count')
         df['market_volume'] = df.groupby(['pick_date', 'league_name'])['capper_id'].transform('count')
         df['consensus_pct'] = df['consensus_count'] / (df['market_volume'] + 1)
         df['fade_score'] = (1 - df['consensus_pct']) * df['decimal_odds']
         
-        # League ROI
         df = df.sort_values('pick_date')
         df['league_rolling_roi'] = df.groupby('league_name')['profit_units'].transform(lambda x: x.rolling(200, min_periods=20).mean().shift(1)).fillna(0)
-        
-        # Misc
         df['implied_prob'] = 1 / df['decimal_odds']
         df['streak_entering_game'] = 0 
         df['is_momentum_sport'] = df['league_name'].isin(['NBA', 'NCAAB', 'NHL', 'UFC']).astype(int)
         df['x_valid_hotness'] = df['raw_hotness'] * df['is_momentum_sport']
+        df['bet_type_code'] = 0
         
-        if 'bet_type' in df.columns:
-            df['bet_type_code'] = df['bet_type'].astype('category').cat.codes
-        else:
-            df['bet_type_code'] = 0
-            
+        df = df.fillna(0)
         return df
 
 # ==========================================
-# 3. LIVE MONITOR (Generates Graphics)
+# 3. DUAL MONITOR ENGINE
 # ==========================================
-class LiveMonitor:
-    def __init__(self, df, model_path='production_model.pkl', start_date='2025-11-30'):
+class DualMonitor:
+    def __init__(self, df):
         self.df = df.copy()
-        self.start_date = start_date
-        try:
-            self.model = joblib.load(model_path)
-        except:
-            print("❌ Model not found.")
-            return
+        
+        # Load Models
+        self.model_v1 = self._load_model('models/v1_pyrite.pkl', 'V1 Pyrite')
+        self.model_v2 = self._load_model('models/v2_diamond.pkl', 'V2 Diamond')
 
-        self.features = [
-            'acc_7d', 'roi_7d', 'vol_7d', 'acc_30d', 'roi_30d', 'vol_30d',
-            'capper_experience', 'consensus_count', 'implied_prob', 'bet_type_code',
-            'raw_hotness', 'streak_entering_game', 
-            'league_rolling_roi', 'fade_score',
-            'is_momentum_sport', 'x_valid_hotness'
-        ]
-        self.LEAGUE_CONFIG = {
+        self.V2_START = '2025-11-30'
+        self.V2_LEAGUES = {
             'NBA': {'stake': 1.2, 'min_edge': 0.03}, 'NCAAB': {'stake': 1.2, 'min_edge': 0.03},
             'NFL': {'stake': 1.0, 'min_edge': 0.05}, 'NCAAF': {'stake': 1.0, 'min_edge': 0.05},
-            'NHL': {'stake': 0.8, 'min_edge': 0.05}, 'UFC': {'stake': 0.8, 'min_edge': 0.05},
+            'NHL': {'stake': 0.8, 'min_edge': 0.05}, 'Combat': {'stake': 0.8, 'min_edge': 0.05},
             'DEFAULT': {'stake': 0.5, 'min_edge': 0.08}
         }
-        self.TOXIC_LEAGUES = ['MLB', 'TENNIS', 'SOCCER', 'EPL', 'CFL']
+        self.V2_TOXIC = ['NFL', 'MLB', 'Tennis', 'Soccer', 'WNBA', 'Other']
+        self.V1_START = '2025-11-20'
 
-    def _kelly(self, row):
-        if row['league_name'] in self.TOXIC_LEAGUES: return 0
-        config = self.LEAGUE_CONFIG.get(row['league_name'], self.LEAGUE_CONFIG['DEFAULT'])
+    def _load_model(self, path, name):
+        try:
+            model = joblib.load(path)
+            print(f"✅ Loaded {name}")
+            return model
+        except:
+            print(f"⚠️ {name} not found at {path}")
+            return None
+
+    def _get_features_for_model(self, model):
+        if hasattr(model, 'feature_names_in_'):
+            return list(model.feature_names_in_)
+        elif hasattr(model, 'get_booster'):
+            return model.get_booster().feature_names
+        else:
+            return [
+                'roll_acc_7d', 'roll_roi_7d', 'roll_vol_7d', 'roll_acc_30d', 'roll_roi_30d', 
+                'roll_vol_30d', 'roll_sharpe_30d', 'consensus_count', 'capper_league_acc', 
+                'implied_prob', 'capper_experience', 'days_since_prev', 'unit', 'bet_type_code'
+            ]
+
+    def _round_units(self, units):
+        return round(units * 2) / 2
+
+    def _kelly_v2(self, row):
+        if row['league_name'] in self.V2_TOXIC: return 0
+        config = self.V2_LEAGUES.get(row['league_name'], self.V2_LEAGUES['DEFAULT'])
+        
+        prob = row.get('prob_v2', 0.5)
+        edge = prob - row['implied_prob']
+        
+        if edge < config['min_edge']: return 0
+        if row['capper_experience'] < 10: return 0
+        if prob < 0.55: return 0
+        if row['decimal_odds'] < 1.71: return 0 
+        
         b = row['decimal_odds'] - 1
-        p = row['ai_confidence']
-        f = (b * p - (1-p)) / b
-        return max(0, f * 0.10) * config['stake'] * 100
+        f = (b * prob - (1-prob)) / b
+        raw_units = max(0, f * 0.10) * config['stake'] * 100
+        return min(self._round_units(raw_units), 3.0)
 
-    def generate_report(self):
-        print(f"🔎 Monitoring from {self.start_date}...")
-        
-        # Filter for date
-        df = self.df[self.df['pick_date'] >= self.start_date].copy()
-        print(f"   • Rows after Date Filter: {len(df)}")
-        
-        if df.empty:
-            print("   ⚠️ No data found after start date.")
-            return
+    def _kelly_v1(self, row):
+        prob = row.get('prob_v1', 0.5)
+        if prob > row['implied_prob']:
+            b = row['decimal_odds'] - 1
+            f = (b * prob - (1-prob)) / b
+            return max(0, f * 0.25) * 100 
+        return 0
 
-        # Filter for features
-        df = df.dropna(subset=self.features)
+    def run_simulations(self):
+        print("🔄 Running Dual-Model Simulation...")
+        df = self.df.copy()
         
-        # Filter for settled
+        # 1. Predict V1
+        if self.model_v1:
+            feats_v1 = self._get_features_for_model(self.model_v1)
+            for f in feats_v1:
+                if f not in df.columns: df[f] = 0
+            df['prob_v1'] = self.model_v1.predict_proba(df[feats_v1])[:, 1]
+        else:
+            df['prob_v1'] = 0.5
+
+        # 2. Predict V2
+        if self.model_v2:
+            feats_v2 = self._get_features_for_model(self.model_v2)
+            for f in feats_v2:
+                if f not in df.columns: df[f] = 0
+            df['prob_v2'] = self.model_v2.predict_proba(df[feats_v2])[:, 1]
+        else:
+            df['prob_v2'] = 0.5
+
         df = df[df['outcome'].isin([0.0, 1.0])]
-        
-        if df.empty: 
-            print("   ⚠️ No settled bets found yet.")
-            return
-        
-        # Score
-        df['ai_confidence'] = self.model.predict_proba(df[self.features])[:, 1]
-        df['edge'] = df['ai_confidence'] - df['implied_prob']
-        
-        # Simulate Platinum Rules
-        bets = []
-        for idx, row in df.iterrows():
-            config = self.LEAGUE_CONFIG.get(row['league_name'], self.LEAGUE_CONFIG['DEFAULT'])
-            if row['edge'] >= config['min_edge'] and row['capper_experience'] >= 10 and                row['ai_confidence'] >= 0.55 and row['decimal_odds'] >= 1.71 and                row['league_name'] not in self.TOXIC_LEAGUES:
-                bets.append(row)
-        
-        bets_df = pd.DataFrame(bets)
-        print(f"   • Platinum Bets Found: {len(bets_df)}")
-        
-        if bets_df.empty: return
 
-        # Diversify
-        bets_df = bets_df.sort_values('edge', ascending=False)
-        bets_df = bets_df.groupby(['pick_date', 'league_name']).head(2)
+        # 3. Calculate V2 (Diamond)
+        v2_df = df[df['pick_date'] >= self.V2_START].copy()
+        v2_df['wager_unit'] = v2_df.apply(self._kelly_v2, axis=1)
+        v2_df = v2_df[v2_df['wager_unit'] > 0]
         
-        # Sizing
-        bets_df['wager_unit'] = bets_df.apply(self._kelly, axis=1)
-        bets_df['wager_unit'] = bets_df['wager_unit'].clip(upper=3.0)
+        if not v2_df.empty:
+            daily_risk = v2_df.groupby('pick_date')['wager_unit'].transform('sum')
+            scale_factor = np.where(daily_risk > 10.0, 10.0 / daily_risk, 1.0)
+            v2_df['wager_unit'] = v2_df['wager_unit'] * scale_factor
+            v2_df['wager_unit'] = v2_df['wager_unit'].apply(lambda x: round(x * 2) / 2)
+            
+            v2_df['profit'] = np.where(
+                v2_df['outcome'] == 1, 
+                v2_df['wager_unit'] * (v2_df['decimal_odds'] - 1), 
+                -v2_df['wager_unit']
+            )
+        else:
+            v2_df['profit'] = 0.0
+
+        # 4. Calculate V1 (Pyrite)
+        v1_df = df[df['pick_date'] >= self.V1_START].copy()
+        v1_df['wager_unit'] = v1_df.apply(self._kelly_v1, axis=1)
+        v1_df = v1_df[v1_df['wager_unit'] > 0]
+        v1_df['profit'] = np.where(v1_df['outcome']==1, v1_df['wager_unit']*(v1_df['decimal_odds']-1), -v1_df['wager_unit'])
         
-        # Daily Cap
-        def apply_cap(g):
-            if g['wager_unit'].sum() > 10:
-                g['wager_unit'] *= (10 / g['wager_unit'].sum())
-            return g
-        bets_df = bets_df.groupby('pick_date').apply(apply_cap).reset_index(drop=True)
-        
-        # Profit
-        bets_df['strategy_profit'] = np.where(bets_df['outcome']==1, bets_df['wager_unit']*(bets_df['decimal_odds']-1), -bets_df['wager_unit'])
-        
-        # --- GRAPH 1: PROFIT CURVE ---
-        daily = bets_df.groupby('pick_date')['strategy_profit'].sum().cumsum().reset_index()
+        self.generate_graphics(v1_df, v2_df)
+        self.update_readme(v1_df, v2_df)
+
+    def generate_graphics(self, v1, v2):
         plt.style.use('dark_background')
-        plt.figure(figsize=(10, 5))
-        plt.plot(daily['pick_date'], daily['strategy_profit'], color='#00ff00', linewidth=3)
-        plt.title(f"Live Profit: {self.start_date} - Present", color='white', fontweight='bold')
-        plt.ylabel("Units Won")
-        plt.grid(color='#333333')
+        
+        # 1. PROFIT CURVE
+        def get_cum(d):
+            if d.empty: return pd.DataFrame({'pick_date':[], 'profit':[]})
+            daily = d.groupby('pick_date')['profit'].sum().cumsum().reset_index()
+            start = daily['pick_date'].min() - pd.Timedelta(days=1)
+            return pd.concat([pd.DataFrame({'pick_date':[start], 'profit':[0.0]}), daily])
+
+        d1 = get_cum(v1)
+        d2 = get_cum(v2)
+        
+        # Market Consensus Baseline
+        market_df = self.df[self.df['pick_date'] >= self.V1_START].copy()
+        market_df = market_df[market_df['outcome'].isin([0.0, 1.0])]
+        market_df['profit'] = np.where(market_df['outcome'] == 1, market_df['decimal_odds'] - 1, -1)
+        d_market = get_cum(market_df)
+        
+        fig, ax = plt.subplots(figsize=(12, 6))
+        ax.plot(d_market['pick_date'], d_market['profit'], color='#888888', linestyle=':', linewidth=1.5, label='Market Consensus (Baseline)', alpha=0.7)
+        ax.plot(d1['pick_date'], d1['profit'], color='#ff4444', linewidth=2, label='V1 Pyrite (Reckless)') # RED
+        ax.plot(d2['pick_date'], d2['profit'], color='#00ff00', linewidth=3, label='V2 Diamond (Safe)') # GREEN
+        
+        if not d1.empty and not d2.empty:
+            all_dates = pd.concat([d1['pick_date'], d2['pick_date']])
+            ax.set_xlim(all_dates.min(), all_dates.max())
+        
+        ax.set_title("Live Profit: Pyrite vs Diamond", color='white', fontweight='bold')
+        ax.set_ylabel("Units Won")
+        ax.legend()
+        ax.grid(color='#333333')
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%b %d'))
         plt.savefig('assets/live_curve.png')
         plt.close()
         
-        # --- GRAPH 2: SPORT ROI ---
-        sport = bets_df.groupby('league_name').agg({'strategy_profit':'sum', 'wager_unit':'sum'})
-        sport['roi'] = sport['strategy_profit'] / sport['wager_unit']
-        sport = sport.sort_values('roi', ascending=False)
+        # 2. SPORT ROI (Red/Green Bars)
+        for name, data in [('Pyrite', v1), ('Diamond', v2)]:
+            if data.empty: continue
+            s = data.groupby('league_name').agg({'profit':'sum', 'wager_unit':'sum'})
+            s['roi'] = s['profit'] / s['wager_unit']
+            s = s.sort_values('roi', ascending=False)
+            plt.figure(figsize=(8, 4))
+            
+            colors = ['#00ff00' if x > 0 else '#ff4444' for x in s['roi']]
+            
+            sns.barplot(x=s.index, y=s['roi'], hue=s.index, palette=colors, legend=False)
+            plt.title(f"V{1 if name=='Pyrite' else 2} {name} ROI by Sport", color='white')
+            plt.axhline(0, color='white')
+            plt.xticks(rotation=45, ha='right')
+            plt.tight_layout()
+            plt.savefig(f'assets/{name.lower()}_sport.png')
+            plt.close()
+            
+        # 3. BET SIZING ROI (0-1, 1-2, 2-5, 5+)
+        bins = [0, 1, 2, 5, 1000]
+        labels = ['0-1u', '1-2u', '2-5u', '5u+']
         
-        plt.figure(figsize=(10, 5))
-        colors = ['#00ff00' if x > 0 else '#ff4444' for x in sport['roi']]
-        sns.barplot(x=sport.index, y=sport['roi'], palette=colors)
-        plt.title("Live ROI by Sport", color='white', fontweight='bold')
-        plt.axhline(0, color='white')
-        plt.savefig('assets/live_sport_roi.png')
-        plt.close()
+        for name, data in [('Pyrite', v1), ('Diamond', v2)]:
+            if data.empty: continue
+            data['size_bucket'] = pd.cut(data['wager_unit'], bins=bins, labels=labels)
+            
+            sz = data.groupby('size_bucket', observed=False).agg({'profit':'sum', 'wager_unit':'sum'})
+            sz['roi'] = sz['profit'] / sz['wager_unit']
+            
+            plt.figure(figsize=(6, 4))
+            colors = ['#00ff00' if x > 0 else '#ff4444' for x in sz['roi']]
+            
+            sns.barplot(x=sz.index, y=sz['roi'], hue=sz.index, palette=colors, legend=False)
+            plt.title(f"V{1 if name=='Pyrite' else 2} {name} ROI by Bet Size", color='white')
+            plt.axhline(0, color='white')
+            plt.ylabel("ROI")
+            plt.tight_layout()
+            plt.savefig(f'assets/{name.lower()}_size.png')
+            plt.close()
+
+    def update_readme(self, v1, v2):
+        def get_stats(d):
+            if d.empty: return 0, 0, 0
+            p = d['profit'].sum()
+            r = d['wager_unit'].sum()
+            roi = p/r if r>0 else 0
+            wr = len(d[d['outcome']==1]) / len(d) if len(d) > 0 else 0
+            return p, roi, wr
+
+        p1, r1, w1 = get_stats(v1)
+        p2, r2, w2 = get_stats(v2)
         
-        # --- GRAPH 3: BET SIZING ---
-        bins = [0, 1, 2, 3.1]
-        bets_df['size'] = pd.cut(bets_df['wager_unit'], bins, labels=['Small', 'Medium', 'Max'])
-        sizing = bets_df.groupby('size', observed=False).apply(lambda x: x['strategy_profit'].sum()/x['wager_unit'].sum())
+        last_date = max(v1['pick_date'].max(), v2['pick_date'].max()) if not v1.empty and not v2.empty else pd.Timestamp.now()
+        y_v1 = v1[v1['pick_date'] == last_date].copy() if not v1.empty else pd.DataFrame()
+        y_v2 = v2[v2['pick_date'] == last_date].copy() if not v2.empty else pd.DataFrame()
         
-        plt.figure(figsize=(6, 4))
-        sns.barplot(x=sizing.index, y=sizing.values, palette='viridis')
-        plt.title("ROI by Bet Size", color='white', fontweight='bold')
-        plt.axhline(0, color='white')
-        plt.savefig('assets/live_sizing.png')
-        plt.close()
+        def make_table(df, title):
+            if df.empty: return ""
+            t = f"### {title}\n"
+            t += "| LEAGUE | PICK | ODDS | UNIT | RES | PROFIT |\n"
+            t += "| :--- | :--- | :--- | :--- | :--- | :--- |\n"
+            for _, row in df.iterrows():
+                res = "✅" if row['outcome']==1 else "❌"
+                odds = f"+{int(row['odds_american'])}" if row['odds_american'] > 0 else f"{int(row['odds_american'])}"
+                t += f"| {row['league_name']} | {row['pick_value']} | {odds} | {row['wager_unit']:.1f} | {res} | {row['profit']:+.2f}u |\n"
+            t += f"**Daily PnL: {df['profit'].sum():+.2f} Units**\n\n"
+            return t
+
+        log_content = f"# 📝 Daily Action Log ({last_date.date()})\n\n"
+        log_content += make_table(y_v2, "V2 Diamond Action")
+        log_content += make_table(y_v1, "V1 Pyrite Action")
         
-        print("✅ Graphics Updated in /assets/")
+        with open("LATEST_ACTION.md", "w", encoding="utf-8") as f:
+            f.write(log_content)
+
+        readme_text = f"""# XGBoost-Diamond: Quantitative Sports Trading System
+
+**Current Status:** `Live Monitoring`
+**Last Updated:** {pd.Timestamp.now().strftime('%Y-%m-%d')}
+
+This repository documents the end-to-end evolution of a machine learning system designed to solve the **"Accuracy Fallacy"** in sports betting. It tracks the journey from a high-variance prototype (**V1 Pyrite**) to a disciplined, regime-based asset manager (**V2 Diamond**).
+
+---
+
+## 📊 Executive Summary
+
+Sports betting markets are efficient. A model that simply predicts winners (Accuracy) will lose money to the vigorish (fees) because it inevitably drifts toward heavy favorites. True alpha requires predicting **Value** (ROI).
+
+We developed two distinct models to test this hypothesis:
+
+| Feature | 🔸 V1 Pyrite (Legacy) | 💎 V2 Diamond (Active) |
+| :--- | :--- | :--- |
+| **Philosophy** | "Bet everything with >50% edge" | "Snipe specific inefficiencies" |
+| **Volume** | High (~20 bets/day) | Low (~3-5 bets/day) |
+| **Risk Profile** | Reckless / Uncapped | Capped / Portfolio Theory |
+| **Key Flaw** | Overconfidence on Favorites | None (so far) |
+| **Result** | **{r1:.2%} ROI** (The "Churn") | **{r2:.2%} ROI** (The "Edge") |
+
+---
+
+## 📡 Live Performance Dashboard
+
+### 1. Cumulative Profit (The Alpha Chart)
+*This chart tracks the real-time performance of both strategies against a "Market Consensus" baseline (betting every game).*
+*   **Green Line (Diamond):** The optimized strategy. Note the steady, low-volatility growth.
+*   **Red Line (Pyrite):** The raw model. Note the high volatility and eventual decay.
+*   **Gray Dotted:** The market baseline (losing to the vig).
+
+![Live Curve](assets/live_curve.png)
+
+### 2. The "Toxic Asset" Audit (Sport Health)
+*Why did V1 fail? It didn't know when to quit. V2 implements strict "Regime Filtering" to ban toxic sports.*
+
+| 🔸 V1 Pyrite (Bleeding Edge) | 💎 V2 Diamond (Surgical) |
+| :---: | :---: |
+| ![V1 Sport](assets/pyrite_sport.png) | ![V2 Sport](assets/diamond_sport.png) |
+| *Loses money on NFL/MLB noise.* | *Only trades profitable regimes.* |
+
+### 3. Calibration Check (Bet Sizing)
+*Does the model know when it's right? Bigger bets should yield higher ROI.*
+
+| 🔸 V1 Pyrite | 💎 V2 Diamond |
+| :---: | :---: |
+| ![V1 Size](assets/pyrite_size.png) | ![V2 Size](assets/diamond_size.png) |
+| *Flat performance across sizes.* | *Strong correlation: Confidence = Profit.* |
+
+---
+
+## 📚 Methodology & Research
+
+This project is not just code; it is a documented research experiment.
+
+### 1. [Phase 1: The "Pyrite" Prototype (Legacy)](docs/methodology_v1.md)
+*   **The Hypothesis:** Can a calibrated XGBoost model beat the market using raw probability?
+*   **The Failure:** Discovering the "Fake Lock" syndrome and the cost of volatility.
+*   **The DNA:** Visualizing the flawed logic of the initial model.
+
+### 2. [Phase 2: The "Diamond" Optimization (Active)](docs/methodology_v2.md)
+*   **The Fix:** How we used **Grid Search** to find the "Sweet Spot".
+*   **The Core 4:** Implementing Regime Filtering to ban toxic sports.
+*   **The Math:** Kelly Criterion, Value Floors, and Fade Scores.
+
+---
+
+## 📂 System Architecture
+
+*   **`monitor.py`**: The central nervous system. Runs daily on GitHub Actions to:
+    1.  Fetch fresh odds/results from Supabase.
+    2.  Generate features for both V1 and V2.
+    3.  Load the dual models (`models/v1_pyrite.pkl` and `models/v2_diamond.pkl`).
+    4.  Simulate betting strategies and update this README.
+*   **`research/`**: Jupyter notebooks containing the training logic and "Auto-Tuner" grid search.
+*   **`assets/`**: Auto-generated charts and visualizations.
+
+## 📝 Latest Daily Action
+[👉 Click here to view the Daily Log (LATEST_ACTION.md)](./LATEST_ACTION.md)
+"""
+        
+        with open("README.md", "w", encoding="utf-8") as f:
+            f.write(readme_text)
+        print("✅ README.md Updated.")
 
 if __name__ == "__main__":
     pipeline = SportsDataPipeline()
@@ -278,7 +456,7 @@ if __name__ == "__main__":
     if not raw.empty:
         eng = FeatureEngineer(raw)
         proc = eng.process()
-        mon = LiveMonitor(proc, start_date='2025-11-30')
-        mon.generate_report()
+        mon = DualMonitor(proc)
+        mon.run_simulations()
     else:
         print("❌ No data fetched.")

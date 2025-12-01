@@ -7,3 +7,4 @@ seaborn
 supabase
 python-dotenv
 joblib
+pyperclip

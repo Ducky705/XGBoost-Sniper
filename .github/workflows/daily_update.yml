@@ -2,9 +2,8 @@ name: Daily Sniper Update
 
 on:
   schedule:
-    # 09:00 UTC = 4:00 AM EST / 5:00 AM EDT
     - cron: '0 9 * * *'
-  workflow_dispatch: # Allows manual run button
+  workflow_dispatch:
 
 jobs:
   update-stats:
@@ -33,8 +32,6 @@ jobs:
         run: |
           git config --global user.name "SniperBot"
           git config --global user.email "bot@noreply.github.com"
-          # Add all generated images
-          git add assets/live_curve.png assets/live_sport_roi.png assets/live_sizing.png
-          # Commit if changes exist
-          git commit -m "📈 Auto-Update: Daily Performance Stats" || echo "No changes to commit"
+          git add assets/*.png README.md LATEST_ACTION.md
+          git commit -m "📈 Auto-Update: Daily Dashboard" || echo "No changes to commit"
           git push
