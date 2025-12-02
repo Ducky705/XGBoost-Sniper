@@ -172,9 +172,6 @@ class DualMonitor:
                 'implied_prob', 'capper_experience', 'days_since_prev', 'unit', 'bet_type_code'
             ]
 
-    def _round_units(self, units):
-        return round(units * 2) / 2
-
     def _kelly_v2(self, row):
         if row['league_name'] in self.V2_TOXIC: return 0
         config = self.V2_LEAGUES.get(row['league_name'], self.V2_LEAGUES['DEFAULT'])
@@ -190,7 +187,7 @@ class DualMonitor:
         b = row['decimal_odds'] - 1
         f = (b * prob - (1-prob)) / b
         raw_units = max(0, f * 0.10) * config['stake'] * 100
-        return min(self._round_units(raw_units), 3.0)
+        return min(raw_units, 3.0) # Cap single bet at 3u
 
     def _kelly_v1(self, row):
         prob = row.get('prob_v1', 0.5)
@@ -224,16 +221,28 @@ class DualMonitor:
 
         df = df[df['outcome'].isin([0.0, 1.0])]
 
-        # 3. Calculate V2 (Diamond)
+        # 3. Calculate V2 (Diamond) - Dynamic Scaling
         v2_df = df[df['pick_date'] >= self.V2_START].copy()
+        v2_df['edge'] = v2_df['prob_v2'] - v2_df['implied_prob']
+        
+        # A. Calculate Raw Kelly
         v2_df['wager_unit'] = v2_df.apply(self._kelly_v2, axis=1)
         v2_df = v2_df[v2_df['wager_unit'] > 0]
         
+        # B. Sort by Quality (Edge)
+        v2_df = v2_df.sort_values(['pick_date', 'edge'], ascending=[True, False])
+        
+        # C. Apply Daily Cap (10u) Dynamically
         if not v2_df.empty:
-            daily_risk = v2_df.groupby('pick_date')['wager_unit'].transform('sum')
-            scale_factor = np.where(daily_risk > 10.0, 10.0 / daily_risk, 1.0)
-            v2_df['wager_unit'] = v2_df['wager_unit'] * scale_factor
-            v2_df['wager_unit'] = v2_df['wager_unit'].apply(lambda x: round(x * 2) / 2)
+            def apply_daily_logic(group):
+                total_risk = group['wager_unit'].sum()
+                if total_risk > 10.0:
+                    scale = 10.0 / total_risk
+                    group['wager_unit'] *= scale
+                group['wager_unit'] = group['wager_unit'].apply(lambda x: round(x, 1))
+                return group[group['wager_unit'] > 0]
+
+            v2_df = v2_df.groupby('pick_date').apply(apply_daily_logic).reset_index(drop=True)
             
             v2_df['profit'] = np.where(
                 v2_df['outcome'] == 1, 
@@ -306,27 +315,57 @@ class DualMonitor:
             plt.savefig(f'assets/{name.lower()}_sport.png')
             plt.close()
             
-        # 3. BET SIZING ROI (0-1, 1-2, 2-5, 5+)
-        bins = [0, 1, 2, 5, 1000]
-        labels = ['0-1u', '1-2u', '2-5u', '5u+']
-        
+        # 3. BET SIZING ROI (Dynamic Quantiles)
         for name, data in [('Pyrite', v1), ('Diamond', v2)]:
             if data.empty: continue
-            data['size_bucket'] = pd.cut(data['wager_unit'], bins=bins, labels=labels)
             
-            sz = data.groupby('size_bucket', observed=False).agg({'profit':'sum', 'wager_unit':'sum'})
+            active_bets = data[data['wager_unit'] > 0].copy()
+            if len(active_bets) < 10: continue
+
+            try:
+                # Create 4 balanced buckets (Quartiles)
+                active_bets['size_bucket'] = pd.qcut(active_bets['wager_unit'], q=4, duplicates='drop')
+            except:
+                active_bets['size_bucket'] = 'Flat Stakes'
+
+            sz = active_bets.groupby('size_bucket', observed=False).agg({
+                'profit': 'sum', 
+                'wager_unit': 'sum'
+            })
+            
             sz['roi'] = sz['profit'] / sz['wager_unit']
             
-            plt.figure(figsize=(6, 4))
+            # Clean up Index Labels
+            sz.index = sz.index.astype(str).str.replace('(', '').str.replace(']', '').str.replace(', ', '-') + 'u'
+            
+            plt.figure(figsize=(8, 5))
             colors = ['#00ff00' if x > 0 else '#ff4444' for x in sz['roi']]
             
-            sns.barplot(x=sz.index, y=sz['roi'], hue=sz.index, palette=colors, legend=False)
-            plt.title(f"V{1 if name=='Pyrite' else 2} {name} ROI by Bet Size", color='white')
-            plt.axhline(0, color='white')
+            # Removed 'hue' to fix black lines
+            sns.barplot(x=sz.index, y=sz['roi'], palette=colors)
+            
+            plt.title(f"V{1 if name=='Pyrite' else 2} {name} ROI by Bet Size (Dynamic)", color='white', fontweight='bold')
+            plt.axhline(0, color='white', linewidth=1)
             plt.ylabel("ROI")
+            plt.xlabel("Bet Size Range (Units)")
+            
+            # REMOVED GRID to fix black lines cutting through bars
+            # plt.grid(axis='y', color='#333333', linestyle='--', alpha=0.5)
+            
             plt.tight_layout()
             plt.savefig(f'assets/{name.lower()}_size.png')
             plt.close()
+
+    def _get_volume_text(self, df):
+        if df.empty: return "None (0 bets/day)"
+        days = (df['pick_date'].max() - df['pick_date'].min()).days + 1
+        avg = len(df) / max(days, 1)
+        
+        if avg > 15: cat = "High"
+        elif avg > 5: cat = "Medium"
+        else: cat = "Low"
+        
+        return f"{cat} (~{int(avg)} bets/day)"
 
     def update_readme(self, v1, v2):
         def get_stats(d):
@@ -339,6 +378,9 @@ class DualMonitor:
 
         p1, r1, w1 = get_stats(v1)
         p2, r2, w2 = get_stats(v2)
+        
+        vol_v1 = self._get_volume_text(v1)
+        vol_v2 = self._get_volume_text(v2)
         
         last_date = max(v1['pick_date'].max(), v2['pick_date'].max()) if not v1.empty and not v2.empty else pd.Timestamp.now()
         y_v1 = v1[v1['pick_date'] == last_date].copy() if not v1.empty else pd.DataFrame()
@@ -381,8 +423,8 @@ We developed two distinct models to test this hypothesis:
 | Feature | 🔸 V1 Pyrite (Legacy) | 💎 V2 Diamond (Active) |
 | :--- | :--- | :--- |
 | **Philosophy** | "Bet everything with >50% edge" | "Snipe specific inefficiencies" |
-| **Volume** | High (~20 bets/day) | Low (~3-5 bets/day) |
-| **Risk Profile** | Reckless / Uncapped | Capped / Portfolio Theory |
+| **Volume** | {vol_v1} | **{vol_v2}** |
+| **Risk Profile** | Reckless / Uncapped | **10u Daily Cap / Scaled Kelly** |
 | **Key Flaw** | Overconfidence on Favorites | None (so far) |
 | **Result** | **{r1:.2%} ROI** (The "Churn") | **{r2:.2%} ROI** (The "Edge") |
 
