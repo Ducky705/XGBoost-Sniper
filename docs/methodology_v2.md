@@ -20,22 +20,27 @@ We broke down V1's performance by League and found a stark division:
 ## 3. The Core 4 Strategy: Regime Filtering
 We implemented a **League Governance System** to refine the model into a "Diamond":
 1.  **The "Core 4" (NBA, NCAAB, NHL, UFC):** Allowed to bet aggressively.
-2.  **The "Toxic List" (NFL, MLB, Tennis, Soccer):** Blacklisted.
+2.  **The "Toxic List" (NFL, MLB, Tennis, Soccer):** Blacklisted or heavily restricted.
 
 ## 4. The Mathematical Guardrails
-We introduced three new guardrails:
+We introduced three new guardrails to transform the model from a "guesser" to an "investor":
 
 #### A. The Value Floor (-140)
-Hard rejection of any odds worse than **-140 (1.71 Decimal)** to stop the model from "buying wins."
+Hard rejection of any odds worse than **-140 (1.71 Decimal)**. This forces the model to find true underdogs or short favorites, rather than buying expensive wins.
 
 #### B. The "Fade Score"
 A new feature, `(1 - Consensus %) * Odds`, that rewards the model for picking unpopular underdogs.
 
-#### C. The Bankroll Governor
-A safety-first staking plan using a **Fractional Kelly Criterion**:
-$$ f = 0.10 \times \frac{bp - q}{b} $$
-*   If the Edge is low, the bet size is near 0.
-*   If the Edge is high, the bet size scales up (capped at 3 units).
+#### C. The Bankroll Governor (Dynamic Volume)
+Instead of a static number of bets per day, V2 uses a **Dynamic Risk Cap**:
+
+1.  **Individual Bet Cap:** No single bet can exceed **3.0 Units** (3% of bankroll).
+2.  **Global Daily Cap:** The total risk for a single day cannot exceed **10.0 Units**.
+3.  **Proportional Scaling:** If the algorithm identifies many high-value plays (e.g., a busy Saturday) and the total recommended risk is 15u, *every* bet is scaled down by 33% (10/15) to fit the 10u cap.
+
+**The Result:**
+*   **Low Volume Days:** The model might only bet 1-2 units total.
+*   **High Volume Days:** The model captures the diversity of the board but respects the strict risk limit.
 
 ## 5. The Diamond Configuration
 We used **Grid Search Optimization** to find the perfect balance of **Capper Experience** and **Minimum Edge**.
