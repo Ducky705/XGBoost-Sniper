@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROTOCOL 705 // ALGORITHMIC MARKETS</title>
+    
+    <!-- Fonts: Space Grotesk for Headlines, JetBrains Mono for Data -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Config for the "Terminal" Aesthetic -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'void': '#050505',
+                        'panel': '#0A0A0A',
+                        'border-dim': '#1F1F1F',
+                        'acid-lime': '#CCFF00', // The "Win/Alpha" color
+                        'warning-orange': '#FF4D00', // The "Risk" color
+                        'ghost': '#444444'
+                    },
+                    fontFamily: {
+                        'sans': ['"Space Grotesk"', 'sans-serif'],
+                        'mono': ['"JetBrains Mono"', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'ticker': 'ticker 30s linear infinite',
+                    },
+                    keyframes: {
+                        ticker: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Global Reset & Utility */
+        body {
+            background-color: #050505;
+            color: #E2E2E2;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle Noise Overlay for Texture */
+        .noise {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0A0A0A; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+
+        /* Utility: The glowing text effect */
+        .glow-text { text-shadow: 0 0 10px rgba(204, 255, 0, 0.3); }
+        
+        /* Grid Lines Background */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, #1a1a1a 1px, transparent 1px),
+                              linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden">
+    <div class="noise"></div>
+
+    <!-- 1. THE TICKER TAPE -->
+    <div class="fixed top-0 w-full bg-acid-lime text-black font-mono text-xs font-bold py-1 z-40 overflow-hidden whitespace-nowrap border-b border-acid-lime">
+        <div class="inline-block animate-ticker">
+            PROTOCOL 705 ONLINE // LAST UPDATE: 2025-12-17 09:19 UTC // ROI: +9.7% // RECORD: 102-83-0 // ALPHA GENERATED: 18.01u // SYSTEM LOAD: NOMINAL // MARKET VOLATILITY: DETECTED // 
+            PROTOCOL 705 ONLINE // LAST UPDATE: 2025-12-17 09:19 UTC // ROI: +9.7% // RECORD: 102-83-0 // ALPHA GENERATED: 18.01u // SYSTEM LOAD: NOMINAL // MARKET VOLATILITY: DETECTED // 
+        </div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="max-w-7xl mx-auto pt-16 pb-20 px-4 sm:px-6">
+
+        <!-- 2. HEADER SECTION -->
+        <header class="mb-12 flex flex-col md:flex-row justify-between items-end border-b border-border-dim pb-6">
+            <div>
+                <div class="flex items-center gap-2 mb-2">
+                    <div class="w-3 h-3 bg-acid-lime rounded-full animate-pulse-slow"></div>
+                    <span class="font-mono text-xs text-acid-lime tracking-widest">LIVE SIGNAL</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tighter text-white">PROTOCOL <span class="text-ghost">705</span></h1>
+                <p class="font-mono text-zinc-500 mt-2 text-sm uppercase tracking-wide">XGBoost Algorithmic Infrastructure</p>
+            </div>
+            <div class="text-right mt-6 md:mt-0">
+                <div class="font-mono text-4xl font-bold text-acid-lime glow-text">+18.01u</div>
+                <div class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Net Alpha Generated</div>
+            </div>
+        </header>
+
+        <!-- 3. THE BENTO GRID DASHBOARD -->
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-16">
+            <!-- Metric 1: ROI -->
+            <div class="bg-panel border border-border-dim p-6 flex flex-col justify-between h-32 hover:border-acid-lime transition-colors duration-300 group">
+                <div class="flex justify-between items-start">
+                    <span class="font-mono text-xs text-zinc-500 uppercase">Return on Investment</span>
+                    <svg class="w-4 h-4 text-acid-lime opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                </div>
+                <div class="text-3xl font-bold text-white group-hover:text-acid-lime transition-colors">9.7%</div>
+            </div>
+
+            <!-- Metric 2: Win Rate -->
+            <div class="bg-panel border border-border-dim p-6 flex flex-col justify-between h-32 hover:border-white transition-colors duration-300">
+                <span class="font-mono text-xs text-zinc-500 uppercase">Win Rate</span>
+                <div class="flex items-end gap-3">
+                    <div class="text-3xl font-bold text-white">55.1%</div>
+                    <div class="h-1 flex-1 bg-zinc-800 mb-2 rounded-full overflow-hidden">
+                        <div class="h-full bg-white w-[55.1%]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metric 3: Record -->
+            <div class="bg-panel border border-border-dim p-6 flex flex-col justify-between h-32">
+                <span class="font-mono text-xs text-zinc-500 uppercase">W - L - T</span>
+                <div class="text-3xl font-mono text-zinc-300">102<span class="text-zinc-600 mx-1">/</span>83<span class="text-zinc-600 mx-1">/</span>0</div>
+            </div>
+
+            <!-- Metric 4: System Confidence -->
+            <div class="bg-panel border border-border-dim p-6 flex flex-col justify-between h-32 relative overflow-hidden">
+                <span class="font-mono text-xs text-zinc-500 uppercase z-10 relative">System Confidence</span>
+                <div class="text-xl font-bold text-warning-orange z-10 relative">HIGH VOLATILITY</div>
+                <!-- Visual Decoration: Wave -->
+                <svg class="absolute bottom-0 right-0 w-full h-16 text-zinc-900 z-0" fill="currentColor" viewBox="0 0 1440 320"><path fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+            </div>
+        </section>
+
+        <!-- 4. THE TRADING DESK (Picks) -->
+        <main class="mb-20">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="font-sans text-2xl font-bold text-white tracking-tight">ACTIVE SIGNALS</h2>
+                <div class="flex gap-2">
+                    <span class="px-2 py-1 border border-acid-lime text-acid-lime font-mono text-[10px] uppercase">Strong Buy</span>
+                    <span class="px-2 py-1 border border-zinc-700 text-zinc-500 font-mono text-[10px] uppercase">Solid</span>
+                    <span class="px-2 py-1 border border-zinc-700 text-zinc-500 font-mono text-[10px] uppercase">Lean</span>
+                </div>
+            </div>
+
+            <!-- Table Header (Styled as Grid) -->
+            <div class="hidden md:grid grid-cols-12 gap-4 text-xs font-mono text-zinc-500 uppercase tracking-wider mb-4 px-6">
+                <div class="col-span-3">Instrument (Matchup)</div>
+                <div class="col-span-2 text-right">Market Line</div>
+                <div class="col-span-2 text-right">Model Val</div>
+                <div class="col-span-3">Alpha Gap (Edge)</div>
+                <div class="col-span-2 text-right">Execution</div>
+            </div>
+
+            <!-- Dynamic Content Container -->
+            <div id="cards-container" class="space-y-1">
+                <!-- Javascript will populate this -->
+            </div>
+        </main>
+
+        <!-- 5. HISTORICAL LEDGER -->
+        <section class="border-t border-border-dim pt-12">
+            <h2 class="font-sans text-xl font-bold text-zinc-400 mb-6 tracking-tight">GRADED EXECUTION LOG</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full font-mono text-sm text-left">
+                    <thead class="text-xs text-zinc-600 uppercase border-b border-border-dim">
+                        <tr>
+                            <th class="py-3 pl-4">Week</th>
+                            <th class="py-3">Matchup</th>
+                            <th class="py-3 text-right">Spread</th>
+                            <th class="py-3 text-right">Edge</th>
+                            <th class="py-3 pl-8">Position</th>
+                            <th class="py-3 text-right">Result</th>
+                            <th class="py-3 text-right pr-4">P&L</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-border-dim text-zinc-400" id="ledger-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="mt-20 border-t border-border-dim pt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-zinc-600 text-xs font-mono">
+            <p>PROTOCOL 705 © 2025. DESIGNED BY THE VOID.</p>
+            <p class="mt-2 md:mt-0">PAST PERFORMANCE IS NOT INDICATIVE OF FUTURE ALPHA.</p>
+        </footer>
+    </div>
+
+    <!-- JAVASCRIPT FOR LOGIC & RENDERING -->
+    <script>
+        // Data derived from the original site
+        const activePicks = [
+            { id: 1, away: 'BUF', home: 'CLE', spread: 'CLE +10.0', model: 'CLE +0.4', edge: 9.6, pick: 'CLE', units: 2.0, strength: 'STRONG' },
+            { id: 2, away: 'LV', home: 'HOU', spread: 'HOU -14.5', model: 'HOU -6.7', edge: 7.8, pick: 'LV', units: 2.0, strength: 'STRONG' },
+            { id: 3, away: 'PIT', home: 'DET', spread: 'DET -7.0', model: 'DET +0.1', edge: 7.1, pick: 'PIT', units: 1.8, strength: 'STRONG' },
+            { id: 4, away: 'SF', home: 'IND', spread: 'IND +6.0', model: 'IND +0.2', edge: 5.8, pick: 'IND', units: 1.5, strength: 'STRONG' },
+            { id: 5, away: 'NYJ', home: 'NO', spread: 'NO -4.5', model: 'NO +0.3', edge: 4.8, pick: 'NYJ', units: 1.2, strength: 'SOLID' },
+            { id: 6, away: 'PHI', home: 'WAS', spread: 'WAS +6.5', model: 'WAS +2.1', edge: 4.4, pick: 'WAS', units: 1.1, strength: 'SOLID' },
+            { id: 7, away: 'KC', home: 'TEN', spread: 'TEN +3.5', model: 'TEN +0.5', edge: 3.0, pick: 'TEN', units: 0.6, strength: 'LEAN' },
+            { id: 8, away: 'JAX', home: 'DEN', spread: 'DEN -3.0', model: 'DEN -0.1', edge: 3.0, pick: 'JAX', units: 0.6, strength: 'LEAN' },
+        ];
+
+        const history = [
+            { week: 'W15', match: 'IND @ SEA', spread: '-13.5', edge: '+7.9', pick: 'IND', units: '2.0u', res: 'WIN', profit: '+1.82u' },
+            { week: 'W15', match: 'TEN @ SF', spread: '-12.5', edge: '+8.0', pick: 'SF', units: '2.0u', res: 'WIN', profit: '+1.82u' },
+            { week: 'W15', match: 'CLE @ CHI', spread: '-7.5', edge: '+5.5', pick: 'CHI', units: '1.4u', res: 'WIN', profit: '+1.27u' },
+            { week: 'W15', match: 'LAC @ KC', spread: '-5.5', edge: '+1.6', pick: 'KC', units: '0.2u', res: 'LOSS', profit: '-0.2u' },
+            { week: 'W15', match: 'NYJ @ JAX', spread: '-13.5', edge: '+9.0', pick: 'NYJ', units: '2.0u', res: 'LOSS', profit: '-2.0u' },
+        ];
+
+        // Renders the Active Cards
+        const cardsContainer = document.getElementById('cards-container');
+        
+        activePicks.forEach(game => {
+            // Determine styles based on signal strength
+            let borderClass = 'border-border-dim';
+            let barColor = 'bg-zinc-600';
+            let btnClass = 'bg-zinc-800 text-zinc-400';
+            let rowOpacity = 'opacity-80 hover:opacity-100';
+            
+            if (game.strength === 'STRONG') {
+                borderClass = 'border-l-4 border-l-acid-lime border-y border-r border-border-dim bg-[#0F110A]'; // very subtle tint
+                barColor = 'bg-acid-lime';
+                btnClass = 'bg-acid-lime text-black hover:bg-white transition-colors';
+                rowOpacity = 'opacity-100';
+            } else if (game.strength === 'SOLID') {
+                borderClass = 'border-l-4 border-l-emerald-700 border-y border-r border-border-dim';
+                barColor = 'bg-emerald-500';
+                btnClass = 'bg-emerald-900 text-emerald-100 border border-emerald-700';
+            }
+
+            // Calculate Edge visual percentage (max edge usually around 10)
+            const edgePercent = Math.min((game.edge / 12) * 100, 100);
+
+            const html = `
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 p-4 md:p-6 ${borderClass} items-center ${rowOpacity} transition-all duration-300">
+                    
+                    <!-- Matchup -->
+                    <div class="col-span-3">
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-xl md:text-2xl font-bold text-white tracking-tight">${game.away}</span>
+                            <span class="text-zinc-600 text-sm">@</span>
+                            <span class="text-xl md:text-2xl font-bold text-white tracking-tight">${game.home}</span>
+                        </div>
+                    </div>
+
+                    <!-- Market Line -->
+                    <div class="col-span-2 md:text-right font-mono text-zinc-400">
+                        ${game.spread}
+                    </div>
+
+                    <!-- Model Line -->
+                    <div class="col-span-2 md:text-right font-mono text-zinc-300">
+                        ${game.model}
+                    </div>
+
+                    <!-- Edge Visualization -->
+                    <div class="col-span-3 flex flex-col justify-center h-full">
+                        <div class="flex justify-between text-xs font-mono mb-1">
+                            <span class="text-zinc-500">EDGE</span>
+                            <span class="${game.strength === 'STRONG' ? 'text-acid-lime' : 'text-zinc-300'} font-bold">+${game.edge}</span>
+                        </div>
+                        <div class="w-full bg-zinc-800 h-1.5 rounded-full overflow-hidden">
+                            <div class="h-full ${barColor} shadow-[0_0_10px_rgba(204,255,0,0.5)]" style="width: ${edgePercent}%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div class="col-span-2 md:text-right mt-2 md:mt-0">
+                        <button class="w-full md:w-auto px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider ${btnClass}">
+                            BET ${game.pick} <span class="opacity-70 ml-1">(${game.units}u)</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            cardsContainer.innerHTML += html;
+        });
+
+        // Renders the Ledger
+        const ledgerBody = document.getElementById('ledger-body');
+        
+        history.forEach(row => {
+            const isWin = row.res === 'WIN';
+            const profitClass = isWin ? 'text-acid-lime' : 'text-warning-orange';
+            const bgClass = isWin ? 'bg-acid-lime/10' : 'bg-transparent';
+            
+            const html = `
+                <tr class="hover:bg-zinc-900 transition-colors">
+                    <td class="py-3 pl-4 border-b border-zinc-900">${row.week}</td>
+                    <td class="py-3 border-b border-zinc-900 font-bold text-zinc-300">${row.match}</td>
+                    <td class="py-3 text-right border-b border-zinc-900">${row.spread}</td>
+                    <td class="py-3 text-right border-b border-zinc-900 text-zinc-500">${row.edge}</td>
+                    <td class="py-3 pl-8 border-b border-zinc-900"><span class="bg-zinc-800 text-white px-2 py-0.5 text-xs font-bold">${row.pick}</span></td>
+                    <td class="py-3 text-right border-b border-zinc-900">
+                        <span class="${isWin ? 'text-acid-lime' : 'text-zinc-600'} font-bold">${row.res}</span>
+                    </td>
+                    <td class="py-3 text-right pr-4 border-b border-zinc-900 ${profitClass}">${row.profit}</td>
+                </tr>
+            `;
+            ledgerBody.innerHTML += html;
+        });
+    </script>
+</body>
+</html>

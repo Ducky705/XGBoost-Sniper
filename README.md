@@ -1,7 +1,7 @@
 # XGBoost-Diamond: Quantitative Sports Trading System
 
 **Current Status:** `Live Monitoring`
-**Last Updated:** 2025-12-02
+**Last Updated:** 2025-12-18
 
 This repository documents the end-to-end evolution of a machine learning system designed to solve the **"Accuracy Fallacy"** in sports betting. It tracks the journey from a high-variance prototype (**V1 Pyrite**) to a disciplined, regime-based asset manager (**V2 Diamond**).
 
@@ -16,10 +16,10 @@ We developed two distinct models to test this hypothesis:
 | Feature | 🔸 V1 Pyrite (Legacy) | 💎 V2 Diamond (Active) |
 | :--- | :--- | :--- |
 | **Philosophy** | "Bet everything with >50% edge" | "Snipe specific inefficiencies" |
-| **Volume** | High (~155 bets/day) | **High (~54 bets/day)** |
+| **Volume** | High (~142 bets/day) | **High (~74 bets/day)** |
 | **Risk Profile** | Reckless / Uncapped | **10u Daily Cap / Scaled Kelly** |
 | **Key Flaw** | Overconfidence on Favorites | None (so far) |
-| **Result** | **-12.40% ROI** (The "Churn") | **1.62% ROI** (The "Edge") |
+| **Result** | **5.17% ROI** (The "Churn") | **16.65% ROI** (The "Edge") |
 
 ---
 
