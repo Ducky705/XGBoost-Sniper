@@ -490,7 +490,7 @@ class DualMonitor:
             <h2 class="font-sans text-2xl font-bold text-white tracking-tight mb-2">CUMULATIVE PROFIT CURVE</h2>
             <p class="font-mono text-zinc-500 text-sm mb-6">Real-time performance tracking: Diamond (Green) vs Pyrite (Red) vs Market Baseline (Gray)</p>
             <div class="chart-container group hover:border-acid-lime/50 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_4px_30px_rgba(204,255,0,0.08)] opacity-0 animate-slide-up-fade" style="animation-delay: 500ms;">
-                <img src="../assets/live_curve.png" alt="Live Profit Curve" class="group-hover:brightness-110 transition-all duration-300" />
+                <img src="assets/live_curve.png" alt="Live Profit Curve" class="group-hover:brightness-110 transition-all duration-300" />
             </div>
         </section>
 
@@ -550,14 +550,14 @@ class DualMonitor:
                         <span class="text-warning-orange text-lg group-hover:scale-110 transition-transform inline-block">🔸</span>
                         <span class="font-mono text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">V1 Pyrite - Bleeds on NFL/MLB</span>
                     </div>
-                    <img src="../assets/pyrite_sport.png" alt="Pyrite Sport ROI" class="group-hover:brightness-110 transition-all duration-300" />
+                    <img src="assets/pyrite_sport.png" alt="Pyrite Sport ROI" class="group-hover:brightness-110 transition-all duration-300" />
                 </div>
                 <div class="chart-container group hover:border-acid-lime/50 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_4px_30px_rgba(204,255,0,0.08)] opacity-0 animate-slide-up-fade" style="animation-delay: 900ms;">
                     <div class="flex items-center gap-2 mb-3">
                         <span class="text-acid-lime text-lg group-hover:scale-110 transition-transform inline-block">💎</span>
                         <span class="font-mono text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">V2 Diamond - Surgical Regime Selection</span>
                     </div>
-                    <img src="../assets/diamond_sport.png" alt="Diamond Sport ROI" class="group-hover:brightness-110 transition-all duration-300" />
+                    <img src="assets/diamond_sport.png" alt="Diamond Sport ROI" class="group-hover:brightness-110 transition-all duration-300" />
                 </div>
             </div>
         </section>
@@ -572,14 +572,14 @@ class DualMonitor:
                         <span class="text-warning-orange text-lg group-hover:scale-110 transition-transform inline-block">🔸</span>
                         <span class="font-mono text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">V1 Pyrite - Flat performance across sizes</span>
                     </div>
-                    <img src="../assets/pyrite_size.png" alt="Pyrite Bet Sizing" class="group-hover:brightness-110 transition-all duration-300" />
+                    <img src="assets/pyrite_size.png" alt="Pyrite Bet Sizing" class="group-hover:brightness-110 transition-all duration-300" />
                 </div>
                 <div class="chart-container group hover:border-acid-lime/50 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_4px_30px_rgba(204,255,0,0.08)] opacity-0 animate-slide-up-fade" style="animation-delay: 1100ms;">
                     <div class="flex items-center gap-2 mb-3">
                         <span class="text-acid-lime text-lg group-hover:scale-110 transition-transform inline-block">💎</span>
                         <span class="font-mono text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">V2 Diamond - Confidence = Profit</span>
                     </div>
-                    <img src="../assets/diamond_size.png" alt="Diamond Bet Sizing" class="group-hover:brightness-110 transition-all duration-300" />
+                    <img src="assets/diamond_size.png" alt="Diamond Bet Sizing" class="group-hover:brightness-110 transition-all duration-300" />
                 </div>
             </div>
         </section>
@@ -769,7 +769,9 @@ class DualMonitor:
         ax.spines['right'].set_visible(False)
         
         plt.tight_layout()
-        plt.savefig('assets/live_curve.png', dpi=150, facecolor=VOID, edgecolor='none')
+        if not os.path.exists("docs/assets"):
+            os.makedirs("docs/assets")
+        plt.savefig('docs/assets/live_curve.png', dpi=150, facecolor=VOID, edgecolor='none')
         plt.close()
         
         # 2. SPORT ROI (Horizontal Bars)
@@ -804,7 +806,7 @@ class DualMonitor:
             ax.spines['left'].set_color(BORDER)
             
             plt.tight_layout()
-            plt.savefig(f'assets/{name}_sport.png', dpi=150, facecolor=VOID, edgecolor='none')
+            plt.savefig(f'docs/assets/{name}_sport.png', dpi=150, facecolor=VOID, edgecolor='none')
             plt.close()
             
         # 3. BET SIZING ROI
@@ -852,7 +854,7 @@ class DualMonitor:
             ax.spines['left'].set_color(BORDER)
             
             plt.tight_layout()
-            plt.savefig(f'assets/{name}_size.png', dpi=150, facecolor=VOID, edgecolor='none')
+            plt.savefig(f'docs/assets/{name}_size.png', dpi=150, facecolor=VOID, edgecolor='none')
             plt.close()
 
     def _get_volume_text(self, df):
@@ -938,14 +940,14 @@ We developed two distinct models to test this hypothesis:
 *   **Red Line (Pyrite):** The raw model. Note the high volatility and eventual decay.
 *   **Gray Dotted:** The market baseline (losing to the vig).
 
-![Live Curve](assets/live_curve.png)
+![Live Curve](docs/assets/live_curve.png)
 
 ### 2. The "Toxic Asset" Audit (Sport Health)
 *Why did V1 fail? It didn't know when to quit. V2 implements strict "Regime Filtering" to ban toxic sports.*
 
 | 🔸 V1 Pyrite (Bleeding Edge) | 💎 V2 Diamond (Surgical) |
 | :---: | :---: |
-| ![V1 Sport](assets/pyrite_sport.png) | ![V2 Sport](assets/diamond_sport.png) |
+| ![V1 Sport](docs/assets/pyrite_sport.png) | ![V2 Sport](docs/assets/diamond_sport.png) |
 | *Loses money on NFL/MLB noise.* | *Only trades profitable regimes.* |
 
 ### 3. Calibration Check (Bet Sizing)
@@ -953,7 +955,7 @@ We developed two distinct models to test this hypothesis:
 
 | 🔸 V1 Pyrite | 💎 V2 Diamond |
 | :---: | :---: |
-| ![V1 Size](assets/pyrite_size.png) | ![V2 Size](assets/diamond_size.png) |
+| ![V1 Size](docs/assets/pyrite_size.png) | ![V2 Size](docs/assets/diamond_size.png) |
 | *Flat performance across sizes.* | *Strong correlation: Confidence = Profit.* |
 
 ---

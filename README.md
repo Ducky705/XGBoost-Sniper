@@ -1,6 +1,7 @@
-# XGBoost-Diamond: Quantitative Sports Trading System
+# THE QUARRY: Quantitative Sports Trading System
 
 **Current Status:** `Live Monitoring`
+**Live Dashboard:** [View The Quarry Diamond Model](https://Ducky705.github.io/XGBoost-Sniper/diamond.html)
 **Last Updated:** 2025-12-18
 
 This repository documents the end-to-end evolution of a machine learning system designed to solve the **"Accuracy Fallacy"** in sports betting. It tracks the journey from a high-variance prototype (**V1 Pyrite**) to a disciplined, regime-based asset manager (**V2 Diamond**).
@@ -31,14 +32,14 @@ We developed two distinct models to test this hypothesis:
 *   **Red Line (Pyrite):** The raw model. Note the high volatility and eventual decay.
 *   **Gray Dotted:** The market baseline (losing to the vig).
 
-![Live Curve](assets/live_curve.png)
+![Live Curve](docs/assets/live_curve.png)
 
 ### 2. The "Toxic Asset" Audit (Sport Health)
 *Why did V1 fail? It didn't know when to quit. V2 implements strict "Regime Filtering" to ban toxic sports.*
 
 | 🔸 V1 Pyrite (Bleeding Edge) | 💎 V2 Diamond (Surgical) |
 | :---: | :---: |
-| ![V1 Sport](assets/pyrite_sport.png) | ![V2 Sport](assets/diamond_sport.png) |
+| ![V1 Sport](docs/assets/pyrite_sport.png) | ![V2 Sport](docs/assets/diamond_sport.png) |
 | *Loses money on NFL/MLB noise.* | *Only trades profitable regimes.* |
 
 ### 3. Calibration Check (Bet Sizing)
@@ -46,7 +47,7 @@ We developed two distinct models to test this hypothesis:
 
 | 🔸 V1 Pyrite | 💎 V2 Diamond |
 | :---: | :---: |
-| ![V1 Size](assets/pyrite_size.png) | ![V2 Size](assets/diamond_size.png) |
+| ![V1 Size](docs/assets/pyrite_size.png) | ![V2 Size](docs/assets/diamond_size.png) |
 | *Flat performance across sizes.* | *Strong correlation: Confidence = Profit.* |
 
 ---
