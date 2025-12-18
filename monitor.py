@@ -904,9 +904,10 @@ class DualMonitor:
         with open("LATEST_ACTION.md", "w", encoding="utf-8") as f:
             f.write(log_content)
 
-        readme_text = f"""# XGBoost-Diamond: Quantitative Sports Trading System
+        readme_text = f"""# THE QUARRY: Quantitative Sports Trading System
 
 **Current Status:** `Live Monitoring`
+**Live Dashboard:** [View The Quarry Diamond Model](https://Ducky705.github.io/XGBoost-Sniper/diamond.html)
 **Last Updated:** {pd.Timestamp.now().strftime('%Y-%m-%d')}
 
 This repository documents the end-to-end evolution of a machine learning system designed to solve the **"Accuracy Fallacy"** in sports betting. It tracks the journey from a high-variance prototype (**V1 Pyrite**) to a disciplined, regime-based asset manager (**V2 Diamond**).
