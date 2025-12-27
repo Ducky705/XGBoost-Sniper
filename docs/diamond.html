@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE QUARRY // DIAMOND MODEL</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'void': '#050505',
-                        'panel': '#0A0A0A',
-                        'border-dim': '#1F1F1F',
-                        'acid-lime': '#CCFF00',
+                        'void': '#020202',
+                        'panel': '#080808',
+                        'border-dim': '#1A1A1A',
+                        'diamond-blue': '#00E0FF',
+                        'diamond-light': '#E0FFFF',
+                        'ice-white': '#F0F9FF',
                         'warning-orange': '#FF4D00',
                         'ghost': '#444444'
                     },
@@ -27,7 +32,9 @@
                     animation: {
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'ticker': 'ticker 30s linear infinite',
-                        'slide-up-fade': 'slide-up-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'slide-up-fade': 'slide-up-fade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'shimmer': 'shimmer 2.5s infinite linear',
+                        'sparkle': 'sparkle 2s ease-in-out infinite',
                     },
                     keyframes: {
                         ticker: {
@@ -37,6 +44,14 @@
                         'slide-up-fade': {
                             '0%': { opacity: '0', transform: 'translateY(10px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-1000px 0' },
+                            '100%': { backgroundPosition: '1000px 0' }
+                        },
+                        sparkle: {
+                            '0%, 100%': { opacity: 0, transform: 'scale(0)' },
+                            '50%': { opacity: 1, transform: 'scale(1)' }
                         }
                     }
                 }
@@ -44,287 +59,1200 @@
         }
     </script>
     <style>
-        body { background-color: #050505; color: #E2E2E2; -webkit-font-smoothing: antialiased; }
-        .noise { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 50; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0A0A0A; }
-        ::-webkit-scrollbar-thumb { background: #333; }
-        .glow-text { text-shadow: 0 0 10px rgba(204, 255, 0, 0.3); }
-        .chart-container { background: #0A0A0A; border: 1px solid #1F1F1F; border-radius: 4px; padding: 1rem; }
-        .chart-container img { width: 100%; height: auto; border-radius: 4px; }
+        body {
+            background-color: #020202;
+            color: #E2E2E2;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        #caustics-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #080808;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #00E0FF;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 15px rgba(0, 224, 255, 0.4);
+        }
+
+        /* Faceted Crystal Aesthetics */
+        .faceted-panel {
+            background: #080808;
+            border: 1px solid #1A1A1A;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        /* Prismatic Border Effect */
+        .faceted-panel:hover {
+            border-color: transparent;
+            box-shadow: 0 0 25px rgba(0, 224, 255, 0.15);
+            transform: translateY(-2px);
+            background-image: linear-gradient(#080808, #080808), linear-gradient(135deg, #00E0FF, #FFFFFF, #00E0FF);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+
+        /* The "brackets" look */
+        .faceted-panel::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #00E0FF;
+            border-left: 2px solid #00E0FF;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .faceted-panel::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 8px;
+            height: 8px;
+            border-bottom: 2px solid #00E0FF;
+            border-right: 2px solid #00E0FF;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .faceted-panel:hover::before,
+        .faceted-panel:hover::after {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .chart-img {
+            width: 100%;
+            height: auto;
+            filter: contrast(110%) brightness(110%) saturate(90%);
+            mix-blend-mode: screen;
+        }
+
+        .chart-container {
+            overflow: hidden;
+            background: #080808;
+        }
+
+        /* Sparkle Element */
+        .sparkle-icon {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Custom Cursor - Diamond (Blue Crosshair) */
+        body {
+            cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4L16 11M16 28L16 21M4 16L11 16M28 16L21 16" stroke="%2300E0FF" stroke-width="2" stroke-linecap="square"/><rect x="15.5" y="15.5" width="1" height="1" fill="%2300E0FF" opacity="0.5"/></svg>') 16 16, auto;
+        }
+
+        a,
+        button,
+        [role="button"] {
+            cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4L16 11M16 28L16 21M4 16L11 16M28 16L21 16" stroke="%23E0FFFF" stroke-width="2" stroke-linecap="square"/><circle cx="16" cy="16" r="2" fill="%23E0FFFF"/></svg>') 16 16, pointer;
+        }
     </style>
 </head>
-<body class="min-h-screen relative overflow-x-hidden">
+
+<body class="min-h-screen relative overflow-x-hidden selection:bg-diamond-blue selection:text-black">
+    <canvas id="caustics-canvas"></canvas>
     <div class="noise"></div>
-    <div class="fixed top-0 w-full bg-acid-lime text-black font-mono text-xs font-bold py-1 z-40 overflow-hidden whitespace-nowrap border-b border-acid-lime">
+
+    <!-- TICKER -->
+    <div
+        class="fixed top-0 w-full bg-diamond-blue text-black font-mono text-[10px] font-bold py-1 z-40 overflow-hidden whitespace-nowrap border-b border-diamond-light">
         <div class="inline-block animate-ticker">
-            THE QUARRY DIAMOND ONLINE // LAST UPDATE: 2025-12-27 11:45 UTC // ROI: 15.0% // RECORD: 1092-730-0 // ALPHA: 40.12u // STATUS: NOMINAL // 
-            THE QUARRY DIAMOND ONLINE // LAST UPDATE: 2025-12-27 11:45 UTC // ROI: 15.0% // RECORD: 1092-730-0 // ALPHA: 40.12u // STATUS: NOMINAL // 
+            DIAMOND V2 ONLINE // SURGICAL PRECISION // ROI TARGET: >15% // STATUS: OPTIMAL //
+            DIAMOND V2 ONLINE // SURGICAL PRECISION // ROI TARGET: >15% // STATUS: OPTIMAL //
+            DIAMOND V2 ONLINE // SURGICAL PRECISION // ROI TARGET: >15% // STATUS: OPTIMAL //
+            DIAMOND V2 ONLINE // SURGICAL PRECISION // ROI TARGET: >15% // STATUS: OPTIMAL //
         </div>
     </div>
-    <div class="max-w-7xl mx-auto pt-16 pb-20 px-4 sm:px-6">
-        <header class="mb-12 flex flex-col md:flex-row justify-between items-end border-b border-border-dim pb-6 opacity-0 animate-slide-up-fade" style="animation-delay: 0ms;">
+
+    <div class="max-w-7xl mx-auto pt-16 pb-20 px-4 sm:px-6 relative z-10">
+        <!-- HEADER -->
+        <header
+            class="mb-16 flex flex-col md:flex-row justify-between items-end border-b border-border-dim pb-8 opacity-0 animate-slide-up-fade"
+            style="animation-delay: 0ms;">
             <div>
-                <div class="flex items-center gap-2 mb-2">
-                    <div class="w-3 h-3 bg-acid-lime rounded-full animate-pulse-slow"></div>
-                    <span class="font-mono text-xs text-acid-lime tracking-widest">LIVE MONITORING // DIAMOND</span>
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-2 h-2 bg-diamond-blue rotate-45 animate-pulse-fast box-shadow-glow"></div>
+                    <span class="font-mono text-xs text-diamond-blue tracking-[0.2em] uppercase">System: Diamond
+                        V2</span>
                 </div>
-                <h1 class="text-5xl md:text-7xl font-bold tracking-tighter text-white">THE <span class="text-ghost">QUARRY</span></h1>
-                <p class="font-mono text-zinc-500 mt-2 text-sm uppercase tracking-wide">XGBoost Algorithmic Infrastructure // V2 DIAMOND</p>
+                <h1 class="text-6xl md:text-8xl font-bold tracking-tighter text-white mb-2">DIAMOND</h1>
+                <div class="flex items-center gap-4">
+                    <span
+                        class="px-2 py-1 bg-zinc-900 border border-zinc-800 text-diamond-blue text-xs font-mono">BUILD:
+                        2.4.0</span>
+                    <p class="font-mono text-zinc-500 text-sm uppercase tracking-wide">High-Precision Sports Arbitrage
+                    </p>
+                </div>
             </div>
-            <div class="text-right mt-6 md:mt-0">
-                <div class="font-mono text-4xl font-bold text-acid-lime glow-text">+40.12u</div>
-                <div class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Net Alpha Generated</div>
+            <div class="text-right mt-8 md:mt-0">
+                <div id="header-net" class="font-mono text-5xl font-bold text-diamond-blue glow-text mb-1">--</div>
+                <div class="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">Net Alpha Generated</div>
             </div>
         </header>
 
-        <!-- BENTO GRID STATS -->
-        <section class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-16">
-            <!-- ROI Card -->
-            <div class="bg-panel border border-border-dim p-6 flex flex-col justify-between h-32 hover:border-acid-lime transition-all duration-300 group cursor-default hover:translate-y-[-2px] hover:shadow-[0_4px_20px_rgba(204,255,0,0.1)] opacity-0 animate-slide-up-fade" style="animation-delay: 100ms;">
+        <!-- KPI GRID -->
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-20">
+            <!-- ROI -->
+            <div class="faceted-panel p-6 flex flex-col justify-between h-36 opacity-0 animate-slide-up-fade group"
+                style="animation-delay: 100ms;">
+                <div class="sparkle-icon" style="top: 10%; right: 10%; animation-delay: 0.2s;"></div>
                 <div class="flex justify-between items-start">
-                    <span class="font-mono text-xs text-zinc-500 uppercase group-hover:text-zinc-400 transition-colors">Return on Investment</span>
-                    <svg class="w-4 h-4 text-acid-lime opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">ROI</span>
+                    <svg class="w-4 h-4 text-diamond-blue opacity-50" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
                 </div>
-                <div class="text-3xl font-bold text-acid-lime group-hover:text-acid-lime transition-colors">15.0%</div>
+                <div>
+                    <div id="stats-roi"
+                        class="text-4xl font-bold text-white tracking-tight group-hover:text-diamond-blue transition-colors">
+                        --%</div>
+                    <div class="w-full bg-zinc-900 h-1 mt-2">
+                        <div class="bg-diamond-blue h-full" style="width: 15%"></div>
+                    </div>
+                </div>
             </div>
-            <!-- Win Rate Card -->
-            <div class="bg-panel border border-border-dim p-6 flex flex-col justify-between h-32 hover:border-acid-lime transition-all duration-300 group cursor-default hover:translate-y-[-2px] hover:shadow-[0_4px_20px_rgba(204,255,0,0.1)] opacity-0 animate-slide-up-fade" style="animation-delay: 200ms;">
+
+            <!-- Win Rate -->
+            <div class="faceted-panel p-6 flex flex-col justify-between h-36 opacity-0 animate-slide-up-fade group"
+                style="animation-delay: 200ms;">
+                <div class="sparkle-icon" style="top: 20%; right: 80%; animation-delay: 0.5s;"></div>
                 <div class="flex justify-between items-start">
-                    <span class="font-mono text-xs text-zinc-500 uppercase group-hover:text-zinc-400 transition-colors">Win Rate</span>
-                    <svg class="w-4 h-4 text-acid-lime opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Win Rate</span>
+                    <svg class="w-4 h-4 text-diamond-blue opacity-50" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
                 </div>
-                <div class="flex items-end gap-3">
-                    <div class="text-3xl font-bold text-white group-hover:text-acid-lime transition-colors">59.9%</div>
-                    <div class="h-1 flex-1 bg-zinc-800 mb-2 rounded-full overflow-hidden">
-                        <div class="h-full bg-white group-hover:bg-acid-lime transition-colors" style="width: 59.9%"></div>
-                    </div>
+                <div>
+                    <div id="stats-winrate"
+                        class="text-4xl font-bold text-white tracking-tight group-hover:text-diamond-blue transition-colors">
+                        --%</div>
+                    <div class="text-xs font-mono text-zinc-600 mt-1">Target: >58%</div>
                 </div>
             </div>
-            <!-- Record Card -->
-            <div class="bg-panel border border-border-dim p-6 flex flex-col justify-between h-32 hover:border-acid-lime transition-all duration-300 group cursor-default hover:translate-y-[-2px] hover:shadow-[0_4px_20px_rgba(204,255,0,0.1)] opacity-0 animate-slide-up-fade" style="animation-delay: 300ms;">
+
+            <!-- Record -->
+            <div class="faceted-panel p-6 flex flex-col justify-between h-36 opacity-0 animate-slide-up-fade"
+                style="animation-delay: 300ms;">
                 <div class="flex justify-between items-start">
-                    <span class="font-mono text-xs text-zinc-500 uppercase group-hover:text-zinc-400 transition-colors">W - L - T</span>
-                    <svg class="w-4 h-4 text-acid-lime opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Record</span>
+                    <svg class="w-4 h-4 text-diamond-blue opacity-50" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                        </path>
+                    </svg>
                 </div>
-                <div class="text-3xl font-mono text-zinc-300 group-hover:text-white transition-colors">1092<span class="text-zinc-600 mx-1">/</span>730<span class="text-zinc-600 mx-1">/</span>0</div>
+                <div id="stats-record" class="text-3xl font-bold text-white font-mono tracking-tight">--<span
+                        class="text-zinc-700">/</span>--<span class="text-zinc-700">/</span>--</div>
             </div>
-            <!-- System Status Card -->
-            <div class="bg-panel border border-border-dim p-6 flex flex-col justify-between h-32 relative overflow-hidden hover:border-acid-lime transition-all duration-300 group cursor-default hover:translate-y-[-2px] hover:shadow-[0_4px_20px_rgba(204,255,0,0.1)] opacity-0 animate-slide-up-fade" style="animation-delay: 400ms;">
-                <div class="flex justify-between items-start z-10 relative">
-                    <span class="font-mono text-xs text-zinc-500 uppercase group-hover:text-zinc-400 transition-colors">System Status</span>
-                    <svg class="w-4 h-4 text-acid-lime opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-                </div>
-                <div class="text-xl font-bold text-acid-lime z-10 relative group-hover:text-acid-lime transition-colors">NOMINAL</div>
-                <svg class="absolute bottom-0 left-0 w-full h-16 text-zinc-900 group-hover:text-zinc-800 transition-colors z-0" fill="currentColor" viewBox="0 0 1440 320" preserveAspectRatio="none"><path fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-            </div>
-        </section>
 
-        <!-- LIVE PROFIT CURVE -->
-        <section class="mb-16">
-            <h2 class="font-sans text-2xl font-bold text-white tracking-tight mb-2">CUMULATIVE PROFIT CURVE</h2>
-            <p class="font-mono text-zinc-500 text-sm mb-6">Real-time performance tracking: Diamond (Green) vs Pyrite (Red) vs Market Baseline (Gray)</p>
-            <div class="chart-container group hover:border-acid-lime/50 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_4px_30px_rgba(204,255,0,0.08)] opacity-0 animate-slide-up-fade" style="animation-delay: 500ms;">
-                <img src="assets/live_curve.png" alt="Live Profit Curve" class="group-hover:brightness-110 transition-all duration-300" />
-            </div>
-        </section>
-
-        <!-- MODEL COMPARISON -->
-        <section class="mb-16">
-            <h2 class="font-sans text-2xl font-bold text-white tracking-tight mb-2">MODEL COMPARISON</h2>
-            <p class="font-mono text-zinc-500 text-sm mb-6">Head-to-head analysis of the two algorithmic strategies</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <!-- PYRITE CARD -->
-                <div class="bg-panel border border-warning-orange/30 p-6 rounded group hover:border-warning-orange transition-all duration-300 cursor-default hover:translate-y-[-2px] hover:shadow-[0_4px_30px_rgba(255,77,0,0.15)] opacity-0 animate-slide-up-fade" style="animation-delay: 600ms;">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 bg-warning-orange/20 rounded flex items-center justify-center group-hover:bg-warning-orange/30 transition-colors">
-                            <span class="text-xl group-hover:scale-110 transition-transform inline-block">🔸</span>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-warning-orange">V1 PYRITE</h3>
-                            <span class="font-mono text-xs text-zinc-500 group-hover:text-zinc-400 transition-colors">LEGACY // HIGH VARIANCE</span>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 font-mono text-sm text-zinc-400">
-                        <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Philosophy</span><span class="text-zinc-300">"Bet everything with &gt;50% edge"</span></li>
-                        <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Volume</span><span class="text-zinc-300">Very High (~135 bets/day)</span></li>
-                        <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Risk Profile</span><span class="text-warning-orange">Reckless / Uncapped</span></li>
-                        <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Key Flaw</span><span class="text-warning-orange">Overconfidence on Favorites</span></li>
-                    </ul>
+            <!-- Status -->
+            <div class="faceted-panel p-6 flex flex-col justify-between h-36 opacity-0 animate-slide-up-fade"
+                style="animation-delay: 400ms;">
+                <div class="flex justify-between items-start">
+                    <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Status</span>
+                    <div class="w-2 h-2 bg-diamond-blue rounded-full animate-pulse-slow"></div>
                 </div>
-                
-                <!-- DIAMOND CARD -->
-                <div class="bg-panel border border-acid-lime/30 p-6 rounded group hover:border-acid-lime transition-all duration-300 cursor-default hover:translate-y-[-2px] hover:shadow-[0_4px_30px_rgba(204,255,0,0.15)] opacity-0 animate-slide-up-fade" style="animation-delay: 700ms;">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 bg-acid-lime/20 rounded flex items-center justify-center group-hover:bg-acid-lime/30 transition-colors">
-                            <span class="text-xl group-hover:scale-110 transition-transform inline-block">💎</span>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-acid-lime">V2 DIAMOND</h3>
-                            <span class="font-mono text-xs text-zinc-500 group-hover:text-zinc-400 transition-colors">ACTIVE // LOW VARIANCE</span>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 font-mono text-sm text-zinc-400">
-                        <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Philosophy</span><span class="text-zinc-300">"Snipe specific inefficiencies"</span></li>
-                        <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Volume</span><span class="text-zinc-300">Very High (~67 bets/day)</span></li>
-                        <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Risk Profile</span><span class="text-acid-lime">10u Daily Cap / Scaled Kelly</span></li>
-                        <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Key Edge</span><span class="text-acid-lime">Regime Filtering + Value Floor</span></li>
-                    </ul>
+                <div>
+                    <div class="text-2xl font-bold text-diamond-blue tracking-wider">NOMINAL</div>
+                    <div class="text-[10px] font-mono text-zinc-500 mt-1">CONFIDENCE: HIGH</div>
                 </div>
             </div>
         </section>
 
-        <!-- SPORT ROI ANALYSIS -->
-        <section class="mb-16">
-            <h2 class="font-sans text-2xl font-bold text-white tracking-tight mb-2">SPORT ROI ANALYSIS</h2>
-            <p class="font-mono text-zinc-500 text-sm mb-6">Identifying toxic assets vs profitable regimes. Diamond filters out high-variance losing sports.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="chart-container group hover:border-warning-orange/50 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_4px_30px_rgba(255,77,0,0.08)] opacity-0 animate-slide-up-fade" style="animation-delay: 800ms;">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="text-warning-orange text-lg group-hover:scale-110 transition-transform inline-block">🔸</span>
-                        <span class="font-mono text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">V1 Pyrite - Bleeds on NFL/MLB</span>
-                    </div>
-                    <img src="assets/pyrite_sport.png" alt="Pyrite Sport ROI" class="group-hover:brightness-110 transition-all duration-300" />
+        <!-- PROFIT CURVE -->
+        <section class="mb-20 opacity-0 animate-slide-up-fade" style="animation-delay: 500ms;">
+            <h2 class="font-sans text-2xl font-bold text-white tracking-tight mb-2 uppercase"><span
+                    class="text-diamond-blue">///</span> Cumulative Alpha</h2>
+            <p class="font-mono text-zinc-500 text-sm mb-6">Real-time performance trajectory relative to market
+                baseline.</p>
+            <div class="faceted-panel chart-container p-2">
+                <img src="assets/live_curve.png" alt="Cumulative Profit Curve" class="chart-img" />
+            </div>
+        </section>
+
+        <!-- COMPARISON GRID -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 opacity-0 animate-slide-up-fade"
+            style="animation-delay: 600ms;">
+            <div>
+                <h2 class="font-sans text-xl font-bold text-white tracking-tight mb-4 uppercase">Risk Profile</h2>
+                <div class="faceted-panel p-2 chart-container">
+                    <img src="assets/diamond_size.png" alt="Bet Sizing" class="chart-img" />
                 </div>
-                <div class="chart-container group hover:border-acid-lime/50 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_4px_30px_rgba(204,255,0,0.08)] opacity-0 animate-slide-up-fade" style="animation-delay: 900ms;">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="text-acid-lime text-lg group-hover:scale-110 transition-transform inline-block">💎</span>
-                        <span class="font-mono text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">V2 Diamond - Surgical Regime Selection</span>
-                    </div>
-                    <img src="assets/diamond_sport.png" alt="Diamond Sport ROI" class="group-hover:brightness-110 transition-all duration-300" />
+            </div>
+            <div>
+                <h2 class="font-sans text-xl font-bold text-white tracking-tight mb-4 uppercase">Sector Analysis</h2>
+                <div class="faceted-panel p-2 chart-container">
+                    <img src="assets/diamond_sport.png" alt="Sport ROI" class="chart-img" />
                 </div>
             </div>
         </section>
 
-        <!-- BET SIZING CALIBRATION -->
-        <section class="mb-16">
-            <h2 class="font-sans text-2xl font-bold text-white tracking-tight mb-2">BET SIZING CALIBRATION</h2>
-            <p class="font-mono text-zinc-500 text-sm mb-6">Does the model know when it's confident? Bigger bets should yield higher ROI.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="chart-container group hover:border-warning-orange/50 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_4px_30px_rgba(255,77,0,0.08)] opacity-0 animate-slide-up-fade" style="animation-delay: 1000ms;">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="text-warning-orange text-lg group-hover:scale-110 transition-transform inline-block">🔸</span>
-                        <span class="font-mono text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">V1 Pyrite - Flat performance across sizes</span>
-                    </div>
-                    <img src="assets/pyrite_size.png" alt="Pyrite Bet Sizing" class="group-hover:brightness-110 transition-all duration-300" />
+        <!-- YESTERDAY'S ACTION -->
+        <section class="opacity-0 animate-slide-up-fade" style="animation-delay: 700ms;">
+            <div class="flex items-center justify-between mb-6 border-b border-border-dim pb-4">
+                <h2 class="font-sans text-xl font-bold text-white tracking-tight uppercase">Yesterday's Ledger</h2>
+                <span id="y-date-label" class="font-mono text-xs text-diamond-blue">--</span>
+            </div>
+
+            <!-- Summary Chips -->
+            <div class="flex gap-4 mb-8">
+                <div class="faceted-panel px-6 py-3 flex-1 flex flex-col items-center">
+                    <span class="text-[10px] uppercase text-zinc-500 font-mono mb-1">Record</span>
+                    <span id="y-record" class="text-xl font-bold text-white">--</span>
                 </div>
-                <div class="chart-container group hover:border-acid-lime/50 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_4px_30px_rgba(204,255,0,0.08)] opacity-0 animate-slide-up-fade" style="animation-delay: 1100ms;">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="text-acid-lime text-lg group-hover:scale-110 transition-transform inline-block">💎</span>
-                        <span class="font-mono text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">V2 Diamond - Confidence = Profit</span>
-                    </div>
-                    <img src="assets/diamond_size.png" alt="Diamond Bet Sizing" class="group-hover:brightness-110 transition-all duration-300" />
+                <div class="faceted-panel px-6 py-3 flex-1 flex flex-col items-center">
+                    <span class="text-[10px] uppercase text-zinc-500 font-mono mb-1">Win Rate</span>
+                    <span id="y-winpct" class="text-xl font-bold text-white">--%</span>
+                </div>
+                <div class="faceted-panel px-6 py-3 flex-1 flex flex-col items-center">
+                    <span class="text-[10px] uppercase text-zinc-500 font-mono mb-1">ROI</span>
+                    <span id="y-roi" class="text-xl font-bold">--%</span>
+                </div>
+                <div class="faceted-panel px-6 py-3 flex-1 flex flex-col items-center">
+                    <span class="text-[10px] uppercase text-zinc-500 font-mono mb-1">Net Alpha</span>
+                    <span id="y-net" class="text-xl font-bold">--u</span>
                 </div>
             </div>
-        </section>
 
-        <!-- METHODOLOGY -->
-        <section class="mb-16 border border-border-dim p-8 bg-panel hover:border-acid-lime/30 transition-all duration-300 hover:shadow-[0_4px_30px_rgba(204,255,0,0.05)]">
-            <h2 class="font-sans text-2xl font-bold text-white tracking-tight mb-4 opacity-0 animate-slide-up-fade" style="animation-delay: 1200ms;">DIAMOND METHODOLOGY</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="border-l-2 border-acid-lime pl-4 group hover:border-l-4 transition-all duration-300 cursor-default opacity-0 animate-slide-up-fade" style="animation-delay: 1300ms;">
-                    <h3 class="font-mono text-acid-lime text-sm uppercase mb-2 group-hover:text-white transition-colors">The Value Floor</h3>
-                    <p class="text-zinc-400 text-sm group-hover:text-zinc-300 transition-colors">Hard rejection of odds worse than <span class="text-white font-bold">-140</span>. Forces the model to find true underdogs, not expensive favorites.</p>
-                </div>
-                <div class="border-l-2 border-acid-lime pl-4 group hover:border-l-4 transition-all duration-300 cursor-default opacity-0 animate-slide-up-fade" style="animation-delay: 1400ms;">
-                    <h3 class="font-mono text-acid-lime text-sm uppercase mb-2 group-hover:text-white transition-colors">Regime Filtering</h3>
-                    <p class="text-zinc-400 text-sm group-hover:text-zinc-300 transition-colors">The "Core 4" (NBA, NCAAB, NHL, UFC) are allowed. NFL, MLB, Tennis, Soccer are <span class="text-warning-orange font-bold">blacklisted</span>.</p>
-                </div>
-                <div class="border-l-2 border-acid-lime pl-4 group hover:border-l-4 transition-all duration-300 cursor-default opacity-0 animate-slide-up-fade" style="animation-delay: 1500ms;">
-                    <h3 class="font-mono text-acid-lime text-sm uppercase mb-2 group-hover:text-white transition-colors">Bankroll Governor</h3>
-                    <p class="text-zinc-400 text-sm group-hover:text-zinc-300 transition-colors">Max <span class="text-white font-bold">3u</span> per bet. Max <span class="text-white font-bold">10u</span> daily exposure. Proportional scaling on busy days.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- GRADED EXECUTION LOG -->
-        <section class="border-t border-border-dim pt-12">
-            <h2 class="font-sans text-xl font-bold text-zinc-400 mb-6 tracking-tight opacity-0 animate-slide-up-fade" style="animation-delay: 1600ms;">YESTERDAY'S ACTION</h2>
-            <div class="overflow-x-auto opacity-0 animate-slide-up-fade" style="animation-delay: 1700ms;">
-                <table class="w-full font-mono text-sm text-left">
-                    <thead class="text-xs text-zinc-600 uppercase border-b border-border-dim">
+            <!-- Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full font-mono text-xs text-left">
+                    <thead class="text-zinc-600 border-b border-zinc-900 uppercase">
                         <tr>
-                            <th class="py-3 pl-4">Date</th>
-                            <th class="py-3">Matchup</th>
-                            <th class="py-3 text-right">Odds</th>
-                            <th class="py-3 pl-8">Wager</th>
-                            <th class="py-3 text-right">Result</th>
-                            <th class="py-3 text-right pr-4">P&amp;L</th>
+                            <th class="py-4 pl-4">Date</th>
+                            <th class="py-4">Contract</th>
+                            <th class="py-4 text-right">Odds</th>
+                            <th class="py-4 pl-8">Units</th>
+                            <th class="py-4 text-right">Result</th>
+                            <th class="py-4 text-right pr-4">P&L</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-border-dim text-zinc-400" id="ledger-body"></tbody>
+                    <tbody id="ledger-body" class="divide-y divide-zinc-900 text-zinc-400">
+                        <tr>
+                            <td colspan="6" class="text-center py-8">Initializing Ledger...</td>
+                        </tr>
+                    </tbody>
                 </table>
-            </div>
-            
-            <!-- YESTERDAY SUMMARY -->
-            <div class="mt-8 mb-4 flex items-center justify-between opacity-0 animate-slide-up-fade" style="animation-delay: 1800ms;">
-                <h3 class="font-mono text-sm text-zinc-500 uppercase tracking-wide">📊 Daily Summary</h3>
-                <span class="font-mono text-xs text-acid-lime" id="y-date-label">--</span>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="yesterday-summary">
-                <div class="bg-panel border border-border-dim p-4 group hover:border-acid-lime/50 transition-all duration-300 opacity-0 animate-slide-up-fade" style="animation-delay: 1900ms;">
-                    <div class="font-mono text-xs text-zinc-500 uppercase mb-1">Record</div>
-                    <div class="text-2xl font-bold text-white" id="y-record">--</div>
-                </div>
-                <div class="bg-panel border border-border-dim p-4 group hover:border-acid-lime/50 transition-all duration-300 opacity-0 animate-slide-up-fade" style="animation-delay: 2000ms;">
-                    <div class="font-mono text-xs text-zinc-500 uppercase mb-1">Win Rate</div>
-                    <div class="text-2xl font-bold text-white" id="y-winpct">--%</div>
-                </div>
-                <div class="bg-panel border border-border-dim p-4 group hover:border-acid-lime/50 transition-all duration-300 opacity-0 animate-slide-up-fade" style="animation-delay: 2100ms;">
-                    <div class="font-mono text-xs text-zinc-500 uppercase mb-1">ROI</div>
-                    <div class="text-2xl font-bold" id="y-roi">--%</div>
-                </div>
-                <div class="bg-panel border border-border-dim p-4 group hover:border-acid-lime/50 transition-all duration-300 opacity-0 animate-slide-up-fade" style="animation-delay: 2200ms;">
-                    <div class="font-mono text-xs text-zinc-500 uppercase mb-1">Net Profit</div>
-                    <div class="text-2xl font-bold" id="y-net">--u</div>
-                </div>
             </div>
         </section>
 
-        <footer class="mt-20 border-t border-border-dim pt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-zinc-600 text-xs font-mono">
-            <p>THE QUARRY © 2025. DESIGNED BY THE VOID.</p>
-            <p class="mt-2 md:mt-0">PAST PERFORMANCE IS NOT INDICATIVE OF FUTURE ALPHA.</p>
+        <footer
+            class="mt-32 border-t border-zinc-900 pt-8 flex flex-col items-center text-[10px] font-mono text-zinc-700 uppercase tracking-widest gap-2">
+            <div>The Quarry // Diamond V2</div>
+            <div>Automated Execution Environment</div>
         </footer>
     </div>
+
     <script>
-        const DATA = {"meta": {"last_update": "2025-12-27 11:45 UTC", "status": "NOMINAL"}, "stats": {"roi": 15.0, "net_units": 40.12, "record": "1092-730-0", "win_rate": 59.9}, "volume": {"v1_avg": 135, "v2_avg": 67, "v1_label": "Very High", "v2_label": "Very High"}, "yesterday": {"record": "45-16-0", "win_pct": 73.8, "roi": 36.5, "net": 3.58, "date": "2025-12-26"}, "active_signals": [], "history": [{"date": "2025-12-26", "match": "NBA - Miami Heat +2.5", "odds": -102.0, "wager": 0.2, "result": "WIN", "profit": 0.2}, {"date": "2025-12-26", "match": "NBA - Pistons vs Jazz Over 243", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NCAAB - Minnesota -1.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Hornets +6", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NCAAB - Minnesota -2.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Hornets +6", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Toronto Raptors -6.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Pistons vs Jazz Over 243.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Wizards +8", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Heat +4", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Toronto Raptors -6.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Miami Heat +4", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Heat +4", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Utah Jazz +10.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Phoenix Suns -5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NCAAF - Minnesota -1.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Wizards +7.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NCAAB - Minnesota -1.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NCAAF - New Mexico vs Minnesota Over 43.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NCAAF - Florida International vs UTSA Over 61.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Celtics -6.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Wizards +9.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NCAAF - Northwestern -10.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NCAAF - Northwestern -10", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NBA - Milwaukee Bucks vs Memphis Grizzlies Under 227.5", "odds": -110.0, "wager": 0.2, "result": "WIN", "profit": 0.18}, {"date": "2025-12-26", "match": "NCAAB - Minnesota -1", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Hornets +6", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Memphis Grizzlies -5", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Bucks vs Grizzlies Over 227.5", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Boston Celtics -8.5", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Clippers -2.5", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Milwaukee Bucks vs Memphis Grizzlies Under 227.5", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Boston Celtics -8.5", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Jazz +10", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Portland Trail Blazers +2", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NCAAB - New Mexico +2.5", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Orlando Magic -5.5", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Miami Heat +2.5", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Charlotte Hornets vs Orlando Magic Over 230.5", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Charlotte Hornets +6", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Wizards +7.5", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NCAAF - UTSA -5", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - LA Clippers -1.5", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NCAAB - Minnesota -1", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Portland Trail Blazers +2", "odds": -110.0, "wager": 0.1, "result": "WIN", "profit": 0.09}, {"date": "2025-12-26", "match": "NBA - Suns vs Pelicans Over 239", "odds": -110.0, "wager": 0.1, "result": "LOSS", "profit": -0.1}, {"date": "2025-12-26", "match": "NBA - Chicago Bulls vs Philadelphia 76ers Over 239.5", "odds": -110.0, "wager": 0.1, "result": "LOSS", "profit": -0.1}, {"date": "2025-12-26", "match": "NBA - Hornets vs Magic Over 230", "odds": -110.0, "wager": 0.1, "result": "LOSS", "profit": -0.1}, {"date": "2025-12-26", "match": "NBA - Heat vs Hawks Over 247.5", "odds": -110.0, "wager": 0.1, "result": "LOSS", "profit": -0.1}, {"date": "2025-12-26", "match": "NBA - Chicago Bulls vs Philadelphia 76ers Over 239.5", "odds": -110.0, "wager": 0.2, "result": "LOSS", "profit": -0.2}, {"date": "2025-12-26", "match": "NCAAF - New Mexico +2.5", "odds": -102.0, "wager": 0.2, "result": "LOSS", "profit": -0.2}, {"date": "2025-12-26", "match": "NBA - Pacers +9", "odds": -110.0, "wager": 0.2, "result": "LOSS", "profit": -0.2}, {"date": "2025-12-26", "match": "NBA - 76ers +1", "odds": -110.0, "wager": 0.2, "result": "LOSS", "profit": -0.2}, {"date": "2025-12-26", "match": "NBA - Pacers +8.5", "odds": -110.0, "wager": 0.2, "result": "LOSS", "profit": -0.2}, {"date": "2025-12-26", "match": "NBA - Magic -6.5", "odds": -110.0, "wager": 0.2, "result": "LOSS", "profit": -0.2}, {"date": "2025-12-26", "match": "NBA - Celtics vs Pacers Under 222", "odds": -110.0, "wager": 0.2, "result": "LOSS", "profit": -0.2}, {"date": "2025-12-26", "match": "NCAAB - New Mexico +2.5", "odds": -110.0, "wager": 0.2, "result": "LOSS", "profit": -0.2}, {"date": "2025-12-26", "match": "NBA - Hawks -2.5", "odds": -110.0, "wager": 0.2, "result": "LOSS", "profit": -0.2}, {"date": "2025-12-26", "match": "NCAAB - Minnesota -3", "odds": -110.0, "wager": 0.2, "result": "LOSS", "profit": -0.2}, {"date": "2025-12-26", "match": "NBA - Tyrese Maxey: Pts Over 27.5", "odds": -110.0, "wager": 0.2, "result": "LOSS", "profit": -0.2}, {"date": "2025-12-26", "match": "NCAAF - New Mexico +2.5", "odds": -102.0, "wager": 0.2, "result": "LOSS", "profit": -0.2}]};
-        
-        function renderLedger() {
-            const ledgerBody = document.getElementById('ledger-body');
-            DATA.history.forEach(row => {
-                const isWin = row.result === 'WIN';
-                const profitClass = row.profit > 0 ? 'text-acid-lime' : (row.profit < 0 ? 'text-warning-orange' : 'text-zinc-500');
-                const html = `
-                    <tr class="hover:bg-zinc-900/70 transition-all duration-200 cursor-default group ${isWin ? 'hover:border-l-2 hover:border-l-acid-lime' : 'hover:border-l-2 hover:border-l-warning-orange'}">
-                        <td class="py-3 pl-4 border-b border-zinc-900 group-hover:text-white transition-colors">${row.date}</td>
-                        <td class="py-3 border-b border-zinc-900 font-bold text-zinc-300 group-hover:text-white transition-colors">${row.match}</td>
-                        <td class="py-3 text-right border-b border-zinc-900 text-zinc-500 group-hover:text-zinc-300 transition-colors">${row.odds}</td>
-                        <td class="py-3 pl-8 border-b border-zinc-900"><span class="bg-zinc-800 text-white px-2 py-0.5 text-xs font-bold group-hover:bg-zinc-700 transition-colors">${row.wager}u</span></td>
-                        <td class="py-3 text-right border-b border-zinc-900">
-                            <span class="${isWin ? 'text-acid-lime' : 'text-warning-orange'} font-bold">${row.result}</span>
-                        </td>
-                        <td class="py-3 text-right pr-4 border-b border-zinc-900 ${profitClass} font-bold">${row.profit > 0 ? '+' : ''}${row.profit}u</td>
-                    </tr>
-                `;
-                ledgerBody.innerHTML += html;
-            });
-            
-            // Render yesterday summary
-            const y = DATA.yesterday;
-            document.getElementById('y-date-label').textContent = y.date ? 'Results for ' + y.date : '';
-            document.getElementById('y-record').textContent = y.record;
-            document.getElementById('y-winpct').textContent = y.win_pct + '%';
-            
-            const roiEl = document.getElementById('y-roi');
-            roiEl.textContent = (y.roi >= 0 ? '+' : '') + y.roi + '%';
-            roiEl.className = 'text-2xl font-bold ' + (y.roi >= 0 ? 'text-acid-lime' : 'text-warning-orange');
-            
-            const netEl = document.getElementById('y-net');
-            netEl.textContent = (y.net >= 0 ? '+' : '') + y.net + 'u';
-            netEl.className = 'text-2xl font-bold ' + (y.net >= 0 ? 'text-acid-lime' : 'text-warning-orange');
+        // --- CRYSTAL CAUSTICS ANIMATION ---
+        const canvas = document.getElementById('caustics-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+
+        let time = 0;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
         }
-        renderLedger();
+
+        function drawCaustics() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Simulating light rays with lines
+            const rayCount = 15;
+
+            ctx.save();
+            ctx.globalAlpha = 0.3; // Very subtle
+
+            for (let i = 0; i < rayCount; i++) {
+                const x = width * (i / rayCount) + Math.sin(time + i) * 100;
+
+                const gradient = ctx.createLinearGradient(x, 0, x + 200, height);
+                gradient.addColorStop(0, 'rgba(0, 224, 255, 0)');
+                gradient.addColorStop(0.5, 'rgba(0, 224, 255, 0.05)');
+                gradient.addColorStop(1, 'rgba(0, 224, 255, 0)');
+
+                ctx.fillStyle = gradient;
+
+                // Draw a wide "beam"
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x + 100 + Math.sin(time * 0.5 + i) * 50, height);
+                ctx.lineTo(x - 100 + Math.cos(time * 0.5 + i) * 50, height);
+                ctx.closePath();
+                ctx.fill();
+            }
+            ctx.restore();
+
+            time += 0.005;
+            requestAnimationFrame(drawCaustics);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        drawCaustics();
+
+        // --- SPARKLE EFFECT ---
+        function createSparkle(parent) {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle-icon');
+
+            // Random position inside container
+            const x = Math.random() * 90 + 5; // 5-95%
+            const y = Math.random() * 90 + 5;
+
+            sparkle.style.left = x + '%';
+            sparkle.style.top = y + '%';
+
+            // Random anim duration
+            sparkle.style.animation = `sparkle ${1 + Math.random() * 2}s ease-in-out forwards`;
+
+            parent.appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 3000);
+        }
+
+        const panels = document.querySelectorAll('.faceted-panel');
+        setInterval(() => {
+            // Randomly pick a panel to sparkle
+            const panel = panels[Math.floor(Math.random() * panels.length)];
+            // Only if visible logic could go here, but simple is fine
+            createSparkle(panel);
+        }, 800);
+
+        // --- DATA BINDING (PRESERVED) ---
+        const DATA = {
+            "meta": {
+                        "last_update": "2025-12-27 23:44 UTC",
+                        "status": "NOMINAL"
+            },
+            "stats": {
+                        "roi": 14.8,
+                        "net_units": 39.56,
+                        "record": "1091-732-0",
+                        "win_rate": 59.8
+            },
+            "volume": {
+                        "v1_avg": 135.1,
+                        "v2_avg": 67.5,
+                        "v1_label": "High",
+                        "v2_label": "Medium"
+            },
+            "yesterday": {
+                        "record": "44-16-0",
+                        "win_pct": 73.3,
+                        "roi": 35.9,
+                        "net": 3.49,
+                        "date": "Dec 26, 2025"
+            },
+            "history": [
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Miami Heat +2.5",
+                                    "odds": -102,
+                                    "edge": 0.05937308918918316,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.2,
+                                    "result": "WIN",
+                                    "match": "Miami Heat +2.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Pistons vs Jazz Over 243",
+                                    "odds": -110,
+                                    "edge": 0.05030112323306857,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Pistons vs Jazz Over 243"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAB",
+                                    "selection": "Minnesota -1.5",
+                                    "odds": -110,
+                                    "edge": 0.06123066799981247,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Minnesota -1.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Hornets +6",
+                                    "odds": -110,
+                                    "edge": 0.044000197024572474,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Hornets +6"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAB",
+                                    "selection": "Minnesota -2.5",
+                                    "odds": -110,
+                                    "edge": 0.04454140719913302,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Minnesota -2.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Hornets +6",
+                                    "odds": -110,
+                                    "edge": 0.049787370931534514,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Hornets +6"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Toronto Raptors -6.5",
+                                    "odds": -110,
+                                    "edge": 0.049787370931534514,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Toronto Raptors -6.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Pistons vs Jazz Over 243.5",
+                                    "odds": -110,
+                                    "edge": 0.05030112323306857,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Pistons vs Jazz Over 243.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Wizards +8",
+                                    "odds": -110,
+                                    "edge": 0.05030112323306857,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Wizards +8"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Heat +4",
+                                    "odds": -110,
+                                    "edge": 0.05030112323306857,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Heat +4"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Toronto Raptors -6.5",
+                                    "odds": -110,
+                                    "edge": 0.05030112323306857,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Toronto Raptors -6.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Miami Heat +4",
+                                    "odds": -110,
+                                    "edge": 0.051735648087092745,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Miami Heat +4"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Heat +4",
+                                    "odds": -110,
+                                    "edge": 0.05412350949786959,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Heat +4"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Utah Jazz +10.5",
+                                    "odds": -110,
+                                    "edge": 0.05577974376224337,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Utah Jazz +10.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Phoenix Suns -5",
+                                    "odds": -110,
+                                    "edge": 0.05908289409819101,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Phoenix Suns -5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAF",
+                                    "selection": "Minnesota -1.5",
+                                    "odds": -110,
+                                    "edge": 0.05301323391142343,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Minnesota -1.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Wizards +7.5",
+                                    "odds": -110,
+                                    "edge": 0.06123066799981247,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Wizards +7.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAB",
+                                    "selection": "Minnesota -1.5",
+                                    "odds": -110,
+                                    "edge": 0.0626454637164161,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Minnesota -1.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAF",
+                                    "selection": "New Mexico vs Minnesota Over 43.5",
+                                    "odds": -110,
+                                    "edge": 0.06556680656614755,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "New Mexico vs Minnesota Over 43.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAF",
+                                    "selection": "Florida International vs UTSA Over 61.5",
+                                    "odds": -110,
+                                    "edge": 0.06556680656614755,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Florida International vs UTSA Over 61.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Celtics -6.5",
+                                    "odds": -110,
+                                    "edge": 0.0626454637164161,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Celtics -6.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Wizards +9.5",
+                                    "odds": -110,
+                                    "edge": 0.0626454637164161,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Wizards +9.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAF",
+                                    "selection": "Northwestern -10.5",
+                                    "odds": -110,
+                                    "edge": 0.0626454637164161,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Northwestern -10.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAF",
+                                    "selection": "Northwestern -10",
+                                    "odds": -110,
+                                    "edge": 0.0626454637164161,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Northwestern -10"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Milwaukee Bucks vs Memphis Grizzlies Under 227.5",
+                                    "odds": -110,
+                                    "edge": 0.06123066799981247,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": 0.18,
+                                    "result": "WIN",
+                                    "match": "Milwaukee Bucks vs Memphis Grizzlies Under 227.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAB",
+                                    "selection": "Minnesota -1",
+                                    "odds": -110,
+                                    "edge": 0.030077783834366545,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Minnesota -1"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Hornets +6",
+                                    "odds": -110,
+                                    "edge": 0.03934533255440842,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Hornets +6"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Memphis Grizzlies -5",
+                                    "odds": -110,
+                                    "edge": 0.0388578261647905,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Memphis Grizzlies -5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Bucks vs Grizzlies Over 227.5",
+                                    "odds": -110,
+                                    "edge": 0.0388578261647905,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Bucks vs Grizzlies Over 227.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Boston Celtics -8.5",
+                                    "odds": -110,
+                                    "edge": 0.0388578261647905,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Boston Celtics -8.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Clippers -2.5",
+                                    "odds": -110,
+                                    "edge": 0.030077783834366545,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Clippers -2.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Milwaukee Bucks vs Memphis Grizzlies Under 227.5",
+                                    "odds": -110,
+                                    "edge": 0.03578343845549081,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Milwaukee Bucks vs Memphis Grizzlies Under 227.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Boston Celtics -8.5",
+                                    "odds": -110,
+                                    "edge": 0.0388578261647905,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Boston Celtics -8.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Jazz +10",
+                                    "odds": -110,
+                                    "edge": 0.0388578261647905,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Jazz +10"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Charlotte Hornets vs Orlando Magic Over 230.5",
+                                    "odds": -110,
+                                    "edge": 0.032296626340775236,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Charlotte Hornets vs Orlando Magic Over 230.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAB",
+                                    "selection": "New Mexico +2.5",
+                                    "odds": -110,
+                                    "edge": 0.033731151194799525,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "New Mexico +2.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Orlando Magic -5.5",
+                                    "odds": -110,
+                                    "edge": 0.032296626340775236,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Orlando Magic -5.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Miami Heat +2.5",
+                                    "odds": -110,
+                                    "edge": 0.04051406042916428,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Miami Heat +2.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Portland Trail Blazers +2",
+                                    "odds": -110,
+                                    "edge": 0.032296626340775236,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Portland Trail Blazers +2"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Charlotte Hornets +6",
+                                    "odds": -110,
+                                    "edge": 0.04051406042916428,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Charlotte Hornets +6"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Wizards +7.5",
+                                    "odds": -110,
+                                    "edge": 0.030010549795059904,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Wizards +7.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAF",
+                                    "selection": "UTSA -5",
+                                    "odds": -110,
+                                    "edge": 0.05030112323306857,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "UTSA -5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAB",
+                                    "selection": "Minnesota -1",
+                                    "odds": -110,
+                                    "edge": 0.04242212431771408,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "Minnesota -1"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "LA Clippers -1.5",
+                                    "odds": -110,
+                                    "edge": 0.042083689144679415,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": 0.09,
+                                    "result": "WIN",
+                                    "match": "LA Clippers -1.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Suns vs Pelicans Over 239",
+                                    "odds": -110,
+                                    "edge": 0.0388578261647905,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": -0.1,
+                                    "result": "LOSS",
+                                    "match": "Suns vs Pelicans Over 239"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Chicago Bulls vs Philadelphia 76ers Over 239.5",
+                                    "odds": -110,
+                                    "edge": 0.03521842615944992,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": -0.1,
+                                    "result": "LOSS",
+                                    "match": "Chicago Bulls vs Philadelphia 76ers Over 239.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Hornets vs Magic Over 230",
+                                    "odds": -110,
+                                    "edge": 0.042083689144679415,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": -0.1,
+                                    "result": "LOSS",
+                                    "match": "Hornets vs Magic Over 230"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Heat vs Hawks Over 247.5",
+                                    "odds": -110,
+                                    "edge": 0.0388578261647905,
+                                    "units": 0.1,
+                                    "wager": 0.1,
+                                    "profit": -0.1,
+                                    "result": "LOSS",
+                                    "match": "Heat vs Hawks Over 247.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Chicago Bulls vs Philadelphia 76ers Over 239.5",
+                                    "odds": -110,
+                                    "edge": 0.049787370931534514,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": -0.2,
+                                    "result": "LOSS",
+                                    "match": "Chicago Bulls vs Philadelphia 76ers Over 239.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAF",
+                                    "selection": "New Mexico +2.5",
+                                    "odds": -102,
+                                    "edge": 0.07654683641081206,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": -0.2,
+                                    "result": "LOSS",
+                                    "match": "New Mexico +2.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Pacers +9",
+                                    "odds": -110,
+                                    "edge": 0.048864333402542814,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": -0.2,
+                                    "result": "LOSS",
+                                    "match": "Pacers +9"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "76ers +1",
+                                    "odds": -110,
+                                    "edge": 0.05030112323306857,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": -0.2,
+                                    "result": "LOSS",
+                                    "match": "76ers +1"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Pacers +8.5",
+                                    "odds": -110,
+                                    "edge": 0.04614797092619394,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": -0.2,
+                                    "result": "LOSS",
+                                    "match": "Pacers +8.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Magic -6.5",
+                                    "odds": -110,
+                                    "edge": 0.05120216664813815,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": -0.2,
+                                    "result": "LOSS",
+                                    "match": "Magic -6.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Celtics vs Pacers Under 222",
+                                    "odds": -110,
+                                    "edge": 0.051735648087092745,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": -0.2,
+                                    "result": "LOSS",
+                                    "match": "Celtics vs Pacers Under 222"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAB",
+                                    "selection": "New Mexico +2.5",
+                                    "odds": -110,
+                                    "edge": 0.0626454637164161,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": -0.2,
+                                    "result": "LOSS",
+                                    "match": "New Mexico +2.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Hawks -2.5",
+                                    "odds": -110,
+                                    "edge": 0.06266519285383676,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": -0.2,
+                                    "result": "LOSS",
+                                    "match": "Hawks -2.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAB",
+                                    "selection": "Minnesota -3",
+                                    "odds": -110,
+                                    "edge": 0.0650530542646135,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": -0.2,
+                                    "result": "LOSS",
+                                    "match": "Minnesota -3"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NBA",
+                                    "selection": "Tyrese Maxey: Pts Over 27.5",
+                                    "odds": -110,
+                                    "edge": 0.06556680656614755,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": -0.2,
+                                    "result": "LOSS",
+                                    "match": "Tyrese Maxey: Pts Over 27.5"
+                        },
+                        {
+                                    "date": "12/26",
+                                    "league": "NCAAF",
+                                    "selection": "New Mexico +2.5",
+                                    "odds": -102,
+                                    "edge": 0.08168747873589544,
+                                    "units": 0.2,
+                                    "wager": 0.2,
+                                    "profit": -0.2,
+                                    "result": "LOSS",
+                                    "match": "New Mexico +2.5"
+                        }
+            ]
+};
+
+        function hydrate() {
+            // Stats
+            document.getElementById('stats-roi').textContent = DATA.stats.roi.toFixed(1) + '%';
+            document.getElementById('header-net').textContent = (DATA.stats.net_units >= 0 ? '+' : '') + DATA.stats.net_units.toFixed(2) + 'u';
+            document.getElementById('stats-winrate').textContent = DATA.stats.win_rate.toFixed(1) + '%';
+            document.getElementById('stats-record').textContent = DATA.stats.record.replace(/-/g, '/');
+
+            // Yesterday
+            document.getElementById('y-date-label').textContent = DATA.yesterday.date;
+            document.getElementById('y-record').textContent = DATA.yesterday.record;
+            document.getElementById('y-winpct').textContent = DATA.yesterday.win_pct.toFixed(1) + '%';
+            document.getElementById('y-roi').textContent = (DATA.yesterday.roi >= 0 ? '+' : '') + DATA.yesterday.roi.toFixed(1) + '%';
+            document.getElementById('y-net').textContent = (DATA.yesterday.net >= 0 ? '+' : '') + DATA.yesterday.net.toFixed(2) + 'u';
+
+            // Ledger
+            const tbody = document.getElementById('ledger-body');
+            tbody.innerHTML = DATA.history.map(row => `
+                <tr class="group hover:bg-zinc-900/80 transition-colors">
+                    <td class="py-3 pl-4 text-zinc-500 text-xs">${row.date} <span class="text-zinc-600">${row.league}</span></td>
+                    <td class="py-3 font-medium text-white group-hover:text-diamond-blue transition-colors">${row.selection}</td>
+                    <td class="py-3 text-right text-zinc-400">${row.odds > 0 ? '+' + row.odds : row.odds}</td>
+                    <td class="py-3 pl-8 text-zinc-500">${row.units.toFixed(1)}u</td>
+                    <td class="py-3 text-right font-bold ${row.result === 'WIN' ? 'text-diamond-blue' : 'text-warning-orange'}">${row.result}</td>
+                    <td class="py-3 text-right pr-4 font-bold ${row.profit > 0 ? 'text-white' : 'text-zinc-600'}">
+                        ${row.profit > 0 ? '+' : ''}${row.profit.toFixed(2)}u
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        window.onload = hydrate;
     </script>
 </body>
+
 </html>

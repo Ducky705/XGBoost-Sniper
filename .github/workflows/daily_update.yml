@@ -34,12 +34,12 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-        run: python monitor.py
+        run: python scripts/monitor.py
 
       - name: Commit and Push Changes
         run: |
           git config --global user.name "SniperBot"
           git config --global user.email "bot@noreply.github.com"
-          git add assets/*.png docs/assets/*.png README.md LATEST_ACTION.md docs/diamond.html
+          git add .
           git commit -m "📈 Auto-Update: Daily Dashboard" || echo "No changes to commit"
           git push

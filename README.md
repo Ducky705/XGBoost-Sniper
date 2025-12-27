@@ -70,13 +70,25 @@ This project is not just code; it is a documented research experiment.
 
 ## 📂 System Architecture
 
-*   **`monitor.py`**: The central nervous system. Runs daily on GitHub Actions to:
-    1.  Fetch fresh odds/results from Supabase.
-    2.  Generate features for both V1 and V2.
-    3.  Load the dual models (`models/v1_pyrite.pkl` and `models/v2_diamond.pkl`).
-    4.  Simulate betting strategies and update this README.
-*   **`research/`**: Jupyter notebooks containing the training logic and "Auto-Tuner" grid search.
-*   **`assets/`**: Auto-generated charts and visualizations.
+The project has been reorganized for modularity and professional maintenance:
+
+*   **`src/`**: Core shared modules.
+    *   `pipeline.py`: Centralized Supabase data fetching and feature engineering.
+    *   `models.py`: Encapsulated simulation logic for V1, V2, and V3 models.
+*   **`scripts/`**: Executable orchestration and asset hub.
+    *   `monitor.py`: The daily operations script. Orchestrates data flow and updates reports.
+    *   `generate_assets.py`: Central hub for all visual assets and dashboard data injection.
+*   **`models/`**: Serialized XGBoost models and configuration files.
+*   **`docs/`**: Web application files (HTML/CSS) and research methodology.
+*   **`research/`**: Original research notebooks and UI mockups.
+*   **`tools/`**: Auxiliary utility scripts.
+
+## 🚀 Usage
+
+To run the full daily cycle (data sync, simulation, and asset generation):
+```bash
+python scripts/monitor.py
+```
 
 ## 📝 Latest Daily Action
 [👉 Click here to view the Daily Log (LATEST_ACTION.md)](./LATEST_ACTION.md)

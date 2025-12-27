@@ -43,7 +43,6 @@
 | NBA | Hornets +6 | -110 | 0.2 | ✅ | +0.18u |
 | NCAAB | Minnesota -1 | -110 | 0.1 | ✅ | +0.09u |
 | NBA | LA Clippers -1.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Portland Trail Blazers +2 | -110 | 0.1 | ✅ | +0.09u |
 | NBA | Hornets vs Magic Over 230 | -110 | 0.1 | ❌ | -0.10u |
 | NBA | Miami Heat +2.5 | -110 | 0.1 | ✅ | +0.09u |
 | NBA | Charlotte Hornets +6 | -110 | 0.1 | ✅ | +0.09u |
@@ -59,12 +58,11 @@
 | NBA | Chicago Bulls vs Philadelphia 76ers Over 239.5 | -110 | 0.1 | ❌ | -0.10u |
 | NCAAB | New Mexico +2.5 | -110 | 0.1 | ✅ | +0.09u |
 | NBA | Orlando Magic -5.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Charlotte Hornets vs Orlando Magic Over 230.5 | -110 | 0.1 | ✅ | +0.09u |
 | NBA | Portland Trail Blazers +2 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Charlotte Hornets vs Orlando Magic Over 230.5 | -110 | 0.1 | ✅ | +0.09u |
 | NCAAB | Minnesota -1 | -110 | 0.1 | ✅ | +0.09u |
 | NBA | Clippers -2.5 | -110 | 0.1 | ✅ | +0.09u |
 | NBA | Wizards +7.5 | -110 | 0.1 | ✅ | +0.09u |
-**Daily PnL: +3.58 Units**
 
 ### V1 Pyrite Action
 | LEAGUE | PICK | ODDS | UNIT | RES | PROFIT |
@@ -75,7 +73,8 @@
 | NCAAB | New Mexico +2.5 | -105 | 4.0 | ✅ | +3.83u |
 | NCAAB | Minnesota ML | -125 | 0.5 | ✅ | +0.44u |
 | NCAAF | Central Michigan +11.5 | -110 | 0.2 | ✅ | +0.15u |
-| NCAAF | Florida International vs UTSA Over 60 | -109 | 1.1 | ✅ | +0.99u |
+| NCAAF | Florida International vs UTSA Over 60 | -109 | 0.9 | ✅ | +0.84u |
+| NCAAF | Florida International vs UTSA Over 60.0 | -109 | 0.9 | ✅ | +0.84u |
 | NCAAF | Florida International vs UTSA Over 59.5 | -107 | 4.0 | ✅ | +3.71u |
 | NBA | Miami Heat vs Atlanta Hawks Over 242.5 | -110 | 0.3 | ✅ | +0.24u |
 | NBA | Milwaukee Bucks vs Memphis Grizzlies Under 227.5 | -110 | 0.8 | ✅ | +0.69u |
@@ -178,5 +177,4 @@
 | NCAAB | Minnesota -1.5 | -110 | 1.7 | ✅ | +1.51u |
 | NBA | Heat +2.5 | -110 | 1.7 | ✅ | +1.57u |
 | NBA | Pistons vs Jazz Over 243 | -110 | 2.1 | ✅ | +1.88u |
-**Daily PnL: +106.30 Units**
 

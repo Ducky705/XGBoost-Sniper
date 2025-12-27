@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE QUARRY // OBSIDIAN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'void': '#020202',
+                        'panel': '#080808',
+                        'border-dim': '#1A1A1A',
+                        'obsidian-accent': '#7c3aed',
+                        'obsidian-glow': '#8b5cf6',
+                        'obsidian-dim': '#4c1d95',
+                        'glass-border': 'rgba(124, 58, 237, 0.2)',
+                        'ghost': '#444444',
+                        'warning-red': '#ef4444',
+                        'success-green': '#10b981'
+                    },
+                    fontFamily: {
+                        'sans': ['"Space Grotesk"', 'sans-serif'],
+                        'mono': ['"JetBrains Mono"', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'ticker': 'ticker 30s linear infinite',
+                        'slide-up-fade': 'slide-up-fade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'fog': 'fog 10s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        ticker: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        },
+                        'slide-up-fade': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fog: {
+                            '0%, 100%': { opacity: 0.3, transform: 'scale(1)' },
+                            '50%': { opacity: 0.5, transform: 'scale(1.1)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #020202;
+            color: #E2E2E2;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #080808;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4c1d95;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+        }
+
+        /* Glass Panel Styling */
+        .glass-panel {
+            background: rgba(8, 8, 8, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(124, 58, 237, 0.15);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(124, 58, 237, 0.5);
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Purple Sheen */
+        .glass-panel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.05), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.5s ease;
+            pointer-events: none;
+        }
+
+        .glass-panel:hover::before {
+            left: 100%;
+            transition: left 0.7s ease;
+        }
+
+        /* Obsidian Shard Decoration */
+        .shard-highlight {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 20px 20px;
+            border-color: transparent transparent #7c3aed transparent;
+            opacity: 0;
+            transition: opacity 0.3s;
+            bottom: 0;
+            right: 0;
+        }
+
+        .glass-panel:hover .shard-highlight {
+            opacity: 1;
+        }
+
+        .chart-img {
+            width: 100%;
+            height: auto;
+            filter: contrast(110%) brightness(100%) saturate(110%) hue-rotate(0deg);
+            /* Subtle adjust to match purple */
+        }
+
+        .chart-container {
+            overflow: hidden;
+            background: rgba(5, 5, 5, 0.8);
+        }
+
+        /* Custom Cursor */
+        body {
+            cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4L16 11M16 28L16 21M4 16L11 16M28 16L21 16" stroke="%237c3aed" stroke-width="2" stroke-linecap="square"/><rect x="15.5" y="15.5" width="1" height="1" fill="%237c3aed" opacity="0.5"/></svg>') 16 16, auto;
+        }
+
+        a,
+        button,
+        [role="button"] {
+            cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4L16 11M16 28L16 21M4 16L11 16M28 16L21 16" stroke="%238b5cf6" stroke-width="2" stroke-linecap="square"/><circle cx="16" cy="16" r="2" fill="%238b5cf6"/></svg>') 16 16, pointer;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen relative overflow-x-hidden selection:bg-obsidian-accent selection:text-white">
+    <canvas id="bg-canvas"></canvas>
+    <div class="noise"></div>
+
+    <!-- TICKER (Top) -->
+    <div
+        class="fixed top-0 w-full bg-void text-obsidian-glow font-mono text-[10px] font-bold py-1 z-40 overflow-hidden whitespace-nowrap border-b border-obsidian-dim/30">
+        <div class="inline-block animate-ticker">
+            OBSIDIAN V3 ONLINE // HIGH-FIDELITY ENVIRONMENT // VOLCANIC ACTIVATION DETECTED // ROI TARGET: MAXIMIZED //
+            OBSIDIAN V3 ONLINE // HIGH-FIDELITY ENVIRONMENT // VOLCANIC ACTIVATION DETECTED // ROI TARGET: MAXIMIZED //
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-16 pb-20 px-4 sm:px-6 relative z-10">
+
+        <!-- HEADER -->
+        <header
+            class="mb-16 flex flex-col md:flex-row justify-between items-end border-b border-border-dim pb-8 opacity-0 animate-slide-up-fade"
+            style="animation-delay: 0ms;">
+            <div>
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-2 h-2 bg-obsidian-accent rounded-sm animate-pulse-slow"></div>
+                    <span class="font-mono text-xs text-obsidian-glow tracking-[0.2em] uppercase">The Quarry // System
+                        V3</span>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-bold tracking-tighter text-white mb-2">OBSIDIAN</h1>
+                <div class="flex items-center gap-4">
+                    <span
+                        class="px-2 py-1 bg-obsidian-dim/20 border border-obsidian-dim text-obsidian-glow text-xs font-mono rounded">BUILD:
+                        3.0.1</span>
+                    <p class="font-mono text-zinc-500 text-sm uppercase tracking-wide">High-Precision Straight Bet
+                        Sniper
+                    </p>
+                </div>
+            </div>
+            <div class="text-right mt-8 md:mt-0">
+                <div id="stat-net-absolute"
+                    class="font-mono text-5xl font-bold text-obsidian-accent glow-text mb-1 tracking-tight">--</div>
+                <div class="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">Net Alpha Generated</div>
+            </div>
+        </header>
+
+        <!-- KPI COMMAND DECK -->
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-20">
+            <!-- ROI -->
+            <div class="glass-panel p-8 flex flex-col justify-between h-40 opacity-0 animate-slide-up-fade group"
+                style="animation-delay: 100ms;">
+                <div class="shard-highlight"></div>
+                <div class="flex justify-between items-start">
+                    <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">ROI</span>
+                    <div class="text-obsidian-dim/50 group-hover:text-obsidian-accent transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <div id="stat-roi" class="text-4xl font-bold text-white tracking-tight">--%</div>
+                    <div class="w-full bg-zinc-900 h-1 mt-3 rounded-full overflow-hidden">
+                        <div id="roi-bar" class="bg-obsidian-accent h-full shadow-[0_0_10px_currentColor]"
+                            style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Win Rate -->
+            <div class="glass-panel p-8 flex flex-col justify-between h-40 opacity-0 animate-slide-up-fade group"
+                style="animation-delay: 200ms;">
+                <div class="shard-highlight"></div>
+                <div class="flex justify-between items-start">
+                    <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Win Rate</span>
+                    <div class="text-obsidian-dim/50 group-hover:text-obsidian-accent transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <div id="stat-winrate" class="text-4xl font-bold text-white tracking-tight">--%</div>
+                    <div class="text-[10px] font-mono text-zinc-600 mt-2">SAMPLE SIZE: <span id="stat-sample"
+                            class="text-zinc-400">0</span></div>
+                </div>
+            </div>
+
+            <!-- Record -->
+            <div class="glass-panel p-8 flex flex-col justify-between h-40 opacity-0 animate-slide-up-fade group"
+                style="animation-delay: 300ms;">
+                <div class="shard-highlight"></div>
+                <div class="flex justify-between items-start">
+                    <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Record</span>
+                    <div class="text-obsidian-dim/50 group-hover:text-obsidian-accent transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <div id="stat-record" class="text-3xl font-bold text-white font-mono tracking-tight">--</div>
+                    <div class="text-[10px] font-mono text-zinc-600 mt-2">VOLUME: <span id="stat-bets-day"
+                            class="text-zinc-400">0.0/day</span></div>
+                </div>
+            </div>
+
+            <!-- Status -->
+            <div class="glass-panel p-8 flex flex-col justify-between h-40 opacity-0 animate-slide-up-fade group"
+                style="animation-delay: 400ms;">
+                <div class="flex justify-between items-start">
+                    <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Status</span>
+                    <div class="flex items-center gap-2">
+                        <div class="text-obsidian-dim/50 group-hover:text-obsidian-accent transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-obsidian-glow tracking-wider">ACTIVE</div>
+                    <div class="text-[10px] font-mono text-zinc-500 mt-2">ARCH: XGB-V3</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISUAL CENTER (Charts) -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+            <!-- Chart 1: Curve -->
+            <div class="opacity-0 animate-slide-up-fade" style="animation-delay: 500ms;">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="font-sans text-xl font-bold text-white tracking-tight uppercase flex items-center gap-2">
+                        <span class="text-obsidian-accent">///</span> Performance Vector
+                    </h2>
+                </div>
+                <div class="glass-panel p-2 chart-container group">
+                    <img src="assets/obsidian_curve.png" alt="Cumulative Profit"
+                        class="chart-img opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
+            </div>
+
+            <!-- Chart 2: Comparison -->
+            <div class="opacity-0 animate-slide-up-fade" style="animation-delay: 600ms;">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="font-sans text-xl font-bold text-white tracking-tight uppercase flex items-center gap-2">
+                        <span class="text-obsidian-accent">///</span> Model Hierarchy
+                    </h2>
+                </div>
+                <div class="glass-panel p-2 chart-container group">
+                    <img src="assets/obsidian_comparison.png" alt="Algo Comparison"
+                        class="chart-img opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
+            </div>
+        </section>
+
+        <!-- LEDGER TERMINAL -->
+        <section class="opacity-0 animate-slide-up-fade" style="animation-delay: 700ms;">
+            <div class="flex items-center justify-between mb-6 border-b border-border-dim pb-4">
+                <h2 class="font-sans text-xl font-bold text-white tracking-tight uppercase">
+                    <span class="text-zinc-600 mr-2">LOG //</span> Recent Execution
+                </h2>
+                <div class="flex gap-4 font-mono text-[10px] uppercase text-zinc-500">
+                    <div>Date: <span id="y-date-v3" class="text-zinc-300">--</span></div>
+                    <div>Session ROI: <span id="y-roi-v3" class="text-obsidian-glow">--</span></div>
+                    <div>Session Net: <span id="y-net-v3" class="text-obsidian-glow">--</span></div>
+                </div>
+            </div>
+
+            <!-- Hidden elements for hydration script compatibility if they aren't used in UI -->
+            <div class="hidden">
+                <span id="current-date"></span>
+                <span id="y-record-v3"></span>
+            </div>
+
+            <div class="overflow-x-auto glass-panel rounded-lg">
+                <table class="w-full font-mono text-xs text-left">
+                    <thead class="text-zinc-500 border-b border-white/5 bg-black/40 uppercase">
+                        <tr>
+                            <th class="py-4 pl-6">Sport</th>
+                            <th class="py-4">Contract</th>
+                            <th class="py-4 text-right">Odds</th>
+                            <th class="py-4 text-right">Edge</th>
+                            <th class="py-4 pl-8">Units</th>
+                            <th class="py-4 text-right pr-6">P&L</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ledger-body-v3" class="divide-y divide-white/5 text-zinc-400">
+                        <tr>
+                            <td colspan="6" class="py-8 text-center text-zinc-700 italic">
+                                Initializing secure connection...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer
+            class="mt-32 border-t border-zinc-900 pt-8 flex flex-col items-center text-[10px] font-mono text-zinc-700 uppercase tracking-widest gap-2">
+            <div>The Quarry // Obsidian V3</div>
+            <div>Experimental High-Fidelity Network</div>
+        </footer>
+    </div>
+
+    <script>
+        // --- VOID PARTICLE FX ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+
+        const particles = [];
+        const particleCount = 60;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        class Ash {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = height + Math.random() * 100;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedY = Math.random() * 0.5 + 0.2;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.drift = (Math.random() - 0.5) * 0.5;
+            }
+
+            update() {
+                this.y -= this.speedY;
+                this.x += this.drift;
+                if (this.y < -10) this.reset();
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(124, 58, 237, ${this.opacity * 0.2})`; // Subtle purple ash
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            resize();
+            for (let i = 0; i < particleCount; i++) particles.push(new Ash());
+            animate();
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Subtle gradient background
+            const gradient = ctx.createLinearGradient(0, height, 0, 0);
+            gradient.addColorStop(0, 'rgba(20, 0, 30, 0.4)');
+            gradient.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        window.onload = () => {
+            initParticles();
+            hydrate(); // Call hydration on load
+        };
+
+        // --- DATA HYDRATION (PRESERVED LOGIC) ---
+        // This object is usually injected by the backend script.
+        // We initialize it with mocks for fallback visualization.
+        const DATA = {
+            "v3": {
+                        "roi": 0.0,
+                        "winrate": 0.0,
+                        "sample": 0,
+                        "record": "0/0/0",
+                        "bets_day": 0,
+                        "net": 0.0
+            },
+            "v2": {
+                        "roi": 14.833327999054156
+            },
+            "v1": {
+                        "roi": 14.112585211739722
+            },
+            "yesterday_v3": null
+};
+
+        function hydrate() {
+            // Sidebar/Header KPIs
+            if (DATA.v3) {
+                const roiEl = document.getElementById('stat-roi');
+                if (roiEl) roiEl.textContent = (DATA.v3.roi >= 0 ? '+' : '') + DATA.v3.roi.toFixed(1) + '%';
+
+                const roiBar = document.getElementById('roi-bar');
+                if (roiBar) {
+                    const roiVal = DATA.v3.roi;
+                    const roiWidth = Math.min(Math.max(roiVal, 0), 100);
+                    roiBar.style.width = roiWidth + '%';
+                }
+
+                const wrEl = document.getElementById('stat-winrate');
+                if (wrEl) wrEl.textContent = DATA.v3.winrate.toFixed(1) + '%';
+
+                const sampleEl = document.getElementById('stat-sample');
+                if (sampleEl) sampleEl.textContent = DATA.v3.sample;
+
+                const recEl = document.getElementById('stat-record');
+                if (recEl) {
+                    const [w, l, t] = DATA.v3.record.split('/');
+                    recEl.textContent = `${w}-${l}-${t}`;
+                }
+
+                const volEl = document.getElementById('stat-bets-day');
+                if (volEl) volEl.textContent = DATA.v3.bets_day.toFixed(1) + ' / day';
+
+                const netEl = document.getElementById('stat-net-absolute');
+                if (netEl) netEl.textContent = (DATA.v3.net >= 0 ? '+' : '') + DATA.v3.net.toFixed(2) + 'u';
+            }
+
+            // Yesterday / Ledger Section
+            const y = DATA.yesterday_v3;
+            if (y) {
+                const dateEl = document.getElementById('y-date-v3');
+                if (dateEl) dateEl.textContent = y.date;
+
+                // Compatibility hidden fields
+                const currDateEl = document.getElementById('current-date');
+                if (currDateEl) currDateEl.textContent = y.date;
+                const recV3 = document.getElementById('y-record-v3');
+                if (recV3) recV3.textContent = y.record;
+
+                const roiV3 = document.getElementById('y-roi-v3');
+                if (roiV3) roiV3.textContent = (y.roi >= 0 ? '+' : '') + y.roi.toFixed(1) + '%';
+
+                const netV3 = document.getElementById('y-net-v3');
+                if (netV3) netV3.textContent = (y.net >= 0 ? '+' : '') + y.net.toFixed(2) + 'u';
+
+                // Ledger Body
+                const tbody = document.getElementById('ledger-body-v3');
+                if (tbody && y.history && y.history.length > 0) {
+                    tbody.innerHTML = y.history.map(row => `
+                        <tr class="group hover:bg-white/5 transition-colors">
+                            <td class="py-4 pl-6 text-zinc-500 text-xs font-mono">${row.league}</td>
+                            <td class="py-4 text-white font-medium group-hover:text-obsidian-accent transition-colors">${row.selection}</td>
+                            <td class="py-4 text-right text-zinc-400">${row.odds > 0 ? '+' + row.odds : row.odds}</td>
+                            <td class="py-4 text-right text-obsidian-accent">${(row.edge * 100).toFixed(1)}%</td>
+                            <td class="py-4 pl-8 text-zinc-500">${row.units.toFixed(1)}u</td>
+                            <td class="py-4 text-right pr-6 font-bold ${row.profit > 0 ? 'text-obsidian-glow' : (row.profit < 0 ? 'text-warning-red' : 'text-zinc-600')}">
+                                ${row.profit > 0 ? '+' : ''}${row.profit.toFixed(2)}u
+                            </td>
+                        </tr>
+                    `).join('');
+                } else if (tbody) {
+                    tbody.innerHTML = '<tr><td colspan="6" class="py-8 text-center text-zinc-600">No signals detected for yesterday.</td></tr>';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
