@@ -14,8 +14,8 @@ XGBoost-Sniper is an advanced, algorithmic trading system engineered to identify
 
 | Model | Strategy | Status | Daily Volume | ROI |
 | :--- | :--- | :--- | :--- | :--- |
-| **V1 Pyrite** | High-Variance / Volume | 🟡 Legacy | {vol_v1} | **{r1:+.1%}** |
-| **V2 Diamond** | Precision / Sniper | 🟢 **Active** | {vol_v2} | **{r2:+.1%}** |
+| **V1 Pyrite** | High-Variance / Volume | 🟡 Legacy | High (~135 bets/day) | **+14.1%** |
+| **V2 Diamond** | Precision / Sniper | 🟢 **Active** | High (~67 bets/day) | **+14.8%** |
 | **[V3 Obsidian](https://ducky705.github.io/XGBoost-Sniper/selector.html)** | Deep Learning / Hybrid | 🟣 **Alpha** | (Training) | **N/A** |
 
 > [!IMPORTANT]
@@ -31,7 +31,7 @@ This repository documents the transition from a raw statistical probability mode
 
 ### Phase 1: Pyrite (The "Accuracy Fallacy")
 Our initial prototype, **Pyrite**, operated on a simple premise: *bet on everything with >50% probability*.
-*   **Result**: While it achieved a {w1:.1%} win rate, it lost money to the vigorish (fees) due to poor calibration on favorites.
+*   **Result**: While it achieved a 56.6% win rate, it lost money to the vigorish (fees) due to poor calibration on favorites.
 *   **Lesson**: Accuracy ≠ Profitability.
 
 ### Phase 2: Diamond (The "Sniper" Approach)
