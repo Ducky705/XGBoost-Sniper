@@ -51,7 +51,8 @@
             background-color: #020202;
             color: #E2E2E2;
             -webkit-font-smoothing: antialiased;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             /* Canvas covers bg */
         }
 
@@ -190,8 +191,9 @@
     </header>
 
     <!-- Main Selection Grid -->
-    <main class="relative z-10 flex-1 flex items-center justify-center p-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-7xl h-[600px] md:h-[60vh] glass-card-stage">
+    <main class="relative z-10 flex-1 flex items-center justify-center p-8 pb-20">
+        <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-7xl min-h-[600px] md:h-[60vh] h-auto glass-card-stage">
 
             <!-- PYRITE CARD -->
             <a href="pyrite.html"
