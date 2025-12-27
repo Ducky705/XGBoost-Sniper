@@ -103,8 +103,6 @@ jspm_packages/
 # Ignore all .pkl files...
 *.pkl
 # ...but DO NOT ignore these specific model files.
-!models/v1_pyrite.pkl
-!models/v2_diamond.pkl
 
 *.joblib
 *.h5

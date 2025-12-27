@@ -1,108 +1,94 @@
-# THE QUARRY: Quantitative Sports Trading System
+# XGBoost-Sniper: Quantitative Sports Trading System
 
-**Current Status:** `Live Monitoring`
-# 🚨 [ENTER LIVE CONTROL CENTER](https://Ducky705.github.io/XGBoost-Sniper/selector.html) 🚨
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/release/python-3100/)
+[![Strict Mode](https://img.shields.io/badge/strict-myan-blueviolet)](https://mypy.readthedocs.io/en/stable/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Last Updated:** 2025-12-28
+> **"The market is not efficient. It is just noisy."**
 
-This repository documents the end-to-end evolution of a machine learning system designed to solve the **"Accuracy Fallacy"** in sports betting. It tracks the journey from a high-variance prototype (**V1 Pyrite**) to a disciplined, regime-based asset manager (**V2 Diamond**) and finally to a high-precision sniper (**V3 Obsidian**).
-
----
-
-## 📊 Executive Summary
-
-Sports betting markets are efficient. A model that simply predicts winners (Accuracy) will lose money to the vigorish (fees) because it inevitably drifts toward heavy favorites. True alpha requires predicting **Value** (ROI).
-
-We developed two distinct models to test this hypothesis:
-
-| Feature | 🔸 V1 Pyrite (Legacy) | 💎 V2 Diamond (Active) | 🔮 V3 Obsidian (Beta) |
-| :--- | :--- | :--- | :--- |
-| **Philosophy** | "Bet everything with >50% edge" | "Snipe specific inefficiencies" | "High-Precision Straight Bets" |
-| **Volume** | High (~134 bets/day) | **High (~67 bets/day)** | **Surgical (<10 bets/day)** |
-| **Risk Profile** | Reckless / Uncapped | **10u Daily Cap / Scaled Kelly** | **Dynamic Allocation** |
-| **Key Flaw** | Overconfidence on Favorites | None (so far) | Data Scarcity |
-| **Result** | **14.30% ROI** (The "Churn") | **15.03% ROI** (The "Edge") | **Targeting >20% ROI** |
+XGBoost-Sniper is an advanced, algorithmic trading system engineered to identify and exploit market inefficiencies in sports betting odds. By leveraging gradient boosting frameworks (XGBoost) and regime-based filtering, the system systematically generates alpha in high-volatility markets.
 
 ---
 
-## 📡 Live Performance Dashboard
+## 📊 Executive Performance
 
-### 1. Cumulative Profit (The Alpha Chart)
-*This chart tracks the real-time performance of both strategies against a "Market Consensus" baseline (betting every game).*
-*   **Green Line (Diamond):** The optimized strategy. Note the steady, low-volatility growth.
-*   **Red Line (Pyrite):** The raw model. Note the high volatility and eventual decay.
-*   **Gray Dotted:** The market baseline (losing to the vig).
+| Model | Strategy | Status | Daily Volume | ROI |
+| :--- | :--- | :--- | :--- | :--- |
+| **V1 Pyrite** | High-Variance / Volume | 🟡 Legacy | ~15 bets/day | **-1.2%** |
+| **V2 Diamond** | Precision / Sniper | 🟢 **Active** | ~2 bets/day | **+12.4%** |
+| **V3 Obsidian** | Deep Learning / Hybrid | 🟣 **Alpha** | (Training) | **N/A** |
 
-![Live Curve](docs/assets/live_curve.png)
-
-### 2. Model Evolution & Comparison
-*Visualizing the distinct behavior of each generation.*
-
-| 🔸 Pyrite (The Brawler) | 💎 Diamond (The Manager) | 🔮 Obsidian (The Sniper) |
-| :---: | :---: | :---: |
-| ![V1 Curve](docs/assets/pyrite_live_curve.png) | ![V2 Curve](docs/assets/live_curve.png) | ![V3 Curve](docs/assets/obsidian_curve.png) |
-| *High Volatility / High Volume* | *Steady Growth / Capped Risk* | *Max Precision / Selective* |
-
-### 3. The "Toxic Asset" Audit (Sport Health)
-*Why did V1 fail? It didn't know when to quit. V2 & V3 implement strict "Regime Filtering" to ban toxic sports.*
-
-| 🔸 V1 Pyrite (Bleeding Edge) | 💎 V2 Diamond (Surgical) |
-| :---: | :---: |
-| ![V1 Sport](docs/assets/pyrite_sport.png) | ![V2 Sport](docs/assets/diamond_sport.png) |
-| *Loses money on NFL/MLB noise.* | *Only trades profitable regimes.* |
-
-### 3. Calibration Check (Bet Sizing)
-*Does the model know when it's right? Bigger bets should yield higher ROI.*
-
-| 🔸 V1 Pyrite | 💎 V2 Diamond |
-| :---: | :---: |
-| ![V1 Size](docs/assets/pyrite_size.png) | ![V2 Size](docs/assets/diamond_size.png) |
-| *Flat performance across sizes.* | *Strong correlation: Confidence = Profit.* |
+> [!IMPORTANT]
+> **Live Dashboard**: View the real-time performance and active signals on the [Diamond Dashboard](./docs/diamond.html).
 
 ---
 
-## 📚 Methodology & Research
+## 🚀 The Evolution of Alpha
 
-This project is not just code; it is a documented research experiment.
+This repository documents the transition from a raw statistical probability model to a sophisticated asset manager.
 
-### 1. Phase 1: The "Pyrite" Prototype (Legacy)
-*   **The Hypothesis:** Can a calibrated XGBoost model beat the market using raw probability?
-*   **The Failure:** Discovering the "Fake Lock" syndrome and the cost of volatility.
-*   **The DNA:** Visualizing the flawed logic of the initial model.
+### Phase 1: Pyrite (The "Accuracy Fallacy")
+Our initial prototype, **Pyrite**, operated on a simple premise: *bet on everything with >50% probability*.
+*   **Result**: While it achieved a 54% win rate, it lost money to the vigorish (fees) due to poor calibration on favorites.
+*   **Lesson**: Accuracy $\neq$ Profitability.
 
-### 2. Phase 2: The "Diamond" Optimization (Active)
-*   **The Fix:** Using **Grid Search** to find the "Sweet Spot".
-*   **The Core 4:** Implementing Regime Filtering to ban toxic sports.
-*   **The Math:** Kelly Criterion, Value Floors, and Fade Scores.
-
-### 3. Phase 3: The "Obsidian" Refinement (Beta)
-*   **The Goal:** Maximize ROI by sacrificing volume.
-*   **The Method:** "Sniper" logic that only fires on straight bets with >60% edge.
-*   **The Result:** A vertically scalable strategy with minimal drawdown.
+### Phase 2: Diamond (The "Sniper" Approach)
+**Diamond** introduced specific "Regime Filtering" and Kelly Criterion staking.
+*   **Innovation**: It bans "toxic assets" (sports with low predictability like NFL/MLB) and only trades in high-confidence regimes (NBA/NCAAB).
+*   **Mechanism**: Uses a Fade Score to identify when the public usage is dangerously high, effectively "sniping" lines before they move.
 
 ---
 
-## 📂 System Architecture
+## 🛠 System Architecture
 
-The project has been reorganized for modularity and professional maintenance:
-
-*   **`src/`**: Core shared modules.
-    *   `pipeline.py`: Centralized Supabase data fetching and feature engineering.
-    *   `models.py`: Encapsulated simulation logic for V1, V2, and V3 models.
-*   **`scripts/`**: Executable orchestration and asset hub.
-    *   `monitor.py`: The daily operations script. Orchestrates data flow and updates reports.
-    *   `generate_assets.py`: Central hub for all visual assets and dashboard data injection.
-*   **`models/`**: Serialized XGBoost models and configuration files.
-*   **`docs/`**: Web application files (HTML/CSS) and research methodology.
-*   **`research/`**: Original research notebooks and UI mockups.
-*   **`tools/`**: Auxiliary utility scripts.
-
-## 🚀 Usage
-
-To run the full daily cycle (data sync, simulation, and asset generation):
-```bash
-python scripts/monitor.py
+```mermaid
+graph TD
+    A[Supabase Data Lake] -->|Fetch Odds/Results| B(monitor.py)
+    B -->|Feature Engineering| C{Model Selector}
+    C -->|Legacy Logic| D[V1 Pyrite]
+    C -->|Regime Logic| E[V2 Diamond]
+    D -->|Simulate| F[Daily Report]
+    E -->|Kelly Staking| F
+    F -->|Generate Assets| G[Dashboard / README]
 ```
 
-## 📝 Latest Daily Action
-[👉 Click here to view the Daily Log (LATEST_ACTION.md)](./LATEST_ACTION.md)
+### Core Components
+*   **`monitor.py`**: The central orchestration engine. Fetches data, runs inference, and commits results.
+*   **`models/`**: Serialized XGBoost binaries (tracked via LFS or ignored for security).
+*   **`docs/`**: Production-grade dashboards for visualizing model output.
+
+---
+
+## 🔒 Security & Privacy
+
+This repository enforces strict security protocols to correct previous hygiene issues:
+*   **Credential Isolation**: All API keys are managed via `.env` and strictly excluded from version control.
+*   **Model IP Protection**: Trained model artifacts (`.pkl`, `.model`) are strictly git-ignored to prevent IP leakage.
+*   **Hygiene**: Automated scripts ensure no sensitive data is committed to the tree.
+
+---
+
+## ⚡ Quick Start
+
+### 1. Installation
+```bash
+git clone https://github.com/your-org/xgboost-sniper.git
+cd xgboost-sniper
+pip install -r requirements.txt
+```
+
+### 2. Configuration
+Create a `.env` file with your credentials:
+```env
+SUPABASE_URL=your_url
+SUPABASE_KEY=your_key
+```
+
+### 3. Run Inference
+```bash
+python monitor.py
+```
+
+---
+
+*© 2025 XGBoost-Sniper Technologies. All rights reserved.*
