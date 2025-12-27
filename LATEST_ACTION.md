@@ -63,6 +63,8 @@
 | NCAAB | Minnesota -1 | -110 | 0.1 | ✅ | +0.09u |
 | NBA | Clippers -2.5 | -110 | 0.1 | ✅ | +0.09u |
 | NBA | Wizards +7.5 | -110 | 0.1 | ✅ | +0.09u |
+**Daily PnL (Settled): +3.49 Units**
+
 
 ### V1 Pyrite Action
 | LEAGUE | PICK | ODDS | UNIT | RES | PROFIT |
@@ -177,4 +179,6 @@
 | NCAAB | Minnesota -1.5 | -110 | 1.7 | ✅ | +1.51u |
 | NBA | Heat +2.5 | -110 | 1.7 | ✅ | +1.57u |
 | NBA | Pistons vs Jazz Over 243 | -110 | 2.1 | ✅ | +1.88u |
+**Daily PnL (Settled): +106.98 Units**
+
 
