@@ -269,10 +269,10 @@ class DualMonitor:
         v1_df['profit'] = np.where(v1_df['outcome']==1, v1_df['wager_unit']*(v1_df['decimal_odds']-1), -v1_df['wager_unit'])
         
         self.generate_graphics(v1_df, v2_closed)
-        self.generate_diamond_page(v2_active, v2_closed)
+        self.generate_diamond_page(v2_active, v2_closed, v1_df)
         self.update_readme(v1_df, v2_closed)
 
-    def generate_diamond_page(self, active, closed):
+    def generate_diamond_page(self, active, closed, v1_closed=None):
         # 1. HEADLINE STATS
         total_profit = closed['profit'].sum()
         total_wager = closed['wager_unit'].sum()
@@ -336,6 +336,16 @@ class DualMonitor:
                     "profit": round(float(row['profit']), 2)
                 })
             
+        # Calculate average bets per day for V2 Diamond
+        v2_days = closed['pick_date'].nunique() if not closed.empty else 1
+        v2_avg_bets = round(len(closed) / v2_days) if v2_days > 0 else 0
+        
+        # Calculate average bets per day for V1 Pyrite  
+        v1_avg_bets = 0
+        if v1_closed is not None and not v1_closed.empty:
+            v1_days = v1_closed['pick_date'].nunique()
+            v1_avg_bets = round(len(v1_closed) / v1_days) if v1_days > 0 else 0
+        
         data = {
             "meta": {
                 "last_update": pd.Timestamp.now().strftime('%Y-%m-%d %H:%M UTC'),
@@ -346,6 +356,12 @@ class DualMonitor:
                 "net_units": round(total_profit, 2),
                 "record": f"{wins}-{losses}-{pushes}",
                 "win_rate": round((wins / (wins+losses))*100, 1) if (wins+losses) > 0 else 0
+            },
+            "volume": {
+                "v1_avg": v1_avg_bets,
+                "v2_avg": v2_avg_bets,
+                "v1_label": "Low" if v1_avg_bets <= 10 else "Medium" if v1_avg_bets <= 20 else "High" if v1_avg_bets <= 50 else "Very High",
+                "v2_label": "Low" if v2_avg_bets <= 10 else "Medium" if v2_avg_bets <= 20 else "High" if v2_avg_bets <= 50 else "Very High"
             },
             "yesterday": yesterday_stats,
             "active_signals": signals,
@@ -513,7 +529,7 @@ class DualMonitor:
                     </div>
                     <ul class="space-y-2 font-mono text-sm text-zinc-400">
                         <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Philosophy</span><span class="text-zinc-300">"Bet everything with &gt;50% edge"</span></li>
-                        <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Volume</span><span class="text-zinc-300">High (~15+ bets/day)</span></li>
+                        <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Volume</span><span class="text-zinc-300">{data["volume"]["v1_label"]} (~{data["volume"]["v1_avg"]} bets/day)</span></li>
                         <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Risk Profile</span><span class="text-warning-orange">Reckless / Uncapped</span></li>
                         <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Key Flaw</span><span class="text-warning-orange">Overconfidence on Favorites</span></li>
                     </ul>
@@ -532,7 +548,7 @@ class DualMonitor:
                     </div>
                     <ul class="space-y-2 font-mono text-sm text-zinc-400">
                         <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Philosophy</span><span class="text-zinc-300">"Snipe specific inefficiencies"</span></li>
-                        <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Volume</span><span class="text-zinc-300">Low (~5 bets/day)</span></li>
+                        <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Volume</span><span class="text-zinc-300">{data["volume"]["v2_label"]} (~{data["volume"]["v2_avg"]} bets/day)</span></li>
                         <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Risk Profile</span><span class="text-acid-lime">10u Daily Cap / Scaled Kelly</span></li>
                         <li class="flex justify-between group-hover:text-zinc-300 transition-colors"><span>Key Edge</span><span class="text-acid-lime">Regime Filtering + Value Floor</span></li>
                     </ul>

@@ -1,531 +1,513 @@
 {
   "meta": {
-    "last_update": "2025-12-18 01:08 UTC",
+    "last_update": "2025-12-27 11:45 UTC",
     "status": "NOMINAL"
   },
   "stats": {
-    "roi": 16.6,
-    "net_units": 29.12,
-    "record": "766-508-0",
-    "win_rate": 60.1
+    "roi": 15.0,
+    "net_units": 40.12,
+    "record": "1092-730-0",
+    "win_rate": 59.9
+  },
+  "volume": {
+    "v1_avg": 135,
+    "v2_avg": 67,
+    "v1_label": "Very High",
+    "v2_label": "Very High"
   },
   "yesterday": {
-    "record": "38-26-0",
-    "win_pct": 59.4,
-    "roi": 16.7,
-    "net": 1.62,
-    "date": "2025-12-16"
+    "record": "45-16-0",
+    "win_pct": 73.8,
+    "roi": 36.5,
+    "net": 3.58,
+    "date": "2025-12-26"
   },
   "active_signals": [],
   "history": [
     {
-      "date": "2025-12-16",
-      "match": "NCAAF - Jacksonville State ML",
-      "odds": 110.0,
-      "wager": 0.3,
+      "date": "2025-12-26",
+      "match": "NBA - Miami Heat +2.5",
+      "odds": -102.0,
+      "wager": 0.2,
       "result": "WIN",
-      "profit": 0.33
+      "profit": 0.2
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - DePaul +19.5",
+      "date": "2025-12-26",
+      "match": "NBA - Pistons vs Jazz Over 243",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - UT-Rio Grande Valley +2.5",
+      "date": "2025-12-26",
+      "match": "NCAAB - Minnesota -1.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Rider vs Delaware Under 132",
+      "date": "2025-12-26",
+      "match": "NBA - Hornets +6",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Towson vs Kansas Under 135",
+      "date": "2025-12-26",
+      "match": "NCAAB - Minnesota -2.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NBA - Knicks -2.5",
+      "date": "2025-12-26",
+      "match": "NBA - Hornets +6",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Canisius +22.0",
+      "date": "2025-12-26",
+      "match": "NBA - Toronto Raptors -6.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAF - Jacksonville State +2.5",
+      "date": "2025-12-26",
+      "match": "NBA - Pistons vs Jazz Over 243.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Oral Roberts vs Missouri State Under 142.5",
+      "date": "2025-12-26",
+      "match": "NBA - Wizards +8",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Oral Roberts vs Missouri State Under 142",
+      "date": "2025-12-26",
+      "match": "NBA - Heat +4",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAF - Jacksonville State +2.5",
+      "date": "2025-12-26",
+      "match": "NBA - Toronto Raptors -6.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Montana State -2.5",
+      "date": "2025-12-26",
+      "match": "NBA - Miami Heat +4",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Morehead State -2.5",
+      "date": "2025-12-26",
+      "match": "NBA - Heat +4",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAF - Jacksonville State +1.5",
+      "date": "2025-12-26",
+      "match": "NBA - Utah Jazz +10.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAF - Jacksonville State -3",
+      "date": "2025-12-26",
+      "match": "NBA - Phoenix Suns -5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Towson vs Kansas Under 136",
+      "date": "2025-12-26",
+      "match": "NCAAF - Minnesota -1.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NBA - Knicks -2.5",
+      "date": "2025-12-26",
+      "match": "NBA - Wizards +7.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAF - Jacksonville State +2.5",
+      "date": "2025-12-26",
+      "match": "NCAAB - Minnesota -1.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Oral Roberts vs Missouri State Under 142",
+      "date": "2025-12-26",
+      "match": "NCAAF - New Mexico vs Minnesota Over 43.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAF - South Carolina +12.5",
+      "date": "2025-12-26",
+      "match": "NCAAF - Florida International vs UTSA Over 61.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "WIN",
       "profit": 0.18
     },
     {
-      "date": "2025-12-16",
-      "match": "NBA - Spurs vs Knicks Over 233.5",
+      "date": "2025-12-26",
+      "match": "NBA - Celtics -6.5",
+      "odds": -110.0,
+      "wager": 0.2,
+      "result": "WIN",
+      "profit": 0.18
+    },
+    {
+      "date": "2025-12-26",
+      "match": "NBA - Wizards +9.5",
+      "odds": -110.0,
+      "wager": 0.2,
+      "result": "WIN",
+      "profit": 0.18
+    },
+    {
+      "date": "2025-12-26",
+      "match": "NCAAF - Northwestern -10.5",
+      "odds": -110.0,
+      "wager": 0.2,
+      "result": "WIN",
+      "profit": 0.18
+    },
+    {
+      "date": "2025-12-26",
+      "match": "NCAAF - Northwestern -10",
+      "odds": -110.0,
+      "wager": 0.2,
+      "result": "WIN",
+      "profit": 0.18
+    },
+    {
+      "date": "2025-12-26",
+      "match": "NBA - Milwaukee Bucks vs Memphis Grizzlies Under 227.5",
+      "odds": -110.0,
+      "wager": 0.2,
+      "result": "WIN",
+      "profit": 0.18
+    },
+    {
+      "date": "2025-12-26",
+      "match": "NCAAB - Minnesota -1",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Rider vs Delaware Under 134.5",
+      "date": "2025-12-26",
+      "match": "NBA - Hornets +6",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Lipscomb +33.5",
+      "date": "2025-12-26",
+      "match": "NBA - Memphis Grizzlies -5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Tarleton State vs Mississippi Valley State Over 146.5",
+      "date": "2025-12-26",
+      "match": "NBA - Bucks vs Grizzlies Over 227.5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAF - N. Colorado +25.5",
+      "date": "2025-12-26",
+      "match": "NBA - Boston Celtics -8.5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Oral Roberts +5",
+      "date": "2025-12-26",
+      "match": "NBA - Clippers -2.5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Rider vs Delaware Under 131.5",
+      "date": "2025-12-26",
+      "match": "NBA - Milwaukee Bucks vs Memphis Grizzlies Under 227.5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Connecticut -14.5",
+      "date": "2025-12-26",
+      "match": "NBA - Boston Celtics -8.5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - South Carolina vs Clemson Under 143",
+      "date": "2025-12-26",
+      "match": "NBA - Jazz +10",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Rider vs Delaware Under 131.5",
+      "date": "2025-12-26",
+      "match": "NBA - Portland Trail Blazers +2",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NBA - Spurs vs Knicks Over 233.5",
+      "date": "2025-12-26",
+      "match": "NCAAB - New Mexico +2.5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Rider vs Delaware Under 134.5",
+      "date": "2025-12-26",
+      "match": "NBA - Orlando Magic -5.5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Towson vs Kansas Under 135",
+      "date": "2025-12-26",
+      "match": "NBA - Miami Heat +2.5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NBA - Knicks -2.5",
+      "date": "2025-12-26",
+      "match": "NBA - Charlotte Hornets vs Orlando Magic Over 230.5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Morehead State -4",
+      "date": "2025-12-26",
+      "match": "NBA - Charlotte Hornets +6",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NBA - Spurs vs Knicks Over 231",
+      "date": "2025-12-26",
+      "match": "NBA - Wizards +7.5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAF - North Carolina -15",
+      "date": "2025-12-26",
+      "match": "NCAAF - UTSA -5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NHL - Blackhawks vs Maple Leafs Under 5.5",
+      "date": "2025-12-26",
+      "match": "NBA - LA Clippers -1.5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "WIN",
       "profit": 0.09
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Wright State +1",
+      "date": "2025-12-26",
+      "match": "NCAAB - Minnesota -1",
+      "odds": -110.0,
+      "wager": 0.1,
+      "result": "WIN",
+      "profit": 0.09
+    },
+    {
+      "date": "2025-12-26",
+      "match": "NBA - Portland Trail Blazers +2",
+      "odds": -110.0,
+      "wager": 0.1,
+      "result": "WIN",
+      "profit": 0.09
+    },
+    {
+      "date": "2025-12-26",
+      "match": "NBA - Suns vs Pelicans Over 239",
       "odds": -110.0,
       "wager": 0.1,
       "result": "LOSS",
       "profit": -0.1
     },
     {
-      "date": "2025-12-16",
-      "match": "NBA - Spurs +3",
-      "odds": -115.0,
-      "wager": 0.1,
-      "result": "LOSS",
-      "profit": -0.1
-    },
-    {
-      "date": "2025-12-16",
-      "match": "NCAAB - Delaware -8.5",
-      "odds": -118.0,
-      "wager": 0.1,
-      "result": "LOSS",
-      "profit": -0.1
-    },
-    {
-      "date": "2025-12-16",
-      "match": "NCAAB - Northwestern -16.5",
+      "date": "2025-12-26",
+      "match": "NBA - Chicago Bulls vs Philadelphia 76ers Over 239.5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "LOSS",
       "profit": -0.1
     },
     {
-      "date": "2025-12-16",
-      "match": "NHL - Avalanche vs Seattle Kraken Under 6",
+      "date": "2025-12-26",
+      "match": "NBA - Hornets vs Magic Over 230",
       "odds": -110.0,
       "wager": 0.1,
       "result": "LOSS",
       "profit": -0.1
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - NC Greensboro -6.0",
+      "date": "2025-12-26",
+      "match": "NBA - Heat vs Hawks Over 247.5",
       "odds": -110.0,
       "wager": 0.1,
       "result": "LOSS",
       "profit": -0.1
     },
     {
-      "date": "2025-12-16",
-      "match": "NBA - San Antonio Spurs +2.5",
-      "odds": -110.0,
-      "wager": 0.1,
-      "result": "LOSS",
-      "profit": -0.1
-    },
-    {
-      "date": "2025-12-16",
-      "match": "NCAAF - Troy -3",
-      "odds": -110.0,
-      "wager": 0.1,
-      "result": "LOSS",
-      "profit": -0.1
-    },
-    {
-      "date": "2025-12-16",
-      "match": "NBA - Spurs +3",
-      "odds": -110.0,
-      "wager": 0.1,
-      "result": "LOSS",
-      "profit": -0.1
-    },
-    {
-      "date": "2025-12-16",
-      "match": "NCAAB - Rhode Island -22",
-      "odds": -110.0,
-      "wager": 0.1,
-      "result": "LOSS",
-      "profit": -0.1
-    },
-    {
-      "date": "2025-12-16",
-      "match": "NCAAF - Louisville +3.5",
-      "odds": -110.0,
-      "wager": 0.1,
-      "result": "LOSS",
-      "profit": -0.1
-    },
-    {
-      "date": "2025-12-16",
-      "match": "NCAAB - Wright State -1.5",
-      "odds": -110.0,
-      "wager": 0.1,
-      "result": "LOSS",
-      "profit": -0.1
-    },
-    {
-      "date": "2025-12-16",
-      "match": "NCAAB - Cal Poly SLO +3.0",
-      "odds": -110.0,
-      "wager": 0.1,
-      "result": "LOSS",
-      "profit": -0.1
-    },
-    {
-      "date": "2025-12-16",
-      "match": "NCAAF - Troy vs Jacksonville State Over 47.5",
-      "odds": -110.0,
-      "wager": 0.1,
-      "result": "LOSS",
-      "profit": -0.1
-    },
-    {
-      "date": "2025-12-16",
-      "match": "NCAAB - Rhode Island -22",
+      "date": "2025-12-26",
+      "match": "NBA - Chicago Bulls vs Philadelphia 76ers Over 239.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "LOSS",
       "profit": -0.2
     },
     {
-      "date": "2025-12-16",
-      "match": "NBA - Spurs +3",
+      "date": "2025-12-26",
+      "match": "NCAAF - New Mexico +2.5",
+      "odds": -102.0,
+      "wager": 0.2,
+      "result": "LOSS",
+      "profit": -0.2
+    },
+    {
+      "date": "2025-12-26",
+      "match": "NBA - Pacers +9",
       "odds": -110.0,
       "wager": 0.2,
       "result": "LOSS",
       "profit": -0.2
     },
     {
-      "date": "2025-12-16",
-      "match": "NBA - Spurs +3",
+      "date": "2025-12-26",
+      "match": "NBA - 76ers +1",
       "odds": -110.0,
       "wager": 0.2,
       "result": "LOSS",
       "profit": -0.2
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Montana State vs Cal Poly Under 160.5",
+      "date": "2025-12-26",
+      "match": "NBA - Pacers +8.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "LOSS",
       "profit": -0.2
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Florida State +7",
+      "date": "2025-12-26",
+      "match": "NBA - Magic -6.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "LOSS",
       "profit": -0.2
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAF - Troy ML",
+      "date": "2025-12-26",
+      "match": "NBA - Celtics vs Pacers Under 222",
       "odds": -110.0,
       "wager": 0.2,
       "result": "LOSS",
       "profit": -0.2
     },
     {
-      "date": "2025-12-16",
-      "match": "NBA - Spurs vs Knicks Under 234.5",
+      "date": "2025-12-26",
+      "match": "NCAAB - New Mexico +2.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "LOSS",
       "profit": -0.2
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - Wright State +1",
+      "date": "2025-12-26",
+      "match": "NBA - Hawks -2.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "LOSS",
       "profit": -0.2
     },
     {
-      "date": "2025-12-16",
-      "match": "NBA - Spurs +3",
+      "date": "2025-12-26",
+      "match": "NCAAB - Minnesota -3",
       "odds": -110.0,
       "wager": 0.2,
       "result": "LOSS",
       "profit": -0.2
     },
     {
-      "date": "2025-12-16",
-      "match": "NBA - Spurs +3",
+      "date": "2025-12-26",
+      "match": "NBA - Tyrese Maxey: Pts Over 27.5",
       "odds": -110.0,
       "wager": 0.2,
       "result": "LOSS",
       "profit": -0.2
     },
     {
-      "date": "2025-12-16",
-      "match": "NCAAB - East Tennessee State vs North Carolina Over 150",
-      "odds": -110.0,
-      "wager": 0.2,
-      "result": "LOSS",
-      "profit": -0.2
-    },
-    {
-      "date": "2025-12-16",
-      "match": "NBA - Spurs +3",
-      "odds": -115.0,
+      "date": "2025-12-26",
+      "match": "NCAAF - New Mexico +2.5",
+      "odds": -102.0,
       "wager": 0.2,
       "result": "LOSS",
       "profit": -0.2
