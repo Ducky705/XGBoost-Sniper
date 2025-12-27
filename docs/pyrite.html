@@ -434,7 +434,7 @@
         // --- DATA HYDRATION (PRESERVED) ---
         const DATA = {
             "meta": {
-                        "last_update": "2025-12-27 23:44 UTC",
+                        "last_update": "2025-12-27 23:56 UTC",
                         "status": "LEGACY"
             },
             "stats": {
@@ -1780,16 +1780,7 @@
             ]
 };
 
-        // Mocking the full history to keep file size manageable for this edit, 
-        // In a real scenario we'd preserve the full JSON or fetch it.
-        // Re-injecting a few sample rows to ensure table populates.
-        DATA.history = [
-            { "date": "12/26", "league": "NCAAF", "selection": "Florida International vs UTSA Over 59.5", "odds": -107, "edge": 0.185, "units": 9.6, "profit": 8.95, "result": "WIN" },
-            { "date": "12/26", "league": "NBA", "selection": "Miami Heat ML", "odds": 158, "edge": 0.105, "units": 4.3, "profit": 6.83, "result": "WIN" },
-            { "date": "12/26", "league": "NCAAB", "selection": "Minnesota -1", "odds": -110, "edge": 0.102, "units": 5.4, "profit": 4.88, "result": "WIN" },
-            { "date": "12/26", "league": "NBA", "selection": "Jazz +10.5", "odds": -110, "edge": 0.039, "units": 2.1, "profit": 1.89, "result": "WIN" },
-            { "date": "12/26", "league": "NBA", "selection": "Celtics -8.5", "odds": -110, "edge": 0.036, "units": 1.9, "profit": 1.76, "result": "WIN" }
-        ];
+
 
         function hydrate() {
             // Stats
