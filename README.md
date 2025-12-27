@@ -1,10 +1,10 @@
 # THE QUARRY: Quantitative Sports Trading System
 
 **Current Status:** `Live Monitoring`
-**Live Dashboard:** [View The Quarry Diamond Model](https://Ducky705.github.io/XGBoost-Sniper/diamond.html)
+**Live Control Center:** [Enter The Quarry](https://Ducky705.github.io/XGBoost-Sniper/selector.html)
 **Last Updated:** 2025-12-27
 
-This repository documents the end-to-end evolution of a machine learning system designed to solve the **"Accuracy Fallacy"** in sports betting. It tracks the journey from a high-variance prototype (**V1 Pyrite**) to a disciplined, regime-based asset manager (**V2 Diamond**).
+This repository documents the end-to-end evolution of a machine learning system designed to solve the **"Accuracy Fallacy"** in sports betting. It tracks the journey from a high-variance prototype (**V1 Pyrite**) to a disciplined, regime-based asset manager (**V2 Diamond**) and finally to a high-precision sniper (**V3 Obsidian**).
 
 ---
 
@@ -14,13 +14,13 @@ Sports betting markets are efficient. A model that simply predicts winners (Accu
 
 We developed two distinct models to test this hypothesis:
 
-| Feature | 🔸 V1 Pyrite (Legacy) | 💎 V2 Diamond (Active) |
-| :--- | :--- | :--- |
-| **Philosophy** | "Bet everything with >50% edge" | "Snipe specific inefficiencies" |
-| **Volume** | High (~134 bets/day) | **High (~67 bets/day)** |
-| **Risk Profile** | Reckless / Uncapped | **10u Daily Cap / Scaled Kelly** |
-| **Key Flaw** | Overconfidence on Favorites | None (so far) |
-| **Result** | **14.30% ROI** (The "Churn") | **15.03% ROI** (The "Edge") |
+| Feature | 🔸 V1 Pyrite (Legacy) | 💎 V2 Diamond (Active) | 🔮 V3 Obsidian (Beta) |
+| :--- | :--- | :--- | :--- |
+| **Philosophy** | "Bet everything with >50% edge" | "Snipe specific inefficiencies" | "High-Precision Straight Bets" |
+| **Volume** | High (~134 bets/day) | **High (~67 bets/day)** | **Surgical (<10 bets/day)** |
+| **Risk Profile** | Reckless / Uncapped | **10u Daily Cap / Scaled Kelly** | **Dynamic Allocation** |
+| **Key Flaw** | Overconfidence on Favorites | None (so far) | Data Scarcity |
+| **Result** | **14.30% ROI** (The "Churn") | **15.03% ROI** (The "Edge") | **Targeting >20% ROI** |
 
 ---
 
