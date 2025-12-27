@@ -16,7 +16,7 @@ XGBoost-Sniper is an advanced, algorithmic trading system engineered to identify
 | :--- | :--- | :--- | :--- | :--- |
 | **V1 Pyrite** | High-Variance / Volume | 🟡 Legacy | {vol_v1} | **{r1:+.1%}** |
 | **V2 Diamond** | Precision / Sniper | 🟢 **Active** | {vol_v2} | **{r2:+.1%}** |
-| **V3 Obsidian** | Deep Learning / Hybrid | 🟣 **Alpha** | (Training) | **N/A** |
+| **[V3 Obsidian](./docs/selector.html)** | Deep Learning / Hybrid | 🟣 **Alpha** | (Training) | **N/A** |
 
 > [!IMPORTANT]
 > **Live Dashboard**: View the real-time performance and active signals on the [Diamond Dashboard](./docs/diamond.html).
