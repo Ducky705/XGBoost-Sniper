@@ -1,8 +1,9 @@
 # THE QUARRY: Quantitative Sports Trading System
 
 **Current Status:** `Live Monitoring`
-**Live Control Center:** [Enter The Quarry](https://Ducky705.github.io/XGBoost-Sniper/selector.html)
-**Last Updated:** 2025-12-27
+# 🚨 [ENTER LIVE CONTROL CENTER](https://Ducky705.github.io/XGBoost-Sniper/selector.html) 🚨
+
+**Last Updated:** 2025-12-28
 
 This repository documents the end-to-end evolution of a machine learning system designed to solve the **"Accuracy Fallacy"** in sports betting. It tracks the journey from a high-variance prototype (**V1 Pyrite**) to a disciplined, regime-based asset manager (**V2 Diamond**) and finally to a high-precision sniper (**V3 Obsidian**).
 
@@ -34,8 +35,16 @@ We developed two distinct models to test this hypothesis:
 
 ![Live Curve](docs/assets/live_curve.png)
 
-### 2. The "Toxic Asset" Audit (Sport Health)
-*Why did V1 fail? It didn't know when to quit. V2 implements strict "Regime Filtering" to ban toxic sports.*
+### 2. Model Evolution & Comparison
+*Visualizing the distinct behavior of each generation.*
+
+| 🔸 Pyrite (The Brawler) | 💎 Diamond (The Manager) | 🔮 Obsidian (The Sniper) |
+| :---: | :---: | :---: |
+| ![V1 Curve](docs/assets/pyrite_live_curve.png) | ![V2 Curve](docs/assets/live_curve.png) | ![V3 Curve](docs/assets/obsidian_curve.png) |
+| *High Volatility / High Volume* | *Steady Growth / Capped Risk* | *Max Precision / Selective* |
+
+### 3. The "Toxic Asset" Audit (Sport Health)
+*Why did V1 fail? It didn't know when to quit. V2 & V3 implement strict "Regime Filtering" to ban toxic sports.*
 
 | 🔸 V1 Pyrite (Bleeding Edge) | 💎 V2 Diamond (Surgical) |
 | :---: | :---: |
@@ -56,15 +65,20 @@ We developed two distinct models to test this hypothesis:
 
 This project is not just code; it is a documented research experiment.
 
-### 1. [Phase 1: The "Pyrite" Prototype (Legacy)](docs/methodology_v1.md)
+### 1. Phase 1: The "Pyrite" Prototype (Legacy)
 *   **The Hypothesis:** Can a calibrated XGBoost model beat the market using raw probability?
 *   **The Failure:** Discovering the "Fake Lock" syndrome and the cost of volatility.
 *   **The DNA:** Visualizing the flawed logic of the initial model.
 
-### 2. [Phase 2: The "Diamond" Optimization (Active)](docs/methodology_v2.md)
-*   **The Fix:** How we used **Grid Search** to find the "Sweet Spot".
+### 2. Phase 2: The "Diamond" Optimization (Active)
+*   **The Fix:** Using **Grid Search** to find the "Sweet Spot".
 *   **The Core 4:** Implementing Regime Filtering to ban toxic sports.
 *   **The Math:** Kelly Criterion, Value Floors, and Fade Scores.
+
+### 3. Phase 3: The "Obsidian" Refinement (Beta)
+*   **The Goal:** Maximize ROI by sacrificing volume.
+*   **The Method:** "Sniper" logic that only fires on straight bets with >60% edge.
+*   **The Result:** A vertically scalable strategy with minimal drawdown.
 
 ---
 
