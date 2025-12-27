@@ -2,7 +2,7 @@
 
 **Current Status:** `Live Monitoring`
 **Live Dashboard:** [View The Quarry Diamond Model](https://Ducky705.github.io/XGBoost-Sniper/diamond.html)
-**Last Updated:** 2025-12-18
+**Last Updated:** 2025-12-27
 
 This repository documents the end-to-end evolution of a machine learning system designed to solve the **"Accuracy Fallacy"** in sports betting. It tracks the journey from a high-variance prototype (**V1 Pyrite**) to a disciplined, regime-based asset manager (**V2 Diamond**).
 
@@ -17,10 +17,10 @@ We developed two distinct models to test this hypothesis:
 | Feature | 🔸 V1 Pyrite (Legacy) | 💎 V2 Diamond (Active) |
 | :--- | :--- | :--- |
 | **Philosophy** | "Bet everything with >50% edge" | "Snipe specific inefficiencies" |
-| **Volume** | High (~142 bets/day) | **High (~74 bets/day)** |
+| **Volume** | High (~134 bets/day) | **High (~67 bets/day)** |
 | **Risk Profile** | Reckless / Uncapped | **10u Daily Cap / Scaled Kelly** |
 | **Key Flaw** | Overconfidence on Favorites | None (so far) |
-| **Result** | **5.17% ROI** (The "Churn") | **16.65% ROI** (The "Edge") |
+| **Result** | **14.30% ROI** (The "Churn") | **15.03% ROI** (The "Edge") |
 
 ---
 
