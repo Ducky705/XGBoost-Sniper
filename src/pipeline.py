@@ -124,11 +124,61 @@ class FeatureEngineer:
         
         # Improved Normalization for Deduplication
         import re
+        
+        # Common team abbreviation mappings
+        TEAM_ABBREVS = {
+            'gsw': 'golden state warriors', 'gs': 'golden state warriors', 'g.s.w.': 'golden state warriors',
+            'lal': 'los angeles lakers', 'lac': 'los angeles clippers',
+            'nyy': 'new york yankees', 'nym': 'new york mets',
+            'nyk': 'new york knicks', 'bkn': 'brooklyn nets',
+            'phi': 'philadelphia', 'phx': 'phoenix', 'pho': 'phoenix',
+            'min': 'minnesota', 'mil': 'milwaukee', 'mia': 'miami',
+            'dal': 'dallas', 'den': 'denver', 'det': 'detroit',
+            'hou': 'houston', 'ind': 'indiana', 'mem': 'memphis',
+            'orl': 'orlando', 'okc': 'oklahoma city', 'por': 'portland',
+            'sac': 'sacramento', 'sas': 'san antonio', 'tor': 'toronto',
+            'uta': 'utah', 'was': 'washington', 'atl': 'atlanta',
+            'bos': 'boston', 'cha': 'charlotte', 'chi': 'chicago', 'cle': 'cleveland',
+            'no': 'new orleans', 'nop': 'new orleans', 'pel': 'new orleans pelicans',
+            # College common abbrevs
+            'osu': 'ohio state', 'usc': 'southern california', 'ucla': 'ucla',
+            'msu': 'michigan state', 'fsu': 'florida state', 'lsu': 'lsu',
+            'unc': 'north carolina', 'duke': 'duke', 'uk': 'kentucky',
+            'byu': 'brigham young', 'psu': 'penn state', 'gt': 'georgia tech',
+        }
+        
         def normalize_pick(s):
             s = str(s).lower().strip()
-            # Remove .0 or .5 diffs if needed, for now just strict lower strip
-            # Standardize "pk" to "0", etc.
-            return re.sub(r'(\d+)\.0\b', r'\1', s) # "5.0" -> "5"
+            
+            # 1. Remove trailing .0 from spreads FIRST (e.g., "+3.0" -> "+3")
+            # This must happen before punctuation removal to preserve the structure
+            s = re.sub(r'(\d)\.0(?=\s|$)', r'\1', s)
+            
+            # 2. Remove punctuation except +/-, decimal points in numbers
+            # Only remove standalone punctuation, not decimal points between digits
+            s = re.sub(r'[,;:!?\'"()]', '', s)
+            
+            # 3. Normalize spacing around +/- (e.g., "+ 3" -> "+3", "- 5.5" -> "-5.5")
+            s = re.sub(r'([+-])\s+', r'\1', s)
+            s = re.sub(r'\s+([+-])', r' \1', s)
+            
+            # 4. Normalize "pk" / "pick" / "even" to "0"
+            s = re.sub(r'\b(pk|pick|even)\b', '0', s)
+            
+            # 5. Replace known abbreviations with full names
+            words = s.split()
+            normalized_words = []
+            for word in words:
+                if word in TEAM_ABBREVS:
+                    normalized_words.append(TEAM_ABBREVS[word])
+                else:
+                    normalized_words.append(word)
+            s = ' '.join(normalized_words)
+            
+            # 6. Collapse multiple spaces
+            s = re.sub(r'\s+', ' ', s).strip()
+            
+            return s
 
         df['pick_norm'] = df['pick_value'].apply(normalize_pick)
         

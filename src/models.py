@@ -118,8 +118,9 @@ class ModelSimulator:
                 cand = cand[~cand['league_name'].isin(self.V2_TOXIC)].copy()
             
             # Deduplicate: Keep highest edge for each unique pick (Smart Selection)
+            # Uses pick_norm for robust matching (handles "Penn State +3" vs "Penn State +3.0", abbreviations, etc.)
             cand = cand.sort_values(['pick_date', 'edge'], ascending=[True, False])
-            cand = cand.drop_duplicates(subset=['pick_date', 'league_name', 'pick_value'])
+            cand = cand.drop_duplicates(subset=['pick_date', 'league_name', 'pick_norm'])
             
             final = cand.groupby('pick_date', group_keys=False).head(int(config.get('Daily_Cap', 15))).copy()
             
