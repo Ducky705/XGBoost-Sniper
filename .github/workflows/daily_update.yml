@@ -16,20 +16,18 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }} # Use default token for main repo
-          persist-credentials: false # We will manually handle auth for submodules
+          token: ${{ secrets.GITHUB_TOKEN }} 
+          persist-credentials: false # DISABLE auto-auth to prevent conflicts
 
-      - name: Authenticate Private Submodule
+      - name: Update Private Submodules
         run: |
-          # Use GH_PAT specifically for the private models repo
-          git config --global url."https://${{ secrets.GH_PAT }}@github.com/Ducky705/XGBoost-Sniper-Models.git".insteadOf "https://github.com/Ducky705/XGBoost-Sniper-Models.git"
+          # 1. Configure PAT for the private models repo ONLY
+          # We use specific insteadOf rule + x-access-token username (required for fine-grained tokens)
+          git config --global url."https://x-access-token:${{ secrets.GH_PAT }}@github.com/Ducky705/XGBoost-Sniper-Models.git".insteadOf "https://github.com/Ducky705/XGBoost-Sniper-Models.git"
           
-          # Now update submodules (this triggers the fetch using the configured PAT)
+          # 2. Update
           git submodule update --init --recursive
           echo "✅ Submodules updated."
-
-      - name: Verify Models
-        run: ls -lh models/
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -55,6 +53,15 @@ jobs:
         run: |
           git config --global user.name "SniperBot"
           git config --global user.email "bot@noreply.github.com"
-          git add .
-          git commit -m "📈 Auto-Update: Daily Dashboard" || echo "No changes to commit"
-          git push
+          
+          # Check for changes
+          if [[ -z $(git status -s) ]]; then
+            echo "No changes to commit from monitor run."
+          else
+            git add .
+            git commit -m "📈 Auto-Update: Daily Dashboard"
+            
+            # Manually Authenticate for PUSH using GITHUB_TOKEN
+            git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+            git push
+          fi
