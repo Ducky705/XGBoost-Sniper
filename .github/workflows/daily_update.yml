@@ -16,17 +16,17 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_PAT }}
+          submodules: recursive
+          token: ${{ secrets.GITHUB_TOKEN }} # Use default token for main repo (allows Push)
 
-      - name: Configure Git for Private Submodules
+      - name: Authenticate Private Submodule
         run: |
-          if [ -z "${{ secrets.GH_PAT }}" ]; then
-            echo "❌ Error: GH_PAT secret is missing. Please add it to repo settings."
-            exit 1
-          fi
-          git config --global url."https://${{ secrets.GH_PAT }}@github.com/".insteadOf "https://github.com/"
+          # Use GH_PAT specifically for the private models repo
+          git config --global url."https://${{ secrets.GH_PAT }}@github.com/Ducky705/XGBoost-Sniper-Models.git".insteadOf "https://github.com/Ducky705/XGBoost-Sniper-Models.git"
+          
+          # Now update submodules (this triggers the fetch using the configured PAT)
           git submodule update --init --recursive
-          echo "✅ Submodules updated successfully."
+          echo "✅ Submodules updated."
 
       - name: Verify Models
         run: ls -lh models/
