@@ -11,7 +11,7 @@ class ModelSimulator:
         # Standards
         self.V1_START = '2025-11-20'
         self.V2_START = '2025-11-30'
-        self.V3_START = '2025-12-28'
+        self.V3_START = '2025-12-27'
         
         self.V2_LEAGUES = {
             'NBA': {'stake': 1.2, 'min_edge': 0.03}, 'NCAAB': {'stake': 1.2, 'min_edge': 0.03},

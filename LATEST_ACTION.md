@@ -1,5 +1,18 @@
-<<<<<<< HEAD
 # 📝 Daily Action Log (2025-12-27)
+
+### V3 Obsidian Action
+| LEAGUE | PICK | ODDS | UNIT | RES | PROFIT |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| NCAAF | BYU -3.5 | -110 | 0.8 | ✅ | +0.73u |
+| NCAAF | Penn State +3 | -158 | 0.8 | ✅ | +0.51u |
+| NBA | Magic +4.5 | -110 | 0.8 | ✅ | +0.73u |
+| NCAAF | Georgia Tech +4 | -110 | 0.8 | ❌ | -0.75u |
+| NCAAF | Georgia Tech +4.0 | -113 | 0.6 | ❌ | -0.63u |
+| NCAAF | Penn State +3.0 | -125 | 0.5 | ✅ | +0.37u |
+| NCAAB | Connecticut +8.5 | -110 | 0.4 | ❌ | -0.39u |
+| NCAAF | Army -8.5 | -110 | 0.4 | ✅ | +0.35u |
+**Daily PnL (Settled): +0.90 Units**
+
 
 ### V2 Diamond Action
 | LEAGUE | PICK | ODDS | UNIT | RES | PROFIT |
@@ -265,7 +278,4 @@
 | NCAAF | North Texas vs San Diego State Under 53.5 | -110 | 0.2 | ❌ | -0.16u |
 **Daily PnL (Settled): +49.91 Units**
 
-=======
-# 📝 Daily Action Log (2025-12-28)
->>>>>>> 888c84c0f8b5fa03d5638148b5eba8ac918ca5b1
 
