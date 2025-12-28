@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📝 Daily Action Log (2025-12-27)
 
 ### V2 Diamond Action
@@ -264,4 +265,7 @@
 | NCAAF | North Texas vs San Diego State Under 53.5 | -110 | 0.2 | ❌ | -0.16u |
 **Daily PnL (Settled): +49.91 Units**
 
+=======
+# 📝 Daily Action Log (2025-12-28)
+>>>>>>> 888c84c0f8b5fa03d5638148b5eba8ac918ca5b1
 
