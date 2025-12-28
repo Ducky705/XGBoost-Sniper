@@ -16,8 +16,8 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          submodules: recursive
-          token: ${{ secrets.GITHUB_TOKEN }} # Use default token for main repo (allows Push)
+          token: ${{ secrets.GITHUB_TOKEN }} # Use default token for main repo
+          persist-credentials: false # We will manually handle auth for submodules
 
       - name: Authenticate Private Submodule
         run: |
