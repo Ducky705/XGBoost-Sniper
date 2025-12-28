@@ -99,17 +99,13 @@ jspm_packages/
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-# Model files (if they're too large)
-# Ignore all .pkl files...
+# Model files - Stored in private submodule
+# The models/ folder will be a gitlink to the private repository.
+# We still ignore binary formats locally to prevent accidental commits.
 *.pkl
-# ...but DO NOT ignore these specific model files.
-
 *.joblib
 *.h5
 *.pb
 *.onnx
-
-# Temporary files
-temp_tree.txt
-*.tmp
-*.temp
+models_backup/
+model_logs/

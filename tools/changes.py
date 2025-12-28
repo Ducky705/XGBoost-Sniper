@@ -23,8 +23,19 @@ pd.options.mode.chained_assignment = None
 load_dotenv()
 
 # ==========================================
-# 1. DATA PIPELINE
+# 1. UTILS
 # ==========================================
+def get_model_path(filename):
+    """Resolve model path, supporting both submodule and direct placement."""
+    paths = [
+        os.path.join('models', filename),           # Submodule location
+        os.path.join('..', 'XGBoost-Sniper-Models', filename),  # Adjacent repo
+    ]
+    for path in paths:
+        if os.path.exists(path):
+            return path
+    return os.path.join('models', filename)
+
 class SportsDataPipeline:
     def __init__(self):
         self.url = os.environ.get("SUPABASE_URL")
@@ -164,9 +175,11 @@ class DualMonitor:
         self.df = df.copy()
         
         # Load Models
-        self.model_v1 = self._load_model('models/v1_pyrite.pkl', 'V1 Pyrite')
-        self.model_v2 = self._load_model('models/v2_diamond.pkl', 'V2 Diamond')
+        self.model_v1 = self._load_model(get_model_path('v1_pyrite.pkl'), 'V1 Pyrite')
+        self.model_v2 = self._load_model(get_model_path('v2_diamond.pkl'), 'V2 Diamond')
+        self.model_v3 = self._load_model(get_model_path('v3_obsidian.pkl'), 'V3 Obsidian')
 
+        self.V3_START = '2025-12-27'
         self.V2_START = '2025-11-30'
         self.V2_LEAGUES = {
             'NBA': {'stake': 1.2, 'min_edge': 0.03}, 'NCAAB': {'stake': 1.2, 'min_edge': 0.03},

@@ -4,6 +4,18 @@ import numpy as np
 import json
 import os
 
+def get_model_path(filename):
+    """Resolve model path, supporting both submodule and direct placement."""
+    paths = [
+        os.path.join('models', filename),           # Submodule location
+        os.path.join('..', 'XGBoost-Sniper-Models', filename),  # Adjacent repo
+    ]
+    for path in paths:
+        if os.path.exists(path):
+            return path
+    # If not found, return the default location so joblib/open throws a standard error
+    return os.path.join('models', filename)
+
 class ModelSimulator:
     def __init__(self, df):
         self.df = df.copy()
@@ -55,7 +67,8 @@ class ModelSimulator:
 
     def run_v1_pyrite(self):
         try:
-            model = joblib.load('models/v1_pyrite.pkl')
+            m_path = get_model_path('v1_pyrite.pkl')
+            model = joblib.load(m_path)
             feats = self._get_feature_list(model)
             temp = self.df[self.df['pick_date'] >= pd.to_datetime(self.V1_START)].copy()
             temp['prob'] = model.predict_proba(temp[feats])[:, 1]
@@ -69,7 +82,8 @@ class ModelSimulator:
 
     def run_v2_diamond(self):
         try:
-            model = joblib.load('models/v2_diamond.pkl')
+            m_path = get_model_path('v2_diamond.pkl')
+            model = joblib.load(m_path)
             feats = self._get_feature_list(model)
             temp = self.df[self.df['pick_date'] >= pd.to_datetime(self.V2_START)].copy()
             temp['prob'] = model.predict_proba(temp[feats])[:, 1]
@@ -96,8 +110,11 @@ class ModelSimulator:
 
     def run_v3_obsidian(self):
         try:
-            model = joblib.load('models/v3_obsidian.pkl')
-            with open('models/v3_config.json', 'r') as f:
+            m_path = get_model_path('v3_obsidian.pkl')
+            model = joblib.load(m_path)
+            
+            c_path = get_model_path('v3_config.json')
+            with open(c_path, 'r') as f:
                 config = json.load(f)
             
             feats = self._get_feature_list(model)
