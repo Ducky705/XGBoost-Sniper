@@ -17,13 +17,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_PAT }}
-          submodules: recursive
-          persist-credentials: true
 
-      - name: Verify Submodules
+      - name: Configure Git for Private Submodules
         run: |
-          git submodule status
-          ls -R models/
+          if [ -z "${{ secrets.GH_PAT }}" ]; then
+            echo "❌ Error: GH_PAT secret is missing. Please add it to repo settings."
+            exit 1
+          fi
+          git config --global url."https://${{ secrets.GH_PAT }}@github.com/".insteadOf "https://github.com/"
+          git submodule update --init --recursive
+          echo "✅ Submodules updated successfully."
+
+      - name: Verify Models
+        run: ls -lh models/
 
       - name: Setup Python
         uses: actions/setup-python@v4
