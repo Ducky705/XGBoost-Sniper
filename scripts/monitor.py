@@ -108,9 +108,11 @@ XGBoost-Sniper is an advanced, algorithmic trading system engineered to identify
 | **[V3 Obsidian](https://ducky705.github.io/XGBoost-Sniper/selector.html)** | Deep Learning / Hybrid | 🟣 **Alpha** | (Training) | **N/A** |
 
 > [!IMPORTANT]
-> **Live Dashboard**: View the real-time performance and active signals on the [Diamond Dashboard](https://ducky705.github.io/XGBoost-Sniper/diamond.html).
+> **START HERE**: Access the [**Model Selector & Control Center**](https://ducky705.github.io/XGBoost-Sniper/selector.html).
 >
-> **Model Selector**: Access all model dashboards via the [Selector Page](https://ducky705.github.io/XGBoost-Sniper/selector.html).
+> **Direct Links**:
+> *   [Diamond Dashboard (Active)](https://ducky705.github.io/XGBoost-Sniper/diamond.html)
+> *   [Obsidian Dashboard (Alpha)](https://ducky705.github.io/XGBoost-Sniper/obsidian.html)
 
 ---
 
@@ -200,19 +202,25 @@ def main():
     # 1. Pipeline
     pipeline = SportsDataPipeline()
     raw = pipeline.fetch_data()
-    if raw.empty: return
+    # if raw.empty: return  <-- MOVED CHECK DOWN
+
+    # Always generate assets (even if no new data, synthetic assets might need refresh)
+    # But for reports, we need data.
     
-    eng = FeatureEngineer(raw)
-    df = eng.process()
-    
-    # 2. Simulations
-    sim = ModelSimulator(df)
-    v1 = sim.run_v1_pyrite()
-    v2 = sim.run_v2_diamond()
-    v3 = sim.run_v3_obsidian()
-    
-    # 3. Reports
-    update_system_reports(v1, v2, v3)
+    if raw.empty:
+        print("⚠️ No live data found. Skipping inference/reports, but checking assets...")
+    else:
+        eng = FeatureEngineer(raw)
+        df = eng.process()
+        
+        # 2. Simulations
+        sim = ModelSimulator(df)
+        v1 = sim.run_v1_pyrite()
+        v2 = sim.run_v2_diamond()
+        v3 = sim.run_v3_obsidian()
+        
+        # 3. Reports
+        update_system_reports(v1, v2, v3)
     
     # 4. Refresh Assets
     print("🎨 Refreshing Web Assets...")

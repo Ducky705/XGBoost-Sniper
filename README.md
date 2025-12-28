@@ -14,14 +14,16 @@ XGBoost-Sniper is an advanced, algorithmic trading system engineered to identify
 
 | Model | Strategy | Status | Daily Volume | ROI |
 | :--- | :--- | :--- | :--- | :--- |
-| **V1 Pyrite** | High-Variance / Volume | 🟡 Legacy | High (~135 bets/day) | **+14.1%** |
-| **V2 Diamond** | Precision / Sniper | 🟢 **Active** | High (~67 bets/day) | **+14.8%** |
+| **V1 Pyrite** | High-Variance / Volume | 🟡 Legacy | High (~139 bets/day) | **+13.4%** |
+| **V2 Diamond** | Precision / Sniper | 🟢 **Active** | High (~68 bets/day) | **+13.7%** |
 | **[V3 Obsidian](https://ducky705.github.io/XGBoost-Sniper/selector.html)** | Deep Learning / Hybrid | 🟣 **Alpha** | (Training) | **N/A** |
 
 > [!IMPORTANT]
-> **Live Dashboard**: View the real-time performance and active signals on the [Diamond Dashboard](https://ducky705.github.io/XGBoost-Sniper/diamond.html).
+> **START HERE**: Access the [**Model Selector & Control Center**](https://ducky705.github.io/XGBoost-Sniper/selector.html).
 >
-> **Model Selector**: Access all model dashboards via the [Selector Page](https://ducky705.github.io/XGBoost-Sniper/selector.html).
+> **Direct Links**:
+> *   [Diamond Dashboard (Active)](https://ducky705.github.io/XGBoost-Sniper/diamond.html)
+> *   [Obsidian Dashboard (Alpha)](https://ducky705.github.io/XGBoost-Sniper/obsidian.html)
 
 ---
 
@@ -31,7 +33,7 @@ This repository documents the transition from a raw statistical probability mode
 
 ### Phase 1: Pyrite (The "Accuracy Fallacy")
 Our initial prototype, **Pyrite**, operated on a simple premise: *bet on everything with >50% probability*.
-*   **Result**: While it achieved a 56.6% win rate, it lost money to the vigorish (fees) due to poor calibration on favorites.
+*   **Result**: While it achieved a 56.3% win rate, it lost money to the vigorish (fees) due to poor calibration on favorites.
 *   **Lesson**: Accuracy ≠ Profitability.
 
 ### Phase 2: Diamond (The "Sniper" Approach)
