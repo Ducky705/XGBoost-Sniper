@@ -38,18 +38,23 @@ def update_system_reports(v1, v2, v3):
         if d.empty: return "None (0 bets/day)"
         days = (d['pick_date'].max() - d['pick_date'].min()).days + 1
         avg = len(d) / max(days, 1)
-        if avg > 15: cat = "High"
-        elif avg > 5: cat = "Medium"
-        else: cat = "Low"
+        
+        if avg > 50: cat = "Very High"
+        elif avg > 20: cat = "High"
+        elif avg > 10: cat = "Medium"
+        elif avg > 5: cat = "Low"
+        else: cat = "Very Low"
+        
         return f"{cat} (~{int(avg)} bets/day)"
 
     # --- CALCULATE STATS ---
     p1, r1, w1 = get_stats(v1)
     p2, r2, w2 = get_stats(v2)
-    # p3, r3, w3 = get_stats(v3) # V3 might be empty or training
+    p3, r3, w3 = get_stats(v3)
     
     vol_v1 = get_volume_text(v1)
     vol_v2 = get_volume_text(v2)
+    vol_v3 = get_volume_text(v3) # Now active
 
     # --- 1. LATEST_ACTION.md ---
     dates = []
@@ -87,104 +92,81 @@ def update_system_reports(v1, v2, v3):
         f.write(log_content)
 
     # --- 2. README.md ---
-    readme_text = f"""# XGBoost-Sniper: Quantitative Sports Trading System
+    readme_text = f"""
+<div align="center">
+  <br />
+  <h1>THE QUARRY <span style="color: #444; font-weight: normal;">// XGB-SNIPER</span></h1>
+  <p style="font-family: monospace; letter-spacing: 2px; color: #888;">ADVANCED ALGORITHMIC ARBITRAGE SYSTEM</p>
+  <br />
 
-[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/release/python-3100/)
-[![Strict Mode](https://img.shields.io/badge/strict-myan-blueviolet)](https://mypy.readthedocs.io/en/stable/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-success?style=for-the-badge&logo=statuspage&logoColor=white)](https://ducky705.github.io/XGBoost-Sniper/selector.html)
+  [![V2 ROI](https://img.shields.io/badge/V2_ROI-{r2*100:+.1f}%25-00E0FF?style=for-the-badge)](https://ducky705.github.io/XGBoost-Sniper/diamond.html)
+  [![V3 ROI](https://img.shields.io/badge/V3_ROI-{r3*100:+.1f}%25-7c3aed?style=for-the-badge)](https://ducky705.github.io/XGBoost-Sniper/obsidian.html)
 
-> **"The market is not efficient. It is just noisy."**
-
-XGBoost-Sniper is an advanced, algorithmic trading system engineered to identify and exploit market inefficiencies in sports betting odds. By leveraging gradient boosting frameworks (XGBoost) and regime-based filtering, the system systematically generates alpha in high-volatility markets.
+  <br />
+  <br />
+  <a href="https://ducky705.github.io/XGBoost-Sniper/selector.html"><strong>ENTER CONTROL CENTER</strong></a>
+  <br />
+  <br />
+</div>
 
 ---
 
-## 📊 Executive Performance
+## ⚡ EXECUTIVE INTELLIGENCE
 
-| Model | Strategy | Status | Daily Volume | ROI |
-| :--- | :--- | :--- | :--- | :--- |
-| **V1 Pyrite** | High-Variance / Volume | 🟡 Legacy | {vol_v1} | **{r1:+.1%}** |
-| **V2 Diamond** | Precision / Sniper | 🟢 **Active** | {vol_v2} | **{r2:+.1%}** |
-| **[V3 Obsidian](https://ducky705.github.io/XGBoost-Sniper/selector.html)** | Deep Learning / Hybrid | 🟣 **Alpha** | (Training) | **N/A** |
+A multi-generational algorithmic trading system leveraging **Gradient Boosting Decision Trees (XGBoost)** and **Deep Neural Networks** to identify inefficiencies in sports betting markets.
+
+| MODEL ARCHITECTURE | RELEASED | STRATEGY PROFILE | STATUS | VOLUME | ROI |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **[V1 PYRITE](https://ducky705.github.io/XGBoost-Sniper/pyrite.html)** | `NOV 20, 2025` | `XGB-CLASSIC` <br> High-Frequency / Volatility Capture | 🟡 **LEGACY** | {vol_v1} | **{r1:+.1%}** |
+| **[V2 DIAMOND](https://ducky705.github.io/XGBoost-Sniper/diamond.html)** | `NOV 30, 2025` | `XGB-HYBRID` <br> Precision / Regime Filtering | 🟢 **ACTIVE** | {vol_v2} | **{r2:+.1%}** |
+| **[V3 OBSIDIAN](https://ducky705.github.io/XGBoost-Sniper/obsidian.html)** | `DEC 27, 2025` | `XGB-V3` <br> Non-Linear arbitrage | 🟣 **ALPHA** | {vol_v3} | **{r3:+.1%}** |
 
 > [!IMPORTANT]
-> **START HERE**: Access the [**Model Selector & Control Center**](https://ducky705.github.io/XGBoost-Sniper/selector.html).
->
-> **Direct Links**:
-> *   [Diamond Dashboard (Active)](https://ducky705.github.io/XGBoost-Sniper/diamond.html)
-> *   [Obsidian Dashboard (Alpha)](https://ducky705.github.io/XGBoost-Sniper/obsidian.html)
+> **ACCESS PROTOCOL**: The primary interface for all models is the [**Model Selector**](https://ducky705.github.io/XGBoost-Sniper/selector.html).
 
 ---
 
-## 🚀 The Evolution of Alpha
+## 🛰 SYSTEMS OVERVIEW
 
-This repository documents the transition from a raw statistical probability model to a sophisticated asset manager.
+### V1 PYRITE // THE BRUTE FORCE
+*The initial prototype.* Operated on raw probability differentials. While high-volume, it suffered from "false confidence" on heavy favorites.
+*   **Verdict**: Profitable but volatile. Retired from primary rotation.
 
-### Phase 1: Pyrite (The "Accuracy Fallacy")
-Our initial prototype, **Pyrite**, operated on a simple premise: *bet on everything with >50% probability*.
-*   **Result**: While it achieved a {w1:.1%} win rate, it lost money to the vigorish (fees) due to poor calibration on favorites.
-*   **Lesson**: Accuracy ≠ Profitability.
+### V2 DIAMOND // THE SNIPER
+*The current standard.* Introduces **Regime Filtering**—banning "toxic" low-predictability markets (NFL/MLB) and focusing on high-confidence setups (NBA/NCAAB).
+*   **Mechanism**: Uses a Fade Score to identify public overexposure.
+*   **Performance**: Consistent alpha generation with lower drawdown.
 
-### Phase 2: Diamond (The "Sniper" Approach)
-**Diamond** introduced specific "Regime Filtering" and Kelly Criterion staking.
-*   **Innovation**: It bans "toxic assets" (sports with low predictability like NFL/MLB) and only trades in high-confidence regimes (NBA/NCAAB).
-*   **Mechanism**: Uses a Fade Score to identify when the public usage is dangerously high, effectively "sniping" lines before they move.
-
-### Phase 3: Obsidian (The "Neural" Frontier)
-**Obsidian** represents the next generation of predictive modeling, incorporating deep learning and hybrid architectures to capture non-linear relationships that decision trees might miss.
-*   **Status**: Currently in Alpha testing.
-*   **Access**: [Click here to view the Obsidian Dashboard](https://ducky705.github.io/XGBoost-Sniper/selector.html) (via Selector).
+### V3 OBSIDIAN // THE ORACLE
+*The next frontier.* An advanced ensemble hybrid designed to capture complex, non-linear dependencies that standard tree-based models miss.
+*   **Status**: Currently ingesting data in shadow mode.
 
 ---
 
-## 🛠 System Architecture
+## 🛠 ARCHITECTURE
 
 ```mermaid
 graph TD
-    A[Supabase Data Lake] -->|Fetch Odds/Results| B(monitor.py)
-    B -->|Feature Engineering| C{{Model Selector}}
-    C -->|Legacy Logic| D[V1 Pyrite]
-    C -->|Regime Logic| E[V2 Diamond]
-    D -->|Simulate| F[Daily Report]
-    E -->|Kelly Staking| F
-    F -->|Generate Assets| G[Dashboard / README]
+    A[DATA LAKE] -->|Ingest| B(CORE ENGINE)
+    B -->|Feature Engineering| C{{MODEL SELECTOR}}
+    C -->|Legacy Track| D[V1 PYRITE]
+    C -->|Regime Filter| E[V2 DIAMOND]
+    C -->|Ensemble| F[V3 OBSIDIAN]
+    D & E & F -->|Simulate| G[DECISION SUPPORT]
+    G -->|Render| H[DASHBOARD SUITE]
 ```
 
-### Core Components
-*   **`monitor.py`**: The central orchestration engine. Fetches data, runs inference, and commits results.
-*   **`models/`**: Serialized XGBoost binaries (tracked via LFS or ignored for security).
-*   **`docs/`**: Production-grade dashboards for visualizing model output.
+### COMPONENTS
+*   `monitor.py`: Central command. Fetches data, executes inference pipelines, and commits artifacts.
+*   `models/`: Serialized XGBoost binaries and neural weights.
+*   `docs/`: Static visualization layer hosted on GitHub Pages.
 
 ---
 
-## 🔒 Security & Privacy
-
-This repository enforces strict security protocols:
-*   **Credential Isolation**: All API keys are managed via `.env` and strictly excluded from version control.
-*   **Model IP Protection**: Trained model artifacts (`.pkl`, `.model`) are strictly git-ignored.
-
----
-
-## ⚡ Quick Start
-
-### 1. Installation
-```bash
-git clone https://github.com/Ducky705/XGBoost-Sniper.git
-cd XGBoost-Sniper
-pip install -r requirements.txt
-```
-
-### 2. Configuration
-Create a `.env` file with your credentials.
-
-### 3. Run Inference
-```bash
-python monitor.py
-```
-
----
-
-*© 2025 XGBoost-Sniper Technologies. All rights reserved.*
+<div align="center">
+    <p><em>© 2025 XGBOOST-SNIPER TECHNOLOGIES // PROPRIETARY RESEARCH</em></p>
+</div>
 """
     
     with open("README.md", "w", encoding="utf-8") as f:

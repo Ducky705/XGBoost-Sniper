@@ -387,73 +387,108 @@
     </div>
 
     <script>
-        // --- VOID PARTICLE FX ---
+        // --- WARP STARFIELD FX ---
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let width, height;
 
-        const particles = [];
-        const particleCount = 60;
+        const stars = [];
+        const starCount = 400; // Dense starfield
+        let speed = 0.5; // Base speed
 
         function resize() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
         }
 
-        class Ash {
+        class Star {
             constructor() {
-                this.reset();
+                this.reset(true);
             }
 
-            reset() {
-                this.x = Math.random() * width;
-                this.y = height + Math.random() * 100;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedY = Math.random() * 0.5 + 0.2;
-                this.opacity = Math.random() * 0.5 + 0.1;
-                this.drift = (Math.random() - 0.5) * 0.5;
+            reset(initial = false) {
+                // Random position in 3D space
+                this.x = (Math.random() - 0.5) * width * 2; // Spread wider than screen
+                this.y = (Math.random() - 0.5) * height * 2;
+                this.z = initial ? Math.random() * width : width; // Start at back if not initial
+                this.pz = this.z; // Previous Z for trail calculation
+
+                // Color variation: White vs Obsidian Purple
+                this.color = Math.random() > 0.8 ? '#7c3aed' : '#ffffff';
+                this.sizeBase = Math.random() * 1.5 + 0.5;
             }
 
             update() {
-                this.y -= this.speedY;
-                this.x += this.drift;
-                if (this.y < -10) this.reset();
+                this.z -= speed * 10; // Move towards camera
+
+                // Reset if passed camera
+                if (this.z <= 1) {
+                    this.reset();
+                    this.z = width;
+                    this.pz = this.z;
+                }
             }
 
             draw() {
-                ctx.fillStyle = `rgba(124, 58, 237, ${this.opacity * 0.2})`; // Subtle purple ash
+                // Project 3D position to 2D
+                const sx = (this.x / this.z) * (width / 2) + (width / 2);
+                const sy = (this.y / this.z) * (height / 2) + (height / 2);
+
+                // Previous position for trail effect
+                const px = (this.x / this.pz) * (width / 2) + (width / 2);
+                const py = (this.y / this.pz) * (height / 2) + (height / 2);
+
+                this.pz = this.z;
+
+                // Scale size by proximity
+                const size = (1 - this.z / width) * this.sizeBase * 2;
+
+                // Fade in/out
+                const opacity = (1 - this.z / width);
+
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.moveTo(px, py);
+                ctx.lineTo(sx, sy);
+
+                // Create gradient for the trail
+                const gradient = ctx.createLinearGradient(px, py, sx, sy);
+                gradient.addColorStop(0, `rgba(124, 58, 237, 0)`); // Fade tail
+                if (this.color === '#ffffff') {
+                    gradient.addColorStop(1, `rgba(255, 255, 255, ${opacity})`);
+                } else {
+                    gradient.addColorStop(1, `rgba(124, 58, 237, ${opacity})`);
+                }
+
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = size;
+                ctx.lineCap = 'round';
+                ctx.stroke();
             }
         }
 
-        function initParticles() {
+        function initStars() {
             resize();
-            for (let i = 0; i < particleCount; i++) particles.push(new Ash());
+            // Clear existing if re-init
+            stars.length = 0;
+            for (let i = 0; i < starCount; i++) stars.push(new Star());
             animate();
         }
 
         function animate() {
-            ctx.clearRect(0, 0, width, height);
-
-            // Subtle gradient background
-            const gradient = ctx.createLinearGradient(0, height, 0, 0);
-            gradient.addColorStop(0, 'rgba(20, 0, 30, 0.4)');
-            gradient.addColorStop(1, 'rgba(0,0,0,0)');
-            ctx.fillStyle = gradient;
+            // Dark Void Background with slight trail retention for motion blur feel
+            ctx.fillStyle = 'rgba(2, 2, 2, 0.4)';
             ctx.fillRect(0, 0, width, height);
 
-            particles.forEach(p => {
-                p.update();
-                p.draw();
+            stars.forEach(star => {
+                star.update();
+                star.draw();
             });
             requestAnimationFrame(animate);
         }
 
         window.addEventListener('resize', resize);
         window.onload = () => {
-            initParticles();
+            initStars();
             hydrate(); // Call hydration on load
         };
 
