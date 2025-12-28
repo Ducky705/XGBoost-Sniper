@@ -21,9 +21,9 @@ jobs:
 
       - name: Update Private Submodules
         run: |
-          # 1. Configure PAT for the private models repo ONLY
-          # We use specific insteadOf rule + x-access-token username (required for fine-grained tokens)
-          git config --global url."https://x-access-token:${{ secrets.GH_PAT }}@github.com/Ducky705/XGBoost-Sniper-Models.git".insteadOf "https://github.com/Ducky705/XGBoost-Sniper-Models.git"
+          # 1. Configure PAT for the private models repo (Classic PAT format)
+          # We use the standard https://TOKEN@github.com/ format which works reliably with Classic PATs
+          git config --global url."https://${{ secrets.GH_PAT }}@github.com/Ducky705/XGBoost-Sniper-Models.git".insteadOf "https://github.com/Ducky705/XGBoost-Sniper-Models.git"
           
           # 2. Update
           git submodule update --init --recursive
