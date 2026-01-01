@@ -192,14 +192,40 @@ def main():
     if raw.empty:
         print("⚠️ No live data found. Skipping inference/reports, but checking assets...")
     else:
+        # === DIAGNOSTIC: Date range in raw data ===
+        print(f"📊 RAW DATA: {len(raw)} picks")
+        print(f"   Date range: {raw['pick_date'].min().date()} to {raw['pick_date'].max().date()}")
+        print(f"   Picks per recent date:")
+        for date in sorted(raw['pick_date'].dt.date.unique())[-5:]:
+            count = len(raw[raw['pick_date'].dt.date == date])
+            print(f"      {date}: {count} picks")
+        
         eng = FeatureEngineer(raw)
         df = eng.process()
+        
+        # === DIAGNOSTIC: Date range after feature engineering ===
+        print(f"📐 AFTER FEATURES: {len(df)} picks")
+        print(f"   Date range: {df['pick_date'].min().date()} to {df['pick_date'].max().date()}")
         
         # 2. Simulations
         sim = ModelSimulator(df)
         v1 = sim.run_v1_pyrite()
         v2 = sim.run_v2_diamond()
         v3 = sim.run_v3_obsidian()
+        
+        # === DIAGNOSTIC: Model outputs ===
+        def log_model(name, model_df):
+            if model_df.empty:
+                print(f"🔴 {name}: 0 picks (empty)")
+            else:
+                print(f"🟢 {name}: {len(model_df)} picks | Latest: {model_df['pick_date'].max().date()}")
+                for date in sorted(model_df['pick_date'].dt.date.unique())[-3:]:
+                    count = len(model_df[model_df['pick_date'].dt.date == date])
+                    print(f"      {date}: {count} picks")
+        
+        log_model("V1 PYRITE", v1)
+        log_model("V2 DIAMOND", v2)
+        log_model("V3 OBSIDIAN", v3)
         
         # 3. Reports
         update_system_reports(v1, v2, v3)
