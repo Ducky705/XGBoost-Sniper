@@ -350,9 +350,17 @@ def generate_live_assets():
     def inject_json(html_path, data_object):
         if not os.path.exists(html_path): return
         with open(html_path, 'r') as f: content = f.read()
-        pattern = r'const DATA = \{.*?\};'
+        
+        # More robust regex handling optional whitespace around the equals sign
+        pattern = r'const DATA\s*=\s*\{.*?\};'
+        
+        if not re.search(pattern, content, flags=re.DOTALL):
+             print(f"❌ Failed to find DATA block in {html_path}")
+             return
+
         replacement = f'const DATA = {json.dumps(data_object, indent=12)};'
         new_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
+        
         with open(html_path, 'w') as f: f.write(new_content)
         print(f"✅ Injected data into {html_path}")
 
