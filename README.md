@@ -22,11 +22,11 @@
 
 A multi-generational algorithmic trading system leveraging **Gradient Boosting Decision Trees (XGBoost)** and **Deep Neural Networks** to identify inefficiencies in sports betting markets.
 
-| MODEL ARCHITECTURE | RELEASED | STRATEGY PROFILE | STATUS | VOLUME | ROI |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **[V1 PYRITE](https://ducky705.github.io/XGBoost-Sniper/pyrite.html)** | `NOV 20, 2025` | `XGB-CLASSIC` <br> High-Frequency / Volatility Capture | 🟡 **LEGACY** | Very High (~144 bets/day) | **+20.6%** |
-| **[V2 DIAMOND](https://ducky705.github.io/XGBoost-Sniper/diamond.html)** | `NOV 30, 2025` | `XGB-HYBRID` <br> Precision / Regime Filtering | 🟢 **ACTIVE** | Very High (~70 bets/day) | **+15.2%** |
-| **[V3 OBSIDIAN](https://ducky705.github.io/XGBoost-Sniper/obsidian.html)** | `DEC 27, 2025` | `XGB-V3` <br> Non-Linear arbitrage | 🟣 **ALPHA** | Low (~7 bets/day) | **+30.7%** |
+| MODEL ARCHITECTURE | RELEASED | STRATEGY PROFILE | STATUS | VOLUME | ROI | TOTAL BETS |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **[V1 PYRITE](https://ducky705.github.io/XGBoost-Sniper/pyrite.html)** | `NOV 20, 2025` | `XGB-CLASSIC` <br> High-Frequency / Volatility Capture | 🟡 **LEGACY** | Very High (~144 bets/day) | **+20.6%** | **6341** |
+| **[V2 DIAMOND](https://ducky705.github.io/XGBoost-Sniper/diamond.html)** | `NOV 30, 2025` | `XGB-HYBRID` <br> Precision / Regime Filtering | 🟢 **ACTIVE** | Very High (~70 bets/day) | **+15.2%** | **2410** |
+| **[V3 OBSIDIAN](https://ducky705.github.io/XGBoost-Sniper/obsidian.html)** | `DEC 27, 2025` | `XGB-V3` <br> Non-Linear arbitrage | 🟣 **ALPHA** | Low (~7 bets/day) | **+30.7%** | **52** |
 
 > [!IMPORTANT]
 > **ACCESS PROTOCOL**: The primary interface for all models is the [**Model Selector**](https://ducky705.github.io/XGBoost-Sniper/selector.html).
