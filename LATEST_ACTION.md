@@ -1,418 +1,395 @@
-# 📝 Daily Action Log (2026-01-02)
+# 📝 Daily Action Log (2026-01-03)
 
 ### V3 Obsidian Action
 | LEAGUE | PICK | ODDS | UNIT | RES | PROFIT |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| NHL | Minnesota Wild ML | -118 | 1.0 | ✅ | +0.83u |
-| NCAAF | Navy -7.5 | +102 | 1.0 | ✅ | +1.00u |
-| NCAAF | Navy -7 | -110 | 1.0 | ✅ | +0.89u |
-| NCAAF | Wake Forest +3 | -110 | 1.0 | ✅ | +0.89u |
-| NCAAF | Mississippi State -3 | -110 | 0.6 | ❌ | -0.58u |
-| NCAAF | Nebraska -2 | -110 | 0.5 | ❌ | -0.49u |
-**Daily PnL (Settled): +2.54 Units**
+| NCAAF | SMU +1.5 | -110 | 1.5 | ✅ | +1.33u |
+| NHL | Bucs -3 | -110 | 1.3 | ❌ | -1.26u |
+| NHL | Predators ML | +114 | 0.6 | ✅ | +0.65u |
+| NCAAF | Wake Forest -5.5 | -110 | 0.6 | ❌ | -0.63u |
+| NCAAB | UCF +6.5 | -110 | 0.6 | ✅ | +0.54u |
+| NCAAB | Va Commonwealth -5 | -110 | 0.5 | ✅ | +0.44u |
+**Daily PnL (Settled): +1.06 Units**
 
 
 ### V2 Diamond Action
 | LEAGUE | PICK | ODDS | UNIT | RES | PROFIT |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| NCAAF | Navy -7 | -110 | 0.2 | ✅ | +0.18u |
-| NCAAF | Navy -7 | -110 | 0.2 | ✅ | +0.18u |
-| NCAAF | Navy -7 | -110 | 0.2 | ✅ | +0.18u |
-| NCAAF | Navy -7 | -110 | 0.2 | ✅ | +0.18u |
-| NCAAF | Navy -7.5 | +105 | 0.1 | ✅ | +0.10u |
-| NCAAF | Navy -7.5 | +105 | 0.1 | ✅ | +0.10u |
-| NCAAF | Navy -7.5 | +102 | 0.1 | ✅ | +0.10u |
-| NCAAF | Navy -7.5 | +102 | 0.1 | ✅ | +0.10u |
-| NCAAF | Navy -7 | -105 | 0.1 | ✅ | +0.10u |
-| NCAAF | Navy -7 | -105 | 0.1 | ✅ | +0.10u |
-| NCAAF | Navy -7 | -105 | 0.1 | ✅ | +0.10u |
-| NCAAF | Navy +3.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Navy -7 | -105 | 0.1 | ✅ | +0.10u |
-| NCAAF | Navy -7.5 | +105 | 0.1 | ✅ | +0.10u |
-| NCAAF | California -4.5 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAF | Navy -7 | -109 | 0.1 | ✅ | +0.09u |
-| NCAAF | California -4 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAF | SMU -1 | +104 | 0.1 | ✅ | +0.10u |
-| NCAAF | Navy -7 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Nebraska -2 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAF | Middle Tennessee -6.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Navy -7 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Navy -7 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Navy -7 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Navy -7 | -109 | 0.1 | ✅ | +0.09u |
-| NCAAF | Navy -7 | -109 | 0.1 | ✅ | +0.09u |
-| NCAAB | Iona -1.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Nebraska -2 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAF | Navy -7 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Navy -7 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | 1H Michigan State vs Nebraska Under 68 | -106 | 0.1 | ✅ | +0.09u |
-| NCAAF | Navy -7 | -115 | 0.1 | ✅ | +0.09u |
-| NCAAB | Michigan State vs Nebraska Under 143 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | 1H Michigan State vs Nebraska Under 68 | -106 | 0.1 | ✅ | +0.09u |
-| NCAAB | Michigan State vs Nebraska Under 143 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Wake Forest +3 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | Canisius +7.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Texas State -16 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Warriors +7.5 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Oregon vs Maryland Under 150 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Navy -7.5 | -106 | 0.1 | ✅ | +0.09u |
-| NCAAF | Navy -7.5 | -106 | 0.1 | ✅ | +0.09u |
-| NCAAF | Wake Forest +3 | -103 | 0.1 | ✅ | +0.10u |
-| NBA | Oklahoma City Thunder vs Golden State Warriors Under 229 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Thunder -13.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Hawks +7.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | SMU +3 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Blazers -1 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Cincinnati +7.5 | -110 | 0.1 | ❌ | -0.10u |
+| NHL | Bucs -3 | +100 | 0.1 | ❌ | -0.10u |
+| NBA | Spurs -7.5 | -110 | 0.2 | ❌ | -0.20u |
+| NHL | Bucs -3 | -110 | 0.1 | ❌ | -0.10u |
 | NCAAF | SMU +1.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Pelicans +1.5 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Grizzlies +4 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAF | Navy -7 | -115 | 0.1 | ❌ | -0.10u |
-| NCAAF | Navy -7 | -115 | 0.1 | ❌ | -0.10u |
-| NCAAF | Navy -7 | -115 | 0.1 | ✅ | +0.09u |
-| NCAAF | Liberty -8 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAF | Navy -7 | -115 | 0.1 | ✅ | +0.09u |
-| NCAAF | Navy -7 | -115 | 0.1 | ✅ | +0.09u |
-| NCAAF | Wake Forest +3 | -103 | 0.1 | ✅ | +0.10u |
-| NCAAF | Wake Forest +3 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Arizona vs SMU Under 52 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | Pepperdine vs Santa Clara Under 151 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | Pepperdine vs Santa Clara Under 151 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Navy -7.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Nets ML | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Nets vs Wizards Over 223.5 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Wizards +1 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Nets vs Wizards Under 226 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | SMU +1 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Hornets vs Bucks Over 231.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Western Kentucky -3.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Oregon -2.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Orlando Magic -4.5 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAF | Michigan -22.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Warriors +9 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Oklahoma City Thunder vs Golden State Warriors Under 228.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Hawks +7.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Nets ML | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Nets vs Wizards Under 226 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Kennesaw State +8.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Delaware +3 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | California -4 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | California -4 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAF | Arizona ML | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Hawks +8 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Orlando Magic vs Chicago Bulls Under 235.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Magic vs Bulls Under 241 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Arizona +1.5 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAF | Over 51.5 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAF | Nebraska -2 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | Fairfield -6.5 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAF | SMU +1 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAF | Middle Tennessee -6.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Spurs -5.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Oklahoma City Thunder vs Golden State Warriors Under 229 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Hawks vs Knicks Under 245 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Spurs vs Pacers Over 238.5 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Wizards +1 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Ohio State vs Rutgers Under 152 | -106 | 0.1 | ❌ | -0.10u |
-| NCAAB | Seattle University vs Gonzaga Under 155 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Suns -11.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Portland Trail Blazers -3.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Orlando Magic vs Chicago Bulls Under 235.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | Iona -1.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Thunder -8.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | San Antonio Spurs -6 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | San Antonio Spurs -6 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | West Virginia vs Iowa State Under 140.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | St. Peter's +2.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Thunder vs Warriors Under 228.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Thunder -10.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Nets vs Wizards Under 226 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Cavs -10 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Magic vs Bulls Under 241 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Louisville vs Stanford Under 158 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | Marist -2.5 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | New York -6.5 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | San Diego +11.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | West Virginia vs Iowa State Under 140.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | Sam Houston St vs Western Kentucky Over 165.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | Washington State -2.5 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Cleveland Cavaliers -13 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Pacers +6.5 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Kings +13 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Thunder -8.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Hawks vs Knicks Under 245 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Kings vs Suns Under 227 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | Pacific -4 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Lakers -3.5 | -110 | 0.1 | ✅ | +0.09u |
-**Daily PnL (Settled): +6.28 Units**
+| NCAAF | Penn State +15 | +100 | 0.1 | ✅ | +0.10u |
+| NCAAF | Bucknell -3.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Utah Valley vs Abilene Christian Under 140.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAF | Auburn +5.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAF | Florida -6 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAF | Georgia -3.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Texas-Arlington -6.5 | -110 | 0.1 | ✅ | +0.09u |
+| NHL | Panthers +2.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Va Commonwealth -5 | -110 | 0.1 | ✅ | +0.09u |
+| NHL | Panthers vs Bucs Under 44 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Blazers +9 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Bulls -1.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | UCF +6.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAF | Coastal Carolina -6 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Hofstra -6 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAF | Coastal Carolina -6 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Clippers -1 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | UCF +6.5 | -110 | 0.1 | ✅ | +0.09u |
+| NHL | Jets vs Senators Under 6 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Purdue -5.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Eastern Washington +7.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Xavier +3.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAF | Coastal Carolina -6 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Western Illinois vs SE Missouri State Under 145.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Blazers +9 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Celtics vs Clippers Over 222.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Celtics +2.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Mississippi vs Oklahoma Under 145.5 | -110 | 0.1 | ❌ | -0.10u |
+| NHL | Bucs -3 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Southern Indiana vs Lindenwood Under 148.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | 1H Houston -2.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | George Mason -6.5 | -110 | 0.1 | ✅ | +0.09u |
+| NHL | Lightning vs Sharks Over 6 | -110 | 0.1 | ✅ | +0.09u |
+| NHL | Montreal Canadiens vs St. Louis Blues Over 6 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Minnesota Timberwolves -2.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Philadelphia 76ers +7 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Celtics +1.5 | -110 | 0.1 | ✅ | +0.09u |
+| NHL | Panthers +3 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Eastern Michigan +2.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Butler -1.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | BYU -6.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Texas-Arlington vs Southern Utah Under 140 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Clippers -1.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAF | UNLV -15 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAF | SMU +1.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAF | Wake Forest -5.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAF | Eastern Washington +7.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAF | Ole Miss +7.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Eastern Washington +7.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Blazers +8.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAF | Massachusetts +3 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAF | Central Michigan +8.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAF | SMU +1.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Hawaii +3 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | VMI +6 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Xavier +3 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAF | Virginia +5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | UC San Diego -1.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Heat +2.5 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Bulls -1.5 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Raptors -3.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Kansas vs UCF Over 156.5 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Jazz vs Warriors Over 238.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Montana 0.0 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Cal Poly +2 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Akron vs Miami-OH Over 176 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | VMI +6 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Cal Poly vs Long Beach State Over 162 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Arkansas ML | -117 | 0.1 | ✅ | +0.09u |
+| NCAAB | UC San Diego -2.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Texas-Arlington vs Southern Utah Under 140 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Colorado +3 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Kansas vs UCF Over 153.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | UCF +4.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Missouri +7.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Raptors -3 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Clippers -1 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | North Carolina ML | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | UC San Diego -2.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Wolves -2.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Clippers -1 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Houston Rockets vs Dallas Mavericks Under 228 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Abilene Christian +8 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Celtics vs Clippers Over 222.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Southern Miss vs UL - Lafayette Under 133 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Blazers +9 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Knicks -3 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Warriors -12 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Rockets vs Mavs Under 226.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Celtics vs Clippers Under 222.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Houston Christian vs Incarnate Word Over 141 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Alcorn State vs Jackson State Over 144 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Boston College vs Georgia Tech Under 147 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Florida vs Missouri Over 154 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Northwestern -5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Auburn vs Georgia Over 173.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | CS Bakersfield vs UC-Davis Over 151 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | 76ers +4 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Northern Illinois vs Kent State Over 159.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | UCF +6.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | 76ers +3.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Northeastern +5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Butler -1.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Wichita State vs Charlotte U Under 138.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | UCLA vs Iowa Under 138 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | UCLA vs Iowa Under 140 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Boise State vs San Diego State Under 138.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | San Diego State -3.5 | -110 | 0.1 | ❌ | -0.10u |
+**Daily PnL (Settled): +0.73 Units**
 
 
 ### V1 Pyrite Action
 | LEAGUE | PICK | ODDS | UNIT | RES | PROFIT |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| NBA | Spurs -5.5 | -110 | 0.3 | ✅ | +0.30u |
-| NBA | Hornets +5.5 | -110 | 0.7 | ✅ | +0.63u |
-| NBA | Blazers -2.5 | -110 | 0.7 | ✅ | +0.63u |
-| NCAAF | Louisville -8.5 | -110 | 0.0 | ❌ | -0.02u |
-| NCAAF | Rice vs Texas State Over 55 | -110 | 0.0 | ❌ | -0.03u |
-| NHL | Minnesota Wild ML | -115 | 7.1 | ✅ | +6.18u |
-| Other | Guangzhou +10.5 | -111 | 1.2 | ✅ | +1.05u |
-| NCAAF | Liberty -8 | -110 | 1.3 | ❌ | -1.31u |
-| NHL | Seattle Kraken vs Vancouver Canucks Under 5.5 | +102 | 0.8 | ❌ | -0.82u |
-| NBA | Lakers -3.5 | -110 | 0.5 | ✅ | +0.43u |
-| NBA | Thunder -8.5 | -110 | 1.3 | ✅ | +1.15u |
-| NCAAF | Western Kentucky -3.5 | -110 | 1.2 | ✅ | +1.13u |
-| NHL | Seattle Kraken vs Vancouver Canucks Under 5.5 | +102 | 0.9 | ❌ | -0.86u |
-| NHL | Minnesota Wild ML | -115 | 5.4 | ✅ | +4.69u |
-| NHL | Minnesota Wild ML | -130 | 3.9 | ✅ | +3.02u |
-| NHL | Minnesota Wild ML | -130 | 4.3 | ✅ | +3.31u |
-| NCAAF | Western Kentucky -4 | -110 | 0.4 | ✅ | +0.39u |
-| NHL | Minnesota Wild ML | -115 | 6.5 | ✅ | +5.69u |
-| NCAAF | Navy -7.5 | +105 | 7.8 | ✅ | +8.19u |
-| NHL | Minnesota Wild ML | -130 | 4.5 | ✅ | +3.49u |
-| NCAAF | Navy -7.5 | +105 | 7.1 | ✅ | +7.46u |
-| NCAAF | Navy -7 | -110 | 4.3 | ✅ | +3.87u |
-| NCAAF | Navy -7 | -110 | 2.9 | ✅ | +2.61u |
-| NCAAF | Navy -7 | -115 | 1.6 | ✅ | +1.39u |
-| NBA | San Antonio Spurs -6 | -110 | 0.4 | ✅ | +0.36u |
-| NBA | San Antonio Spurs -6 | -110 | 0.2 | ✅ | +0.17u |
-| NCAAB | Ohio State -7.5 | -110 | 0.2 | ❌ | -0.16u |
-| NCAAB | Pepperdine vs Santa Clara Under 151 | -110 | 1.7 | ✅ | +1.59u |
-| NCAAB | Iona -1.5 | -110 | 1.7 | ✅ | +1.59u |
-| NCAAB | Sacred Heart vs Niagara Under 142.5 | -110 | 0.1 | ✅ | +0.07u |
-| NCAAB | Washington State -2.5 | -110 | 0.1 | ❌ | -0.08u |
-| NHL | P1 New York Rangers vs Florida Panthers Under 1.5 | -110 | 0.0 | ❌ | -0.02u |
-| NCAAB | Iona -1.5 | -110 | 1.4 | ✅ | +1.28u |
-| NCAAF | Navy -7 | -110 | 4.6 | ✅ | +4.15u |
-| NHL | Anaheim Ducks ML | +110 | 1.0 | ❌ | -1.02u |
-| NCAAF | Missouri State -3 | -110 | 0.5 | ✅ | +0.42u |
-| NCAAF | Stanford +10 | -110 | 0.5 | ✅ | +0.42u |
-| NCAAF | SMU +2 | -110 | 0.5 | ✅ | +0.42u |
-| NCAAF | Western Kentucky -4 | -110 | 1.0 | ✅ | +0.88u |
-| NCAAF | Nebraska -1.5 | -110 | 1.0 | ✅ | +0.88u |
-| NBA | Bucks -5.5 | -110 | 0.7 | ❌ | -0.74u |
-| NCAAB | Middle Tenn St -6.5 | -110 | 0.2 | ✅ | +0.18u |
-| NCAAF | Florida Intl ML | -110 | 0.2 | ✅ | +0.16u |
-| NCAAB | St. Peter's +2.5 | -110 | 0.0 | ✅ | +0.01u |
-| NCAAB | Sam Houston St vs Western Kentucky Over 165.5 | -110 | 0.1 | ✅ | +0.07u |
-| NBA | Oklahoma City Thunder vs Golden State Warriors Under 229 | -110 | 1.0 | ✅ | +0.90u |
-| NCAAF | Wake Forest +3 | -110 | 5.6 | ✅ | +5.10u |
-| NBA | Wizards +1 | -110 | 0.4 | ✅ | +0.40u |
-| NCAAF | Delaware +3 | -110 | 1.8 | ❌ | -1.76u |
-| NHL | Anaheim Ducks ML | +110 | 1.1 | ❌ | -1.15u |
-| NHL | Minnesota Wild ML | -118 | 8.8 | ✅ | +7.43u |
-| NHL | Minnesota Wild ML | -118 | 8.8 | ✅ | +7.43u |
-| NCAAB | Ohio State -7.5 | -110 | 0.2 | ❌ | -0.16u |
-| Other | Guangzhou +10.5 | -111 | 1.2 | ✅ | +1.08u |
-| NCAAF | Florida Intl ML | -110 | 0.0 | ✅ | +0.03u |
-| NCAAB | St. Peter's +2.5 | -110 | 0.1 | ✅ | +0.05u |
-| NCAAB | Sam Houston St vs Western Kentucky Over 165.5 | -110 | 0.1 | ✅ | +0.07u |
-| NCAAB | Sacred Heart vs Niagara Under 142.5 | -110 | 0.1 | ✅ | +0.07u |
-| NCAAF | Mississippi State -3 | -109 | 0.4 | ❌ | -0.44u |
-| NCAAB | Washington State -2.5 | -110 | 0.1 | ❌ | -0.08u |
-| NCAAF | Middle Tennessee -6.5 | -110 | 0.0 | ✅ | +0.00u |
-| NCAAB | Pepperdine vs Santa Clara Under 151 | -110 | 1.7 | ✅ | +1.59u |
-| NCAAF | Delaware +3 | -110 | 0.5 | ❌ | -0.46u |
-| NCAAF | Navy -7.5 | +102 | 8.6 | ✅ | +8.73u |
-| Soccer | Over 2.5 | -110 | 0.4 | ❌ | -0.37u |
-| NHL | Over 2.5 | +100 | 0.0 | ✅ | +0.03u |
-| NCAAF | Navy -7.5 | -110 | 2.1 | ✅ | +1.88u |
-| NBA | Thunder -13.5 | -110 | 1.7 | ✅ | +1.53u |
-| NBA | Cavs -13.5 | -110 | 2.1 | ❌ | -2.08u |
-| NBA | Golden State Warriors +8.5 | +100 | 0.1 | ❌ | -0.10u |
-| NBA | Oklahoma City Thunder vs Golden State Warriors Under 228.5 | -110 | 1.8 | ✅ | +1.60u |
-| NBA | Warriors +9 | -110 | 1.8 | ❌ | -1.76u |
-| NBA | Golden State Warriors +8.5 | +100 | 0.1 | ❌ | -0.10u |
-| NBA | Oklahoma City Thunder vs Golden State Warriors Under 228.5 | -110 | 1.8 | ✅ | +1.60u |
-| NBA | Thunder vs Warriors Under 228.5 | -110 | 1.3 | ✅ | +1.14u |
-| NCAAF | California -4.5 | -110 | 0.4 | ❌ | -0.44u |
-| NBA | Nets ML | -110 | 0.4 | ✅ | +0.39u |
-| NBA | Nets vs Wizards Under 226 | -110 | 0.5 | ✅ | +0.47u |
-| NCAAF | Kennesaw State +8.5 | -110 | 0.6 | ✅ | +0.56u |
-| NCAAF | Oregon -2.5 | -110 | 1.1 | ✅ | +1.00u |
-| NBA | Pacers +6.5 | -110 | 1.3 | ❌ | -1.27u |
-| NCAAF | Navy -7 | -110 | 6.3 | ✅ | +5.76u |
-| NCAAF | Wake Forest +3 | -110 | 6.6 | ✅ | +5.97u |
-| NCAAF | Kennesaw State +8.5 | -110 | 1.3 | ✅ | +1.14u |
-| NCAAF | Texas State -11.5 | -110 | 1.2 | ✅ | +1.07u |
-| NBA | Kings +13 | -110 | 1.2 | ❌ | -1.19u |
-| NHL | Ducks ML | +115 | 0.8 | ❌ | -0.79u |
-| NCAAF | SMU +3 | -110 | 0.8 | ✅ | +0.74u |
-| NCAAF | SMU +1.5 | -110 | 1.1 | ✅ | +1.00u |
-| NCAAF | Arizona vs SMU Under 52.5 | -110 | 0.2 | ✅ | +0.21u |
-| NBA | Kennesaw State vs Liberty Over 155.5 | -110 | 0.1 | ❌ | -0.11u |
-| NBA | Thunder vs Warriors Under 229.5 | -110 | 0.3 | ✅ | +0.25u |
-| NCAAF | Rice vs Texas State Over 57 | -110 | 0.2 | ❌ | -0.21u |
-| NHL | Ducks ML | +115 | 1.2 | ❌ | -1.15u |
-| NCAAF | Navy -7 | -115 | 4.6 | ❌ | -4.56u |
-| NCAAF | Navy vs Cincinnati Under 56.5 | -110 | 0.6 | ✅ | +0.58u |
-| NCAAF | Navy vs Cincinnati Under 56 | -110 | 0.5 | ✅ | +0.44u |
-| NCAAF | Navy -7 | -110 | 4.9 | ✅ | +4.41u |
-| NBA | Thunder -8.5 | -110 | 1.2 | ✅ | +1.05u |
-| NBA | Thunder vs Warriors Under 229.5 | -115 | 0.5 | ✅ | +0.41u |
-| NBA | Indiana +6 | -110 | 0.7 | ❌ | -0.66u |
-| NBA | Indiana +6 | -110 | 0.8 | ❌ | -0.82u |
-| NCAAF | Navy -7 | -115 | 6.8 | ❌ | -6.80u |
-| NCAAF | Navy vs Cincinnati Under 56.5 | -110 | 0.5 | ✅ | +0.46u |
-| NCAAF | Navy -7 | -110 | 6.0 | ✅ | +5.45u |
-| NCAAF | Wake Forest vs Mississippi State Over 52.5 | -115 | 0.3 | ✅ | +0.27u |
-| NBA | Orlando Magic -5 | -110 | 1.3 | ❌ | -1.34u |
-| NCAAF | Wake Forest +3 | -110 | 5.0 | ✅ | +4.59u |
-| NHL | Minnesota Wild ML | -125 | 6.4 | ✅ | +5.14u |
-| NBA | Portland Trail Blazers -3.5 | -110 | 0.2 | ✅ | +0.21u |
-| NBA | Thunder -8.5 | -110 | 1.4 | ✅ | +1.23u |
-| NBA | Pelicans +1.5 | -110 | 1.2 | ❌ | -1.15u |
-| NCAAF | Arizona ML | -110 | 2.3 | ✅ | +2.07u |
-| NCAAF | Navy -7 | -109 | 4.3 | ✅ | +3.93u |
-| NBA | Hawks +8 | -110 | 1.5 | ✅ | +1.38u |
-| NBA | Grizzlies +4 | -110 | 1.1 | ❌ | -1.13u |
-| NCAAF | Navy -7 | -109 | 3.5 | ✅ | +3.20u |
-| NBA | Portland Trail Blazers -3.5 | -110 | 0.2 | ✅ | +0.21u |
-| NBA | Warriors +9 | -110 | 1.3 | ❌ | -1.34u |
-| NCAAF | Michigan -22.5 | -110 | 0.5 | ✅ | +0.49u |
-| NCAAF | Florida International +1.5 | -110 | 1.1 | ✅ | +1.00u |
-| NCAAF | Delaware +3 | -110 | 1.2 | ❌ | -1.23u |
-| NBA | Kon Knueppel: 3PM Over 3.5 | +134 | 0.1 | ❌ | -0.12u |
-| NCAAF | Michigan -22.5 | -110 | 1.2 | ✅ | +1.12u |
-| NCAAF | Navy vs Cincinnati Under 56 | -110 | 1.5 | ✅ | +1.34u |
-| NCAAF | Jacksonville State -2.5 | -110 | 1.5 | ✅ | +1.34u |
-| NCAAF | Arizona vs SMU Under 52 | -110 | 1.5 | ✅ | +1.34u |
-| NCAAB | Fairfield -5.5 | -110 | 1.2 | ❌ | -1.21u |
-| NHL | Anaheim Ducks ML | +115 | 0.5 | ❌ | -0.52u |
-| NHL | Anaheim Ducks ML | +115 | 0.3 | ❌ | -0.34u |
-| NCAAF | Mississippi State -3 | -110 | 1.3 | ❌ | -1.27u |
-| NCAAF | Mississippi State -3 | -110 | 1.0 | ❌ | -1.00u |
-| NCAAF | Oregon -1 | -110 | 0.0 | ✅ | +0.02u |
-| NCAAF | Liberty -7.5 | -110 | 1.1 | ✅ | +0.97u |
-| NBA | Cavs -10 | -110 | 1.7 | ❌ | -1.69u |
-| NBA | Magic vs Bulls Under 241 | -110 | 1.9 | ✅ | +1.76u |
-| NHL | Minnesota Wild ML | -125 | 6.7 | ✅ | +5.34u |
-| NCAAF | Arizona +1.5 | -110 | 1.9 | ❌ | -1.91u |
-| NCAAB | Portland +23.5 | -110 | 1.5 | ✅ | +1.33u |
-| NCAAF | Wake Forest +3 | -105 | 0.7 | ✅ | +0.68u |
-| NBA | New Orleans Pelicans +1.5 | -110 | 0.6 | ❌ | -0.59u |
-| NCAAB | Portland +23.5 | -110 | 1.5 | ✅ | +1.33u |
-| NCAAF | Wake Forest +3 | -105 | 0.3 | ✅ | +0.29u |
-| NBA | New Orleans Pelicans +1.5 | -110 | 1.3 | ❌ | -1.30u |
-| NCAAF | Portland +23.5 | -110 | 1.6 | ✅ | +1.49u |
-| NCAAB | Portland +22.5 | -110 | 0.6 | ✅ | +0.53u |
-| NCAAF | Navy -7 | -110 | 5.7 | ✅ | +5.16u |
-| NCAAF | Navy -7 | -110 | 8.5 | ✅ | +7.71u |
-| NBA | Louisville vs Stanford Under 158 | -110 | 1.7 | ✅ | +1.52u |
-| NBA | Magic vs Bulls Over 233.5 | -110 | 1.7 | ✅ | +1.52u |
-| NBA | Spurs vs Pacers Over 238.5 | -110 | 1.2 | ❌ | -1.18u |
-| NCAAF | Nebraska -2 | -110 | 1.8 | ❌ | -1.83u |
-| NBA | Hornets vs Bucks Over 231.5 | -110 | 1.2 | ✅ | +1.07u |
-| NBA | Wizards +1 | -110 | 1.3 | ✅ | +1.14u |
-| NCAAF | Texas State -14 | -110 | 1.6 | ✅ | +1.46u |
-| NBA | Kings vs Suns Under 227 | -110 | 1.3 | ❌ | -1.32u |
-| NCAAF | Navy -7 | -110 | 8.3 | ✅ | +7.58u |
-| NCAAF | Jacksonville State -2.5 | -110 | 0.5 | ✅ | +0.49u |
-| NCAAF | Arizona +1.5 | -110 | 1.4 | ❌ | -1.39u |
-| NCAAB | Notre Dame vs California Under 138.5 | -110 | 0.7 | ❌ | -0.72u |
-| NHL | Minnesota Wild ML | -118 | 6.4 | ✅ | +5.40u |
-| NCAAF | Navy -7 | -109 | 4.1 | ✅ | +3.73u |
-| NCAAB | Marist -2.5 | -110 | 0.9 | ❌ | -0.94u |
-| NCAAF | Wake Forest +3.5 | -120 | 0.5 | ✅ | +0.45u |
-| NCAAF | Arizona +1.5 | -110 | 1.8 | ❌ | -1.82u |
-| NCAAF | Sam Houston St +4.5 | -110 | 1.0 | ❌ | -1.00u |
-| NCAAF | Sam Houston St +4.5 | -110 | 1.1 | ❌ | -1.14u |
-| NCAAB | Pacific -4 | -110 | 1.5 | ✅ | +1.34u |
-| NHL | Seattle ML | +125 | 0.0 | ✅ | +0.01u |
-| NCAAB | San Diego +11.5 | -110 | 1.5 | ✅ | +1.32u |
-| NCAAF | Wake Forest +3 | -103 | 4.7 | ✅ | +4.52u |
-| NCAAF | Navy -7.5 | +102 | 9.4 | ✅ | +9.56u |
-| NHL | Seattle Kraken ML | +142 | 1.3 | ✅ | +1.90u |
-| NCAAF | Navy -7 | -115 | 8.4 | ✅ | +7.34u |
-| NCAAB | Marist -2.5 | -110 | 0.9 | ❌ | -0.94u |
-| NBA | New York -6.5 | -110 | 1.1 | ❌ | -1.08u |
-| NCAAB | West Virginia vs Iowa State Under 140.5 | -110 | 0.5 | ✅ | +0.45u |
-| NCAAB | Oregon State vs Pacific Under 139.5 | -110 | 0.5 | ✅ | +0.41u |
-| NCAAF | Over 51.5 | -110 | 0.7 | ❌ | -0.75u |
-| NCAAF | Navy -7.5 | -105 | 4.2 | ✅ | +4.00u |
-| NCAAF | Over 51.5 | -110 | 0.8 | ❌ | -0.78u |
-| NCAAF | Navy -7.5 | -105 | 5.3 | ✅ | +5.09u |
-| NCAAF | Wake Forest +3.5 | -120 | 0.5 | ✅ | +0.45u |
-| NCAAB | San Diego +11.5 | -110 | 1.1 | ✅ | +0.99u |
-| NHL | Seattle ML | +125 | 0.0 | ✅ | +0.01u |
-| NCAAB | Florida International -1 | -110 | 0.1 | ✅ | +0.06u |
-| NCAAB | Merrimack -4.5 | -110 | 0.3 | ✅ | +0.29u |
-| NCAAF | Wake Forest +3 | -103 | 6.6 | ✅ | +6.37u |
-| NCAAB | Le Moyne -5.5 | -105 | 2.9 | ✅ | +2.72u |
-| NCAAF | Wake Forest +3 | -103 | 6.3 | ✅ | +6.09u |
-| NCAAB | Le Moyne -5.5 | -105 | 3.4 | ✅ | +3.24u |
-| NCAAF | Navy -7 | -115 | 7.8 | ✅ | +6.82u |
-| NHL | Seattle Kraken ML | +142 | 1.3 | ✅ | +1.90u |
-| NCAAB | Arizona -0.5 | +105 | 0.5 | ❌ | -0.55u |
-| NCAAF | Wake Forest +3 | -103 | 4.5 | ✅ | +4.33u |
-| NBA | Wizards +1.5 | -110 | 0.3 | ✅ | +0.32u |
-| NCAAB | Notre Dame vs California Under 138.5 | -110 | 0.0 | ❌ | -0.00u |
-| NCAAF | Wake Forest vs Mississippi State Under 53.5 | -110 | 0.4 | ❌ | -0.42u |
-| NCAAB | Oregon State vs Pacific Under 139.5 | -110 | 0.4 | ✅ | +0.35u |
-| NCAAB | West Virginia vs Iowa State Under 140.5 | -110 | 0.0 | ✅ | +0.04u |
-| NHL | Minnesota Wild ML | -118 | 6.8 | ✅ | +5.75u |
-| NCAAF | Navy -7 | -109 | 3.5 | ✅ | +3.22u |
-| NBA | Ohio State vs Rutgers Under 150.5 | -110 | 0.2 | ❌ | -0.21u |
-| NCAAF | Wake Forest +3 | -110 | 1.5 | ✅ | +1.36u |
-| NCAAF | Wake Forest +3 | -110 | 3.6 | ✅ | +3.23u |
-| NCAAF | Navy vs Cincinnati Under 56.5 | -110 | 1.2 | ✅ | +1.09u |
-| NCAAF | Navy vs Cincinnati Under 56.5 | -110 | 1.4 | ✅ | +1.27u |
-| NCAAF | SMU +1 | -115 | 0.8 | ✅ | +0.67u |
-| NCAAB | Manhattan +6.5 | -110 | 0.2 | ✅ | +0.22u |
-| NCAAF | Nebraska -2 | -110 | 0.7 | ❌ | -0.69u |
-| NCAAF | Washington State -2 | -110 | 0.4 | ❌ | -0.43u |
-| NCAAF | Navy -7.5 | -106 | 5.9 | ✅ | +5.52u |
-| NCAAF | Navy -7.5 | -106 | 5.9 | ✅ | +5.52u |
-| NCAAF | SMU +2.5 | -110 | 1.1 | ✅ | +1.02u |
-| NCAAF | Rutgers +9 | -110 | 1.6 | ✅ | +1.44u |
-| NHL | Rangers vs Panthers Over 5.5 | -110 | 1.7 | ✅ | +1.53u |
-| NBA | Nets vs Wizards Over 223.5 | -110 | 1.2 | ❌ | -1.24u |
-| Soccer | Toulouse ML | +165 | 1.0 | ❌ | -0.97u |
-| NCAAF | Arizona +1.5 | -110 | 1.5 | ❌ | -1.51u |
-| NCAAF | Navy -7 | -110 | 8.6 | ✅ | +7.85u |
-| NCAAF | Mississippi State -3 | -110 | 1.6 | ❌ | -1.55u |
-| NCAAF | California -4 | -110 | 1.3 | ❌ | -1.34u |
-| NCAAB | Fairfield -6.5 | -110 | 1.3 | ❌ | -1.25u |
-| NCAAB | Siena ML | +110 | 0.0 | ❌ | -0.05u |
-| NBA | Nets ML | -110 | 1.5 | ✅ | +1.39u |
-| NCAAF | Michigan -21 | -110 | 0.7 | ✅ | +0.66u |
-| NCAAB | SMU -1 | -110 | 0.7 | ✅ | +0.62u |
-| NCAAF | Nebraska -2 | -110 | 1.8 | ❌ | -1.78u |
-| NCAAB | Robert Morris -1.5 | -110 | 2.0 | ✅ | +1.84u |
-| NCAAF | Navy -7 | -110 | 8.8 | ✅ | +7.97u |
-| NCAAB | Seattle University vs Gonzaga Over 152.5 | -110 | 1.6 | ❌ | -1.65u |
-| NBA | Lakers -3.5 | -110 | 2.0 | ✅ | +1.78u |
-| NCAAF | Arizona vs SMU Over 51.5 | -110 | 0.8 | ❌ | -0.80u |
-| NCAAF | Iowa State -17.5 | -110 | 0.8 | ✅ | +0.73u |
-| NCAAF | Iowa State -17.5 | -110 | 0.8 | ✅ | +0.73u |
-| NCAAF | Arizona vs SMU Over 51.5 | -110 | 0.8 | ❌ | -0.80u |
-| NCAAF | UTEP +3.5 | -110 | 0.2 | ❌ | -0.21u |
-| NCAAF | SMU +1 | -110 | 1.4 | ✅ | +1.30u |
-| NBA | Atlanta Hawks +7.5 | -110 | 0.5 | ✅ | +0.43u |
-| NHL | Minnesota Wild ML | -122 | 7.4 | ✅ | +6.06u |
-| NHL | Minnesota Wild ML | -122 | 6.2 | ✅ | +5.06u |
-| NCAAF | Navy -7.5 | +105 | 6.8 | ✅ | +7.19u |
-| NCAAF | Navy -7.5 | +105 | 8.3 | ✅ | +8.69u |
-| NCAAF | Arizona vs SMU Over 51.5 | -110 | 0.6 | ❌ | -0.60u |
-| NCAAF | Arizona vs SMU Over 51.5 | -110 | 0.6 | ❌ | -0.60u |
-| NCAAB | San Francisco -10.5 | -110 | 0.1 | ❌ | -0.13u |
-| NCAAB | Jacksonville State vs Delaware Under 129.5 | -110 | 1.2 | ❌ | -1.22u |
-| NBA | Atlanta Hawks +7.5 | -110 | 0.5 | ✅ | +0.43u |
-| NCAAF | Mississippi State -3 | -110 | 1.8 | ❌ | -1.76u |
-| NCAAF | Wake Forest +3 | -110 | 4.3 | ✅ | +3.88u |
-| NCAAF | Navy -7 | -110 | 8.7 | ✅ | +7.93u |
-| NCAAF | Delaware +3 | -110 | 1.9 | ❌ | -1.91u |
-| NCAAF | Middle Tennessee -6.5 | -110 | 2.0 | ✅ | +1.78u |
-| NBA | Spurs -5.5 | -110 | 2.0 | ✅ | +1.81u |
-| NHL | Minnesota Wild ML | -115 | 8.2 | ✅ | +7.13u |
-| NCAAF | Wake Forest +3 | -103 | 4.6 | ✅ | +4.47u |
-| NCAAF | Navy -7 | -109 | 5.5 | ✅ | +5.08u |
-| NCAAF | Arizona +1.5 | -110 | 0.4 | ❌ | -0.35u |
-| NCAAF | Texas State -17 | -110 | 0.5 | ✅ | +0.42u |
-| NHL | Minnesota Wild ML | -115 | 8.2 | ✅ | +7.13u |
-| NCAAF | Wake Forest +3 | -103 | 5.1 | ✅ | +4.99u |
-| NCAAF | Navy -7 | -109 | 5.5 | ✅ | +5.08u |
-| NCAAF | Florida International +1.5 | -110 | 0.8 | ✅ | +0.70u |
-**Daily PnL (Settled): +340.45 Units**
+| NCAAB | CS Northridge +1.5 | -110 | 0.7 | ✅ | +0.61u |
+| NCAAB | LBSU -1 | -110 | 1.0 | ✅ | +0.91u |
+| NCAAB | Loyola Chicago +9 | -110 | 1.0 | ✅ | +0.93u |
+| NHL | Over 6.5 | +110 | 0.0 | ✅ | +0.05u |
+| NFL | Carolina +3 | -115 | 0.4 | ✅ | +0.34u |
+| NCAAB | SMU ML | +100 | 0.0 | ✅ | +0.02u |
+| NCAAB | VMI +5.5 | -110 | 0.1 | ✅ | +0.05u |
+| NBA | Miami Heat ML | +125 | 1.3 | ❌ | -1.33u |
+| NHL | Pittsburgh Penguins ML | +120 | 0.7 | ✅ | +0.88u |
+| NHL | Philadelphia Flyers ML | +155 | 3.7 | ✅ | +5.74u |
+| NCAAB | Loyola Chicago +7.5 | -110 | 0.2 | ✅ | +0.22u |
+| NCAAB | DePaul -3.5 | -110 | 0.6 | ✅ | +0.51u |
+| NFL | Seattle Seahawks -2.5 | -110 | 0.2 | ✅ | +0.14u |
+| NFL | Seattle Seahawks +1.5 | -110 | 1.2 | ✅ | +1.08u |
+| NFL | Seattle Seahawks -1.5 | -110 | 1.8 | ✅ | +1.65u |
+| NHL | Toronto Maple Leafs ML | -110 | 0.1 | ❌ | -0.08u |
+| NCAAB | Abilene Christian +8 | -110 | 1.6 | ✅ | +1.46u |
+| NCAAF | Alabama -5 | -110 | 1.9 | ✅ | +1.69u |
+| Soccer | Roma vs Atalanta Under 2.5 | -110 | 1.7 | ✅ | +1.57u |
+| NCAAB | UC San Diego -2.5 | -110 | 1.0 | ✅ | +0.88u |
+| NBA | Celtics vs Clippers Over 222.5 | -110 | 0.0 | ✅ | +0.04u |
+| NCAAB | Akron vs Miami-OH Over 173.5 | -110 | 1.7 | ❌ | -1.67u |
+| NHL | Bucs -3 | -110 | 2.8 | ❌ | -2.77u |
+| NFL | Carolina Panthers +3 | -117 | 0.1 | ✅ | +0.11u |
+| NFL | Seattle Seahawks ML | -145 | 4.4 | ✅ | +3.01u |
+| NFL | Zach Charbonnet: RushYds Over 42.5 | -111 | 0.2 | ✅ | +0.21u |
+| NFL | Seattle Seahawks -1.5 | -115 | 0.1 | ✅ | +0.13u |
+| NFL | Carolina Panthers +3 | -120 | 0.3 | ✅ | +0.21u |
+| NCAAB | Grand Canyon -4 | -110 | 1.0 | ❌ | -1.00u |
+| NCAAB | South Carolina +18.5 | -110 | 1.2 | ✅ | +1.13u |
+| NHL | Under 2.5 | +138 | 0.2 | ❌ | -0.22u |
+| NHL | Over 2.5 | +150 | 0.6 | ❌ | -0.57u |
+| Soccer | Strasbourg ML | +150 | 1.5 | ❌ | -1.48u |
+| NCAAB | Massachusetts +3 | -110 | 0.3 | ✅ | +0.31u |
+| NFL | Seattle Seahawks ML | -146 | 5.9 | ✅ | +4.06u |
+| NCAAB | Texas-Arlington vs Southern Utah Under 140 | -110 | 0.1 | ❌ | -0.14u |
+| NCAAB | North Carolina vs SMU Under 157 | -110 | 0.1 | ❌ | -0.13u |
+| NCAAB | Tennessee State vs Arkansas-Little Rock Over 141.5 | -110 | 0.5 | ✅ | +0.49u |
+| NCAAF | Florida -6 | -110 | 1.0 | ❌ | -1.03u |
+| NFL | 49ers +2.5 | -102 | 1.0 | ❌ | -1.02u |
+| NCAAB | George Mason -6.5 | -110 | 1.4 | ✅ | +1.27u |
+| NCAAB | Rhode Island vs George Mason Under 142 | -110 | 1.5 | ✅ | +1.37u |
+| NCAAB | San Diego State -3.5 | -110 | 1.5 | ❌ | -1.54u |
+| NCAAF | UNLV -15 | -110 | 1.2 | ✅ | +1.06u |
+| NBA | Spurs -7.5 | -110 | 0.0 | ❌ | -0.02u |
+| NBA | Wolves -2.5 | -110 | 0.2 | ✅ | +0.18u |
+| NCAAF | Georgia -3.5 | -110 | 1.2 | ✅ | +1.10u |
+| NCAAF | Iowa -4.5 | -110 | 1.5 | ✅ | +1.33u |
+| NHL | Jets vs Senators Under 6 | -110 | 1.3 | ❌ | -1.34u |
+| NHL | Blackhawks vs Capitals Under 6 | -110 | 1.3 | ✅ | +1.15u |
+| NCAAB | Texas-Arlington -6.5 | -110 | 1.5 | ✅ | +1.36u |
+| NCAAB | Butler -1.5 | -110 | 1.6 | ❌ | -1.56u |
+| NHL | Panthers +2.5 | -110 | 1.3 | ✅ | +1.22u |
+| NCAAF | Bucknell -3.5 | -110 | 1.6 | ✅ | +1.44u |
+| NCAAF | Utah +18.5 | -110 | 1.6 | ❌ | -1.58u |
+| NCAAF | Penn State +15 | -110 | 1.6 | ✅ | +1.44u |
+| NCAAF | Iowa -6 | -110 | 1.6 | ✅ | +1.44u |
+| NCAAF | Kentucky +5.5 | -110 | 1.6 | ❌ | -1.59u |
+| NCAAF | Troy State -7.5 | -110 | 1.4 | ✅ | +1.28u |
+| NCAAF | East Tennessee State -6 | -110 | 1.4 | ❌ | -1.41u |
+| NFL | Seahawks -2.5 | -110 | 1.4 | ✅ | +1.28u |
+| NCAAB | Kansas vs UCF Over 156.5 | -110 | 1.3 | ❌ | -1.32u |
+| NCAAB | Northwestern -5 | -110 | 1.2 | ❌ | -1.18u |
+| NFL | 49ers vs Seattle Seahawks Over 47.5 | -110 | 1.8 | ❌ | -1.83u |
+| NCAAB | Auburn vs Georgia Over 173.5 | -110 | 1.2 | ✅ | +1.07u |
+| NCAAF | Arkansas -2 | -110 | 1.4 | ✅ | +1.31u |
+| NCAAB | CS Bakersfield vs UC-Davis Over 151 | -110 | 1.6 | ✅ | +1.46u |
+| NCAAF | Mississippi State +9.5 | -110 | 1.9 | ✅ | +1.77u |
+| NBA | 76ers +4 | -110 | 0.1 | ✅ | +0.13u |
+| NCAAB | Northern Illinois vs Kent State Over 159.5 | -110 | 1.6 | ❌ | -1.61u |
+| NCAAB | Akron vs Miami-OH Over 176 | -110 | 1.2 | ❌ | -1.18u |
+| NCAAB | Cal Poly vs Long Beach State Over 162 | -110 | 1.2 | ❌ | -1.18u |
+| NCAAB | UCF +6.5 | -110 | 1.9 | ✅ | +1.76u |
+| Soccer | Wolverhampton Wanderers ML | +155 | 1.4 | ✅ | +2.19u |
+| NCAAF | SMU +1.5 | -110 | 0.1 | ✅ | +0.12u |
+| NCAAF | SMU +1.5 | -110 | 3.1 | ✅ | +2.84u |
+| NHL | Bucs -3 | -110 | 2.7 | ❌ | -2.74u |
+| NCAAF | Iowa -6.5 | -110 | 1.8 | ✅ | +1.61u |
+| NCAAF | Wake Forest -5.5 | -110 | 2.3 | ❌ | -2.29u |
+| NCAAF | Coastal Carolina -6 | -110 | 4.0 | ❌ | -3.95u |
+| NCAAB | Akron -3.5 | -110 | 1.6 | ❌ | -1.58u |
+| NCAAB | UC San Diego ML | -140 | 1.2 | ✅ | +0.88u |
+| NCAAF | UL - Lafayette +4 | -110 | 3.4 | ❌ | -3.37u |
+| NCAAB | Campbell -4.5 | -110 | 0.4 | ✅ | +0.36u |
+| NCAAF | James Madison +9.5 | -110 | 0.3 | ✅ | +0.26u |
+| NCAAF | Wake Forest -5.5 | -110 | 0.9 | ❌ | -0.89u |
+| NCAAB | NC-Wilmington -11.5 | -110 | 0.5 | ❌ | -0.45u |
+| NCAAF | Utah +18.5 | -110 | 0.6 | ❌ | -0.56u |
+| NCAAF | Penn State +15.5 | -110 | 2.1 | ✅ | +1.92u |
+| NCAAB | VMI +6 | -110 | 1.6 | ✅ | +1.48u |
+| NCAAB | UCF +6.5 | -110 | 0.1 | ✅ | +0.09u |
+| NFL | Panthers vs Bucs Over 43.5 | -110 | 0.0 | ❌ | -0.04u |
+| NHL | Jets ML | +119 | 3.1 | ❌ | -3.15u |
+| NBA | Knicks -3 | -110 | 2.9 | ❌ | -2.94u |
+| NBA | Blazers +9 | -110 | 1.3 | ✅ | +1.22u |
+| NCAAB | UCF +6.5 | -110 | 1.0 | ✅ | +0.93u |
+| NCAAB | Texas-Arlington -5.5 | -110 | 1.9 | ✅ | +1.76u |
+| NFL | Seahawks -1.5 | -110 | 1.8 | ✅ | +1.61u |
+| NCAAF | Buffalo -7 | -110 | 2.0 | ✅ | +1.83u |
+| NCAAF | Mississippi State +9.5 | -110 | 2.0 | ✅ | +1.83u |
+| NCAAB | Northeastern +5 | -110 | 1.9 | ❌ | -1.94u |
+| NCAAF | Furman -8 | -110 | 1.9 | ❌ | -1.94u |
+| NCAAB | Va Commonwealth -5 | -110 | 0.4 | ✅ | +0.37u |
+| NCAAB | Cincinnati +9.5 | -110 | 0.1 | ✅ | +0.07u |
+| NCAAB | UCF +6.5 | -110 | 1.1 | ✅ | +0.98u |
+| NCAAF | UL - Lafayette +4 | -110 | 0.7 | ❌ | -0.67u |
+| NCAAB | Duke -14.5 | -110 | 0.3 | ❌ | -0.29u |
+| NCAAB | TCU -2 | -110 | 0.3 | ✅ | +0.28u |
+| NCAAB | DePaul -2.5 | -110 | 0.1 | ✅ | +0.06u |
+| NCAAB | Drexel +6.5 | -110 | 0.4 | ✅ | +0.33u |
+| NCAAF | Utah Mammoth ML | -110 | 0.7 | ❌ | -0.67u |
+| NCAAF | Coastal Carolina -6 | -110 | 1.2 | ❌ | -1.22u |
+| NHL | Bucs -3 | -110 | 1.6 | ❌ | -1.65u |
+| NHL | Panthers vs Bucs Under 44 | -110 | 0.0 | ✅ | +0.03u |
+| NHL | Panthers +3 | -110 | 1.4 | ✅ | +1.27u |
+| NCAAF | Eastern Washington +7.5 | -110 | 1.5 | ✅ | +1.37u |
+| NCAAF | Ole Miss +7.5 | -110 | 1.3 | ❌ | -1.34u |
+| NFL | 49ers +2.5 | -102 | 1.1 | ❌ | -1.07u |
+| NHL | Panthers +3 | -110 | 0.9 | ✅ | +0.86u |
+| NFL | Carolina Panthers +3 | -115 | 0.4 | ✅ | +0.38u |
+| NFL | Carolina Panthers +3 | -115 | 2.1 | ✅ | +1.84u |
+| NCAAF | SMU +1.5 | -110 | 0.3 | ✅ | +0.27u |
+| NCAAB | Illinois -14.5 | -110 | 0.1 | ❌ | -0.10u |
+| NHL | Wild vs Kings Under 5.5 | -110 | 0.5 | ❌ | -0.54u |
+| NHL | Minnesota Wild vs Los Angeles Kings Under 6 | -110 | 0.4 | ❌ | -0.38u |
+| NCAAB | Hawaii +3 | -110 | 2.0 | ❌ | -2.05u |
+| NFL | 49ers +2.5 | -110 | 4.0 | ❌ | -3.98u |
+| NCAAB | Hofstra -6 | -110 | 2.1 | ❌ | -2.11u |
+| NCAAB | VMI +6 | -110 | 1.6 | ✅ | +1.46u |
+| NCAAF | Coastal Carolina -6 | -110 | 2.4 | ❌ | -2.35u |
+| NCAAB | Mississippi State +9.5 | -110 | 0.7 | ✅ | +0.66u |
+| NCAAB | Xavier +3 | -110 | 1.8 | ❌ | -1.83u |
+| NCAAF | Virginia +5 | -110 | 1.7 | ✅ | +1.55u |
+| NFL | 49ers vs Seattle Seahawks Over 47.5 | -110 | 1.6 | ❌ | -1.63u |
+| NCAAB | BYU -6.5 | -110 | 1.3 | ✅ | +1.15u |
+| NCAAB | UC San Diego -1.5 | -110 | 1.9 | ✅ | +1.73u |
+| NCAAF | Iowa -6.5 | -110 | 1.1 | ✅ | +1.00u |
+| NCAAB | UC San Diego -2.5 | -110 | 1.0 | ✅ | +0.90u |
+| NHL | Bucs -2.5 | -110 | 1.2 | ❌ | -1.24u |
+| NCAAF | Oklahoma -6.5 | -110 | 1.4 | ✅ | +1.23u |
+| NHL | Bucs -3 | +100 | 3.2 | ❌ | -3.24u |
+| NFL | Seattle Seahawks ML | -145 | 5.7 | ✅ | +3.93u |
+| NFL | 49ers +2.5 | -102 | 1.3 | ❌ | -1.27u |
+| NHL | Panthers vs Bucs Over 43 | -110 | 0.4 | ❌ | -0.39u |
+| NFL | 49ers vs Seattle Seahawks Over 47.5 | -110 | 1.3 | ❌ | -1.29u |
+| NFL | Panthers +3 | -110 | 0.6 | ✅ | +0.56u |
+| NFL | 49ers vs Seattle Seahawks Over 47.5 | -110 | 0.5 | ❌ | -0.55u |
+| NCAAF | NC State -4 | -115 | 0.0 | ❌ | -0.01u |
+| NCAAF | Marshall -7 | -110 | 1.2 | ❌ | -1.15u |
+| NCAAF | Oklahoma -6.5 | -110 | 1.9 | ✅ | +1.73u |
+| NCAAF | SMU +1.5 | -110 | 2.0 | ✅ | +1.84u |
+| NCAAF | Old Dominion +1.5 | -110 | 1.1 | ❌ | -1.06u |
+| NCAAF | Kentucky +5.5 | -110 | 0.6 | ❌ | -0.61u |
+| NFL | 49ers vs Seattle Seahawks Under 49.5 | -110 | 1.4 | ✅ | +1.29u |
+| NCAAB | UCF +5.5 | -110 | 0.7 | ✅ | +0.60u |
+| NCAAF | Georgia -5 | -110 | 0.6 | ❌ | -0.58u |
+| NHL | Bucs -3 | -110 | 1.4 | ❌ | -1.40u |
+| NCAAB | San Diego State -3.5 | -110 | 1.5 | ❌ | -1.50u |
+| NCAAB | Southern Utah +6 | -110 | 1.4 | ❌ | -1.42u |
+| NHL | Panthers ML | +140 | 0.6 | ❌ | -0.61u |
+| NHL | Maple Leafs vs Islanders Over 5.5 | -110 | 0.1 | ✅ | +0.10u |
+| NHL | Wild vs Kings Under 5.5 | -110 | 0.2 | ❌ | -0.24u |
+| NBA | Celtics +2.5 | -110 | 0.2 | ✅ | +0.18u |
+| NBA | Heat +2.5 | -110 | 1.7 | ❌ | -1.74u |
+| NBA | Celtics vs Clippers Under 222.5 | -110 | 0.2 | ❌ | -0.20u |
+| NCAAF | LSU +6.5 | -110 | 1.7 | ✅ | +1.55u |
+| NCAAF | Iowa -6 | -110 | 1.3 | ✅ | +1.18u |
+| NCAAB | Utah Valley vs Abilene Christian Under 140.5 | -110 | 1.3 | ❌ | -1.33u |
+| NCAAB | Western Illinois vs SE Missouri State Under 145.5 | -110 | 1.3 | ✅ | +1.21u |
+| NCAAF | Georgia -5.5 | -108 | 0.3 | ❌ | -0.31u |
+| NBA | New York Knicks -3.5 | -102 | 3.1 | ❌ | -3.05u |
+| NFL | Seattle Seahawks vs San Francisco 49ers Over 48.5 | -110 | 1.5 | ❌ | -1.49u |
+| NFL | Seattle Seahawks ML | -145 | 6.1 | ✅ | +4.21u |
+| NCAAB | Grand Canyon -6 | -110 | 1.5 | ❌ | -1.50u |
+| NHL | Colorado Avalanche vs Carolina Hurricanes Over 6.5 | +112 | 0.1 | ✅ | +0.07u |
+| NHL | Minnesota Wild ML | +110 | 0.6 | ❌ | -0.56u |
+| NHL | Montreal Canadiens vs St. Louis Blues Over 6 | -110 | 0.9 | ❌ | -0.88u |
+| NHL | Buffalo Sabres ML | -110 | 0.3 | ❌ | -0.27u |
+| NHL | Chicago Blackhawks vs Washington Capitals Over 6 | -110 | 0.4 | ❌ | -0.41u |
+| NCAAF | Penn State +18.5 | -110 | 0.9 | ✅ | +0.85u |
+| NBA | Minnesota Timberwolves -2.5 | -110 | 1.0 | ✅ | +0.92u |
+| NBA | Houston Rockets vs Dallas Mavericks Under 228 | -110 | 0.7 | ✅ | +0.65u |
+| NBA | Philadelphia 76ers +7 | -110 | 0.7 | ✅ | +0.65u |
+| NFL | Seattle Seahawks -2.5 | -110 | 0.0 | ✅ | +0.01u |
+| NBA | Knicks -3.5 | -110 | 0.6 | ❌ | -0.64u |
+| NCAAF | Texas -9 | -110 | 1.3 | ❌ | -1.27u |
+| NCAAB | Winthrop -21.5 | -110 | 1.5 | ❌ | -1.50u |
+| NCAAF | Utah +18.5 | -110 | 1.5 | ❌ | -1.47u |
+| NCAAB | North Carolina vs SMU Over 154.5 | -110 | 0.2 | ✅ | +0.21u |
+| NBA | Texas State vs Louisiana-Monroe Over 150 | -110 | 0.7 | ✅ | +0.64u |
+| NCAAB | Fresno State +6.5 | -110 | 0.8 | ✅ | +0.74u |
+| NBA | Hawks vs Raptors Over 232.5 | -110 | 0.8 | ✅ | +0.76u |
+| NFL | 49ers +2.5 | -110 | 3.5 | ❌ | -3.49u |
+| NBA | Mavs +8.5 | -110 | 0.9 | ✅ | +0.81u |
+| NCAAB | UC-Santa Barbara vs CS-Northridge Over 155.5 | -110 | 0.8 | ❌ | -0.81u |
+| NHL | Bucs -3 | -110 | 1.2 | ❌ | -1.22u |
+| NBA | Celtics +1.5 | -110 | 1.2 | ✅ | +1.13u |
+| NCAAB | La Salle vs George Washington Over 149.5 | -110 | 0.9 | ❌ | -0.94u |
+| NCAAF | Tennessee +2 | -110 | 1.7 | ❌ | -1.75u |
+| NCAAB | North Carolina ML | -110 | 0.5 | ❌ | -0.54u |
+| NCAAF | Alabama -4 | -110 | 0.1 | ✅ | +0.08u |
+| NCAAB | George Mason -6.5 | -110 | 0.5 | ✅ | +0.49u |
+| NCAAF | North Carolina +1.5 | -110 | 0.1 | ❌ | -0.08u |
+| NCAAB | Nevada -6 | -110 | 0.2 | ❌ | -0.20u |
+| NCAAB | George Mason -5.5 | -110 | 0.5 | ✅ | +0.49u |
+| NCAAF | Bucknell -3.5 | -110 | 1.7 | ✅ | +1.50u |
+| NCAAF | Monmouth +8 | -110 | 1.6 | ✅ | +1.43u |
+| NCAAB | BYU -6.5 | -110 | 1.8 | ✅ | +1.63u |
+| NCAAF | SMU +1.5 | -110 | 2.7 | ✅ | +2.48u |
+| NHL | Bucs -3 | -110 | 2.6 | ❌ | -2.64u |
+| NFL | Panthers vs Bucs Under 44 | -110 | 1.5 | ✅ | +1.37u |
+| NHL | Sharks ML | +187 | 1.2 | ❌ | -1.15u |
+| NBA | LSU vs Texas A&M Under 168 | -110 | 1.2 | ✅ | +1.07u |
+| NHL | Blue Jackets ML | -104 | 3.8 | ✅ | +3.68u |
+| NCAAF | LSU +6 | -110 | 0.9 | ✅ | +0.85u |
+| NBA | Atlanta Hawks +3.5 | -110 | 0.5 | ❌ | -0.49u |
+| NFL | Tampa Bay Buccaneers -1.3 | -1 | 6.6 | ✅ | +657.78u |
+| NCAAB | Eastern Michigan +2.5 | -110 | 0.1 | ✅ | +0.07u |
+| NCAAB | Missouri +7.5 | -110 | 0.7 | ✅ | +0.67u |
+| NHL | Bucs -3 | -275 | 0.2 | ❌ | -0.20u |
+| NHL | Panthers +3 | -110 | 1.2 | ✅ | +1.11u |
+| NCAAB | Alabama State vs Mississippi Valley State Over 144.5 | -110 | 1.4 | ✅ | +1.31u |
+| NBA | Mavs +8 | -110 | 1.2 | ✅ | +1.07u |
+| NCAAF | Oklahoma State +11.5 | -110 | 1.3 | ❌ | -1.25u |
+| NCAAB | Houston Christian vs Incarnate Word Over 141 | -110 | 1.4 | ❌ | -1.44u |
+| NCAAB | Cal Poly +2 | -110 | 1.4 | ❌ | -1.44u |
+| NCAAB | Alcorn State vs Jackson State Over 144 | -110 | 1.4 | ✅ | +1.31u |
+| NCAAB | Boston College vs Georgia Tech Under 147 | -110 | 1.4 | ✅ | +1.31u |
+| NBA | Southern Miss vs UL - Lafayette Over 129.5 | -110 | 1.2 | ✅ | +1.07u |
+| NCAAB | Hofstra -6 | -110 | 0.9 | ❌ | -0.90u |
+| NBA | Bulls -1.5 | -110 | 1.3 | ❌ | -1.31u |
+| NBA | Clippers -1 | -110 | 1.5 | ❌ | -1.51u |
+| NCAAF | Iowa -6.5 | -110 | 0.8 | ✅ | +0.68u |
+| NCAAF | Iowa -6 | -110 | 0.6 | ✅ | +0.55u |
+| NCAAB | Purdue -5.5 | -110 | 1.5 | ✅ | +1.35u |
+| NCAAB | UCF +6.5 | -110 | 1.9 | ✅ | +1.72u |
+| NCAAF | Buffalo -7 | -110 | 1.0 | ✅ | +0.90u |
+| NCAAB | Wisconsin +6.5 | -110 | 1.1 | ❌ | -1.10u |
+| NCAAF | SMU +1.5 | -110 | 1.8 | ✅ | +1.62u |
+| NCAAF | Iowa -7 | -110 | 0.4 | ✅ | +0.39u |
+| NCAAF | Kentucky +5 | -110 | 0.6 | ❌ | -0.58u |
+| NCAAF | Wake Forest -5.5 | -110 | 1.2 | ❌ | -1.21u |
+| NCAAF | Georgia -6.5 | -110 | 0.7 | ❌ | -0.74u |
+| NCAAF | Texas -9 | -110 | 0.1 | ❌ | -0.12u |
+| NCAAB | DePaul -3 | -110 | 0.8 | ✅ | +0.72u |
+| NFL | Seahawks ML | -140 | 6.2 | ✅ | +4.43u |
+| NCAAF | Georgia Southern -1 | -110 | 0.1 | ✅ | +0.08u |
+| NFL | San Francisco 49ers +2.5 | -110 | 1.6 | ❌ | -1.57u |
+| NFL | 49ers +2.5 | -102 | 4.2 | ❌ | -4.16u |
+| NCAAB | Purdue -5.5 | -110 | 0.1 | ✅ | +0.07u |
+| NBA | Virginia vs NC State Under 152.5 | -110 | 0.0 | ✅ | +0.02u |
+| NCAAB | BYU -7.5 | -110 | 0.3 | ✅ | +0.30u |
+| NCAAF | Iowa -5 | -110 | 0.0 | ✅ | +0.02u |
+| NCAAB | Rhode Island +7 | -110 | 0.1 | ❌ | -0.07u |
+| NBA | Mavs +8.5 | -110 | 0.3 | ✅ | +0.32u |
+| NHL | Philadelphia Flyers ML | +145 | 0.5 | ✅ | +0.80u |
+| NCAAF | NC State -4 | -110 | 0.1 | ❌ | -0.07u |
+**Daily PnL (Settled): +671.50 Units**
 
 
