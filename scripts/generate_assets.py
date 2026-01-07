@@ -43,7 +43,7 @@ COLORS = {
 # I. SYNTHETIC ASSETS (Methodology Docs)
 # ==========================================
 def generate_synthetic_assets():
-    print("🧪 Generating Synthetic Assets for Methodology...")
+    print("Generating Synthetic Assets for Methodology...")
     
     def generate_synthetic_data(n_rows=1000):
         np.random.seed(42)
@@ -133,7 +133,7 @@ def generate_synthetic_assets():
 # II. LIVE ASSETS (Dashboards)
 # ==========================================
 def generate_live_assets():
-    print("🚀 Generating Live Assets from Supabase...")
+    print("Generating Live Assets from Supabase...")
     
     pipeline = SportsDataPipeline()
     raw_df = pipeline.fetch_data()
@@ -335,11 +335,11 @@ def generate_live_assets():
     obsidian_data = {
         "v3": {
             "roi": float(v3_roi),
-            "winrate": float((len(v3[v3['outcome']==1])/len(v3)*100) if len(v3)>0 else 0),
+            "winrate": float((len(v3[v3['outcome']==1])/len(v3)*100) if not v3.empty and len(v3)>0 else 0),
             "sample": int(len(v3)),
-            "record": f"{len(v3[v3['outcome']==1])}/{len(v3[v3['outcome']==0])}/{len(v3[v3['outcome']==0.5])}",
+            "record": f"{len(v3[v3['outcome']==1])}/{len(v3[v3['outcome']==0])}/{len(v3[v3['outcome']==0.5])}" if not v3.empty else "0/0/0",
             "bets_day": round(len(v3) / v3['pick_date'].nunique() if not v3.empty else 0, 1),
-            "net": float(v3['profit_actual'].sum())
+            "net": float(v3['profit_actual'].sum()) if not v3.empty else 0.0
         },
         "v2": {"roi": float(v2_roi)},
         "v1": {"roi": float(v1_roi)},

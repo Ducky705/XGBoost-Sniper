@@ -22,7 +22,7 @@ class SportsDataPipeline:
     def _fetch_all_batches(self, table_name, select_query="*", batch_size=1000):
         all_rows = []
         start = 0
-        print(f"📥 Fetching '{table_name}'...", end=" ", flush=True)
+        print(f"Fetching '{table_name}'...", end=" ", flush=True)
         while True:
             try:
                 response = self.supabase.table(table_name).select(select_query).range(start, start+batch_size-1).execute()
@@ -75,7 +75,7 @@ class FeatureEngineer:
         return 1.91 if pd.isna(o) or o==0 else (o/100)+1 if o>0 else (100/abs(o))+1
     
     def process(self):
-        print("🛠️ Processing features (Universal V1+V2+V3 Support)...")
+        print("Processing features (Universal V1+V2+V3 Support)...")
         df = self.df.copy()
         df['unit'] = pd.to_numeric(df['unit'], errors='coerce').fillna(1.0)
         df['decimal_odds'] = df['odds_american'].apply(self._dec)
@@ -83,7 +83,13 @@ class FeatureEngineer:
         if 'result' in df.columns:
             res = df['result'].astype(str).str.lower().str.strip()
             df['outcome'] = np.select([res.isin(['win','won']), res.isin(['loss','lost'])], [1.0, 0.0], default=np.nan)
+        else:
+            print("⚠️ 'result' column MISSING. initializing 'outcome' to NaN.")
+            df['outcome'] = np.nan
             
+        if 'outcome' not in df.columns:
+             raise Exception("CRITICAL FAILURE: 'outcome' column is MISSING from DataFrame!")
+             
         df['profit_units'] = np.where(df['outcome']==1, df['unit']*(df['decimal_odds']-1), np.where(df['outcome']==0, -df['unit'], 0))
         df = df.sort_values(['capper_id', 'pick_date'])
         df['capper_experience'] = df.groupby('capper_id').cumcount()

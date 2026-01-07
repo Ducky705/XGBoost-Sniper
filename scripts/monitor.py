@@ -233,7 +233,7 @@ def main():
     # 4. Refresh Assets
     print("🎨 Refreshing Web Assets...")
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    subprocess.run(["python", os.path.join(script_dir, "generate_assets.py")])
+    subprocess.run(["python", os.path.join(script_dir, "generate_assets.py")], check=True)
     
     print("✨ Monitor Cycle Complete.")
 
