@@ -2,7 +2,8 @@ name: Daily Sniper Update
 
 on:
   schedule:
-    - cron: '0 9 * * *'
+    - cron: '0 9 * * *'   # Morning run (10:00 CET)
+    - cron: '0 21 * * *'  # Evening run (22:00 CET) - catches late-graded picks
   workflow_dispatch:
 
 jobs:
