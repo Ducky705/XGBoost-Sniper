@@ -6,8 +6,8 @@
   <br />
 
   [![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-success?style=for-the-badge&logo=statuspage&logoColor=white)](https://ducky705.github.io/XGBoost-Sniper/selector.html)
-  [![V2 ROI](https://img.shields.io/badge/V2_ROI-+3.2%25-00E0FF?style=for-the-badge)](https://ducky705.github.io/XGBoost-Sniper/diamond.html)
-  [![V3 ROI](https://img.shields.io/badge/V3_ROI-+8.7%25-7c3aed?style=for-the-badge)](https://ducky705.github.io/XGBoost-Sniper/obsidian.html)
+  [![V2 ROI](https://img.shields.io/badge/V2_ROI-+2.7%25-00E0FF?style=for-the-badge)](https://ducky705.github.io/XGBoost-Sniper/diamond.html)
+  [![V3 ROI](https://img.shields.io/badge/V3_ROI-+11.7%25-7c3aed?style=for-the-badge)](https://ducky705.github.io/XGBoost-Sniper/obsidian.html)
 
   <br />
   <br />
@@ -24,9 +24,9 @@ A multi-generational algorithmic trading system leveraging **Gradient Boosting D
 
 | MODEL ARCHITECTURE | RELEASED | STRATEGY PROFILE | STATUS | VOLUME | TOTAL BETS | ROI |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **[V1 PYRITE](https://ducky705.github.io/XGBoost-Sniper/pyrite.html)** | `NOV 20, 2025` | `XGB-CLASSIC` <br> High-Frequency / Volatility Capture | 🟡 **LEGACY** | Very High (~192 bets/day) | **10177** | **+23.5%** |
-| **[V2 DIAMOND](https://ducky705.github.io/XGBoost-Sniper/diamond.html)** | `NOV 30, 2025` | `XGB-HYBRID` <br> Precision / Regime Filtering | 🟢 **ACTIVE** | Very High (~96 bets/day) | **4130** | **+3.2%** |
-| **[V3 OBSIDIAN](https://ducky705.github.io/XGBoost-Sniper/obsidian.html)** | `DEC 27, 2025` | `XGB-V3` <br> Non-Linear arbitrage | 🟣 **ALPHA** | Low (~6 bets/day) | **109** | **+8.7%** |
+| **[V1 PYRITE](https://ducky705.github.io/XGBoost-Sniper/pyrite.html)** | `NOV 20, 2025` | `XGB-CLASSIC` <br> High-Frequency / Volatility Capture | 🟡 **LEGACY** | Very High (~194 bets/day) | **10489** | **+21.6%** |
+| **[V2 DIAMOND](https://ducky705.github.io/XGBoost-Sniper/diamond.html)** | `NOV 30, 2025` | `XGB-HYBRID` <br> Precision / Regime Filtering | 🟢 **ACTIVE** | Very High (~96 bets/day) | **4236** | **+2.7%** |
+| **[V3 OBSIDIAN](https://ducky705.github.io/XGBoost-Sniper/obsidian.html)** | `DEC 27, 2025` | `XGB-V3` <br> Non-Linear arbitrage | 🟣 **ALPHA** | Low (~6 bets/day) | **108** | **+11.7%** |
 
 > [!IMPORTANT]
 > **ACCESS PROTOCOL**: The primary interface for all models is the [**Model Selector**](https://ducky705.github.io/XGBoost-Sniper/selector.html).
