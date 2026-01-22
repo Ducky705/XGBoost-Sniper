@@ -1,204 +1,190 @@
-# 📝 Daily Action Log (2026-01-20)
+# 📝 Daily Action Log (2026-01-21)
 
 ### V3 Obsidian Action
 | LEAGUE | PICK | ODDS | UNIT | RES | PROFIT |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| NCAAB | Missouri ML | -110 | 2.4 | ✅ | +2.21u |
-| NHL | Sabres ML | +115 | 1.3 | ✅ | +1.47u |
-| NCAAB | NC State +3.5 | -110 | 1.3 | ✅ | +1.16u |
-**Daily PnL (Settled): +4.84 Units**
+| NHL | Toronto Maple Leafs ML | -110 | 1.2 | ❌ | -1.23u |
+| NCAAB | Arizona State ML | -110 | 1.0 | ✅ | +0.93u |
+| NBA | Hawks +1.5 | -110 | 1.0 | ✅ | +0.91u |
+| NBA | Atlanta Hawks ML | +107 | 0.9 | ✅ | +0.92u |
+| NCAAB | San Diego State vs Grand Canyon Over 142 | -110 | 0.9 | ✅ | +0.81u |
+**Daily PnL (Settled): +2.34 Units**
 
 
 ### V2 Diamond Action
 | LEAGUE | PICK | ODDS | UNIT | RES | PROFIT |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| NCAAB | MISSOURI ML | -110 | 0.2 | ✅ | +0.18u |
-| NCAAB | Missouri ML | -110 | 0.2 | ✅ | +0.18u |
-| NCAAB | Missouri ML | -110 | 0.2 | ✅ | +0.18u |
-| NCAAB | Missouri ML | -110 | 0.2 | ✅ | +0.18u |
-| NCAAB | Missouri ML | -110 | 0.2 | ✅ | +0.18u |
-| NCAAB | NC State +3.5 | -110 | 0.2 | ✅ | +0.18u |
-| NCAAB | St. John's -10 | -110 | 0.2 | ❌ | -0.20u |
-| NCAAB | UCLA +5.5 | -110 | 0.2 | ✅ | +0.18u |
-| NCAAB | Florida -16 | -110 | 0.2 | ❌ | -0.20u |
-| NCAAB | Butler -6.5 | -110 | 0.2 | ✅ | +0.18u |
-| NCAAB | Kent State ML | +100 | 0.2 | ❌ | -0.20u |
-| NCAAB | Florida -16 | -110 | 0.2 | ❌ | -0.20u |
-| NCAAB | TCU -8 | -110 | 0.2 | ❌ | -0.20u |
-| NBA | Bulls -3.5 | -110 | 0.2 | ✅ | +0.18u |
-| NCAAB | Missouri ML | -105 | 0.2 | ✅ | +0.19u |
-| NBA | LA Lakers ML | -110 | 0.2 | ✅ | +0.18u |
-| NBA | PHX Suns ML | -110 | 0.2 | ✅ | +0.18u |
-| NBA | TORONTO RAPTORS +3.5 | -110 | 0.2 | ✅ | +0.18u |
-| NCAAB | Missouri ML | -111 | 0.2 | ✅ | +0.18u |
-| NCAAB | Western Michigan +6.5 | -110 | 0.2 | ✅ | +0.18u |
-| NBA | SPURS vs ROCKETS Under 221.5 | -110 | 0.2 | ✅ | +0.18u |
-| NBA | SPURS vs ROCKETS Under 221.5 | -110 | 0.2 | ✅ | +0.18u |
-| NBA | Miami Heat -2.5 | -110 | 0.2 | ✅ | +0.18u |
-| NBA | Spurs vs Rockets Under 221.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | Kent State +1 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | Colorado +4.5 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Lakers ML | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | Baylor +2 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | Kent State ML | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | NC State +3 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Lakers vs Nuggets Over 227.5 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | MIAMI (OH) REDHAWKS +2 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | PURDUE BOILERMAKERS ML | -110 | 0.1 | ❌ | -0.10u |
-| NHL | TAMPA BAY LIGHTNING ML | -110 | 0.1 | ✅ | +0.09u |
-| NHL | NEW YORK RANGERS Over 5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | GOLDEN STATE WARRIORS Over 222 | -110 | 0.1 | ✅ | +0.09u |
-| NHL | MINNESOTA WILD Over 6 | -110 | 0.1 | ✅ | +0.09u |
-| NHL | EDMONTON OILERS ML | -110 | 0.1 | ❌ | -0.10u |
-| NBA | LA CLIPPERS +4 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | VANDY vs ARKANSAS Over 173.5 | -105 | 0.1 | ❌ | -0.10u |
-| NBA | SA Spurs: Total Points Over 108.5 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | GS Warriors ML | -110 | 0.1 | ❌ | -0.10u |
-| NBA | SA Spurs +4.5 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | ARKANSAS ML | -125 | 0.1 | ✅ | +0.08u |
-| NCAAB | NC STATE +3.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | Purdue -5.5 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Suns ML | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | Missouri ML | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Timberwolves -14.5 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | (NBA) PHX Suns ML / (NBA) SA Spurs +4.5 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | Arkansas -1.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | Northern Illinois vs Ohio Over 154.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | Warriors -3.5 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Spurs +4.5 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | Auburn -3.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | Texas Tech ML | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | Oklahoma Sooners -2 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | UCLA +6 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | NC State +3.5 | -110 | 0.1 | ✅ | +0.09u |
-| NCAAB | MICHIGAN -15.5 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Nuggets +2.5 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | Ole' Miss ML | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | Vanderbilt +1.5 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | Arkansas ML | -120 | 0.1 | ✅ | +0.08u |
-| NCAAB | Depaul +7 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | Toronto Raptors +3.5 | -110 | 0.1 | ✅ | +0.09u |
-| NBA | SAN ANTONIO SPURS +5 | -110 | 0.1 | ❌ | -0.10u |
-| NBA | SAN ANTONIO SPURS Over 218 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | Arkansas ML | -130 | 0.1 | ✅ | +0.08u |
-| NBA | Warriors -3.5 | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | Arkansas ML | -120 | 0.1 | ✅ | +0.08u |
-| NBA | (NBA) LA Lakers ML / (NBA) GS Warriors ML | -110 | 0.1 | ❌ | -0.10u |
-| NCAAB | NC State +3.5 | -113 | 0.1 | ✅ | +0.09u |
-| NBA | Rockets ML | -110 | 0.1 | ✅ | +0.09u |
-**Daily PnL (Settled): +1.53 Units**
+| NBA | Atlanta Hawks ML | +107 | 0.2 | ✅ | +0.21u |
+| NBA | Lamelo Ball: Pts Over 17.5 | -110 | 0.2 | ❌ | -0.20u |
+| NCAAB | Drake +5.5 | -110 | 0.2 | ✅ | +0.18u |
+| NCAAB | Samford +4 | -110 | 0.2 | ❌ | -0.20u |
+| NCAAB | Rhode Island +2.5 | -110 | 0.2 | ✅ | +0.18u |
+| NCAAB | Illinois -18.5 | -110 | 0.2 | ❌ | -0.20u |
+| NCAAB | Illinois State -7.5 | -110 | 0.2 | ✅ | +0.18u |
+| NCAAB | Saint Mary's -19 | -110 | 0.2 | ✅ | +0.18u |
+| NCAAB | Arizona vs Cincinnati Over 152 | -110 | 0.2 | ❌ | -0.20u |
+| NCAAB | Arizona -13.5 | -110 | 0.2 | ✅ | +0.18u |
+| NHL | Ducks Over 6.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Grand Canyon +1.5 | -110 | 0.2 | ❌ | -0.20u |
+| NCAAB | Texas +7.5 | -110 | 0.2 | ✅ | +0.18u |
+| NBA | Hawks +1.5 | -110 | 0.2 | ✅ | +0.18u |
+| NCAAB | Arizona Wildcats: Total Points Over 83.5 | -110 | 0.2 | ✅ | +0.18u |
+| NHL | Maple Leafs ML | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Pistons/Pelicans Under 231.5 | -105 | 0.2 | ✅ | +0.19u |
+| NCAAB | Rice ML | -118 | 0.2 | ❌ | -0.20u |
+| NHL | Penguins Over 5.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Texas Over 152.5 | -110 | 0.2 | ❌ | -0.20u |
+| NBA | Celtics -11 | -110 | 0.2 | ❌ | -0.20u |
+| NBA | Thunder -9.5 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Grizzlies ML | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Illinois -18.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Nebraska -11.5 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Thunder vs Bucks Under 226.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Drake +4.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | West Virginia +2 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | UT Arlington -3 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Washington +12 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Arizona -12.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Raptors -4 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Cincinnati +14 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Raptors -4 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Samford ML | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Hawks ML | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Washington +11.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Pepperdine Waves vs Gonzaga Bulldogs Over 149.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Arizona Wildcats -13.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | UNC -13.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Richmond -135 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | American U -135 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Thunder -9.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Cavaliers -150 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Bradley -8.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | CLE Cavaliers -3 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Seattle -3.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Davidson -5.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Boston U -4.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Grand Canyon +1.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Rice ML | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Pittsburgh ML | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | North Carolina -11.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Northwestern Wildcats +6 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Syracuse ML | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Gilgeous-Alexander: Pts+Reb+Ast Under 43.5 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | Celtics -10.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Nebraska -11.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | North Texas -15.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Tulsa -5.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Georgetown +9.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Creighton -6.5 | -115 | 0.1 | ❌ | -0.10u |
+| NCAAB | Tulsa Golden Hurricane -5.5 | -110 | 0.1 | ❌ | -0.10u |
+| NBA | TOR Raptors ML | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Cincinnati +14.5 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Bradley -8 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Utah Tech/Cal Baptist Over 143.5 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | LMU/Seattle Over 138 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Pepperdine/Gonzaga Under 149 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Drake +5.5 | -110 | 0.1 | ✅ | +0.09u |
+| NBA | Pistons vs Pelicans Under 230 | -110 | 0.1 | ✅ | +0.09u |
+| NCAAB | Arizona State ML | -110 | 0.1 | ✅ | +0.09u |
+**Daily PnL (Settled): +0.59 Units**
 
 
 ### V1 Pyrite Action
 | LEAGUE | PICK | ODDS | UNIT | RES | PROFIT |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Tennis | Hunter ML | +140 | 0.1 | ✅ | +0.17u |
-| Other | Crvena Zvezda +9.5 | -115 | 0.3 | ❌ | -0.35u |
-| NCAAB | Arkansas ML | +102 | 1.5 | ✅ | +1.56u |
-| NBA | Luke Kornet: Reb Over 5.5 | +115 | 0.1 | ❌ | -0.08u |
-| NBA | LA Lakers ML | -110 | 2.8 | ✅ | +2.56u |
-| NBA | SA Spurs: Total Points Over 108.5 | -110 | 2.7 | ❌ | -2.67u |
-| NBA | GS Warriors ML | -110 | 2.9 | ❌ | -2.90u |
-| NBA | TORONTO RAPTORS +3.5 | -110 | 1.7 | ✅ | +1.52u |
-| Tennis | (TENNIS) Tien ML / (TENNIS) Moutet vs Zheng Over 3.5 sets | -111 | 0.7 | ❌ | -0.70u |
-| NCAAB | VANDY vs ARKANSAS Over 173.5 | -105 | 2.6 | ❌ | -2.63u |
-| NBA | PHX Suns ML | -110 | 4.2 | ✅ | +3.86u |
-| NBA | SA Spurs +4.5 | -110 | 4.1 | ❌ | -4.10u |
-| NBA | Suns ML | +100 | 5.1 | ✅ | +5.07u |
-| NHL | Blue Jackets ML | -105 | 3.3 | ❌ | -3.28u |
-| NHL | 60 min Oilers ML | +100 | 5.0 | ❌ | -5.02u |
-| NBA | (NBA) PHX Suns ML / (NBA) SA Spurs +4.5 | -110 | 4.4 | ❌ | -4.38u |
-| Other | Paris: Total Points Over 88.5 | -110 | 4.6 | ❌ | -4.56u |
-| NCAAB | Missouri ML | -110 | 0.2 | ✅ | +0.20u |
-| NBA | Rockets -4 | -110 | 3.4 | ✅ | +3.07u |
-| NCAAB | Jeremiah Wilkinson: Reb Under 3.5 | -110 | 0.7 | ❌ | -0.71u |
-| NCAAB | Jayden Pierre: Reb Under 2.5 | -110 | 0.7 | ❌ | -0.71u |
-| NCAAB | Kent State ML | -110 | 0.3 | ❌ | -0.26u |
-| NCAAB | Tayshawn Comer: Reb Under 2.5 | -110 | 2.8 | ❌ | -2.80u |
-| NCAAB | Trey Kaufman-Renn: TOV Under 2.5 | -110 | 2.8 | ❌ | -2.80u |
-| NCAAB | Kent State +1 | -110 | 0.1 | ❌ | -0.11u |
-| NCAAB | Florida -16 | -110 | 0.7 | ❌ | -0.66u |
-| NCAAB | TCU -8 | -110 | 0.7 | ❌ | -0.74u |
-| NCAAB | Arkansas ML | -120 | 0.4 | ✅ | +0.37u |
-| Tennis | Ribeiro ML | +140 | 1.2 | ❌ | -1.21u |
-| Tennis | Halys +1.5S | +250 | 0.9 | ❌ | -0.86u |
-| Tennis | Halys ML | +540 | 4.7 | ✅ | +25.52u |
-| NCAAB | Missouri +1 | -110 | 0.3 | ✅ | +0.28u |
-| Tennis | (TENNIS) Tien -1.5 sets / (TENNIS) Bublik -1.5 sets / (TENNIS) De Minaur -1.5 sets / (TENNIS) Cerundolo -1.5 sets / (TENNIS) Halys vs Medvedev Over 32 / (TENNIS) Faria vs Rublev Over 31.5 | +1499 | 8.3 | ❌ | -8.31u |
-| Tennis | (TENNIS) Bublik -1.5 sets / (TENNIS) Cerundolo ML / (TENNIS) Tien ML / (TENNIS) De Minaur ML | +150 | 0.5 | ❌ | -0.49u |
-| NBA | KINGS ML | +135 | 0.2 | ❌ | -0.24u |
-| NCAAB | INDIANA +16 | -110 | 0.7 | ✅ | +0.65u |
-| NBA | Toronto Raptors +3.5 | -110 | 1.3 | ✅ | +1.14u |
-| NCAAB | NC State +4.5 | -110 | 1.8 | ✅ | +1.60u |
-| NCAAB | Missouri ML | -110 | 6.5 | ✅ | +5.95u |
-| NCAAB | Missouri ML | -105 | 8.1 | ✅ | +7.75u |
-| NBA | Miami Heat -2.5 | -110 | 1.3 | ✅ | +1.21u |
-| NCAAB | Kent State +1 | -110 | 0.1 | ❌ | -0.07u |
-| Tennis | Linette vs Li Under 21.5 Games | -125 | 2.8 | ❌ | -2.82u |
-| Tennis | Thompson vs Borges Under 38.5 Games | -130 | 0.2 | ❌ | -0.18u |
-| NBA | Tyrese Maxey: Ast Under 6.5 | -115 | 1.3 | ❌ | -1.29u |
-| NBA | Aaron Gordon: Ast Under 3.5 | -120 | 1.2 | ❌ | -1.24u |
-| NCAAB | NC State +4 | -110 | 1.8 | ✅ | +1.60u |
-| Soccer | Inter Milan vs Arsenal Both Teams To Score YES | -120 | 1.2 | ✅ | +1.02u |
-| Soccer | Dortmund vs Tottenham Under 2.5 | +105 | 3.1 | ✅ | +3.20u |
-| Soccer | Leverkusen vs Olympiakos Under 2.5 | +100 | 3.3 | ✅ | +3.29u |
-| Tennis | Etcheverry vs Fery Over 39.5 Games | -125 | 2.5 | ❌ | -2.53u |
-| NCAAB | Western Michigan +6.5 | -110 | 5.4 | ✅ | +4.87u |
-| Soccer | Monaco vs Real Madrid Over 3.5 | -125 | 0.3 | ✅ | +0.24u |
-| NCAAB | Baylor +2 | -110 | 1.4 | ❌ | -1.39u |
-| NCAAB | MIAMI (OH) REDHAWKS +2 | -110 | 0.9 | ❌ | -0.94u |
-| NHL | Ottawa Senators vs Columbus Blue Jackets Over 6.5 | -110 | 0.5 | ❌ | -0.49u |
-| NBA | San Antonio spurs +4.5 | -110 | 0.7 | ❌ | -0.68u |
-| NHL | La Kings 3 way ml | -110 | 0.1 | ✅ | +0.07u |
-| NCAAB | Auburn -3.5 | -110 | 0.4 | ✅ | +0.40u |
-| NBA | Spurs vs Rockets Under 221.5 | -110 | 2.3 | ✅ | +2.08u |
-| NCAAB | Seton Hall +11.5 | -110 | 1.0 | ✅ | +0.89u |
-| NBA | Jaime Jaquez: Pts Over 14.5 | -110 | 1.3 | ❌ | -1.30u |
-| NBA | Jabari Smith Jr: Pts Over 14.5 | -110 | 1.3 | ❌ | -1.30u |
-| NBA | Brandon Ingram: PRA Over 33.5 | -110 | 1.3 | ❌ | -1.30u |
-| NBA | Oso Ighodaro: Reb Over 4.5 | -110 | 1.3 | ❌ | -1.30u |
-| NCAAB | PURDUE BOILERMAKERS ML | -110 | 1.0 | ❌ | -0.96u |
-| NHL | TAMPA BAY LIGHTNING ML | -110 | 2.1 | ✅ | +1.95u |
-| NHL | NEW YORK RANGERS Over 5 | -110 | 1.0 | ✅ | +0.93u |
-| NBA | GOLDEN STATE WARRIORS Over 222 | -110 | 1.0 | ✅ | +0.93u |
-| NHL | EDMONTON OILERS ML | -110 | 1.2 | ❌ | -1.20u |
-| NHL | NEW YORK RANGERS +1.5 | -110 | 0.6 | ✅ | +0.56u |
-| NHL | BOSTON BRUINS +1.5 | -110 | 0.6 | ❌ | -0.62u |
-| NBA | GOLDEN STATE WARRIORS ML | -110 | 0.8 | ❌ | -0.82u |
-| NBA | Nuggets +2.5 | -110 | 1.3 | ❌ | -1.30u |
-| NHL | Winnipeg vs Saint Louis Under 5.5 | -110 | 1.3 | ❌ | -1.31u |
-| NHL | Oilers ML | -110 | 1.9 | ❌ | -1.89u |
-| NHL | Canadiens ML | -110 | 1.9 | ✅ | +1.75u |
-| NCAAB | Colorado +4.5 | -110 | 1.5 | ❌ | -1.48u |
-| NCAAB | UCF +15.5 | -125 | 1.3 | ❌ | -1.35u |
-| NBA | Suns ML | -110 | 0.1 | ✅ | +0.10u |
-| NBA | RUI HACHIMURA: Pts Over 7.5 | +100 | 0.8 | ❌ | -0.82u |
-| NBA | GRAYSON ALLEN: Pts Over 13.5 | +102 | 1.1 | ❌ | -1.05u |
-| NBA | Timberwolves -11.5 | -110 | 1.7 | ❌ | -1.68u |
-| NCAAB | Missouri ML | -110 | 4.1 | ✅ | +3.74u |
-| NHL | (NHL) Oilers ML / (NHL) Connor McDavid Over 0.5 assists | +110 | 0.4 | ❌ | -0.42u |
-| NHL | Jets vs Blues Under 6 | -110 | 0.1 | ✅ | +0.08u |
-| NHL | Bruins ML | +125 | 0.4 | ❌ | -0.39u |
-| NBA | Lakers ML | -110 | 2.0 | ✅ | +1.82u |
-| NBA | Kings +3.5 | -110 | 1.7 | ❌ | -1.68u |
-| NCAAB | Missouri ML | -110 | 2.6 | ✅ | +2.33u |
-| NCAAB | NC State +3.5 | -110 | 1.6 | ✅ | +1.41u |
-| NBA | Rockets -4 | -110 | 0.3 | ✅ | +0.23u |
-| NCAAB | UCLA +5.5 | -110 | 3.7 | ✅ | +3.38u |
-| NCAAB | St. John's -11.5 | -110 | 3.9 | ❌ | -3.94u |
-| NBA | Bulls -3.5 | -110 | 1.8 | ✅ | +1.64u |
-| NCAAB | Tanner (Vandy): Pts Over 17.5 | -110 | 1.6 | ❌ | -1.59u |
-| NCAAB | Smith (Purdue): Pts Over 14.5 | -110 | 1.6 | ❌ | -1.63u |
-| NCAAB | Georgia vs Missouri Over 164.5 | -110 | 1.6 | ❌ | -1.63u |
-| NCAAB | Ole' Miss ML | -110 | 1.6 | ❌ | -1.63u |
-| NCAAB | Vanderbilt +1.5 | -110 | 1.6 | ❌ | -1.63u |
-| NBA | Warriors -3.5 | -110 | 1.8 | ❌ | -1.81u |
-| NCAAB | Purdue -5.5 | -110 | 1.7 | ❌ | -1.72u |
-| NCAAB | Texas Tech ML | -110 | 1.7 | ✅ | +1.57u |
-| NCAAB | Kent State ML | -110 | 0.6 | ❌ | -0.56u |
-| NCAAB | Baylor +2.5 | -110 | 4.8 | ❌ | -4.75u |
-| NCAAB | UCF +13.5 | -110 | 1.7 | ❌ | -1.70u |
-| NCAAB | Kansas State -8.5 | -110 | 0.2 | ❌ | -0.17u |
-**Daily PnL (Settled): -4.53 Units**
+| NHL | Calgary Flames +1.5 | -110 | 1.1 | ❌ | -1.09u |
+| NCAAB | USC Trojans ML | -110 | 0.9 | ❌ | -0.94u |
+| NCAAB | Cincinnati +13.5 | -110 | 0.9 | ❌ | -0.94u |
+| NBA | Oklahoma City Thunder ML | -110 | 0.9 | ❌ | -0.94u |
+| NBA | Cleveland Cavaliers ML | -110 | 0.9 | ✅ | +0.86u |
+| NBA | Luka Garza: Pts Over 7.5 | -110 | 0.9 | ❌ | -0.94u |
+| NCAAB | Murray State Racers ML | -110 | 0.9 | ❌ | -0.94u |
+| NBA | Oklahoma City Thunder -7 | -110 | 0.9 | ❌ | -0.94u |
+| NBA | Detroit Pistons ML | -110 | 0.8 | ✅ | +0.74u |
+| NHL | Washington Capitals ML | -110 | 1.2 | ❌ | -1.22u |
+| NHL | Detroit Red Wings Over 6 | -110 | 1.2 | ❌ | -1.22u |
+| NBA | Collin Sexton: Pts Over 11.5 | -110 | 1.3 | ❌ | -1.30u |
+| NBA | Jaren Jackson Jr: Pts Over 18.5 | -110 | 0.9 | ❌ | -0.94u |
+| NBA | Isaiah Joe: 3-PT Over 2.5 | -110 | 0.9 | ❌ | -0.94u |
+| NCAAB | USC -6.5 | -110 | 0.9 | ❌ | -0.94u |
+| NCAAB | Arizona Wildcats -13 | -110 | 4.8 | ✅ | +4.37u |
+| NBA | Hawks +1.5 | -110 | 1.2 | ✅ | +1.09u |
+| NCAAB | Rice ML | -115 | 0.7 | ❌ | -0.70u |
+| NBA | Pistons vs Pelicans Under 230 | -110 | 0.9 | ✅ | +0.79u |
+| NHL | Toronto Maple Leafs ML | -110 | 0.4 | ❌ | -0.43u |
+| NBA | Toronto Raptors Over 224 | -110 | 0.9 | ✅ | +0.86u |
+| NCAAB | Murray State Racers -4 | -110 | 0.8 | ❌ | -0.84u |
+| Other | (NCAAB) Sam Houston ML / (NBA) OKC ML | -135 | 1.6 | ✅ | +1.20u |
+| NCAAB | Drake +6.5 | -130 | 1.1 | ✅ | +0.87u |
+| NBA | Oklahoma City Thunder Over 224 | -110 | 0.3 | ❌ | -0.34u |
+| NCAAB | San Diego State vs Grand Canyon Over 142 | -110 | 0.7 | ✅ | +0.64u |
+| NCAAB | Cincinnati +14.5 | -110 | 0.5 | ❌ | -0.46u |
+| NBA | Kings +4.5 | -110 | 0.1 | ❌ | -0.13u |
+| NBA | New Orleans Pelicans vs Detroit Pistons Under 233.5 | -110 | 4.2 | ✅ | +3.78u |
+| NCAAB | Syracuse ML | -110 | 0.3 | ❌ | -0.34u |
+| NBA | Thunder vs Bucks Over 218.5 | -110 | 0.1 | ❌ | -0.11u |
+| NCAAB | Northwestern Wildcats +6 | -110 | 4.5 | ✅ | +4.12u |
+| NBA | Raptors -3.5 | -110 | 0.8 | ✅ | +0.69u |
+| NCAAB | Xavier +8 | -110 | 0.7 | ✅ | +0.64u |
+| NBA | Hawks +1.5 | -110 | 5.5 | ✅ | +5.04u |
+| NBA | Knicks -11.5 | -110 | 0.4 | ✅ | +0.38u |
+| NCAAB | Xavier +8 | -110 | 1.7 | ✅ | +1.53u |
+| Tennis | (TENNIS) Khachanov vs Basavareddy Over 3.5 Sets / (TENNIS) Shelton ML / (TENNIS) Novak ML | -110 | 0.9 | ❌ | -0.95u |
+| Other | (Other) Fenerbahce ML / (NBA) NY Knicks ML | -110 | 2.6 | ❌ | -2.63u |
+| Tennis | Hijikata ML | +174 | 0.0 | ❌ | -0.00u |
+| Other | Fenerbahce/Virtus Under 161.5 | -110 | 1.1 | ❌ | -1.09u |
+| NBA | Gilgeous-Alexander: Pts+Reb+Ast Under 43.5 | -110 | 1.3 | ❌ | -1.32u |
+| NBA | Thunder -9.5 | -110 | 1.7 | ❌ | -1.74u |
+| NBA | Celtics -10.5 | -110 | 1.9 | ✅ | +1.69u |
+| NCAAB | Nebraska -11.5 | -110 | 3.0 | ❌ | -2.96u |
+| NCAAB | North Texas -15.5 | -110 | 2.8 | ❌ | -2.84u |
+| NBA | Pacers +12.5 | -110 | 0.3 | ❌ | -0.33u |
+| NCAAB | Tulsa -5.5 | -110 | 2.6 | ❌ | -2.65u |
+| NCAAB | Texas +7.5 | -110 | 2.8 | ✅ | +2.56u |
+| NBA | Grizzlies ML | -110 | 1.8 | ❌ | -1.84u |
+| NCAAB | Notre Dame ML | +740 | 2.3 | ❌ | -2.32u |
+| NBA | Raptors -4 | -110 | 1.0 | ✅ | +0.90u |
+| NBA | Raptors -4 | -110 | 1.0 | ✅ | +0.90u |
+| Other | (NCAAB) Creighton ML / (NHL) Avalanche ML | -110 | 0.5 | ❌ | -0.47u |
+| NCAAB | Texas Over 152.5 | -110 | 1.5 | ❌ | -1.51u |
+| NBA | Celtics -11 | -110 | 0.1 | ❌ | -0.10u |
+| NCAAB | Tulsa -5 | -110 | 0.8 | ❌ | -0.79u |
+| NCAAB | ND +14.5 | -139 | 2.1 | ❌ | -2.08u |
+| NCAAB | OAK: Total Points Under 96.5 | -115 | 0.7 | ❌ | -0.70u |
+| NCAAB | Seattle -3.5 | -110 | 0.7 | ✅ | +0.63u |
+| Other | (NBA) Lamelo Ball: Pts+Reb Over 22.5 / (NBA) Giannis Antetokounmpo: Pts+Reb Over 37.5 / (NBA) Karl Anthony Towns: Pts+Reb Over 32.5 / (NBA) Jaylen Brown: Reb Over 6.5 | -110 | 0.1 | ❌ | -0.05u |
+| NCAAB | Davidson -5.5 | -110 | 0.7 | ✅ | +0.63u |
+| NCAAB | Richmond -135 | -110 | 1.9 | ✅ | +1.72u |
+| NCAAB | American U -135 | -110 | 1.2 | ✅ | +1.10u |
+| NCAAB | Boston U -4.5 | -110 | 1.6 | ✅ | +1.49u |
+| NBA | Thunder -9.5 | -110 | 4.7 | ✅ | +4.29u |
+| NHL | Avalanche -1.5 | -120 | 0.7 | ✅ | +0.60u |
+| NHL | 60MINS Mammoth ML | -110 | 1.2 | ✅ | +1.09u |
+| NHL | Capitals -150 | -110 | 1.1 | ✅ | +1.04u |
+| NCAAB | Bradley -8.5 | -110 | 1.2 | ✅ | +1.10u |
+| NCAAB | Washington +11.5 | -110 | 2.3 | ✅ | +2.12u |
+| NBA | CLE Cavaliers -3 | -110 | 0.5 | ✅ | +0.43u |
+| Other | (NCAAB) Arizona Wildcats -13.5 / (NCAAB) Pepperdine Waves vs Gonzaga Bulldogs Over 149.5 | -110 | 2.0 | ✅ | +1.86u |
+| Other | (NBA) TOR Raptors ML / (NBA) CLE Cavaliers -3 | -110 | 3.6 | ✅ | +3.23u |
+| NCAAB | Pittsburgh ML | -130 | 0.5 | ❌ | -0.48u |
+| NCAAB | Arizona State ML | -130 | 2.7 | ✅ | +2.06u |
+| NCAAB | Rice ML | -118 | 2.1 | ❌ | -2.05u |
+| NCAAB | Drake +5.5 | -110 | 2.6 | ✅ | +2.37u |
+| NBA | Cavaliers -2.5 | -110 | 0.6 | ✅ | +0.58u |
+| NCAAB | 1H Illinois -9.5 | -110 | 0.2 | ✅ | +0.14u |
+| NCAAB | Murray State -4.5 | -110 | 1.3 | ❌ | -1.26u |
+| NCAAB | Pepperdine vs Gonzaga Over 149 | -110 | 1.1 | ❌ | -1.11u |
+| NCAAB | ND ML | +740 | 2.7 | ❌ | -2.69u |
+| NBA | Pistons/Pelicans Under 231.5 | -105 | 3.1 | ✅ | +2.94u |
+| NCAAB | Maryland +18.5 | -110 | 2.5 | ❌ | -2.49u |
+| Tennis | M.Cilic ML | +125 | 0.0 | ❌ | -0.01u |
+| NBA | Thunder vs Bucks Under 226.5 | -110 | 0.4 | ✅ | +0.34u |
+| NBA | Hawks ML | -110 | 0.7 | ✅ | +0.66u |
+| NBA | Raptors / Kings Under 226.5 | -110 | 1.9 | ❌ | -1.86u |
+| NBA | Brandon Miller: Pts Over 20.5 | -110 | 1.9 | ❌ | -1.86u |
+| Tennis | Hurkacz Over 39 | -110 | 0.9 | ❌ | -0.91u |
+| Tennis | Basavreddy Over 38.5 | -110 | 0.9 | ❌ | -0.91u |
+| NCAAB | 1H IUPU OAK Under 85.5 | -118 | 0.3 | ❌ | -0.28u |
+**Daily PnL (Settled): +5.11 Units**
 
 
