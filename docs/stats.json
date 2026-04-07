@@ -1,0 +1,32 @@
+{
+    "meta": {
+        "last_update": "2026-04-07 19:33 UTC",
+        "status": "NOMINAL"
+    },
+    "models": {
+        "pyrite": {
+            "roi": 74.1,
+            "net": 981.5,
+            "record": "1487-1763-0",
+            "win_rate": 45.8
+        },
+        "diamond": {
+            "roi": 6.6,
+            "net": 87.0,
+            "record": "2317-1870-0",
+            "win_rate": 55.3
+        },
+        "obsidian": {
+            "roi": 24.8,
+            "net": 171.5,
+            "record": "778-866-0",
+            "win_rate": 47.3
+        },
+        "quartz": {
+            "roi": 0,
+            "net": 0,
+            "record": "0-0-0",
+            "win_rate": 0
+        }
+    }
+}

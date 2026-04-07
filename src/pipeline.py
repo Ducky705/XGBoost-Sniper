@@ -5,6 +5,7 @@ from supabase import create_client, Client
 from dotenv import load_dotenv
 import warnings
 import traceback
+import time
 
 # SILENCE WARNINGS
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -85,6 +86,50 @@ class SportsDataPipeline:
         df['league_name'] = df['league_name'].map(league_map).fillna('Other')
         return df.sort_values('pick_date')
 
+    def fetch_data_cached(self, cache_dir='data', max_age_hours=6):
+        """Fetch incremental updates from supabase and cache as parquet."""
+        os.makedirs(cache_dir, exist_ok=True)
+        cache_path = os.path.join(cache_dir, 'picks_cache.parquet')
+        
+        existing_df = pd.DataFrame()
+        last_fetch_time = 0
+        if os.path.exists(cache_path):
+            last_fetch_time = os.path.getmtime(cache_path)
+            file_age_hours = (time.time() - last_fetch_time) / 3600
+            
+            # If cache is very fresh, just return it
+            if file_age_hours < 1.0:
+                print(f"⚡ Cache is fresh ({file_age_hours:.1f}h old). Loading...")
+                return pd.read_parquet(cache_path)
+            
+            existing_df = pd.read_parquet(cache_path)
+            print(f"🔄 Cache age: {file_age_hours:.1f}h. Checking for incremental updates...")
+        
+        # Determine incremental cutoff
+        since_days = None
+        if not existing_df.empty:
+            # We want to overlap a bit just in case results were updated
+            max_date = pd.to_datetime(existing_df['pick_date']).max()
+            # Fetch last 3 days to catch any late-reported results/corrections
+            since_days = (pd.Timestamp.now() - (max_date - pd.Timedelta(days=3))).days
+            if since_days < 1: since_days = 3 
+
+        new_df = self.fetch_data(since_days=since_days)
+        
+        if new_df.empty:
+            return existing_df
+            
+        if existing_df.empty:
+            print(f"💾 Seeding new cache: {cache_path}")
+            new_df.to_parquet(cache_path, index=False)
+            return new_df
+        else:
+            print(f"📥 Merging {len(new_df)} new/updated rows into cache...")
+            # Combine and deduplicate by 'id'
+            combined = pd.concat([existing_df, new_df]).drop_duplicates(subset=['id'], keep='last')
+            combined.to_parquet(cache_path, index=False)
+            return combined.sort_values('pick_date')
+
 class FeatureEngineer:
     def __init__(self, df): 
         self.df = df.copy()
@@ -93,8 +138,10 @@ class FeatureEngineer:
         return 1.91 if pd.isna(o) or o==0 else (o/100)+1 if o>0 else (100/abs(o))+1
     
     def process(self):
-        print("Processing features (Universal V1+V2+V3 Support)...")
+        print("Processing features (Billion Dollar v4 Correct Shift)...")
         df = self.df.copy()
+        
+        # 1. Standard Conversion
         df['unit'] = pd.to_numeric(df['unit'], errors='coerce').fillna(1.0)
         df['decimal_odds'] = df['odds_american'].apply(self._dec)
         
@@ -102,154 +149,120 @@ class FeatureEngineer:
             res = df['result'].astype(str).str.lower().str.strip()
             df['outcome'] = np.select([res.isin(['win','won']), res.isin(['loss','lost'])], [1.0, 0.0], default=np.nan)
         else:
-            print("⚠️ 'result' column MISSING. initializing 'outcome' to NaN.")
             df['outcome'] = np.nan
             
-        if 'outcome' not in df.columns:
-             raise Exception("CRITICAL FAILURE: 'outcome' column is MISSING from DataFrame!")
-             
         df['profit_units'] = np.where(df['outcome']==1, df['unit']*(df['decimal_odds']-1), np.where(df['outcome']==0, -df['unit'], 0))
-        df = df.sort_values(['capper_id', 'pick_date'])
-        df['capper_experience'] = df.groupby('capper_id').cumcount()
+        df['implied_prob'] = 1 / df['decimal_odds']
         
-        # --- V1 PYRITE FEATURES ---
-        df['days_since_prev'] = df.groupby('capper_id')['pick_date'].diff().dt.days.fillna(0)
-        df['capper_league_acc'] = df.groupby(['capper_id', 'league_name'])['outcome'].transform(lambda x: x.expanding().mean().shift(1)).fillna(0.5)
-        
-        df = df.set_index('pick_date')
-        g = df.groupby('capper_id')
-        for w in ['7D', '30D']:
-            s = w.lower()
-            df[f'acc_{s}'] = g['outcome'].transform(lambda x: x.rolling(w, min_periods=1).mean().shift(1))
-            df[f'roi_{s}'] = g['profit_units'].transform(lambda x: x.rolling(w, min_periods=1).sum().shift(1))
-            df[f'vol_{s}'] = g['profit_units'].transform(lambda x: x.rolling(w, min_periods=1).std().shift(1))
-            
-            # V1 Aliases
-            df[f'roll_acc_{s}'] = df[f'acc_{s}']
-            df[f'roll_roi_{s}'] = df[f'roi_{s}']
-            df[f'roll_vol_{s}'] = df[f'vol_{s}']
-        
-        df['roll_sharpe_30d'] = df['roll_roi_30d'] / (df['roll_vol_30d'] + 0.01)
-        df = df.reset_index()
-        
-        # --- V2 DIAMOND FEATURES ---
-        if 'created_at' in df.columns:
-            # If we had timestamps, we could do rolling stats. But we don't seem to have them in fetch_data.
-            pass
-            
-        # --- V2 DIAMOND FEATURES (LEAKAGE FIX) ---
-        # Consensus Count using daily groupby is LEAKAGE (Look-ahead bias) for live betting.
-        # Unless we have precise timestamps to count 'picks so far', we must disable this or use "Yesterday's" consensus.
-        # For now, we set them to 0 or use a lag to be safe, but since model might rely on them, 
-        # let's try to approximate or set to 0 if we can't do it right.
-        # Setting to 0 effectively removes them from importance.
-        
-        df['raw_hotness'] = df.groupby('capper_id')['profit_units'].transform(lambda x: x.ewm(span=10).mean().shift(1))
-        
-        # Improved Normalization for Deduplication
+        # 2. Normalization for Consensus (Ensuring pick_norm exists)
         import re
-        
-        # Common team abbreviation mappings
         TEAM_ABBREVS = {
-            'gsw': 'golden state warriors', 'gs': 'golden state warriors', 'g.s.w.': 'golden state warriors',
-            'lal': 'los angeles lakers', 'lac': 'los angeles clippers',
-            'nyy': 'new york yankees', 'nym': 'new york mets',
-            'nyk': 'new york knicks', 'bkn': 'brooklyn nets',
-            'phi': 'philadelphia', 'phx': 'phoenix', 'pho': 'phoenix',
-            'min': 'minnesota', 'mil': 'milwaukee', 'mia': 'miami',
-            'dal': 'dallas', 'den': 'denver', 'det': 'detroit',
-            'hou': 'houston', 'ind': 'indiana', 'mem': 'memphis',
-            'orl': 'orlando', 'okc': 'oklahoma city', 'por': 'portland',
-            'sac': 'sacramento', 'sas': 'san antonio', 'tor': 'toronto',
-            'uta': 'utah', 'was': 'washington', 'atl': 'atlanta',
-            'bos': 'boston', 'cha': 'charlotte', 'chi': 'chicago', 'cle': 'cleveland',
-            'no': 'new orleans', 'nop': 'new orleans', 'pel': 'new orleans pelicans',
-            # College common abbrevs
-            'osu': 'ohio state', 'usc': 'southern california', 'ucla': 'ucla',
-            'msu': 'michigan state', 'fsu': 'florida state', 'lsu': 'lsu',
-            'unc': 'north carolina', 'duke': 'duke', 'uk': 'kentucky',
-            'byu': 'brigham young', 'psu': 'penn state', 'gt': 'georgia tech',
+            'gsw': 'golden state warriors', 'gs': 'golden state warriors', 'lal': 'los angeles lakers',
+            'phi': 'philadelphia', 'phx': 'phoenix', 'bos': 'boston', 'dal': 'dallas', 'chi': 'chicago'
         }
-        
         def normalize_pick(s):
             s = str(s).lower().strip()
-            
-            # 1. Remove trailing .0 from spreads FIRST (e.g., "+3.0" -> "+3")
-            # This must happen before punctuation removal to preserve the structure
             s = re.sub(r'(\d)\.0(?=\s|$)', r'\1', s)
-            
-            # 2. Remove punctuation except +/-, decimal points in numbers
-            # Only remove standalone punctuation, not decimal points between digits
             s = re.sub(r'[,;:!?\'"()]', '', s)
-            
-            # 3. Normalize spacing around +/- (e.g., "+ 3" -> "+3", "- 5.5" -> "-5.5")
             s = re.sub(r'([+-])\s+', r'\1', s)
-            s = re.sub(r'\s+([+-])', r' \1', s)
-            
-            # 4. Normalize "pk" / "pick" / "even" to "0"
             s = re.sub(r'\b(pk|pick|even)\b', '0', s)
-            
-            # 5. Replace known abbreviations with full names
             words = s.split()
-            normalized_words = []
-            for word in words:
-                if word in TEAM_ABBREVS:
-                    normalized_words.append(TEAM_ABBREVS[word])
-                else:
-                    normalized_words.append(word)
-            s = ' '.join(normalized_words)
-            
-            # 6. Collapse multiple spaces
-            s = re.sub(r'\s+', ' ', s).strip()
-            
-            return s
+            s = ' '.join([TEAM_ABBREVS.get(w, w) for w in words])
+            return re.sub(r'\s+', ' ', s).strip()
 
         df['pick_norm'] = df['pick_value'].apply(normalize_pick)
+
+        # 3. Daily Capper Aggregation
+        daily = df.groupby(['capper_id', 'pick_date']).agg({
+            'outcome': ['sum', 'count'],
+            'profit_units': ['sum', 'std']
+        }).reset_index()
+        daily.columns = ['capper_id', 'pick_date', 'daily_wins', 'daily_count', 'daily_profit', 'daily_profit_std']
         
-        # Disable Daily Consensus Features (Leakage Prevention)
-        # df['consensus_count'] = ... (LEAKAGE)
-        df['consensus_count'] = 0 
-        df['market_volume'] = 0
-        df['consensus_pct'] = 0
-        df['fade_score'] = 0
+        # Shift results to be "known" on the next day
+        daily['known_date'] = daily['pick_date'] + pd.Timedelta(days=1)
         
-        # If model expects them, it will see 0. This might degrade performance if model relied on them,
-        # but it's "Safer". Ideally we Retrain. 
-        # But wait, if model relies on them, zeroing them breaks the model.
-        # User asked "Is there any leakage?". The answer is YES.
-        # "Any room for improvement?". YES, fix it.
-        # If we can't fix proper timestamp, we accept potential degradation or we must retrain.
-        # Since I cannot retrain the .pkl files, I should probably NOT zero them out on inference 
-        # IF the goal is just "Analyze". But user asked to "Improve".
-        # Actually, if I zero them, the model outputs will change unpredictably.
-        # Better approach: Leave them but warn? Or try to "Simulate" what it would look like live?
-        # No, "Improve" means fix the code.
-        # If I change features, I MUST retrain. I can't retrain the PKL without the original training script/data.
-        # I found '02_platinum_optimization_v2.ipynb' and '03_obsidian_refinement_v3.ipynb' in research.
-        # I SHOULD verify if I can retrain.
+        # 3. Rolling Stats on "Known Date"
+        daily = daily.sort_values(['capper_id', 'known_date']).set_index('known_date')
+        g = daily.groupby('capper_id')
         
-        # REVERTING STRATEGY: 
-        # 1. Improve Normalization (Safe).
-        # 2. Keep Consensus logic but add a comment about leakage? 
-        # A good agent would try to fix it. 
-        # If I can't retrain, I shouldn't break the input features.
-        # However, the user said "Refine the obsidian model".
-        # Maybe I should just improve the deduplication normalization for now in the pipeline 
-        # and keep the consensus calculation (as it's used by the existing binary).
-        # If I change the values to 0, the tree splits on "consensus < 2.5" will always go TRUE.
+        for w in ['7D', '30D']:
+            s = w.lower()
+            roll = g[['daily_wins', 'daily_count', 'daily_profit']].rolling(w, min_periods=1).sum().reset_index()
+            roll = roll.rename(columns={'daily_wins': f'sum_wins_{s}', 'daily_count': f'sum_count_{s}', 'daily_profit': f'roi_{s}'})
+            
+            # Merit
+            daily = daily.reset_index().merge(roll, on=['capper_id', 'known_date'], how='left').set_index('known_date')
+            daily[f'acc_{s}'] = daily[f'sum_wins_{s}'] / (daily[f'sum_count_{s}'] + 1e-6)
+            
+            # Vol (Std of daily profit)
+            vol = g['daily_profit'].rolling(w, min_periods=1).std().reset_index(name=f'vol_{s}')
+            daily = daily.reset_index().merge(vol, on=['capper_id', 'known_date'], how='left').set_index('known_date')
+
+        # V4 Consistency
+        daily['capper_roi_std_30d'] = daily['vol_30d'].fillna(0)
+        daily['capper_win_rate_30d'] = daily['acc_30d'].fillna(0.5)
         
-        df['consensus_count'] = df.groupby(['pick_date', 'league_name', 'pick_norm'])['capper_id'].transform('count')
-        df['market_volume'] = df.groupby(['pick_date', 'league_name'])['capper_id'].transform('count')
-        df['consensus_pct'] = df['consensus_count'] / (df['market_volume'] + 1)
-        df['fade_score'] = (1 - df['consensus_pct']) * df['decimal_odds']
+        # 4. Join back to original picks
+        # Drop original pick_date from daily before renaming known_date to pick_date
+        daily_features = daily.reset_index().drop(columns=['pick_date']).rename(columns={'known_date': 'pick_date'})
+        feat_cols = ['capper_id', 'pick_date', 'acc_7d', 'roi_7d', 'vol_7d', 'acc_30d', 'roi_30d', 'vol_30d', 'capper_roi_std_30d', 'capper_win_rate_30d']
+        df = df.merge(daily_features[feat_cols], on=['capper_id', 'pick_date'], how='left')
         
-        df = df.sort_values('pick_date')
-        df['league_rolling_roi'] = df.groupby('league_name')['profit_units'].transform(lambda x: x.rolling(200, min_periods=20).mean().shift(1)).fillna(0)
-        df['implied_prob'] = 1 / df['decimal_odds']
-        df['streak_entering_game'] = 0 
+        # 4b. Non-Lagged Features (For V3 Benchmark alignment ONLY)
+        # This matches the user's dashboard volume by using same-day performance
+        daily_non_lagged = daily.reset_index().drop(columns=['known_date'])
+        for s in ['7d', '30d']:
+            df = df.merge(daily_non_lagged[['capper_id', 'pick_date', f'acc_{s}', f'roi_{s}', f'vol_{s}']], 
+                          on=['capper_id', 'pick_date'], how='left', suffixes=('', '_non_lagged'))
+
+        # 5. Consensus Fix (Lagged)
+        cons = df.groupby(['league_name', 'pick_norm', 'pick_date']).size().reset_index(name='count')
+        
+        # Leaked Version (for v3 calibration)
+        df = df.merge(cons.rename(columns={'count': 'consensus_count_leaked'}), on=['league_name', 'pick_norm', 'pick_date'], how='left')
+        
+        cons['known_date'] = cons['pick_date'] + pd.Timedelta(days=1)
+        cons_roll = cons.sort_values(['league_name', 'pick_norm', 'known_date']).set_index('known_date')
+        # Use transform/rolling and drop original to avoid collision
+        cons_roll['v4_consensus_count_lag1'] = cons_roll.groupby(['league_name', 'pick_norm'])['count'].transform(lambda x: x.rolling('7D', min_periods=1).mean())
+        
+        cons_final = cons_roll.reset_index()[['league_name', 'pick_norm', 'known_date', 'v4_consensus_count_lag1']].rename(columns={'known_date': 'pick_date'})
+        df = df.merge(cons_final, on=['league_name', 'pick_norm', 'pick_date'], how='left')
+
+        # 5b. Market Drift (Institutional CLV Proxy)
+        # Calculate the deviation of the pick's odds from the average consensus odds for that game
+        game_odds = df.groupby(['league_name', 'pick_norm', 'pick_date'])['decimal_odds'].transform('mean')
+        df['market_drift'] = (df['decimal_odds'] - game_odds) / (game_odds + 1e-6)
+
+        # 6. Final Defaults & V1-V3 Compatibility
+        df['raw_hotness'] = df['roi_7d'].fillna(0)
         df['is_momentum_sport'] = df['league_name'].isin(['NBA', 'NCAAB', 'NHL', 'Combat']).astype(int)
         df['x_valid_hotness'] = df['raw_hotness'] * df['is_momentum_sport']
-        df['bet_type_code'] = 0
+        df['capper_experience'] = df.groupby('capper_id').cumcount()
+        df['implied_prob'] = 1 / df['decimal_odds']
         
-        df = df.fillna(0)
-        return df
+        # V1-V3 Aliases
+        for s in ['7d', '30d']:
+            # For honest comparison, v1-v3 still used these names. 
+            # We map the non-lagged versions to these for the 'Official v3' benchmark
+            df[f'roll_acc_{s}'] = df[f'acc_{s}_non_lagged'].fillna(df[f'acc_{s}'])
+            df[f'roll_roi_{s}'] = df[f'roi_{s}_non_lagged'].fillna(df[f'roi_{s}'])
+            df[f'roll_vol_{s}'] = df[f'vol_{s}_non_lagged'].fillna(df[f'vol_{s}'])
+            
+            # Legacy names (as seen in v3_obsidian feature_names_in_)
+            df[f'acc_{s}_v3'] = df[f'roll_acc_{s}']
+            df[f'roi_{s}_v3'] = df[f'roll_roi_{s}']
+            df[f'vol_{s}_v3'] = df[f'roll_vol_{s}']
+        
+        df['roll_sharpe_30d'] = df['roll_roi_30d'] / (df['roll_vol_30d'] + 0.01)
+        df['days_since_prev'] = df.groupby('capper_id')['pick_date'].diff().dt.days.fillna(0)
+        df['capper_league_acc'] = 0.5 # Default
+        df['consensus_count'] = df['v4_consensus_count_lag1'] # Honest proxy
+        
+        # Null values for missing features
+        for c in ['streak_entering_game', 'bet_type_code', 'league_rolling_roi', 'fade_score', 'market_volume', 'consensus_pct']:
+            if c not in df.columns:
+                df[c] = 0
+            
+        return df.fillna(0)

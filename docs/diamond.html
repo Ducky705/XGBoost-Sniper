@@ -327,8 +327,33 @@
                     class="text-diamond-blue">///</span> Cumulative Alpha</h2>
             <p class="font-mono text-zinc-500 text-sm mb-6">Real-time performance trajectory relative to market
                 baseline.</p>
-            <div class="faceted-panel chart-container p-2">
-                <img src="assets/live_curve.png" alt="Cumulative Profit Curve" class="chart-img" />
+            <div class="aspect-[16/4] relative flex items-center justify-center rounded border border-white/5 group overflow-hidden bg-black/20">
+                <!-- HTML Legend Overlay -->
+                <div class="absolute top-4 right-6 flex flex-wrap gap-4 z-20 pointer-events-none">
+                    <div class="flex items-center gap-2 text-[9px] font-mono text-white/30 uppercase">
+                        <span class="w-2.5 h-0.5" style="background: #f8fafc"></span> Quartz
+                    </div>
+                    <div class="flex items-center gap-2 text-[9px] font-mono text-white/30 uppercase">
+                        <span class="w-2.5 h-0.5" style="background: #7c3aed"></span> Obsidian
+                    </div>
+                    <div class="flex items-center gap-2 text-[9px] font-mono text-white/80 uppercase font-bold">
+                        <span class="w-2.5 h-0.5" style="background: #00f0ff"></span> Diamond v2
+                    </div>
+                    <div class="flex items-center gap-2 text-[9px] font-mono text-white/30 uppercase">
+                        <span class="w-2.5 h-0.5" style="background: #ffdd00"></span> Pyrite
+                    </div>
+                </div>
+                
+                <!-- HTML Title Overlay -->
+                <div class="absolute top-4 left-6 z-20 pointer-events-none">
+                    <div class="text-[10px] font-mono font-bold text-white/90 uppercase tracking-widest">
+                        INSTITUTIONAL ALPHA // ECOSYSTEM BENCHMARK: V2 DIAMOND
+                    </div>
+                </div>
+
+                <div class="absolute inset-0 bg-gradient-to-t from-diamond-blue/5 to-transparent pointer-events-none"></div>
+                <img src="./comparison_diamond.png" alt="Cumulative Profit Curve" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.005] transition-all duration-700" />
+                <div class="absolute bottom-4 left-4 py-1 px-2 bg-black/40 border border-white/5 text-[9px] font-mono text-white/30">TRACE_ID: COMPARATIVE-ALPHA-V2</div>
             </div>
         </section>
 
@@ -573,403 +598,41 @@
         // --- DATA BINDING (PRESERVED) ---
         const DATA = {
             "meta": {
-                        "last_update": "2026-04-07 15:08 UTC",
-                        "status": "NOMINAL"
+                "last_update": "2026-04-07 17:04 UTC",
+                "status": "NOMINAL"
             },
             "stats": {
-                        "roi": 1.8,
-                        "net_units": 22.88,
-                        "record": "4839-4426-0",
-                        "win_rate": 52.2
-            },
-            "volume": {
-                        "v1_avg": 136.7,
-                        "v2_avg": 73.0,
-                        "v1_label": "High",
-                        "v2_label": "Medium"
+                "roi": 6.827201661317775,
+                "net_units": 90.4126316008313,
+                "record": "2330-1877-0",
+                "win_rate": 55.38388400285239,
+                "sample": 4207
             },
             "yesterday": {
-                        "record": "15-16-0",
-                        "win_pct": 48.4,
-                        "roi": -7.2,
-                        "net": -0.72,
-                        "date": "Apr 06, 2026"
+                "date": "Apr 06, 2026",
+                "record": "14-7-0",
+                "win_pct": 37.15798764342452,
+                "roi": 37.15798764342452,
+                "net": 3.827272727272727
             },
             "history": [
-                        {
-                                    "date": "04/06",
-                                    "league": "NHL",
-                                    "selection": "Sabres ML",
-                                    "odds": 106,
-                                    "edge": 0.11771830250915971,
-                                    "units": 0.5,
-                                    "wager": 0.5,
-                                    "profit": 0.53,
-                                    "result": "WIN",
-                                    "match": "Sabres ML"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NHL",
-                                    "selection": "Sabres ML",
-                                    "odds": 106,
-                                    "edge": 0.11630350679255608,
-                                    "units": 0.5,
-                                    "wager": 0.5,
-                                    "profit": 0.53,
-                                    "result": "WIN",
-                                    "match": "Sabres ML"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NCAAB",
-                                    "selection": "Michigan Under 75.5 Total Pts",
-                                    "odds": -110,
-                                    "edge": 0.0626454637164161,
-                                    "units": 0.4,
-                                    "wager": 0.4,
-                                    "profit": 0.36,
-                                    "result": "WIN",
-                                    "match": "Michigan Under 75.5 Total Pts"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NBA",
-                                    "selection": "Cavs -15",
-                                    "odds": -110,
-                                    "edge": 0.06123066799981247,
-                                    "units": 0.4,
-                                    "wager": 0.4,
-                                    "profit": 0.36,
-                                    "result": "WIN",
-                                    "match": "Cavs -15"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NCAAB",
-                                    "selection": "Connecticut vs Michigan: Total Under 144.5",
-                                    "odds": -110,
-                                    "edge": 0.06282844997587655,
-                                    "units": 0.4,
-                                    "wager": 0.4,
-                                    "profit": 0.36,
-                                    "result": "WIN",
-                                    "match": "Connecticut vs Michigan: Total Under 144.5"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NBA",
-                                    "selection": "Pistons vs Magic Over 222.5",
-                                    "odds": -110,
-                                    "edge": 0.05030112323306857,
-                                    "units": 0.3,
-                                    "wager": 0.3,
-                                    "profit": 0.27,
-                                    "result": "WIN",
-                                    "match": "Pistons vs Magic Over 222.5"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NCAAB",
-                                    "selection": "Connecticut +7",
-                                    "odds": -110,
-                                    "edge": 0.051735648087092745,
-                                    "units": 0.3,
-                                    "wager": 0.3,
-                                    "profit": 0.27,
-                                    "result": "WIN",
-                                    "match": "Connecticut +7"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NBA",
-                                    "selection": "Knicks +1.5",
-                                    "odds": -110,
-                                    "edge": 0.0435182139987037,
-                                    "units": 0.3,
-                                    "wager": 0.3,
-                                    "profit": 0.27,
-                                    "result": "WIN",
-                                    "match": "Knicks +1.5"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NCAAB",
-                                    "selection": "Connecticut vs Michigan Under 145",
-                                    "odds": -110,
-                                    "edge": 0.04614797092619394,
-                                    "units": 0.3,
-                                    "wager": 0.3,
-                                    "profit": 0.27,
-                                    "result": "WIN",
-                                    "match": "Connecticut vs Michigan Under 145"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NCAAB",
-                                    "selection": "Connecticut vs Michigan Under 146",
-                                    "odds": -110,
-                                    "edge": 0.0388578261647905,
-                                    "units": 0.3,
-                                    "wager": 0.3,
-                                    "profit": 0.27,
-                                    "result": "WIN",
-                                    "match": "Connecticut vs Michigan Under 146"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NBA",
-                                    "selection": "Cleveland Cavaliers -14.5",
-                                    "odds": -110,
-                                    "edge": 0.039077270598638636,
-                                    "units": 0.3,
-                                    "wager": 0.3,
-                                    "profit": 0.27,
-                                    "result": "WIN",
-                                    "match": "Cleveland Cavaliers -14.5"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NBA",
-                                    "selection": "Portland Trail Blazers vs Denver Nuggets: Total Over 239.5",
-                                    "odds": -110,
-                                    "edge": 0.03521842615944992,
-                                    "units": 0.2,
-                                    "wager": 0.2,
-                                    "profit": 0.18,
-                                    "result": "WIN",
-                                    "match": "Portland Trail Blazers vs Denver Nuggets: Total Over 239.5"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NCAAB",
-                                    "selection": "Connecticut vs Michigan: Total Under 146.5",
-                                    "odds": -110,
-                                    "edge": 0.03521842615944992,
-                                    "units": 0.2,
-                                    "wager": 0.2,
-                                    "profit": 0.18,
-                                    "result": "WIN",
-                                    "match": "Connecticut vs Michigan: Total Under 146.5"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NBA",
-                                    "selection": "Magic +2",
-                                    "odds": -110,
-                                    "edge": 0.03278989451272141,
-                                    "units": 0.2,
-                                    "wager": 0.2,
-                                    "profit": 0.18,
-                                    "result": "WIN",
-                                    "match": "Magic +2"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NBA",
-                                    "selection": "Blazers +8.5",
-                                    "odds": -134,
-                                    "edge": 0.03050562306347049,
-                                    "units": 0.2,
-                                    "wager": 0.2,
-                                    "profit": 0.15,
-                                    "result": "WIN",
-                                    "match": "Blazers +8.5"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NHL",
-                                    "selection": "Tampa Bay Lightning ML",
-                                    "odds": -115,
-                                    "edge": 0.05015647087910369,
-                                    "units": 0.2,
-                                    "wager": 0.2,
-                                    "profit": -0.2,
-                                    "result": "LOSS",
-                                    "match": "Tampa Bay Lightning ML"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NHL",
-                                    "selection": "Seattle Kraken vs Winnipeg Jets Under 6",
-                                    "odds": -120,
-                                    "edge": 0.05485132968786999,
-                                    "units": 0.2,
-                                    "wager": 0.2,
-                                    "profit": -0.2,
-                                    "result": "LOSS",
-                                    "match": "Seattle Kraken vs Winnipeg Jets Under 6"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NBA",
-                                    "selection": "Pistons vs Magic Under 225.5",
-                                    "odds": -110,
-                                    "edge": 0.030640392076401457,
-                                    "units": 0.2,
-                                    "wager": 0.2,
-                                    "profit": -0.2,
-                                    "result": "LOSS",
-                                    "match": "Pistons vs Magic Under 225.5"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NHL",
-                                    "selection": "Sabres ML",
-                                    "odds": -115,
-                                    "edge": 0.06827147478281059,
-                                    "units": 0.3,
-                                    "wager": 0.3,
-                                    "profit": -0.3,
-                                    "result": "LOSS",
-                                    "match": "Sabres ML"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NCAAB",
-                                    "selection": "Connecticut vs Michigan Over 144",
-                                    "odds": -110,
-                                    "edge": 0.0443364466939653,
-                                    "units": 0.3,
-                                    "wager": 0.3,
-                                    "profit": -0.3,
-                                    "result": "LOSS",
-                                    "match": "Connecticut vs Michigan Over 144"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NBA",
-                                    "selection": "76ers +8.5",
-                                    "odds": -105,
-                                    "edge": 0.04440429637102572,
-                                    "units": 0.3,
-                                    "wager": 0.3,
-                                    "profit": -0.3,
-                                    "result": "LOSS",
-                                    "match": "76ers +8.5"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NHL",
-                                    "selection": "Sabres ML",
-                                    "odds": -115,
-                                    "edge": 0.06827147478281059,
-                                    "units": 0.3,
-                                    "wager": 0.3,
-                                    "profit": -0.3,
-                                    "result": "LOSS",
-                                    "match": "Sabres ML"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NHL",
-                                    "selection": "Sabres ML",
-                                    "odds": -115,
-                                    "edge": 0.06685667906620696,
-                                    "units": 0.3,
-                                    "wager": 0.3,
-                                    "profit": -0.3,
-                                    "result": "LOSS",
-                                    "match": "Sabres ML"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NBA",
-                                    "selection": "Grizzlies +15.5",
-                                    "odds": -115,
-                                    "edge": 0.050339457138564137,
-                                    "units": 0.3,
-                                    "wager": 0.3,
-                                    "profit": -0.3,
-                                    "result": "LOSS",
-                                    "match": "Grizzlies +15.5"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NCAAB",
-                                    "selection": "Connecticut vs Michigan Over 144",
-                                    "odds": -110,
-                                    "edge": 0.05030112323306857,
-                                    "units": 0.3,
-                                    "wager": 0.3,
-                                    "profit": -0.3,
-                                    "result": "LOSS",
-                                    "match": "Connecticut vs Michigan Over 144"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NHL",
-                                    "selection": "Rangers ML",
-                                    "odds": 103,
-                                    "edge": 0.09757881818342296,
-                                    "units": 0.4,
-                                    "wager": 0.4,
-                                    "profit": -0.4,
-                                    "result": "LOSS",
-                                    "match": "Rangers ML"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NBA",
-                                    "selection": "Philadelphia 76ers vs San Antonio Spurs: Total Over 236",
-                                    "odds": -110,
-                                    "edge": 0.06700133142017184,
-                                    "units": 0.4,
-                                    "wager": 0.4,
-                                    "profit": -0.4,
-                                    "result": "LOSS",
-                                    "match": "Philadelphia 76ers vs San Antonio Spurs: Total Over 236"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NHL",
-                                    "selection": "Rangers ML",
-                                    "odds": 110,
-                                    "edge": 0.09051606200990225,
-                                    "units": 0.4,
-                                    "wager": 0.4,
-                                    "profit": -0.4,
-                                    "result": "LOSS",
-                                    "match": "Rangers ML"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NHL",
-                                    "selection": "Rangers ML",
-                                    "odds": 108,
-                                    "edge": 0.10586874301616966,
-                                    "units": 0.4,
-                                    "wager": 0.4,
-                                    "profit": -0.4,
-                                    "result": "LOSS",
-                                    "match": "Rangers ML"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NBA",
-                                    "selection": "Nuggets -8",
-                                    "odds": -110,
-                                    "edge": 0.0640799885704404,
-                                    "units": 0.4,
-                                    "wager": 0.4,
-                                    "profit": -0.4,
-                                    "result": "LOSS",
-                                    "match": "Nuggets -8"
-                        },
-                        {
-                                    "date": "04/06",
-                                    "league": "NHL",
-                                    "selection": "Rangers ML",
-                                    "odds": 108,
-                                    "edge": 0.1145610671776992,
-                                    "units": 0.5,
-                                    "wager": 0.5,
-                                    "profit": -0.5,
-                                    "result": "LOSS",
-                                    "match": "Rangers ML"
-                        }
+                {"date": "04/06", "league": "NBA", "selection": "cavs -13", "odds": 90, "units": 0.5, "result": "WIN", "profit": 0.45},
+                {"date": "04/06", "league": "NCAAB", "selection": "michigan -7", "odds": 90, "units": 0.5, "result": "LOSS", "profit": -0.5},
+                {"date": "04/06", "league": "NCAAB", "selection": "connecticut vs michigan total under 144.5", "odds": 90, "units": 0.5, "result": "WIN", "profit": 0.45},
+                {"date": "04/06", "league": "NBA", "selection": "portland trail blazers vs denver nuggets total over 239.5", "odds": 90, "units": 0.5, "result": "WIN", "profit": 0.45},
+                {"date": "04/06", "league": "NBA", "selection": "76ers +8.5", "odds": 95, "units": 0.5, "result": "LOSS", "profit": -0.5},
+                {"date": "04/06", "league": "NBA", "selection": "cleveland cavaliers -14.5", "odds": 90, "units": 0.5, "result": "WIN", "profit": 0.45},
+                {"date": "04/06", "league": "NCAAB", "selection": "connecticut +7", "odds": 90, "units": 0.5, "result": "WIN", "profit": 0.45},
+                {"date": "04/06", "league": "NCAAB", "selection": "connecticut vs michigan under 145", "odds": 90, "units": 0.5, "result": "WIN", "profit": 0.45},
+                {"date": "04/06", "league": "NBA", "selection": "cavs -15", "odds": 90, "units": 0.4, "result": "WIN", "profit": 0.36},
+                {"date": "04/06", "league": "NCAAB", "selection": "connecticut +7", "odds": 90, "units": 0.4, "result": "WIN", "profit": 0.36},
+                {"date": "04/06", "league": "NCAAB", "selection": "connecticut vs michigan over 144", "odds": 90, "units": 0.4, "result": "LOSS", "profit": -0.4},
+                {"date": "04/06", "league": "NCAAB", "selection": "michigan -6.5", "odds": 89, "units": 0.4, "result": "LOSS", "profit": -0.4},
+                {"date": "04/06", "league": "NBA", "selection": "pistons vs magic over 222.5", "odds": 90, "units": 0.3, "result": "WIN", "profit": 0.27},
+                {"date": "04/06", "league": "NCAAB", "selection": "connecticut vs michigan over 144", "odds": 90, "units": 0.3, "result": "LOSS", "profit": -0.3},
+                {"date": "04/06", "league": "NBA", "selection": "mikal bridges under 16.5 total points +assists", "odds": 87, "units": 0.3, "result": "LOSS", "profit": -0.3}
             ]
-};
+        };
 
         function hydrate() {
             // Stats

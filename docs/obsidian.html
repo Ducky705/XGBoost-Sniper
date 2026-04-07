@@ -316,9 +316,33 @@
                         <span class="text-obsidian-accent">///</span> Performance Vector
                     </h2>
                 </div>
-                <div class="glass-panel p-2 chart-container group">
-                    <img src="assets/obsidian_curve.png" alt="Cumulative Profit"
-                        class="chart-img opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+                <div class="aspect-[16/4] relative flex items-center justify-center rounded border border-white/5 group overflow-hidden">
+                    <!-- HTML Legend Overlay -->
+                    <div class="absolute top-4 right-6 flex flex-wrap gap-4 z-20 pointer-events-none">
+                        <div class="flex items-center gap-2 text-[9px] font-mono text-white/30 uppercase tracking-widest">
+                            <span class="w-2.5 h-0.5" style="background: #f8fafc"></span> Quartz
+                        </div>
+                        <div class="flex items-center gap-2 text-[9px] font-mono text-white/80 uppercase tracking-widest font-bold">
+                            <span class="w-2.5 h-0.5" style="background: #7c3aed"></span> Obsidian v3
+                        </div>
+                        <div class="flex items-center gap-2 text-[9px] font-mono text-white/30 uppercase tracking-widest">
+                            <span class="w-2.5 h-0.5" style="background: #00f0ff"></span> Diamond
+                        </div>
+                        <div class="flex items-center gap-2 text-[9px] font-mono text-white/30 uppercase tracking-widest">
+                            <span class="w-2.5 h-0.5" style="background: #ffdd00"></span> Pyrite
+                        </div>
+                    </div>
+                    
+                    <!-- HTML Title Overlay -->
+                    <div class="absolute top-4 left-6 z-20 pointer-events-none">
+                        <div class="text-[10px] font-mono font-bold text-white/90 uppercase tracking-widest">
+                            INSTITUTIONAL ALPHA // ECOSYSTEM BENCHMARK: V3 OBSIDIAN
+                        </div>
+                    </div>
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian-accent/5 to-transparent pointer-events-none"></div>
+                    <img id="chart-main" src="./comparison_obsidian.png" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.005] transition-all duration-700" />
+                    <div class="absolute bottom-4 left-4 py-1 px-2 bg-black/40 border border-white/5 text-[9px] font-mono text-white/30">TRACE_ID: COMPARATIVE-ALPHA-V3</div>
                 </div>
             </div>
 
@@ -497,125 +521,41 @@
         // We initialize it with mocks for fallback visualization.
         const DATA = {
             "v3": {
-                        "roi": 8.390375693731732,
-                        "winrate": 53.04878048780488,
-                        "sample": 656,
-                        "record": "348/308/0",
-                        "bets_day": 6.6,
-                        "net": 40.11438619173141
+                "roi": 24.598459854157788,
+                "winrate": 47.28260869565217,
+                "sample": 1656,
+                "record": "783/873/0",
+                "bets_day": 12.0,
+                "net": 171.08720797763823
             },
             "v2": {
-                        "roi": 1.757140258954358
+                "roi": 6.827201661317775
             },
             "v1": {
-                        "roi": 6.478342601805552
+                "roi": 73.79148927390537
             },
             "yesterday_v3": {
-                        "date": "Apr 06, 2026",
-                        "record": "4-4-0",
-                        "winrate": 50.0,
-                        "roi": 21.8,
-                        "net": 1.09,
-                        "history": [
-                                    {
-                                                "date": "04/06",
-                                                "league": "NHL",
-                                                "selection": "Sabres ML",
-                                                "odds": 106,
-                                                "edge": 0.21213313271698442,
-                                                "units": 0.9,
-                                                "wager": 0.9,
-                                                "profit": 0.95,
-                                                "result": "WIN",
-                                                "match": "Sabres ML"
-                                    },
-                                    {
-                                                "date": "04/06",
-                                                "league": "NBA",
-                                                "selection": "Blazers +8.5",
-                                                "odds": -134,
-                                                "edge": 0.11234536333980716,
-                                                "units": 0.9,
-                                                "wager": 0.9,
-                                                "profit": 0.67,
-                                                "result": "WIN",
-                                                "match": "Blazers +8.5"
-                                    },
-                                    {
-                                                "date": "04/06",
-                                                "league": "NCAAB",
-                                                "selection": "Connecticut +7",
-                                                "odds": -110,
-                                                "edge": 0.06958469606581186,
-                                                "units": 0.7,
-                                                "wager": 0.7,
-                                                "profit": 0.6,
-                                                "result": "WIN",
-                                                "match": "Connecticut +7"
-                                    },
-                                    {
-                                                "date": "04/06",
-                                                "league": "NHL",
-                                                "selection": "Draw ML",
-                                                "odds": 310,
-                                                "edge": 0.05747566208606811,
-                                                "units": 0.3,
-                                                "wager": 0.3,
-                                                "profit": 1.05,
-                                                "result": "WIN",
-                                                "match": "Draw ML"
-                                    },
-                                    {
-                                                "date": "04/06",
-                                                "league": "NBA",
-                                                "selection": "Grizzlies +15",
-                                                "odds": -110,
-                                                "edge": 0.03639951206388925,
-                                                "units": 0.3,
-                                                "wager": 0.3,
-                                                "profit": -0.34,
-                                                "result": "LOSS",
-                                                "match": "Grizzlies +15"
-                                    },
-                                    {
-                                                "date": "04/06",
-                                                "league": "NHL",
-                                                "selection": "Sharks ML",
-                                                "odds": 148,
-                                                "edge": 0.03906697323245384,
-                                                "units": 0.3,
-                                                "wager": 0.3,
-                                                "profit": -0.29,
-                                                "result": "LOSS",
-                                                "match": "Sharks ML"
-                                    },
-                                    {
-                                                "date": "04/06",
-                                                "league": "NCAAB",
-                                                "selection": "Michigan -6.5",
-                                                "odds": -105,
-                                                "edge": 0.07367496519553951,
-                                                "units": 0.7,
-                                                "wager": 0.7,
-                                                "profit": -0.68,
-                                                "result": "LOSS",
-                                                "match": "Michigan -6.5"
-                                    },
-                                    {
-                                                "date": "04/06",
-                                                "league": "NHL",
-                                                "selection": "Rangers ML",
-                                                "odds": 103,
-                                                "edge": 0.09891006805626634,
-                                                "units": 0.9,
-                                                "wager": 0.9,
-                                                "profit": -0.88,
-                                                "result": "LOSS",
-                                                "match": "Rangers ML"
-                                    }
-                        ]
+                "date": "Apr 06, 2026",
+                "record": "4-8-0",
+                "winrate": 33.3,
+                "roi": -14.66666666666667,
+                "net": -0.7392,
+                "history": [
+                    {"date": "04/06", "league": "NHL", "selection": "draw ml", "odds": 409, "edge": 0.281, "units": 0.42, "profit": 1.30, "result": "WIN"},
+                    {"date": "04/06", "league": "NCAAB", "selection": "connecticut ml", "odds": 355, "edge": 0.243, "units": 0.42, "profit": -0.42, "result": "LOSS"},
+                    {"date": "04/06", "league": "NHL", "selection": "sharks ml", "odds": 248, "edge": 0.121, "units": 0.42, "profit": -0.42, "result": "LOSS"},
+                    {"date": "04/06", "league": "NHL", "selection": "chicago ml", "odds": 242, "edge": 0.111, "units": 0.42, "profit": -0.42, "result": "LOSS"},
+                    {"date": "04/06", "league": "NHL", "selection": "kings ml", "odds": 220, "edge": 0.070, "units": 0.42, "profit": -0.42, "result": "LOSS"},
+                    {"date": "04/06", "league": "NHL", "selection": "nashville predators ml", "odds": 215, "edge": 0.059, "units": 0.42, "profit": -0.42, "result": "LOSS"},
+                    {"date": "04/06", "league": "NHL", "selection": "rangers ml", "odds": 210, "edge": 0.048, "units": 0.42, "profit": -0.42, "result": "LOSS"},
+                    {"date": "04/06", "league": "NBA", "selection": "orlando magic ml", "odds": 208, "edge": 0.044, "units": 0.42, "profit": 0.45, "result": "WIN"},
+                    {"date": "04/06", "league": "NHL", "selection": "sabres ml", "odds": 206, "edge": 0.039, "units": 0.42, "profit": 0.44, "result": "WIN"},
+                    {"date": "04/06", "league": "NCAAB", "selection": "uconn +6.5", "odds": 200, "edge": 0.025, "units": 0.42, "profit": 0.42, "result": "WIN"},
+                    {"date": "04/06", "league": "NHL", "selection": "chicago blackhawks vs san jose sharks total over 6.5", "odds": 200, "edge": 0.025, "units": 0.42, "profit": -0.42, "result": "LOSS"},
+                    {"date": "04/06", "league": "NCAAB", "selection": "connecticut vs michigan total over 144.5", "odds": 98, "edge": 0.020, "units": 0.42, "profit": -0.42, "result": "LOSS"}
+                ]
             }
-};
+        };
 
         function hydrate() {
             // Sidebar/Header KPIs

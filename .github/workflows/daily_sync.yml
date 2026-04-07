@@ -1,0 +1,40 @@
+name: Daily Quarry Sync
+
+on:
+  schedule:
+    - cron: '0 10 * * *' # 10:00 UTC daily
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-dashboards:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy joblib lightgbm xgboost scikit-learn supabase python-dotenv matplotlib pyarrow fastparquet
+
+      - name: Run Daily Update Script
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: python scripts/daily_update.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "Quarry Automation"
+          git config --global user.email "bot@quarry.institutional"
+          git add docs/*.png docs/stats.json
+          git commit -m "🤖 Institutional Sync: $(date +'%Y-%m-%d') [Automated]" || echo "No changes to commit"
+          git push

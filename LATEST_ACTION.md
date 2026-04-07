@@ -3,173 +3,127 @@
 ### V3 Obsidian Action
 | LEAGUE | PICK | ODDS | UNIT | RES | PROFIT |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| NCAAB | Connecticut +7 | -110 | 1.1 | ✅ | +1.02u |
-| NHL | Draw ML | +310 | 0.6 | ✅ | +1.74u |
-| NHL | Sabres ML | +106 | 0.7 | ✅ | +0.70u |
-| NCAAB | Michigan -6.5 | -105 | 0.7 | ❌ | -0.67u |
-| NHL | Sharks ML | +148 | 0.5 | ❌ | -0.51u |
-| NBA | Grizzlies +13.5 | -110 | 0.5 | ❌ | -0.54u |
-| NBA | Blazers +8 | -115 | 0.5 | ✅ | +0.42u |
-| NBA | Grizzlies +15 | -110 | 0.5 | ❌ | -0.46u |
-**Daily PnL (Settled): +1.69 Units**
-
-
-### V2 Diamond Action
-| LEAGUE | PICK | ODDS | UNIT | RES | PROFIT |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| NHL | Nashville Predators ML | +113 | 0.3 | ❌ | -0.30u |
-| NHL | Rangers ML | +108 | 0.3 | ❌ | -0.30u |
-| NBA | Nuggets -8 | -110 | 0.5 | ❌ | -0.50u |
-| NCAAB | Connecticut +7 | -110 | 0.4 | ✅ | +0.36u |
-| NCAAB | Connecticut vs Michigan: Total Under 144.5 | -110 | 0.4 | ✅ | +0.36u |
-| NBA | Magic +3 | -105 | 0.4 | ✅ | +0.38u |
-| NHL | Sabres ML | +106 | 0.3 | ✅ | +0.32u |
-| NBA | Pistons vs Magic Over 222.5 | -110 | 0.3 | ✅ | +0.27u |
-| NCAAB | Connecticut +7 | -110 | 0.3 | ✅ | +0.27u |
-| NCAAB | Connecticut +7 | -110 | 0.3 | ✅ | +0.27u |
-| NCAAB | Michigan -7 | -110 | 0.3 | ❌ | -0.30u |
-| NCAAB | Michigan -7 | -110 | 0.3 | ❌ | -0.30u |
-| NBA | Portland Trail Blazers +7.5 | -110 | 0.3 | ✅ | +0.27u |
-| NCAAB | Connecticut +7 | -110 | 0.3 | ✅ | +0.27u |
-| NHL | Tampa Bay Lightning ML | -115 | 0.2 | ❌ | -0.20u |
-| NCAAB | Michigan -6.5 | -112 | 0.3 | ❌ | -0.30u |
-| NCAAB | Connecticut vs Michigan Over 144 | -110 | 0.3 | ❌ | -0.30u |
-| NCAAB | Connecticut vs Michigan Under 145 | -110 | 0.3 | ✅ | +0.27u |
-| NCAAB | Under 144.5 | -110 | 0.3 | ✅ | +0.27u |
-| NCAAB | Michigan -6.5 | -112 | 0.3 | ❌ | -0.30u |
-| NCAAB | Connecticut vs Michigan Under 145 | -110 | 0.3 | ✅ | +0.27u |
-| NCAAB | Connecticut +7 | -110 | 0.2 | ✅ | +0.18u |
-| NCAAB | Connecticut +7 | -110 | 0.2 | ✅ | +0.18u |
-| NCAAB | Michigan Under 75.5 Total Pts | -110 | 0.2 | ✅ | +0.18u |
-| NBA | Philadelphia 76ers vs San Antonio Spurs: Total Over 236 | -110 | 0.2 | ❌ | -0.20u |
-| NCAAB | Michigan -6.5 | -110 | 0.2 | ❌ | -0.20u |
-| NBA | Cavs -13 | -110 | 0.2 | ✅ | +0.18u |
-| NBA | Sam Merrill Over 14.5 Total Points | -113 | 0.2 | ✅ | +0.18u |
-| NCAAB | Connecticut vs Michigan: 1H Total 1H Total Over 67.5 | -120 | 0.2 | ❌ | -0.20u |
-| NCAAB | Connecticut +7 | -110 | 0.2 | ✅ | +0.18u |
-| NCAAB | Connecticut +7 | -110 | 0.2 | ✅ | +0.18u |
-| NBA | Grizzlies +13.5 | -110 | 0.2 | ❌ | -0.20u |
-| NCAAB | Connecticut vs Michigan: Total Under 146.5 | -110 | 0.2 | ✅ | +0.18u |
-| NCAAB | Michigan -6.5 | -115 | 0.2 | ❌ | -0.20u |
-| NBA | Cavs -15 | -110 | 0.2 | ✅ | +0.18u |
-| NBA | Portland Trail Blazers vs Denver Nuggets: Total Under 238 | -110 | 0.2 | ❌ | -0.20u |
-| NBA | New York Knicks vs Atlanta Hawks: Total Under 227.5 | -110 | 0.2 | ✅ | +0.18u |
-| NBA | Memphis Grizzlies +14.5 | -110 | 0.2 | ❌ | -0.20u |
-**Daily PnL (Settled): +1.22 Units**
+| NCAAB | Connecticut +7 | -110 | 2.0 | ✅ | +1.84u |
+| NCAAB | Michigan -6.5 | -112 | 2.0 | ❌ | -2.02u |
+| NHL | Sharks ML | +148 | 1.0 | ❌ | -0.96u |
+**Daily PnL (Settled): -1.14 Units**
 
 
 ### V1 Pyrite Action
 | LEAGUE | PICK | ODDS | UNIT | RES | PROFIT |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Other | IK Start vs Sarpsborg 08 -0.75 | -110 | 0.9 | ❌ | -0.95u |
-| Other | Birmingham City vs Ipswich Town -1 | -110 | 0.9 | ❌ | -0.95u |
-| NBA | Cavs -15 | -110 | 1.8 | ✅ | +1.63u |
-| MLB | Royals vs Guardians Under 7.5 | -110 | 1.9 | ✅ | +1.69u |
-| Other | Bodo Glimt -2 vs Kristiansund | -110 | 0.9 | ✅ | +0.86u |
-| NBA | Spurs -8.5 | -110 | 0.8 | ✅ | +0.71u |
-| NCAAB | UConn +7.5 | -122 | 1.1 | ✅ | +0.87u |
-| NBA | Spurs -8.5 | -110 | 3.6 | ✅ | +3.30u |
-| NHL | San Jose Sharks ML | -170 | 5.3 | ✅ | +3.11u |
-| Other | AC Milan vs Napoli Over 2.25 | -110 | 0.9 | ❌ | -0.95u |
-| NBA | New York Knicks +2.5 | -125 | 2.5 | ✅ | +2.04u |
-| MLB | Michael Wacha (RHP), Tanner Bibee (RHP) Must Start | +100 | 2.0 | ✅ | +2.04u |
-| NCAAB | Connecticut +7 | -110 | 0.6 | ✅ | +0.53u |
-| NBA | San Antonio Spurs -8.5 | -110 | 5.5 | ✅ | +4.97u |
-| NBA | Portland Trail Blazers +8.5 | -110 | 4.7 | ✅ | +4.31u |
-| NBA | Knicks +1.5 | -110 | 3.7 | ✅ | +3.40u |
-| MLB | San Francisco Giants ML | +100 | 1.4 | ❌ | -1.44u |
-| NCAAB | Michigan Under 75.5 Total Pts | -110 | 3.1 | ✅ | +2.80u |
-| Soccer | Juventus ML | -246 | 1.6 | ✅ | +0.63u |
-| MLB | Guardians ML | +103 | 0.5 | ✅ | +0.47u |
-| Other | Molde -0.25 | -110 | 0.9 | ❌ | -0.95u |
-| Other | Tromso -0.75 | -110 | 0.9 | ✅ | +0.86u |
-| Other | AGF Aarhus -0.25 vs Viborg FF | -110 | 0.9 | ✅ | +0.81u |
-| MLB | Blue Jays ML | +135 | 2.3 | ❌ | -2.26u |
-| NBA | Detroit Pistons vs Orlando Magic: Total Over 224.5 | -110 | 0.1 | ✅ | +0.07u |
-| NHL | Tampa Bay Lightning ML | -118 | 5.1 | ❌ | -5.07u |
-| NBA | Cavs -13 | -110 | 0.6 | ✅ | +0.59u |
-| NHL | Predators vs Kings Over 5.5 | -135 | 0.2 | ❌ | -0.24u |
-| NBA | Grizzlies +13.5 | -110 | 0.1 | ❌ | -0.07u |
-| NBA | Portland Trail Blazers vs Denver Nuggets: Total Under 238 | -110 | 0.7 | ❌ | -0.71u |
-| NCAAB | Connecticut +7 | -110 | 7.8 | ✅ | +7.09u |
-| MLB | Rays +1.5 | -110 | 3.8 | ✅ | +3.43u |
-| NCAAB | Connecticut +7 | -110 | 6.1 | ✅ | +5.58u |
-| NBA | Denver Nuggets -8.5 | -105 | 2.1 | ❌ | -2.06u |
-| MLB | Guardians -1.5 | -110 | 0.4 | ❌ | -0.44u |
-| NBA | Nuggets -8 | -110 | 1.8 | ❌ | -1.76u |
-| NBA | Cleveland Cavaliers -14.5 | -110 | 0.9 | ✅ | +0.80u |
-| MLB | Dodgers vs Blue Jays Over 8.5 | -110 | 0.1 | ✅ | +0.12u |
-| NHL | Rangers ML | +108 | 4.5 | ❌ | -4.52u |
-| NCAAB | Michigan -6.5 | -105 | 3.8 | ❌ | -3.76u |
-| MLB | Rays ML | -120 | 0.0 | ✅ | +0.04u |
-| NHL | Sabres ML | -115 | 2.0 | ❌ | -1.98u |
-| MLB | Marlins ML | +120 | 1.7 | ✅ | +2.01u |
-| MLB | Nationals ML | -108 | 3.3 | ❌ | -3.31u |
-| NHL | Sharks ML | -155 | 7.7 | ✅ | +4.94u |
-| NCAAB | Connecticut +7 | -110 | 8.1 | ✅ | +7.40u |
-| NCAAB | Michigan -7 | -110 | 0.6 | ❌ | -0.56u |
-| MLB | Casey Mize: Must Start | +102 | 0.1 | ❌ | -0.08u |
-| NHL | Draw ML | +310 | 4.3 | ✅ | +13.39u |
-| NBA | Blazers +9.5 | -115 | 0.5 | ✅ | +0.41u |
-| NCAAB | Connecticut +7 | -110 | 6.7 | ✅ | +6.10u |
-| MLB | Astros vs Rockies | +162 | 1.1 | ✅ | +1.74u |
-| NCAAB | Connecticut +7 | -110 | 1.3 | ✅ | +1.15u |
-| MLB | White Sox +1.5 | -110 | 0.7 | ✅ | +0.59u |
-| NHL | Sabres ML | +106 | 5.8 | ✅ | +6.17u |
-| MLB | Marlins ML | +117 | 3.6 | ✅ | +4.25u |
-| MLB | Padres vs Pirates Under 8.5 | -110 | 0.8 | ✅ | +0.74u |
-| NBA | Portland Trail Blazers +7.5 | -110 | 0.4 | ✅ | +0.38u |
-| NHL | Jets ML | -162 | 1.4 | ✅ | +0.84u |
-| NHL | Jets ML | -162 | 2.7 | ✅ | +1.64u |
-| NBA | Hawks -1.5 | -108 | 4.3 | ❌ | -4.29u |
-| NHL | Sabres ML | -115 | 1.8 | ❌ | -1.79u |
-| MLB | Astros vs Rockies | +136 | 4.3 | ✅ | +5.87u |
-| NBA | Portland Trail Blazers vs Denver Nuggets: Total Over 239.5 | -110 | 0.6 | ✅ | +0.58u |
-| NHL | Los Angeles Kings ML | -135 | 1.7 | ✅ | +1.27u |
-| MLB | Astros vs Rockies | +142 | 0.1 | ✅ | +0.14u |
-| NBA | Philadelphia 76ers vs San Antonio Spurs: Total Over 236 | -110 | 2.2 | ❌ | -2.19u |
-| NCAAB | Connecticut +7 | -110 | 8.5 | ✅ | +7.73u |
-| NCAAB | Connecticut +7 | -110 | 6.0 | ✅ | +5.42u |
-| NCAAB | Connecticut +7 | -115 | 6.6 | ✅ | +5.75u |
-| NBA | Nuggets -7.5 | -108 | 5.5 | ❌ | -5.50u |
-| NCAAB | Connecticut +7 | -110 | 5.9 | ✅ | +5.37u |
-| MLB | Cardinals vs Nationals Over 8 | -110 | 0.0 | ✅ | +0.04u |
-| NBA | Detroit Pistons vs Orlando Magic: Total Over 222 | -110 | 0.3 | ✅ | +0.27u |
-| NBA | Mikal Bridges Under 16.5 Total Points + Assists | -114 | 4.4 | ❌ | -4.38u |
-| NHL | Sabres ML | -115 | 4.4 | ❌ | -4.42u |
-| NBA | Magic +2 | -110 | 0.6 | ✅ | +0.57u |
-| NHL | Winnipeg Jets ML | -166 | 1.1 | ✅ | +0.69u |
-| MLB | Royals vs Guardians Under 7.5 | -110 | 0.1 | ✅ | +0.13u |
-| NCAAB | Connecticut +7 | -110 | 7.3 | ✅ | +6.65u |
-| MLB | Nationals ML | -112 | 0.3 | ❌ | -0.35u |
-| MLB | Twins ML | +110 | 2.0 | ❌ | -1.98u |
-| NCAAB | Connecticut +7 | -110 | 2.5 | ✅ | +2.28u |
-| NHL | Tampa Bay Lightning ML | -120 | 4.6 | ❌ | -4.57u |
-| NCAAB | Connecticut +7 | -110 | 8.5 | ✅ | +7.74u |
-| NBA | Sam Merrill Over 14.5 Total Points | -113 | 1.3 | ✅ | +1.14u |
-| MLB | Astros vs Rockies | +151 | 1.7 | ✅ | +2.51u |
+| NHL | Nashville Predators ML | +113 | 1.3 | ❌ | -1.29u |
+| NCAAB | Michigan -6.5 | -115 | 7.0 | ❌ | -6.99u |
+| Other | Tromso -0.75 | -110 | 0.4 | ✅ | +0.33u |
+| Other | AC Milan vs Napoli Over 2.25 | -110 | 1.1 | ❌ | -1.10u |
+| Other | AGF Aarhus -0.25 vs Viborg FF | -110 | 0.5 | ✅ | +0.45u |
+| Other | Bodo Glimt -2 vs Kristiansund | -110 | 0.4 | ✅ | +0.36u |
+| Other | IK Start vs Sarpsborg 08 -0.75 | -110 | 0.5 | ❌ | -0.49u |
+| Other | Birmingham City vs Ipswich Town -1 | -110 | 1.4 | ❌ | -1.42u |
+| Soccer | Cardiff vs Peterborough: Total Over 3 | -140 | 0.9 | ❌ | -0.87u |
+| NCAAB | California vs San Francisco: Total Over 12.5 | -115 | 0.9 | ❌ | -0.94u |
+| Soccer | Derby County ML | -110 | 0.4 | ✅ | +0.41u |
+| NCAAB | Michigan Total Over 75.5 | -118 | 0.3 | ❌ | -0.27u |
+| NHL | San Jose Sharks Total Over 3.5 | -110 | 3.5 | ❌ | -3.50u |
+| NCAAB | Connecticut vs Michigan: Total Under 146.5 | -110 | 0.4 | ✅ | +0.34u |
+| NBA | Detroit Pistons vs Orlando Magic: Total Over 222 | -110 | 1.8 | ✅ | +1.62u |
+| MLB | St. Louis Cardinals -115 Action ML | -115 | 1.8 | ❌ | -1.80u |
+| MLB | Astros vs Rockies | +142 | 1.8 | ✅ | +2.60u |
+| NCAAB | Connecticut +7 | -110 | 8.4 | ✅ | +7.63u |
+| NHL | Kings ML | +120 | 0.4 | ❌ | -0.37u |
+| MLB | Rays ML | -120 | 0.3 | ✅ | +0.25u |
+| MLB | Astros vs Rockies | +136 | 0.8 | ✅ | +1.15u |
+| NCAAB | Michigan -6.5 | -112 | 2.8 | ❌ | -2.78u |
+| NCAAB | Connecticut +7 | -110 | 8.4 | ✅ | +7.63u |
+| MLB | Pirates ML | -135 | 3.8 | ❌ | -3.79u |
+| NBA | Cavs -13 | -110 | 0.1 | ✅ | +0.10u |
+| MLB | Angels ML | -165 | 7.5 | ❌ | -7.51u |
+| NCAAB | Michigan -6.5 | -105 | 13.2 | ❌ | -13.17u |
+| NCAAB | Connecticut +7 | -110 | 10.7 | ✅ | +9.72u |
+| MLB | Giants ML | -115 | 2.8 | ✅ | +2.41u |
+| NCAAB | Connecticut +7 | -110 | 8.4 | ✅ | +7.63u |
+| MLB | Pirates ML | -135 | 1.4 | ❌ | -1.38u |
+| MLB | Angels +1.5 | -110 | 0.0 | ✅ | +0.05u |
+| NBA | Pistons vs Magic Over 222.5 | -110 | 3.5 | ✅ | +3.14u |
+| NBA | Pistons vs Magic Under 225.5 | -110 | 1.8 | ❌ | -1.77u |
+| MLB | Pirates ML | -125 | 0.2 | ❌ | -0.20u |
+| NBA | Detroit Pistons vs Orlando Magic: Total Under 225.5 | -110 | 0.2 | ❌ | -0.15u |
+| NCAAB | Michigan -6.5 | -112 | 2.8 | ❌ | -2.78u |
+| NCAAB | Connecticut vs Michigan Under 146 | -110 | 2.0 | ✅ | +1.79u |
+| NCAAB | Connecticut +7 | -110 | 9.5 | ✅ | +8.67u |
+| MLB | Red Sox ML | +108 | 2.0 | ❌ | -2.02u |
+| NBA | 76ers +8.5 | -105 | 0.7 | ❌ | -0.72u |
+| MLB | Los Angeles Dodgers -142 Action ML | -142 | 3.5 | ✅ | +2.43u |
+| NHL | Seattle Mariners vs Texas Rangers: Total Under 7.5 (-110) Action | -110 | 0.1 | ✅ | +0.14u |
+| NCAAB | Michigan -6.5 | -105 | 6.0 | ❌ | -5.99u |
+| MLB | Los Angeles Dodgers -140 Action ML | -140 | 0.2 | ✅ | +0.17u |
+| NCAAB | Connecticut +7 | -110 | 5.6 | ✅ | +5.12u |
+| NBA | San Antonio Spurs -8.5 | -110 | 0.2 | ✅ | +0.14u |
+| NBA | Cleveland Cavaliers -14.5 | -110 | 1.6 | ✅ | +1.41u |
+| MLB | Toronto Blue Jays ML | +123 | 0.1 | ❌ | -0.09u |
+| NBA | Portland Trail Blazers vs Denver Nuggets: Total Over 239.5 | -110 | 0.1 | ✅ | +0.10u |
+| NHL | Nashville Predators ML | +113 | 0.7 | ❌ | -0.67u |
 | NCAAB | Michigan -6.5 | -105 | 3.5 | ❌ | -3.54u |
-| NCAAB | Connecticut +7 | -110 | 4.4 | ✅ | +3.96u |
-| NBA | Magic +3 | -105 | 6.3 | ✅ | +5.97u |
-| NBA | Knicks +1.5 | -110 | 1.2 | ✅ | +1.09u |
-| NHL | Sharks ML | -158 | 8.1 | ✅ | +5.12u |
-| NBA | Grizzlies +15.5 | -115 | 4.4 | ❌ | -4.38u |
-| NCAAB | Michigan -6.5 | -112 | 1.8 | ❌ | -1.77u |
-| MLB | Angels ML | +155 | 0.7 | ✅ | +1.05u |
-| NCAAB | Connecticut +7 | -110 | 6.5 | ✅ | +5.95u |
-| MLB | Los Angeles Dodgers -142 Action ML | -142 | 2.1 | ✅ | +1.44u |
-| NCAAB | Connecticut +7 | -110 | 3.6 | ✅ | +3.27u |
-| NBA | San Antonio Spurs -8.5 | -110 | 0.6 | ✅ | +0.51u |
-| MLB | Marlins ML | +120 | 1.0 | ✅ | +1.19u |
-| NHL | Winnipeg Jets ML | -170 | 0.7 | ✅ | +0.39u |
-| NHL | San Jose Sharks ML | -164 | 2.3 | ✅ | +1.41u |
-| MLB | Los Angeles Dodgers -146 Action ML | -146 | 0.8 | ✅ | +0.55u |
-| NHL | Nashville Predators ML | +115 | 2.1 | ❌ | -2.07u |
-| NHL | Nashville Predators ML | +113 | 2.3 | ❌ | -2.31u |
-| NBA | Magic +3 | -105 | 3.2 | ✅ | +3.02u |
-| MLB | Miami Marlins Total Over 3.5 Brandon Williamson (LHP) Must Start | +120 | 0.3 | ❌ | -0.34u |
-| NHL | Rangers ML | +110 | 1.7 | ❌ | -1.69u |
-| Other | Ostersunds FK vs Varberg | +144 | 0.7 | ❌ | -0.73u |
-**Daily PnL (Settled): +115.25 Units**
+| NBA | Portland Trail Blazers +7.5 | -110 | 1.4 | ✅ | +1.31u |
+| NBA | Portland Trail Blazers vs Denver Nuggets: Total Under 238 | -110 | 0.4 | ❌ | -0.40u |
+| NBA | Detroit Pistons vs Orlando Magic: Total Over 224.5 | -110 | 0.1 | ✅ | +0.07u |
+| NCAAB | Michigan -6.5 | -110 | 1.0 | ❌ | -1.01u |
+| MLB | Pirates ML | -125 | 0.4 | ❌ | -0.43u |
+| NBA | Mikal Bridges Under 16.5 Total Points + Assists | -114 | 0.1 | ❌ | -0.07u |
+| NBA | Blazers +8 | -115 | 1.8 | ✅ | +1.59u |
+| MLB | Astros vs Rockies | +151 | 2.7 | ✅ | +4.06u |
+| NBA | Grizzlies +15 | -110 | 0.1 | ❌ | -0.07u |
+| NCAAB | Connecticut +7 | -110 | 5.5 | ✅ | +5.02u |
+| NBA | Hawks ML | -115 | 0.2 | ❌ | -0.20u |
+| MLB | Blue Jays ML | +120 | 0.1 | ❌ | -0.11u |
+| NHL | Predators vs Kings Over 5.5 | -125 | 0.6 | ❌ | -0.61u |
+| MLB | Pirates ML | -129 | 0.3 | ❌ | -0.28u |
+| NCAAB | Connecticut vs Michigan Under 144.5 | -216 | 1.5 | ✅ | +0.69u |
+| NCAAB | Connecticut +7 | -110 | 6.1 | ✅ | +5.58u |
+| MLB | Twins ML | -115 | 2.1 | ✅ | +1.84u |
+| MLB | Astros vs Rockies | +162 | 3.9 | ✅ | +6.31u |
+| MLB | Orioles vs White Sox Under 9 | -115 | 1.2 | ✅ | +1.01u |
+| MLB | Rays ML | -120 | 0.1 | ✅ | +0.11u |
+| NCAAB | Michigan -6.5 | -105 | 1.7 | ❌ | -1.73u |
+| NCAAB | Connecticut +7 | -115 | 7.2 | ✅ | +6.25u |
+| MLB | Los Angeles Dodgers vs Toronto Blue Jays: Total Over 8.5 (-115) Justin Wrobleski (LHP), Max Scherzer (RHP) Must Start | -115 | 2.7 | ✅ | +2.35u |
+| NHL | Sharks ML | +148 | 2.6 | ❌ | -2.63u |
+| NCAAB | Connecticut +7 | -110 | 5.2 | ✅ | +4.70u |
+| MLB | Chicago Cubs vs Tampa Bay Rays: Total Over 7.5 (-120) Jameson Taillon (RHP), Shane McClanahan (LHP) Must Start | -120 | 0.4 | ✅ | +0.35u |
+| NCAAB | Connecticut +7 | -110 | 10.1 | ✅ | +9.17u |
+| MLB | Orioles vs White Sox Under 9 | -115 | 2.2 | ✅ | +1.94u |
+| NCAAB | Michigan -6.5 | -112 | 2.8 | ❌ | -2.78u |
+| NCAAB | Michigan -6.5 | -110 | 6.1 | ❌ | -6.12u |
+| NCAAB | Connecticut vs Michigan: Total Under 145.5 | -110 | 1.6 | ✅ | +1.49u |
+| NCAAB | Michigan -6.5 | -112 | 4.6 | ❌ | -4.63u |
+| MLB | Philadelphia Phillies -112 Action ML | -112 | 1.8 | ✅ | +1.62u |
+| NBA | Grizzlies +15 | -110 | 0.2 | ❌ | -0.24u |
+| MLB | Michael Wacha (RHP), Tanner Bibee (RHP) Must Start | +100 | 1.8 | ✅ | +1.78u |
+| MLB | San Francisco Giants ML | +100 | 4.3 | ❌ | -4.29u |
+| MLB | Giants ML | +105 | 4.7 | ❌ | -4.67u |
+| NCAAB | Connecticut +7 | -110 | 9.7 | ✅ | +8.86u |
+| NBA | Spurs -8.5 | -110 | 0.3 | ✅ | +0.27u |
+| NCAAB | Connecticut +7 | -110 | 8.4 | ✅ | +7.66u |
+| MLB | Rays ML | +135 | 0.5 | ✅ | +0.73u |
+| MLB | Marlins ML | +117 | 1.7 | ✅ | +1.95u |
+| NBA | Nuggets -7.5 | -108 | 0.4 | ❌ | -0.44u |
+| MLB | Braves vs Angels Under 8 | -110 | 2.6 | ❌ | -2.59u |
+| NCAAB | Connecticut vs Michigan Under 146 | -110 | 0.0 | ✅ | +0.02u |
+| NCAAB | Connecticut +7 | -110 | 10.2 | ✅ | +9.26u |
+| MLB | Angels ML | +155 | 3.0 | ✅ | +4.60u |
+| NCAAB | Michigan -6.5 | -110 | 8.9 | ❌ | -8.86u |
+| MLB | Angels ML | -160 | 1.8 | ❌ | -1.82u |
+| NCAAB | Connecticut vs Michigan Over 144 | -110 | 0.3 | ❌ | -0.28u |
+| MLB | Pirates ML | -135 | 0.0 | ❌ | -0.04u |
+| NCAAB | Connecticut +7 | -110 | 12.8 | ✅ | +11.63u |
+| MLB | Astros vs Rockies | +162 | 4.0 | ✅ | +6.51u |
+| MLB | Astros vs Rockies Over 10 | -110 | 0.3 | ✅ | +0.30u |
+| NBA | Magic +2 | -110 | 1.1 | ✅ | +0.97u |
+| MLB | Angels ML | +135 | 1.0 | ✅ | +1.30u |
+| NCAAB | Michigan -6.5 | -112 | 7.8 | ❌ | -7.79u |
+| MLB | Rays ML | -102 | 0.0 | ✅ | +0.01u |
+| MLB | Blue Jays ML | +135 | 2.9 | ❌ | -2.92u |
+| NCAAB | Connecticut +7 | -110 | 10.2 | ✅ | +9.26u |
+**Daily PnL (Settled): +65.66 Units**
 
 

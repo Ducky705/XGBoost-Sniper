@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE QUARRY // QUARTZ PRISM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'crystal-void': '#05070a',
+                        'shard-silver': '#f8fafc',
+                        'ice-blue': '#bae6fd',
+                        'prism-accent': '#ffffff',
+                        'glass-surface': 'rgba(255, 255, 255, 0.03)',
+                        'border-glass': 'rgba(255, 255, 255, 0.1)',
+                    },
+                    fontFamily: {
+                        'sans': ['"Space Grotesk"', 'sans-serif'],
+                        'mono': ['"JetBrains Mono"', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #05070a;
+            color: #f1f5f9;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        #prism-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .frosted-card {
+            background: rgba(10, 15, 25, 0.4);
+            backdrop-filter: blur(40px) saturate(150%);
+            -webkit-backdrop-filter: blur(40px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .frosted-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), 0 0 20px rgba(186, 230, 253, 0.05);
+        }
+
+        /* Prism Border Effect */
+        .prism-border::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(135deg, 
+                rgba(255,255,255,0.2) 0%, 
+                rgba(255,255,255,0.05) 25%, 
+                rgba(186,230,253,0.3) 50%, 
+                rgba(255,255,255,0.05) 75%, 
+                rgba(255,255,255,0.2) 100%);
+            z-index: -1;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0.5;
+            transition: opacity 0.5s;
+        }
+
+        .frosted-card:hover .prism-border::after {
+            opacity: 1;
+            animation: prism-shim 3s linear infinite;
+        }
+
+        @keyframes prism-shim {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .glow-text {
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .ticker-container {
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .ticker-scroll {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker 40s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #05070a; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+
+        .shard-label {
+            font-size: 10px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* High Fidelity Animations */
+        .reveal {
+            animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes reveal {
+            from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+    </style>
+</head>
+
+<body class="selection:bg-ice-blue selection:text-black">
+    <canvas id="prism-canvas"></canvas>
+
+    <!-- HEADER TICKER -->
+    <div class="fixed top-0 w-full z-50 ticker-container py-2 overflow-hidden border-b border-white/[0.05]">
+        <div class="ticker-scroll font-mono text-[10px] font-bold text-ice-blue/60 uppercase tracking-[0.4em]">
+            QUARTZ V4 // INSTITUTIONAL LIQUIDITY // MARKET DRIFT ACTIVE // REFRACTION ENGINE STABLE // T-1 TEMPORAL SHIELD // ZERO DATA LEAKAGE // QUARTZ V4 // INSTITUTIONAL LIQUIDITY // MARKET DRIFT ACTIVE // REFRACTION ENGINE STABLE // T-1 TEMPORAL SHIELD // ZERO DATA LEAKAGE //
+        </div>
+    </div>
+
+    <main class="max-w-[1400px] mx-auto px-8 pt-32 pb-40 relative z-10">
+        
+        <!-- TOP NAVIGATION/BREADCRUMB -->
+        <nav class="flex items-center gap-6 mb-20 reveal" style="animation-delay: 100ms;">
+            <a href="selector.html" class="group flex items-center gap-2 px-5 py-2 border border-white/10 rounded-full text-[10px] font-mono hover:bg-white/5 hover:border-white/30 transition-all uppercase tracking-widest">
+                <svg class="w-3 h-3 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                Control Center
+            </a>
+            <div class="h-px w-16 bg-white/10"></div>
+            <span class="text-[10px] font-mono text-white/20 uppercase tracking-[0.5em]">System / V4.Quartz / High-Fidelity</span>
+        </nav>
+
+        <!-- HERO SECTION -->
+        <header class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end mb-32 reveal" style="animation-delay: 200ms;">
+            <div class="lg:col-span-7">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-12 h-[1px] bg-ice-blue/40"></div>
+                    <span class="shard-label text-ice-blue font-bold tracking-[0.5em]">Flagship Ensemble</span>
+                </div>
+                <h1 class="text-9xl md:text-[14rem] font-bold tracking-tighter leading-[0.8] mb-10 select-none">
+                    QUARTZ<span class="text-ice-blue animate-pulse">.</span>
+                </h1>
+                <p class="text-2xl text-white/50 font-light max-w-xl leading-relaxed">
+                    Institutional-grade predictive engine. Fully vectorized T-1 temporal wall with automated signal calibration.
+                </p>
+            </div>
+            <div class="lg:col-span-5 text-left lg:text-right pb-4">
+                <div class="shard-label mb-4 opacity-40">Cumulative Net Alpha</div>
+                <div id="stat-net-absolute" class="text-8xl md:text-[10rem] font-bold tracking-tighter glow-text leading-none">+--.00<span class="text-5xl align-top ml-4 opacity-20">U</span></div>
+                <div class="mt-8 flex flex-wrap gap-4 lg:justify-end">
+                    <div class="flex items-center gap-2 px-4 py-1.5 bg-white/[0.03] border border-white/10 rounded text-[10px] font-mono uppercase tracking-widest">
+                        <span class="w-2 h-2 bg-green-500 rounded-full shadow-[0_0_10px_#22c55e]"></span>
+                        Temporal Barrier Active
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- KPIS: PRISM CARDS -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+            <!-- ROI -->
+            <div class="frosted-card p-10 reveal group" style="animation-delay: 300ms;">
+                <div class="prism-border"></div>
+                <div class="flex flex-col h-full justify-between">
+                    <div>
+                        <div class="shard-label mb-8">ROI Multiplier</div>
+                        <div id="stat-roi" class="text-6xl font-bold tracking-tighter">--.-<span class="text-2xl text-white/40">%</span></div>
+                    </div>
+                    <div class="mt-8">
+                        <div class="w-full bg-white/5 h-1 rounded-full overflow-hidden">
+                            <div id="roi-bar" class="bg-ice-blue h-full shadow-[0_0_20px_#bae6fd]" style="width: 0%"></div>
+                        </div>
+                        <p class="text-[10px] font-mono mt-3 text-white/30 uppercase">Institutional Benchmark</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Win Rate -->
+            <div class="frosted-card p-10 reveal group" style="animation-delay: 400ms;">
+                <div class="prism-border"></div>
+                <div class="flex flex-col h-full justify-between">
+                    <div>
+                        <div class="shard-label mb-8">Alpha Win Rate</div>
+                        <div id="stat-winrate" class="text-6xl font-bold tracking-tighter">--.-<span class="text-2xl text-white/40">%</span></div>
+                    </div>
+                    <div class="mt-8 flex items-baseline gap-2">
+                        <span id="stat-sample" class="text-white/80 font-mono text-xs">--</span>
+                        <span class="text-[10px] font-mono text-white/30 uppercase">Sample Size</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sharpe -->
+            <div class="frosted-card p-10 reveal group" style="animation-delay: 500ms;">
+                <div class="prism-border"></div>
+                <div class="flex flex-col h-full justify-between">
+                    <div>
+                        <div class="shard-label mb-8">Efficiency Score</div>
+                        <div class="text-6xl font-bold tracking-tighter">7.58</div>
+                    </div>
+                    <div class="mt-8">
+                        <div class="flex gap-1">
+                            <div class="w-4 h-1 bg-ice-blue"></div>
+                            <div class="w-4 h-1 bg-ice-blue"></div>
+                            <div class="w-4 h-1 bg-ice-blue"></div>
+                            <div class="w-4 h-1 bg-white/10"></div>
+                        </div>
+                        <p class="text-[10px] font-mono mt-3 text-white/30 uppercase">Sharpe Ratio</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk -->
+            <div class="frosted-card p-10 reveal group border-l-4 border-ice-blue" style="animation-delay: 600ms;">
+                <div class="flex flex-col h-full justify-between">
+                    <div>
+                        <div class="shard-label mb-8">Risk Exposure</div>
+                        <div class="text-4xl font-bold tracking-tighter uppercase italic">Institutional</div>
+                    </div>
+                    <div class="mt-8">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                            <span class="text-[10px] font-mono text-white/50 uppercase">Daily Cap: 10u</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECONDARY STACK -->
+        <section class="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-24">
+            <!-- Monte Carlo Chart Container -->
+             <div class="lg:col-span-3 frosted-card p-8 reveal" style="animation-delay: 700ms;">
+                <div class="flex justify-between items-center mb-8">
+                    <h3 class="shard-label">Monte Carlo Stability Trace</h3>
+                    <div class="flex gap-4">
+                         <div class="flex items-center gap-1.5 font-mono text-[9px] text-white/40 uppercase">
+                            <span class="w-2 h-2 bg-ice-blue opacity-50"></span> Projected
+                        </div>
+                        <div class="flex items-center gap-1.5 font-mono text-[9px] text-white/40 uppercase">
+                            <span class="w-2 h-2 bg-white/20"></span> Confidence
+                        </div>
+                    </div>
+                </div>
+                <div class="aspect-[16/6] relative flex items-center justify-center rounded border border-white/5 group overflow-hidden">
+                    <!-- HTML Legend Overlay -->
+                    <div class="absolute top-4 right-6 flex flex-wrap gap-4 z-20 pointer-events-none">
+                        <div class="flex items-center gap-2 text-[9px] font-mono text-white/80 uppercase">
+                            <span class="w-2.5 h-0.5" style="background: #f8fafc"></span> Quartz v4
+                        </div>
+                        <div class="flex items-center gap-2 text-[9px] font-mono text-white/30 uppercase">
+                            <span class="w-2.5 h-0.5" style="background: #7c3aed"></span> Obsidian
+                        </div>
+                        <div class="flex items-center gap-2 text-[9px] font-mono text-white/30 uppercase">
+                            <span class="w-2.5 h-0.5" style="background: #00f0ff"></span> Diamond
+                        </div>
+                        <div class="flex items-center gap-2 text-[9px] font-mono text-white/30 uppercase">
+                            <span class="w-2.5 h-0.5" style="background: #ffdd00"></span> Pyrite
+                        </div>
+                    </div>
+                    
+                    <!-- HTML Title Overlay -->
+                    <div class="absolute top-4 left-6 z-20 pointer-events-none">
+                        <div class="text-[10px] font-mono font-bold text-white/90 uppercase tracking-widest">
+                            INSTITUTIONAL ALPHA // ECOSYSTEM BENCHMARK: V4 QUARTZ
+                        </div>
+                    </div>
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-shard-silver/5 to-transparent pointer-events-none"></div>
+                    <img id="chart-main" src="./comparison_quartz.png" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.005] transition-all duration-700" onerror="this.src='./v5_monte_carlo.png'">
+                    <div class="absolute bottom-4 left-6 py-1 px-2 bg-black/40 border border-white/5 text-[9px] font-mono text-white/30">TRACE_ID: COMPARATIVE-ALPHA-QZ</div>
+                </div>
+             </div>
+
+             <!-- Feature Importance Stack -->
+             <div class="lg:col-span-2 space-y-8 reveal" style="animation-delay: 800ms;">
+                <div class="frosted-card p-10">
+                    <h3 class="shard-label mb-8 text-ice-blue">Institutional Modules</h3>
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-center group/item">
+                            <span class="text-sm text-white/60 group-hover/item:text-white transition-colors">Market Drift Protocol</span>
+                            <span class="text-[9px] font-mono px-3 py-1 bg-white/[0.05] border border-white/10 text-white/40 rounded-full uppercase">Active</span>
+                        </div>
+                        <div class="flex justify-between items-center group/item">
+                            <span class="text-sm text-white/60 group-hover/item:text-white transition-colors">Capper Registry Filter</span>
+                            <span class="text-[9px] font-mono px-3 py-1 bg-white/[0.05] border border-white/10 text-white/40 rounded-full uppercase">Enabled</span>
+                        </div>
+                        <div class="flex justify-between items-center group/item">
+                            <span class="text-sm text-white/60 group-hover/item:text-white transition-colors">Vectorized Backfill</span>
+                            <span class="text-[9px] font-mono px-3 py-1 bg-white/[0.05] border border-white/10 text-white/40 rounded-full uppercase">Optimized</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="frosted-card p-10 bg-gradient-to-br from-ice-blue/[0.05] to-transparent">
+                    <h3 class="shard-label mb-6 text-white/80">Alpha Consensus</h3>
+                    <p class="text-sm text-white/40 leading-relaxed font-light italic">
+                        "Quartz requires minimum 3-point alignment across high-alpha signal providers before capital allocation."
+                    </p>
+                </div>
+             </div>
+        </section>
+
+        <!-- FOOTER LEDGER -->
+         <section class="reveal" style="animation-delay: 900ms;">
+            <div class="flex items-center gap-6 mb-8">
+                <h3 class="shard-label !text-white whitespace-nowrap">Historical Precision Ledger</h3>
+                <div class="flex-1 h-px bg-white/10"></div>
+                <div class="font-mono text-[10px] text-white/30 uppercase tracking-[0.3em]">Institutional Verification</div>
+            </div>
+            <div class="frosted-card overflow-hidden">
+                <table class="w-full text-left font-mono text-[10px]">
+                    <thead class="bg-white/5 text-white/40 uppercase tracking-widest border-b border-white/10">
+                        <tr>
+                            <th class="py-5 pl-8 font-medium">Session ID</th>
+                            <th class="py-5 font-medium">Market Contract</th>
+                            <th class="py-5 text-right font-medium">Alpha Units</th>
+                            <th class="py-5 text-right pr-8 font-medium">Net Return</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10 text-white/60">
+                    <tbody id="ledger-body-v4" class="divide-y divide-white/10 text-white/60">
+                        <tr><td colspan="4" class="py-8 text-center text-white/10 italic">Initializing secure data-link...</td></tr>
+                    </tbody>
+                    </tbody>
+                </table>
+            </div>
+         </section>
+
+    </main>
+
+    <!-- JS: PRISM CANVAS -->
+    <script>
+        const canvas = document.getElementById('prism-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+
+        const shards = [];
+        const shardCount = 18;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        class Shard {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 200 + 50;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.rot = Math.random() * Math.PI * 2;
+                this.rotSpeed = (Math.random() - 0.5) * 0.002;
+                this.opacity = Math.random() * 0.05 + 0.02;
+                this.points = this.createPoints();
+            }
+
+            createPoints() {
+                const p = [];
+                const sides = Math.floor(Math.random() * 3) + 3; // 3 to 5 sides
+                for (let i = 0; i < sides; i++) {
+                    const angle = (i / sides) * Math.PI * 2;
+                    p.push({
+                        x: Math.cos(angle) * (Math.random() * 0.5 + 0.5),
+                        y: Math.sin(angle) * (Math.random() * 0.5 + 0.5)
+                    });
+                }
+                return p;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.rot += this.rotSpeed;
+
+                if (this.x < -this.size) this.x = width + this.size;
+                if (this.x > width + this.size) this.x = -this.size;
+                if (this.y < -this.size) this.y = height + this.size;
+                if (this.y > height + this.size) this.y = -this.size;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rot);
+                ctx.scale(this.size, this.size);
+
+                ctx.beginPath();
+                ctx.moveTo(this.points[0].x, this.points[0].y);
+                for (let i = 1; i < this.points.length; i++) {
+                    ctx.lineTo(this.points[i].x, this.points[i].y);
+                }
+                ctx.closePath();
+
+                const grad = ctx.createLinearGradient(-1, -1, 1, 1);
+                grad.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
+                grad.addColorStop(1, `rgba(186, 230, 253, ${this.opacity * 2})`);
+                
+                ctx.fillStyle = grad;
+                ctx.fill();
+
+                // Subtle edge refraction
+                ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity * 3})`;
+                ctx.lineWidth = 0.01;
+                ctx.stroke();
+
+                ctx.restore();
+            }
+        }
+
+        function init() {
+            resize();
+            for (let i = 0; i < shardCount; i++) shards.push(new Shard());
+            animate();
+        }
+
+        function animate() {
+            ctx.fillStyle = '#05070a';
+            ctx.fillRect(0, 0, width, height);
+
+            shards.forEach(s => {
+                s.update();
+                s.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // --- DATA HYDRATION (QUARTZ V4) ---
+        const DATA = {
+            "v4": {
+                "roi": 20.120478954719612,
+                "winrate": 54.574638844301774,
+                "sample": 623,
+                "record": "340/283/0",
+                "net": 196.31350111330377
+            },
+            "yesterday_v4": {
+                "date": "Apr 06, 2026",
+                "net": -7.68,
+                "roi": -100.0,
+                "record": "0-4-0",
+                "history": [
+                    {"league": "Other", "selection": "aldershot town vs wealdstone", "odds": 280, "edge": 0.067, "units": 2.09, "profit": -2.09, "result": "LOSS"},
+                    {"league": "NCAAB", "selection": "connecticut ml", "odds": 355, "edge": 0.060, "units": 1.67, "profit": -1.67, "result": "LOSS"},
+                    {"league": "Other", "selection": "al mokawloon vs zed fc", "odds": 330, "edge": 0.051, "units": 1.47, "profit": -1.47, "result": "LOSS"},
+                    {"league": "NBA", "selection": "grizzlies +15", "odds": 90, "edge": 0.051, "units": 2.45, "profit": -2.45, "result": "LOSS"}
+                ]
+            }
+        };
+
+        function hydrate() {
+            if (DATA.v4) {
+                const netEl = document.getElementById('stat-net-absolute');
+                if (netEl) netEl.innerHTML = (DATA.v4.net >= 0 ? '+' : '') + DATA.v4.net.toFixed(2) + '<span class="text-5xl align-top ml-4 opacity-20">U</span>';
+
+                const roiEl = document.getElementById('stat-roi');
+                if (roiEl) roiEl.innerHTML = DATA.v4.roi.toFixed(1) + '<span class="text-2xl text-white/40">%</span>';
+
+                const roiBar = document.getElementById('roi-bar');
+                if (roiBar) roiBar.style.width = Math.min(Math.max(DATA.v4.roi, 0), 100) + '%';
+
+                const wrEl = document.getElementById('stat-winrate');
+                if (wrEl) wrEl.innerHTML = DATA.v4.winrate.toFixed(1) + '<span class="text-2xl text-white/40">%</span>';
+
+                const sampleEl = document.getElementById('stat-sample');
+                if (sampleEl) sampleEl.textContent = DATA.v4.sample;
+            }
+
+            const y = DATA.yesterday_v4;
+            if (y && y.history) {
+                const tbody = document.getElementById('ledger-body-v4');
+                if (tbody) {
+                    tbody.innerHTML = y.history.map((row, idx) => `
+                        <tr class="hover:bg-white/5 transition-colors group">
+                            <td class="py-4 pl-8 font-bold text-white/80 group-hover:text-ice-blue">S-${row.league}-${idx+100}</td>
+                            <td class="py-4">${row.selection.toUpperCase()} / ${row.odds > 0 ? '+' : ''}${row.odds}</td>
+                            <td class="py-4 text-right">${row.units.toFixed(2)}u</td>
+                            <td class="py-4 text-right pr-8 ${row.profit >= 0 ? 'text-green-400' : 'text-white/20'} font-bold">
+                                ${row.profit >= 0 ? '+' : ''}${row.profit.toFixed(2)}u
+                            </td>
+                        </tr>
+                    `).join('');
+                }
+            }
+        }
+
+        window.addEventListener('resize', resize);
+        window.onload = () => {
+            init();
+            hydrate();
+        };
+    </script>
+</body>
+
+</html>
