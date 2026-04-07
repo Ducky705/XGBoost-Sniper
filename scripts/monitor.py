@@ -4,6 +4,7 @@ import numpy as np
 import datetime
 import subprocess
 import sys
+import argparse
 
 # Add project root to sys.path
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -13,6 +14,7 @@ if root_dir not in sys.path:
 
 from src.pipeline import SportsDataPipeline, FeatureEngineer
 from src.models import ModelSimulator
+import scripts.generate_assets as generate_assets
 
 def update_system_reports(v1, v2, v3):
     # Ensure we are in the project root
@@ -54,7 +56,7 @@ def update_system_reports(v1, v2, v3):
     
     vol_v1 = get_volume_text(v1)
     vol_v2 = get_volume_text(v2)
-    vol_v3 = get_volume_text(v3) # Now active
+    vol_v3 = get_volume_text(v3)
 
     # --- 1. LATEST_ACTION.md ---
     dates = []
@@ -100,8 +102,8 @@ def update_system_reports(v1, v2, v3):
   <br />
 
   [![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-success?style=for-the-badge&logo=statuspage&logoColor=white)](https://ducky705.github.io/XGBoost-Sniper/selector.html)
-  [![V2 ROI](https://img.shields.io/badge/V2_ROI-{r2*100:+.1f}%25-00E0FF?style=for-the-badge)](https://ducky705.github.io/XGBoost-Sniper/diamond.html)
-  [![V3 ROI](https://img.shields.io/badge/V3_ROI-{r3*100:+.1f}%25-7c3aed?style=for-the-badge)](https://ducky705.github.io/XGBoost-Sniper/obsidian.html)
+  [![V2 ROI](https://img.shields.io/badge/V2_ROI-{p2:+.1f}u-00E0FF?style=for-the-badge)](https://ducky705.github.io/XGBoost-Sniper/diamond.html)
+  [![V3 ROI](https://img.shields.io/badge/V3_ROI-{p3:+.1f}u-7c3aed?style=for-the-badge)](https://ducky705.github.io/XGBoost-Sniper/obsidian.html)
 
   <br />
   <br />
@@ -174,68 +176,46 @@ graph TD
         
     print("✅ System reports updated.")
 
-def main():
+def run_monitor():
+    parser = argparse.ArgumentParser(description='THE QUARRY // XGB-SNIPER Monitor')
+    parser.add_argument('--full', action='store_true', help='Run full historical simulation (slow)')
+    parser.add_argument('--days', type=int, default=30, help='Days of history to fetch in quick mode (default 30)')
+    args = parser.parse_args()
+
     # Ensure we are in the project root
     if os.path.basename(os.getcwd()) == 'scripts':
         os.chdir('..')
 
-    print("🛰️ THE QUARRY MONITOR STARTING...")
+    since = None if args.full else args.days
+    mode_text = "FULL HISTORICAL" if args.full else f"QUICK INCREMENTAL ({args.days} days)"
+    
+    print(f"🛰️ THE QUARRY MONITOR STARTING [{mode_text}]...")
     
     # 1. Pipeline
     pipeline = SportsDataPipeline()
-    raw = pipeline.fetch_data()
-    # if raw.empty: return  <-- MOVED CHECK DOWN
-
-    # Always generate assets (even if no new data, synthetic assets might need refresh)
-    # But for reports, we need data.
+    raw = pipeline.fetch_data(since_days=since)
     
-    if raw.empty:
-        print("⚠️ No live data found. Skipping inference/reports, but checking assets...")
-    else:
-        # === DIAGNOSTIC: Date range in raw data ===
-        print(f"📊 RAW DATA: {len(raw)} picks")
-        print(f"   Date range: {raw['pick_date'].min().date()} to {raw['pick_date'].max().date()}")
-        print(f"   Picks per recent date:")
-        for date in sorted(raw['pick_date'].dt.date.unique())[-5:]:
-            count = len(raw[raw['pick_date'].dt.date == date])
-            print(f"      {date}: {count} picks")
-        
+    if not raw.empty:
         eng = FeatureEngineer(raw)
-        df = eng.process()
+        proc = eng.process()
         
         # === DIAGNOSTIC: Date range after feature engineering ===
         print(f"📐 AFTER FEATURES: {len(df)} picks")
         print(f"   Date range: {df['pick_date'].min().date()} to {df['pick_date'].max().date()}")
         
         # 2. Simulations
-        sim = ModelSimulator(df)
+        sim = ModelSimulator(proc)
         v1 = sim.run_v1_pyrite()
         v2 = sim.run_v2_diamond()
         v3 = sim.run_v3_obsidian()
         
-        # === DIAGNOSTIC: Model outputs ===
-        def log_model(name, model_df):
-            if model_df.empty:
-                print(f"🔴 {name}: 0 picks (empty)")
-            else:
-                print(f"🟢 {name}: {len(model_df)} picks | Latest: {model_df['pick_date'].max().date()}")
-                for date in sorted(model_df['pick_date'].dt.date.unique())[-3:]:
-                    count = len(model_df[model_df['pick_date'].dt.date == date])
-                    print(f"      {date}: {count} picks")
-        
-        log_model("V1 PYRITE", v1)
-        log_model("V2 DIAMOND", v2)
-        log_model("V3 OBSIDIAN", v3)
-        
-        # 3. Reports
+        # 3. Reports & Assets
         update_system_reports(v1, v2, v3)
-    
-    # 4. Refresh Assets
-    print("🎨 Refreshing Web Assets...")
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    subprocess.run(["python", os.path.join(script_dir, "generate_assets.py")], check=True)
-    
-    print("✨ Monitor Cycle Complete.")
+        generate_assets.generate_live_assets(since_days=since)
+        
+        print("✨ Monitor Cycle Complete.")
+    else:
+        print("❌ No data fetched. Check Supabase connection or filters.")
 
 if __name__ == "__main__":
-    main()
+    run_monitor()

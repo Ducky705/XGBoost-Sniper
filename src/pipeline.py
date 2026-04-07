@@ -19,13 +19,23 @@ class SportsDataPipeline:
         if not self.url: raise ValueError("Missing SUPABASE_URL")
         self.supabase = create_client(self.url, self.key)
     
-    def _fetch_all_batches(self, table_name, select_query="*", batch_size=1000):
+    def _fetch_all_batches(self, table_name, select_query="*", batch_size=1000, filters=None):
         all_rows = []
         start = 0
-        print(f"Fetching '{table_name}'...", end=" ", flush=True)
+        print(f"📥 Fetching '{table_name}'...", end=" ", flush=True)
+        
         while True:
             try:
-                response = self.supabase.table(table_name).select(select_query).range(start, start+batch_size-1).execute()
+                query = self.supabase.table(table_name).select(select_query)
+                
+                # Apply custom filters (e.g. date ranges)
+                if filters:
+                    for field, op, value in filters:
+                        if op == 'gte': query = query.gte(field, value)
+                        elif op == 'lte': query = query.lte(field, value)
+                        elif op == 'eq': query = query.eq(field, value)
+                
+                response = query.range(start, start+batch_size-1).execute()
                 data = response.data
                 if not data: break
                 all_rows.extend(data)
@@ -33,15 +43,23 @@ class SportsDataPipeline:
                 if len(data) < batch_size: break
                 start += batch_size
             except Exception as e:
-                print(f"\n❌ Error fetching '{table_name}': {e}")
-                traceback.print_exc()
+                print(f"\n⚠️ Warning: Batch error in '{table_name}' at {start}: {e}")
+                # Simple retry logic: just break and return what we have if it's a partial fetch
+                # or we could implement actual retries here.
                 break
+                
         print(f"Done ({len(all_rows)} rows).")
         return all_rows
 
-    def fetch_data(self):
+    def fetch_data(self, since_days=None):
+        filters = []
+        if since_days:
+            cutoff = (pd.Timestamp.now() - pd.Timedelta(days=since_days)).strftime('%Y-%m-%d')
+            filters.append(('pick_date', 'gte', cutoff))
+            print(f"⏱️ Incremental Mode: Fetching data since {cutoff}")
+
         pick_cols = "id, pick_date, pick_value, unit, odds_american, result, capper_id, league_id, bet_type_id"
-        picks_data = self._fetch_all_batches('picks', pick_cols)
+        picks_data = self._fetch_all_batches('picks', pick_cols, filters=filters)
         df_picks = pd.DataFrame(picks_data)
         if df_picks.empty: return pd.DataFrame()
 

@@ -132,11 +132,14 @@ def generate_synthetic_assets():
 # ==========================================
 # II. LIVE ASSETS (Dashboards)
 # ==========================================
-def generate_live_assets():
-    print("Generating Live Assets from Supabase...")
-    
+def generate_live_assets(since_days=None):
+    print("🚀 Generating Live Assets from Supabase...")
+    # Ensure current directory for file writing
+    if os.path.basename(os.getcwd()) == 'scripts':
+        os.chdir('..')
+
     pipeline = SportsDataPipeline()
-    raw_df = pipeline.fetch_data()
+    raw_df = pipeline.fetch_data(since_days=since_days)
     if raw_df.empty:
         print("❌ No data found.")
         return
@@ -372,9 +375,9 @@ def generate_live_assets():
         "meta": {"last_update": pd.Timestamp.now().strftime('%Y-%m-%d %H:%M UTC'), "status": "NOMINAL"},
         "stats": {
             "roi": round(v2_roi, 1),
-            "net_units": round(v2['profit_actual'].sum(), 2),
-            "record": f"{len(v2[v2['outcome']==1])}-{len(v2[v2['outcome']==0])}-{len(v2[v2['outcome']==0.5])}",
-            "win_rate": round((len(v2[v2['outcome']==1])/len(v2[v2['outcome'].isin([0,1])])*100) if len(v2[v2['outcome'].isin([0,1])])>0 else 0, 1)
+            "net_units": round(v2['profit_actual'].sum(), 2) if not v2.empty else 0,
+            "record": f"{len(v2[v2['outcome']==1])}-{len(v2[v2['outcome']==0])}-{len(v2[v2['outcome']==0.5])}" if not v2.empty else "0-0-0",
+            "win_rate": round((len(v2[v2['outcome']==1])/len(v2[v2['outcome'].isin([0,1])])*100) if not v2.empty and len(v2[v2['outcome'].isin([0,1])])>0 else 0, 1)
         },
         "volume": {
             "v1_avg": round(len(v1) / v1['pick_date'].nunique() if not v1.empty else 0, 1),

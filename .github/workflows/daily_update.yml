@@ -2,9 +2,14 @@ name: Daily Sniper Update
 
 on:
   schedule:
-    - cron: '0 9 * * *'   # Morning run (10:00 CET)
-    - cron: '0 21 * * *'  # Evening run (22:00 CET) - catches late-graded picks
+    - cron: '0 9 * * *' # 9:00 AM UTC daily
   workflow_dispatch:
+    inputs:
+      full_run:
+        description: 'Run full historical simulation'
+        required: false
+        default: 'false'
+        type: boolean
 
 jobs:
   update-stats:
@@ -22,13 +27,12 @@ jobs:
 
       - name: Update Private Submodules
         run: |
-          # 1. Configure PAT for the private models repo (Classic PAT format)
-          # We use the standard https://TOKEN@github.com/ format which works reliably with Classic PATs
+          # 1. Configure PAT for the private models repo
           git config --global url."https://${{ secrets.GH_PAT }}@github.com/Ducky705/XGBoost-Sniper-Models.git".insteadOf "https://github.com/Ducky705/XGBoost-Sniper-Models.git"
           
-          # 2. Update
-          git submodule update --init --recursive
-          echo "✅ Submodules updated."
+          # 2. Update to latest commit on remote
+          git submodule update --init --recursive --remote --merge
+          echo "✅ Submodules updated to latest remote commits."
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -44,11 +48,17 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run Monitor Script
+      - name: Run Monitoring Engine
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-        run: python scripts/monitor.py
+        run: |
+          if [[ "${{ github.event.inputs.full_run }}" == "true" ]]; then
+            python3 scripts/monitor.py --full
+          else
+            # 180 days covers everything back to Nov 2025
+            python3 scripts/monitor.py --days 180
+          fi
 
       - name: Commit and Push Changes
         run: |
