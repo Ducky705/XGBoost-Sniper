@@ -22,15 +22,12 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }} 
-          persist-credentials: false # DISABLE auto-auth to prevent conflicts
+          token: ${{ secrets.GH_PAT }}
+          submodules: 'recursive'
+          fetch-depth: 0
 
-      - name: Update Private Submodules
+      - name: Update Private Submodules to Latest
         run: |
-          # 1. Configure PAT for the private models repo
-          git config --global url."https://${{ secrets.GH_PAT }}@github.com/Ducky705/XGBoost-Sniper-Models.git".insteadOf "https://github.com/Ducky705/XGBoost-Sniper-Models.git"
-          
-          # 2. Update to latest commit on remote
           git submodule update --init --recursive --remote --merge
           echo "✅ Submodules updated to latest remote commits."
 
