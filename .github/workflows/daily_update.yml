@@ -22,12 +22,15 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_PAT }}
-          submodules: 'recursive'
+          # Use default token for main repo (works for public/current repo)
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: false # We will handle them manually next
           fetch-depth: 0
 
       - name: Update Private Submodules to Latest
         run: |
+          # Manually inject PAT only for the submodule clone
+          git config --global url."https://${{ secrets.GH_PAT }}@github.com/".insteadOf "https://github.com/"
           git submodule update --init --recursive --remote --merge
           echo "✅ Submodules updated to latest remote commits."
 
