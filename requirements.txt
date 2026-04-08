@@ -8,3 +8,6 @@ supabase
 python-dotenv
 joblib
 pyperclip
+lightgbm
+pyarrow
+fastparquet

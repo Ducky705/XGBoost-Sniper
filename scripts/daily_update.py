@@ -7,6 +7,8 @@ import sys
 # Path setup
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(os.path.join(BASE_DIR, 'src'))
+if BASE_DIR not in sys.path:
+    sys.path.append(BASE_DIR)
 
 from pipeline import SportsDataPipeline, FeatureEngineer
 from models import ModelSimulator
@@ -224,7 +226,9 @@ def run_daily_update():
             y_net = last_day['profit_actual'].sum()
             y_roi = (y_net / last_day['wager_unit'].sum() * 100) if last_day['wager_unit'].sum() > 0 else 0
             
-            y_list = last_day.sort_values('profit_actual', ascending=False).head(15).to_dict('records')
+            # Ensure columns are unique before converting to dict (Prevents UserWarning & data loss)
+            last_day_unique = last_day.loc[:, ~last_day.columns.duplicated()]
+            y_list = last_day_unique.sort_values('profit_actual', ascending=False).head(15).to_dict('records')
             for item in y_list:
                 item['pick_date'] = item['pick_date'].strftime('%m/%d')
                 item['result'] = 'WIN' if item['outcome'] == 1 else ('LOSS' if item['outcome'] == 0 else 'PUSH')
@@ -267,8 +271,13 @@ def run_daily_update():
 
     # 6. Generate Assets (Plots & HTML Injection)
     # We call generate_assets.generate_live_assets() to sync plots
-    import scripts.generate_assets as generate_assets
-    generate_assets.generate_live_assets()
+    try:
+        import scripts.generate_assets as generate_assets
+        generate_assets.generate_live_assets()
+    except ModuleNotFoundError:
+        # Fallback for localized script execution
+        import generate_assets
+        generate_assets.generate_live_assets()
     
     # 7. Generate Comparison Graphics
     sys.path.append(os.path.join(BASE_DIR, 'research'))
