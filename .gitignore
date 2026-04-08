@@ -109,3 +109,7 @@ jspm_packages/
 *.onnx
 models_backup/
 model_logs/
+ 
+# Data Caches (Managed via CI caching or locally)
+data/
+*.parquet
