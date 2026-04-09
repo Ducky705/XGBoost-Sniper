@@ -1,441 +1,405 @@
 {
     "meta": {
-        "last_update": "2026-04-08 12:55 UTC",
+        "last_update": "2026-04-09 10:11 UTC",
         "status": "NOMINAL"
     },
     "models": {
         "pyrite": {
-            "roi": 59.9,
-            "net": 792.5,
-            "wins": 2244,
-            "losses": 2667,
+            "roi": 62.4,
+            "net": 827.0,
+            "wins": 1254,
+            "losses": 1597,
             "pushes": 0,
-            "record": "2244-2667-0",
-            "win_rate": 45.7,
-            "sample": 4911,
-            "bets_day": 35.6,
+            "record": "1254-1597-0",
+            "win_rate": 44.0,
+            "sample": 2851,
+            "bets_day": 20.5,
             "status": "LEGACY",
             "yesterday": {
-                "date": "Apr 07, 2026",
-                "record": "9-19-0",
-                "net": -1.66,
-                "roi": -16.6,
+                "date": "Apr 08, 2026",
+                "record": "18-22-0",
+                "net": -0.91,
+                "roi": -9.1,
                 "ledger": [
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
+                        "result": "WIN",
+                        "league_name": "NHL",
+                        "decimal_odds": 2.05,
+                        "pick_norm": "rangers ml",
+                        "wager_unit": 0.6804502919210987,
+                        "profit_actual": 0.7144728065171535
+                    },
+                    {
+                        "pick_date": "04/08",
                         "result": "WIN",
                         "league_name": "NHL",
                         "decimal_odds": 2.1,
                         "pick_norm": "rangers ml",
-                        "wager_unit": 0.8504705321508168,
-                        "profit_actual": 0.9355175853658986
+                        "wager_unit": 0.5025907447293922,
+                        "profit_actual": 0.5528498192023316
                     },
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
+                        "result": "WIN",
+                        "league_name": "MLB",
+                        "decimal_odds": 1.925925925925926,
+                        "pick_norm": "rays ml",
+                        "wager_unit": 0.38353450745971956,
+                        "profit_actual": 0.3551245439441848
+                    },
+                    {
+                        "pick_date": "04/08",
+                        "result": "WIN",
+                        "league_name": "MLB",
+                        "decimal_odds": 2.5300000000000002,
+                        "pick_norm": "blue jays ml",
+                        "wager_unit": 0.2092484164090668,
+                        "profit_actual": 0.32015007710587223
+                    },
+                    {
+                        "pick_date": "04/08",
                         "result": "WIN",
                         "league_name": "NHL",
-                        "decimal_odds": 2.1,
+                        "decimal_odds": 1.6896551724137931,
                         "pick_norm": "rangers ml",
-                        "wager_unit": 0.8504705321508168,
-                        "profit_actual": 0.9355175853658986
+                        "wager_unit": 0.44219951724615597,
+                        "profit_actual": 0.3049651843076938
                     },
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
                         "result": "WIN",
-                        "league_name": "NBA",
-                        "decimal_odds": 1.9523809523809523,
-                        "pick_norm": "oklahoma city thunder vs los angeles lakers total under 220.5",
-                        "wager_unit": 0.6910607840098161,
-                        "profit_actual": 0.6581531276283962
+                        "league_name": "MLB",
+                        "decimal_odds": 1.65359477124183,
+                        "pick_norm": "white sox ml",
+                        "wager_unit": 0.4423212156961975,
+                        "profit_actual": 0.2890988337883643
                     },
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
                         "result": "WIN",
-                        "league_name": "NBA",
-                        "decimal_odds": 1.9523809523809523,
-                        "pick_norm": "oklahoma city thunder vs los angeles lakers total under 220.5",
-                        "wager_unit": 0.6910607840098161,
-                        "profit_actual": 0.6581531276283962
+                        "league_name": "MLB",
+                        "decimal_odds": 1.6451612903225805,
+                        "pick_norm": "white sox ml",
+                        "wager_unit": 0.4095011257162356,
+                        "profit_actual": 0.26419427465563583
                     },
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
                         "result": "WIN",
                         "league_name": "NHL",
-                        "decimal_odds": 2.05,
-                        "pick_norm": "philadelphia flyers ml",
-                        "wager_unit": 0.2370621360845141,
-                        "profit_actual": 0.24891524288873976
+                        "decimal_odds": 2.6,
+                        "pick_norm": "maple leafs ml",
+                        "wager_unit": 0.15885677737336706,
+                        "profit_actual": 0.2541708437973873
                     },
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
                         "result": "WIN",
-                        "league_name": "NBA",
-                        "decimal_odds": 1.925925925925926,
-                        "pick_norm": "wolves -12.5",
-                        "wager_unit": 0.2384660607525624,
-                        "profit_actual": 0.22080190810422448
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "WIN",
-                        "league_name": "NBA",
-                        "decimal_odds": 1.925925925925926,
-                        "pick_norm": "wolves -12.5",
-                        "wager_unit": 0.2384660607525624,
-                        "profit_actual": 0.22080190810422448
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "WIN",
-                        "league_name": "NHL",
-                        "decimal_odds": 2.05,
-                        "pick_norm": "philadelphia flyers ml",
-                        "wager_unit": 0.16101562609256284,
-                        "profit_actual": 0.16906640739719095
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "WIN",
-                        "league_name": "NHL",
-                        "decimal_odds": 2.05,
-                        "pick_norm": "philadelphia flyers ml",
-                        "wager_unit": 0.16101562609256284,
-                        "profit_actual": 0.16906640739719095
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "LOSS",
                         "league_name": "MLB",
-                        "decimal_odds": 2.0,
-                        "pick_norm": "cincinnati reds vs miami marlins total under 7 action",
-                        "wager_unit": 0.059579933495089124,
-                        "profit_actual": -0.059579933495089124
+                        "decimal_odds": 1.7142857142857144,
+                        "pick_norm": "white sox ml",
+                        "wager_unit": 0.3338721026653647,
+                        "profit_actual": 0.2384800733324034
                     },
                     {
-                        "pick_date": "04/07",
-                        "result": "LOSS",
+                        "pick_date": "04/08",
+                        "result": "WIN",
                         "league_name": "MLB",
-                        "decimal_odds": 2.0,
-                        "pick_norm": "cincinnati reds vs miami marlins total under 7 action",
-                        "wager_unit": 0.059579933495089124,
-                        "profit_actual": -0.059579933495089124
+                        "decimal_odds": 1.6666666666666665,
+                        "pick_norm": "white sox ml",
+                        "wager_unit": 0.3101925862458639,
+                        "profit_actual": 0.20679505749724253
                     },
                     {
-                        "pick_date": "04/07",
-                        "result": "LOSS",
+                        "pick_date": "04/08",
+                        "result": "WIN",
                         "league_name": "MLB",
-                        "decimal_odds": 2.0,
-                        "pick_norm": "cincinnati reds vs miami marlins total under 7 action",
-                        "wager_unit": 0.059579933495089124,
-                        "profit_actual": -0.059579933495089124
+                        "decimal_odds": 1.7692307692307692,
+                        "pick_norm": "white sox ml",
+                        "wager_unit": 0.2626284125446894,
+                        "profit_actual": 0.2020218558036072
                     },
                     {
-                        "pick_date": "04/07",
-                        "result": "LOSS",
-                        "league_name": "NBA",
-                        "decimal_odds": 1.9523809523809523,
-                        "pick_norm": "indiana pacers +12.5",
-                        "wager_unit": 0.06469766962091258,
-                        "profit_actual": -0.06469766962091258
+                        "pick_date": "04/08",
+                        "result": "WIN",
+                        "league_name": "MLB",
+                        "decimal_odds": 1.78125,
+                        "pick_norm": "marlins ml",
+                        "wager_unit": 0.21228400596435026,
+                        "profit_actual": 0.16584687965964864
                     },
                     {
-                        "pick_date": "04/07",
-                        "result": "LOSS",
-                        "league_name": "NBA",
-                        "decimal_odds": 1.9523809523809523,
-                        "pick_norm": "indiana pacers +12.5",
-                        "wager_unit": 0.06469766962091258,
-                        "profit_actual": -0.06469766962091258
+                        "pick_date": "04/08",
+                        "result": "WIN",
+                        "league_name": "MLB",
+                        "decimal_odds": 2.45,
+                        "pick_norm": "blue jays ml",
+                        "wager_unit": 0.08877945281001891,
+                        "profit_actual": 0.12873020657452744
                     },
                     {
-                        "pick_date": "04/07",
-                        "result": "LOSS",
+                        "pick_date": "04/08",
+                        "result": "WIN",
+                        "league_name": "MLB",
+                        "decimal_odds": 1.6666666666666665,
+                        "pick_norm": "white sox ml",
+                        "wager_unit": 0.18901200349565894,
+                        "profit_actual": 0.12600800233043927
+                    },
+                    {
+                        "pick_date": "04/08",
+                        "result": "WIN",
                         "league_name": "NBA",
-                        "decimal_odds": 1.9523809523809523,
-                        "pick_norm": "indiana pacers +12.5",
-                        "wager_unit": 0.06469766962091258,
-                        "profit_actual": -0.06469766962091258
+                        "decimal_odds": 1.9174311926605505,
+                        "pick_norm": "spurs -3.5",
+                        "wager_unit": 0.08358906778773145,
+                        "profit_actual": 0.07668721815388208
                     }
                 ]
             }
         },
         "diamond": {
-            "roi": 4.0,
-            "net": 46.3,
-            "wins": 1715,
-            "losses": 1479,
+            "roi": 8.0,
+            "net": 97.0,
+            "wins": 1938,
+            "losses": 1570,
             "pushes": 0,
-            "record": "1715-1479-0",
-            "win_rate": 53.7,
-            "sample": 3194,
-            "bets_day": 25.0,
+            "record": "1938-1570-0",
+            "win_rate": 55.2,
+            "sample": 3508,
+            "bets_day": 27.2,
             "status": "STABLE",
             "yesterday": {
-                "date": "Apr 07, 2026",
-                "record": "22-11-0",
-                "net": 3.88,
-                "roi": 38.4,
+                "date": "Apr 08, 2026",
+                "record": "4-7-0",
+                "net": -2.55,
+                "roi": -25.5,
                 "ledger": [
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
                         "result": "WIN",
+                        "league_name": "NBA",
+                        "decimal_odds": 1.9090909090909092,
+                        "pick_norm": "grizzlies vs nuggets over 244.5",
+                        "wager_unit": 1.1,
+                        "profit_actual": 1.0000000000000002
+                    },
+                    {
+                        "pick_date": "04/08",
+                        "result": "WIN",
+                        "league_name": "NBA",
+                        "decimal_odds": 1.9090909090909092,
+                        "pick_norm": "magic -7.5",
+                        "wager_unit": 1.0,
+                        "profit_actual": 0.9090909090909092
+                    },
+                    {
+                        "pick_date": "04/08",
+                        "result": "WIN",
+                        "league_name": "NBA",
+                        "decimal_odds": 1.9090909090909092,
+                        "pick_norm": "memphis grizzlies vs denver nuggets total over 244.5",
+                        "wager_unit": 1.0,
+                        "profit_actual": 0.9090909090909092
+                    },
+                    {
+                        "pick_date": "04/08",
+                        "result": "WIN",
+                        "league_name": "NBA",
+                        "decimal_odds": 1.9090909090909092,
+                        "pick_norm": "memphis grizzlies vs denver nuggets total over 244.5",
+                        "wager_unit": 0.8,
+                        "profit_actual": 0.7272727272727274
+                    },
+                    {
+                        "pick_date": "04/08",
+                        "result": "LOSS",
+                        "league_name": "NBA",
+                        "decimal_odds": 1.9090909090909092,
+                        "pick_norm": "clippers +7",
+                        "wager_unit": 0.6,
+                        "profit_actual": -0.6
+                    },
+                    {
+                        "pick_date": "04/08",
+                        "result": "LOSS",
                         "league_name": "NHL",
-                        "decimal_odds": 2.04,
-                        "pick_norm": "rangers ml",
-                        "wager_unit": 0.5,
-                        "profit_actual": 0.52
+                        "decimal_odds": 2.05,
+                        "pick_norm": "san jose ml",
+                        "wager_unit": 0.8,
+                        "profit_actual": -0.8
                     },
                     {
-                        "pick_date": "04/07",
-                        "result": "WIN",
-                        "league_name": "NHL",
-                        "decimal_odds": 2.04,
-                        "pick_norm": "rangers ml",
-                        "wager_unit": 0.5,
-                        "profit_actual": 0.52
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "WIN",
-                        "league_name": "NBA",
-                        "decimal_odds": 1.9803921568627452,
-                        "pick_norm": "gary payton ii over 11.5 total points",
-                        "wager_unit": 0.5,
-                        "profit_actual": 0.4901960784313726
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "WIN",
-                        "league_name": "NBA",
-                        "decimal_odds": 1.9803921568627452,
-                        "pick_norm": "gary payton ii over 11.5 total points",
-                        "wager_unit": 0.5,
-                        "profit_actual": 0.4901960784313726
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "WIN",
-                        "league_name": "NBA",
-                        "decimal_odds": 1.9803921568627452,
-                        "pick_norm": "gary payton ii over 11.5 total points",
-                        "wager_unit": 0.5,
-                        "profit_actual": 0.4901960784313726
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "WIN",
+                        "pick_date": "04/08",
+                        "result": "LOSS",
                         "league_name": "NBA",
                         "decimal_odds": 1.9090909090909092,
-                        "pick_norm": "houston rockets +1",
-                        "wager_unit": 0.4,
-                        "profit_actual": 0.3636363636363637
+                        "pick_norm": "mavs vs suns over 230",
+                        "wager_unit": 0.8,
+                        "profit_actual": -0.8
                     },
                     {
-                        "pick_date": "04/07",
-                        "result": "WIN",
+                        "pick_date": "04/08",
+                        "result": "LOSS",
                         "league_name": "NBA",
                         "decimal_odds": 1.9090909090909092,
-                        "pick_norm": "houston rockets +1",
-                        "wager_unit": 0.4,
-                        "profit_actual": 0.3636363636363637
+                        "pick_norm": "atlanta hawks +1.5",
+                        "wager_unit": 0.8,
+                        "profit_actual": -0.8
                     },
                     {
-                        "pick_date": "04/07",
-                        "result": "WIN",
+                        "pick_date": "04/08",
+                        "result": "LOSS",
                         "league_name": "NBA",
                         "decimal_odds": 1.9090909090909092,
-                        "pick_norm": "houston rockets +1",
-                        "wager_unit": 0.4,
-                        "profit_actual": 0.3636363636363637
+                        "pick_norm": "dallas mavericks vs phoenix suns total over 231.5",
+                        "wager_unit": 0.8,
+                        "profit_actual": -0.8
                     },
                     {
-                        "pick_date": "04/07",
-                        "result": "WIN",
-                        "league_name": "NBA",
-                        "decimal_odds": 1.925925925925926,
-                        "pick_norm": "wolves -12.5",
-                        "wager_unit": 0.3,
-                        "profit_actual": 0.2777777777777778
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "WIN",
-                        "league_name": "NBA",
-                        "decimal_odds": 1.925925925925926,
-                        "pick_norm": "wolves -12.5",
-                        "wager_unit": 0.3,
-                        "profit_actual": 0.2777777777777778
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "WIN",
+                        "pick_date": "04/08",
+                        "result": "LOSS",
                         "league_name": "NBA",
                         "decimal_odds": 1.9090909090909092,
-                        "pick_norm": "oklahoma city thunder -14.5",
-                        "wager_unit": 0.3,
-                        "profit_actual": 0.27272727272727276
+                        "pick_norm": "atlanta hawks +5.5",
+                        "wager_unit": 1.1,
+                        "profit_actual": -1.1
                     },
                     {
-                        "pick_date": "04/07",
-                        "result": "WIN",
+                        "pick_date": "04/08",
+                        "result": "LOSS",
                         "league_name": "NBA",
                         "decimal_odds": 1.9090909090909092,
-                        "pick_norm": "oklahoma city thunder -14.5",
-                        "wager_unit": 0.3,
-                        "profit_actual": 0.27272727272727276
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "WIN",
-                        "league_name": "NBA",
-                        "decimal_odds": 1.8928571428571428,
-                        "pick_norm": "cody williams over 20.5 total points +assists",
-                        "wager_unit": 0.3,
-                        "profit_actual": 0.26785714285714285
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "WIN",
-                        "league_name": "NBA",
-                        "decimal_odds": 1.8928571428571428,
-                        "pick_norm": "cody williams over 20.5 total points +assists",
-                        "wager_unit": 0.3,
-                        "profit_actual": 0.26785714285714285
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "WIN",
-                        "league_name": "NBA",
-                        "decimal_odds": 1.8928571428571428,
-                        "pick_norm": "cody williams over 20.5 total points +assists",
-                        "wager_unit": 0.3,
-                        "profit_actual": 0.26785714285714285
+                        "pick_norm": "milwaukee bucks vs detroit pistons total under 221.5",
+                        "wager_unit": 1.2,
+                        "profit_actual": -1.2
                     }
                 ]
             }
         },
         "obsidian": {
-            "roi": 4.7,
-            "net": 23.5,
-            "wins": 552,
-            "losses": 648,
+            "roi": 6.3,
+            "net": 32.4,
+            "wins": 572,
+            "losses": 652,
             "pushes": 0,
-            "record": "552-648-0",
-            "win_rate": 46.0,
-            "sample": 1200,
-            "bets_day": 11.9,
+            "record": "572-652-0",
+            "win_rate": 46.7,
+            "sample": 1224,
+            "bets_day": 12.0,
             "status": "ADVANCED",
             "yesterday": {
-                "date": "Apr 07, 2026",
-                "record": "3-9-0",
-                "net": -2.32,
-                "roi": -46.1,
+                "date": "Apr 08, 2026",
+                "record": "4-8-0",
+                "net": -0.97,
+                "roi": -19.2,
                 "ledger": [
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
                         "result": "WIN",
                         "league_name": "NHL",
-                        "decimal_odds": 2.25,
-                        "pick_norm": "nashville ml",
+                        "decimal_odds": 2.98,
+                        "pick_norm": "edmonton oilers -1.5",
                         "wager_unit": 0.42,
-                        "profit_actual": 0.525
+                        "profit_actual": 0.8316
                     },
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
                         "result": "WIN",
                         "league_name": "NHL",
-                        "decimal_odds": 2.12,
-                        "pick_norm": "columbus blue jackets vs detroit red wings total over 6",
+                        "decimal_odds": 2.6,
+                        "pick_norm": "maple leafs ml",
                         "wager_unit": 0.42,
-                        "profit_actual": 0.47040000000000004
+                        "profit_actual": 0.672
                     },
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
                         "result": "WIN",
-                        "league_name": "NHL",
-                        "decimal_odds": 2.1,
-                        "pick_norm": "rangers ml",
+                        "league_name": "NBA",
+                        "decimal_odds": 2.16,
+                        "pick_norm": "keldon johnson over 5.5 total rebounds",
                         "wager_unit": 0.42,
-                        "profit_actual": 0.462
+                        "profit_actual": 0.4872
                     },
                     {
-                        "pick_date": "04/07",
-                        "result": "LOSS",
-                        "league_name": "NHL",
-                        "decimal_odds": 3.1,
-                        "pick_norm": "canucks ml",
+                        "pick_date": "04/08",
+                        "result": "WIN",
+                        "league_name": "NBA",
+                        "decimal_odds": 1.9523809523809523,
+                        "pick_norm": "spurs -3.5",
                         "wager_unit": 0.42,
-                        "profit_actual": -0.42
+                        "profit_actual": 0.39999999999999997
                     },
                     {
-                        "pick_date": "04/07",
-                        "result": "LOSS",
-                        "league_name": "NHL",
-                        "decimal_odds": 2.55,
-                        "pick_norm": "seattle mariners -1.5 george kirby rhp must start",
-                        "wager_unit": 0.42,
-                        "profit_actual": -0.42
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "LOSS",
-                        "league_name": "NHL",
-                        "decimal_odds": 2.6399999999999997,
-                        "pick_norm": "hurricanes ml",
-                        "wager_unit": 0.42,
-                        "profit_actual": -0.42
-                    },
-                    {
-                        "pick_date": "04/07",
-                        "result": "LOSS",
-                        "league_name": "NHL",
-                        "decimal_odds": 2.92,
-                        "pick_norm": "canadiens ml",
-                        "wager_unit": 0.42,
-                        "profit_actual": -0.42
-                    },
-                    {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
                         "result": "LOSS",
                         "league_name": "NHL",
                         "decimal_odds": 2.3200000000000003,
-                        "pick_norm": "st. louis blues ml",
+                        "pick_norm": "rangers ml",
                         "wager_unit": 0.42,
                         "profit_actual": -0.42
                     },
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
                         "result": "LOSS",
                         "league_name": "NHL",
                         "decimal_odds": 2.15,
-                        "pick_norm": "senators ml",
+                        "pick_norm": "under 6.5",
                         "wager_unit": 0.42,
                         "profit_actual": -0.42
                     },
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
                         "result": "LOSS",
                         "league_name": "NHL",
-                        "decimal_odds": 2.16,
-                        "pick_norm": "vegas golden knights -1.5",
+                        "decimal_odds": 2.0700000000000003,
+                        "pick_norm": "sharks ml",
                         "wager_unit": 0.42,
                         "profit_actual": -0.42
                     },
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
                         "result": "LOSS",
-                        "league_name": "NHL",
-                        "decimal_odds": 2.13,
-                        "pick_norm": "montreal canadiens -1.5",
+                        "league_name": "NBA",
+                        "decimal_odds": 2.1,
+                        "pick_norm": "cavs ml",
                         "wager_unit": 0.42,
                         "profit_actual": -0.42
                     },
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
                         "result": "LOSS",
                         "league_name": "NHL",
-                        "decimal_odds": 2.1100000000000003,
-                        "pick_norm": "utah mammoth ml",
+                        "decimal_odds": 2.05,
+                        "pick_norm": "san jose ml",
+                        "wager_unit": 0.42,
+                        "profit_actual": -0.42
+                    },
+                    {
+                        "pick_date": "04/08",
+                        "result": "LOSS",
+                        "league_name": "NHL",
+                        "decimal_odds": 1.9615384615384617,
+                        "pick_norm": "washington capitals vs toronto maple leafs total over 6.5",
+                        "wager_unit": 0.42,
+                        "profit_actual": -0.42
+                    },
+                    {
+                        "pick_date": "04/08",
+                        "result": "LOSS",
+                        "league_name": "NBA",
+                        "decimal_odds": 1.9615384615384617,
+                        "pick_norm": "jalen johnson over 1.5 total 3pt field goals",
+                        "wager_unit": 0.42,
+                        "profit_actual": -0.42
+                    },
+                    {
+                        "pick_date": "04/08",
+                        "result": "LOSS",
+                        "league_name": "NHL",
+                        "decimal_odds": 1.9523809523809523,
+                        "pick_norm": "capitals vs maple leafs over 6.5",
                         "wager_unit": 0.42,
                         "profit_actual": -0.42
                     }
@@ -443,29 +407,56 @@
             }
         },
         "quartz": {
-            "roi": -100.0,
-            "net": -2.6,
-            "wins": 0,
-            "losses": 1,
+            "roi": 9.6,
+            "net": 1.9,
+            "wins": 6,
+            "losses": 5,
             "pushes": 0,
-            "record": "0-1-0",
-            "win_rate": 0.0,
-            "sample": 1,
-            "bets_day": 1.0,
+            "record": "6-5-0",
+            "win_rate": 54.5,
+            "sample": 11,
+            "bets_day": 5.5,
             "status": "FLAGSHIP",
             "yesterday": {
-                "date": "Apr 07, 2026",
-                "record": "0-1-0",
-                "net": -2.56,
-                "roi": -100.0,
+                "date": "Apr 08, 2026",
+                "record": "3-1-0",
+                "net": 4.47,
+                "roi": 44.7,
                 "ledger": [
                     {
-                        "pick_date": "04/07",
+                        "pick_date": "04/08",
+                        "league_name": "MLB",
+                        "pick_norm": "blue jays ml",
+                        "decimal_odds": 2.2016666666666667,
+                        "wager_unit": 2.91,
+                        "profit_actual": 3.4968500000000002,
+                        "result": "WIN"
+                    },
+                    {
+                        "pick_date": "04/08",
+                        "league_name": "MLB",
+                        "pick_norm": "reds vs marlins over 7.5",
+                        "decimal_odds": 1.9090909090909092,
+                        "wager_unit": 2.12,
+                        "profit_actual": 1.9272727272727275,
+                        "result": "WIN"
+                    },
+                    {
+                        "pick_date": "04/08",
                         "league_name": "NHL",
-                        "pick_norm": "canadiens ml",
-                        "decimal_odds": 2.633560975609756,
-                        "wager_unit": 2.56,
-                        "profit_actual": -2.56,
+                        "pick_norm": "mariners vs rangers under 8",
+                        "decimal_odds": 1.9090909090909092,
+                        "wager_unit": 2.11,
+                        "profit_actual": 1.9181818181818182,
+                        "result": "WIN"
+                    },
+                    {
+                        "pick_date": "04/08",
+                        "league_name": "Tennis",
+                        "pick_norm": "doosan bears ml",
+                        "decimal_odds": 2.2,
+                        "wager_unit": 2.87,
+                        "profit_actual": -2.87,
                         "result": "LOSS"
                     }
                 ]
