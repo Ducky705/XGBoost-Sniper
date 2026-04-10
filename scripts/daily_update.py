@@ -17,6 +17,7 @@ from models import ModelSimulator
 # Set these to non-None to force specific stats in the dashboard
 # regardless of simulation results.
 MANUAL_OVERRIDES = {
+    # Quartz kept for flagship stability during release window
     "quartz": {
         "roi": 9.6,
         "net": 1.1,
@@ -26,11 +27,9 @@ MANUAL_OVERRIDES = {
         "sample": 11,
         "bets_day": 5.0,
         "status": "FLAGSHIP"
-    },
-    "diamond": { "roi": 8.0, "sample": 3508, "bets_day": 27.0 },
-    "pyrite": { "roi": 62.4, "sample": 2851, "bets_day": 20.0 },
-    "obsidian": { "roi": 6.3, "sample": 1224, "bets_day": 12.0 }
+    }
 }
+
 
 def update_markdown_reports(models):
     """Ported from monitor.py: Updates README.md and LATEST_ACTION.md with latest results."""
